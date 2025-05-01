@@ -1,5 +1,60 @@
 package co.edu.unbosque.model.persistence;
 
-public class EquipoDAO {
+import java.util.ArrayList;
 
+import co.edu.unbosque.model.Equipo;
+import co.edu.unbosque.model.EquipoDTO;
+
+public class EquipoDAO implements OperacionDAO<EquipoDTO, Equipo> {
+	
+	private ArrayList<Equipo> listaEquipos;
+	
+	public EquipoDAO() {
+		listaEquipos = new ArrayList<Equipo>();
+	}
+	
+	@Override
+	public String showAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<EquipoDTO> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean add(EquipoDTO newData) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean delete(EquipoDTO toDelete) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Equipo find(Equipo toFind) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean update(EquipoDTO previous, EquipoDTO newData) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public ArrayList<Equipo> getListaEquipos() {
+		return listaEquipos;
+	}
+
+	public void setListaEquipos(ArrayList<Equipo> listaEquipos) {
+		this.listaEquipos = listaEquipos;
+	}
+	
 }
