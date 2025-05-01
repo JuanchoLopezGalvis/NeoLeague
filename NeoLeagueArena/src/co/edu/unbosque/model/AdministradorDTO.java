@@ -48,6 +48,7 @@ public class AdministradorDTO extends Usuario {
 		super(nombre, contrasena, correo, edad, especialidad, pais, urlFoto);
 		// TODO Auto-generated constructor stub
 	}
+	//a ver
 
 
 
