@@ -112,11 +112,12 @@ public class CrearAdmin extends JPanel{
 		seleccionarFoto.setBounds(580, 490, 250, 30);
 		botonCrearAdmin.setBounds(580, 630, 250, 30);
 		verContrasena.setBounds(430, 350, 30, 30);
-		verContrasenaAdmins.setBounds(600, 350, 30, 30);
+		verContrasenaAdmins.setBounds(840, 350, 30, 30);
 		bloquearSpinner(datoEdad, 0, 1, Color.decode("#002d69"), Color.white);
 		verContrasena.setBackground(Color.decode("#002d69"));
 		datoPais.setBackground(Color.decode("#002d69"));
 		datoPais.setForeground(Color.white);
+		verContrasenaAdmins.setBackground(Color.decode("#002d69"));
 		datoNombre.setToolTipText("Enter your name");
 		datoContrasena.setToolTipText("Enter your password");
 		datoContrasenaConf.setToolTipText("Confirm your password");
