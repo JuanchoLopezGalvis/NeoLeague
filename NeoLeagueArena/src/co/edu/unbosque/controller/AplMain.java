@@ -12,5 +12,4 @@ public class AplMain {
 		Controller controller = new Controller();
 		controller.run();
 	}
-	//Un video ma
 }
