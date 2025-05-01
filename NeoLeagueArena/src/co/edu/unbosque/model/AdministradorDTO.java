@@ -49,6 +49,7 @@ public class AdministradorDTO extends Usuario {
 		// TODO Auto-generated constructor stub
 	}
 	//a ver
+	//buerfgngh
 
 
 
