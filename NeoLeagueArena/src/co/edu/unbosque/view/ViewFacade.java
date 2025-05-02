@@ -16,9 +16,11 @@ public class ViewFacade {
 	/**
 	 * Constructor de la clase ViewFacade, que se encarga de crear la ventana principal del aplicativo.
 	 */
+	private VentanaAdmin va;
 	public ViewFacade() {
 		vp = new VentanaPrincipal();
 		vsu = new VentanaSignUp();
+		va = new VentanaAdmin();
 	}
 	/**
 	 * Metodo que se encarga de devolver la ventana principal del aplicativo.
@@ -47,6 +49,12 @@ public class ViewFacade {
 	 */
 	public void setVsu(VentanaSignUp vsu) {
 		this.vsu = vsu;
+	}
+	public VentanaAdmin getVa() {
+		return va;
+	}
+	public void setVa(VentanaAdmin va) {
+		this.va = va;
 	}
 	
 }

@@ -8,6 +8,10 @@ import javax.swing.JFrame;
 public class VentanaPrincipal extends JFrame{
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
 	 * Esta instancia es la encargada de guardar el panel principal.
 	 */
 	private PanelPrincipal panelPrincipal;

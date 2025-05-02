@@ -17,6 +17,10 @@ import javax.swing.SwingConstants;
 public class TextFieldRedondeado extends JTextField{
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
 	 * Este atributo es el encargado de guardar el radio de los bordes del text field.
 	 */
     private int cornerRadius;

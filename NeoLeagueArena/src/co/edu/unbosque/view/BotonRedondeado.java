@@ -17,6 +17,10 @@ import javax.swing.JButton;
 public class BotonRedondeado extends JButton{
 	
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
 	 * Este atributo es el encargado de guardar el radio de los bordes del boton.
 	 */
 	private int cornerRadius;

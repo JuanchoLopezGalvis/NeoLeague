@@ -6,6 +6,10 @@ import javax.swing.JPanel;
 
 public class CardSignUp extends JPanel{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private CrearAdmin crearAdmin;
 	private CrearCouch crearCouch;
 	private CrearGamer crearGamer;

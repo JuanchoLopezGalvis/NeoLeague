@@ -5,6 +5,10 @@ import javax.swing.JFrame;
 
 public class VentanaSignUp extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private CardSignUp cardSignUp;
 	private JComboBox<String>  roles;
 	public VentanaSignUp() {

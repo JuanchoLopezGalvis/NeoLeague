@@ -16,6 +16,10 @@ import javax.swing.border.EmptyBorder;
 public class PanelPrincipal extends JPanel{
 	
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
 	 * Esta intancia esta encargada de guardar el boton de admin, boton de gamer y boton de couch.
 	 */
 	private ToggleBtnRedondeado btnAdmin, btnGamer, btnCouch;

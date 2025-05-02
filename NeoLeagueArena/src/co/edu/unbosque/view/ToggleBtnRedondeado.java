@@ -16,6 +16,10 @@ import javax.swing.JToggleButton;
 public class ToggleBtnRedondeado extends JToggleButton{
 	
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
 	 * Este atributo es el encargado de guardar el radio de los bordes del boton.
 	 */
 	private int cornerRadius;
