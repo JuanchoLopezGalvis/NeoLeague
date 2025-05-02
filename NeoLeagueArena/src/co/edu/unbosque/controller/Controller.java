@@ -101,7 +101,7 @@ public class Controller implements ActionListener {
 				vf.getVsu().getCardSignUp().mostrarPanel("CrearAdmin");
 				break;
 			case "Couch":
-				vf.getVsu().getCardSignUp().mostrarPanel("CrearCouch");
+				vf.getVsu().getCardSignUp().mostrarPanel("CrearCoach");
 				break;
 			case "Gamer":
 				vf.getVsu().getCardSignUp().mostrarPanel("CrearGamer");

@@ -11,7 +11,7 @@ public class CardSignUp extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 	private CrearAdmin crearAdmin;
-	private CrearCouch crearCouch;
+	private CrearCoach crearCoach;
 	private CrearGamer crearGamer;
 	private CardLayout cardLayout;
 	
@@ -19,12 +19,12 @@ public class CardSignUp extends JPanel{
 		cardLayout = new CardLayout();
 		setLayout(cardLayout);
 		crearAdmin = new CrearAdmin();
-		crearCouch = new CrearCouch();
+		crearCoach = new CrearCoach();
 		crearGamer = new CrearGamer();
 		
 		
 		add(crearAdmin, "CrearAdmin");
-		add(crearCouch, "CrearCouch");
+		add(crearCoach, "CrearCoach");
 		add(crearGamer, "CrearGamer");
 		
 	}
@@ -41,11 +41,11 @@ public class CardSignUp extends JPanel{
 	public void setCrearAdmin(CrearAdmin crearAdmin) {
 		this.crearAdmin = crearAdmin;
 	}
-	public CrearCouch getCrearCouch() {
-		return crearCouch;
+	public CrearCoach getCrearCouch() {
+		return crearCoach;
 	}
-	public void setCrearCouch(CrearCouch crearCouch) {
-		this.crearCouch = crearCouch;
+	public void setCrearCouch(CrearCoach crearCoach) {
+		this.crearCoach = crearCoach;
 	}
 	public CrearGamer getCrearGamer() {
 		return crearGamer;

@@ -14,7 +14,7 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.text.NumberFormatter;
 
-public class CrearCouch extends JPanel{
+public class CrearCoach extends JPanel{
 	/**
 	 * 
 	 */
@@ -76,7 +76,7 @@ public class CrearCouch extends JPanel{
 	 * Este es el constructor de la clase {@link CrearGamer} que no recibe nada.
 	 * Se encarga de inicializar los atributos y de crear los componentes del panel.
 	 */
-	public CrearCouch() {
+	public CrearCoach() {
 		setSize(940, 788);
 		fondo = new ImageIcon(getClass().getResource("/recursos/fondo2.png")).getImage();
 		setLayout(null);

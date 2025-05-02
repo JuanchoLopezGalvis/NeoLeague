@@ -18,7 +18,7 @@ public class VentanaSignUp extends JFrame {
 		setResizable(false);
 		setLayout(null);
 		cardSignUp = new CardSignUp();
-		String [] rolesTxt = { "Gamer", "Couch", "Admin" };
+		String [] rolesTxt = { "Gamer", "Coach", "Admin" };
 		roles = new JComboBox<String>(rolesTxt);
 		roles.setBounds(20, 20, 100, 30);
 		cardSignUp.setBounds(0, 0, 940, 788);
