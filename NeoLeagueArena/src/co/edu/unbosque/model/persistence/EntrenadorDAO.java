@@ -8,6 +8,8 @@ import co.edu.unbosque.model.EntrenadorDTO;
 public class EntrenadorDAO implements OperacionDAO<EntrenadorDTO, Entrenador>{
 	
 	private ArrayList<Entrenador> listaEntrenadores;
+	private final String TEXT_FILE_NAME = "entrenador.csv";
+	private final String SERIAL_FILE_NAME = "entrenador.dat";
 	
 	public EntrenadorDAO() {
 		listaEntrenadores = new ArrayList<Entrenador>();
@@ -64,6 +66,14 @@ public class EntrenadorDAO implements OperacionDAO<EntrenadorDTO, Entrenador>{
 
 	public void setListaEntrenadores(ArrayList<Entrenador> listaEntrenadores) {
 		this.listaEntrenadores = listaEntrenadores;
+	}
+	
+	public void escribirArchivoTxt() {
+		StringBuilder contenido = new StringBuilder();
+		for (Entrenador admin : listaEntrenadores) {
+			contenido.append(admin.toString());
+		}
+		FileManager.escribirEnArchivoDeTexto(TEXT_FILE_NAME, contenido.toString());
 	}
 	
 
