@@ -1,6 +1,8 @@
 package co.edu.unbosque.model;
 
-public class Torneo {
+import java.io.Serializable;
+
+public class Torneo implements Serializable{
 	
 	private String formato;
 	

@@ -1,6 +1,8 @@
 package co.edu.unbosque.model;
 
-public class Equipo {
+import java.io.Serializable;
+
+public class Equipo implements Serializable{
 	
 	private int cantidadIntegrantes;
 	
