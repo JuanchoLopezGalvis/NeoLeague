@@ -224,6 +224,16 @@ public class Controller implements ActionListener {
 					if (mf.getJdao().find(new Jugador(nombre, null, null, 0, null, null, null, null, 0)) == null) {
 						JugadorDTO gamer = new JugadorDTO(nombre, contrasena, correo, edad, pais, urlFoto, trayectoriaCompetitiva, juegoEspecialidad, anosDeExperiencia);
 						mf.getJdao().add(gamer);
+						vf.getVsu().getCardSignUp().getCrearGamer().getDatoNombre().setText("");
+						vf.getVsu().getCardSignUp().getCrearGamer().getDatoContrasena().setText("");
+						vf.getVsu().getCardSignUp().getCrearGamer().getDatoContrasenaConf().setText("");
+						vf.getVsu().getCardSignUp().getCrearGamer().getDatoCorreo().setText("");
+						vf.getVsu().getCardSignUp().getCrearGamer().getDatoEdad().setValue(0);
+						vf.getVsu().getCardSignUp().getCrearGamer().getDatoPais().setSelectedIndex(0);
+						vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().setSelectedIndex(0);
+						vf.getVsu().getCardSignUp().getCrearGamer().getDatoJuegoEspecialidad().setSelectedIndex(0);
+						vf.getVsu().getCardSignUp().getCrearGamer().getDatoAnosDeExperiencia().setValue(0);
+						vf.getVsu().getCardSignUp().getCrearGamer().getSeleccionarFoto().setIcon(null);
 						JOptionPane.showMessageDialog(vf.getVsu(), "User created successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
 						vf.getVsu().setVisible(false);
 					}else {
@@ -263,6 +273,16 @@ public class Controller implements ActionListener {
 					if (mf.getEdao().find(new Entrenador(nombre, null, null, 0, null, null, null, null, 0)) == null) {
 						EntrenadorDTO coach = new EntrenadorDTO(nombre, contrasena, correo, edad, pais, urlFoto, trayectoriaCompetitiva, juegoEspecialidad, anosDeExperiencia);
 						mf.getEdao().add(coach);
+						vf.getVsu().getCardSignUp().getCrearCoach().getDatoNombre().setText("");
+						vf.getVsu().getCardSignUp().getCrearCoach().getDatoContrasena().setText("");
+						vf.getVsu().getCardSignUp().getCrearCoach().getDatoContrasenaConf().setText("");
+						vf.getVsu().getCardSignUp().getCrearCoach().getDatoCorreo().setText("");
+						vf.getVsu().getCardSignUp().getCrearCoach().getDatoEdad().setValue(0);
+						vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().setSelectedIndex(0);
+						vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional().setSelectedIndex(0);
+						vf.getVsu().getCardSignUp().getCrearCoach().getDatoJuegoEspecialidad().setSelectedIndex(0);
+						vf.getVsu().getCardSignUp().getCrearCoach().getDatoAnosDeExperiencia().setValue(0);
+						vf.getVsu().getCardSignUp().getCrearCoach().getSeleccionarFoto().setIcon(null);
 						JOptionPane.showMessageDialog(vf.getVsu(), "User created successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
 						vf.getVsu().setVisible(false);
 					}else {
@@ -302,6 +322,15 @@ public class Controller implements ActionListener {
 						if (mf.getAdao().find(new Administrador(nombre, null, null, 0, null, null, null)) == null) {
 							AdministradorDTO admin = new AdministradorDTO(nombre, contrasena, correo, edad, pais, urlFoto, cargoEspecifico);
 							mf.getAdao().add(admin);
+							vf.getVsu().getCardSignUp().getCrearAdmin().getDatoNombre().setText("");
+							vf.getVsu().getCardSignUp().getCrearAdmin().getDatoContrasena().setText("");
+							vf.getVsu().getCardSignUp().getCrearAdmin().getDatoContrasenaConf().setText("");
+							vf.getVsu().getCardSignUp().getCrearAdmin().getDatoCorreo().setText("");
+							vf.getVsu().getCardSignUp().getCrearAdmin().getDatoEdad().setValue(0);
+							vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().setSelectedIndex(0);
+							vf.getVsu().getCardSignUp().getCrearAdmin().getDatoCargoEspecifico().setText("");
+							vf.getVsu().getCardSignUp().getCrearAdmin().getPasswordAdmins().setText("");
+							vf.getVsu().getCardSignUp().getCrearAdmin().getSeleccionarFoto().setIcon(null);
 							JOptionPane.showMessageDialog(vf.getVsu(), "User created successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
 							vf.getVsu().setVisible(false);
 						}else {
