@@ -13,6 +13,7 @@ public class AdministradorDAO implements OperacionDAO<AdministradorDTO, Administ
 
 	public AdministradorDAO() {
 		listaAdministradores = new ArrayList<Administrador>();
+		leerArchivoSerializado();
 	}
 
 	@Override
@@ -38,6 +39,7 @@ public class AdministradorDAO implements OperacionDAO<AdministradorDTO, Administ
 	public boolean add(AdministradorDTO newData) {
 		listaAdministradores.add(DataMapper.AdministradorDTOToAdministrador(newData));
 		escribirArchivoTxt();
+		escribirArchivoSerializado();
 		return true;
 	}
 

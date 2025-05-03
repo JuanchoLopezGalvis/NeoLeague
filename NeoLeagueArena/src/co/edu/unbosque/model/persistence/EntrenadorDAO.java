@@ -13,6 +13,7 @@ public class EntrenadorDAO implements OperacionDAO<EntrenadorDTO, Entrenador>{
 	
 	public EntrenadorDAO() {
 		listaEntrenadores = new ArrayList<Entrenador>();
+		leerArchivoSerializado();
 	}
 
 	@Override
@@ -31,6 +32,7 @@ public class EntrenadorDAO implements OperacionDAO<EntrenadorDTO, Entrenador>{
 	public boolean add(EntrenadorDTO newData) {
 		listaEntrenadores.add(DataMapper.EntrenadorDTOToEntrenador(newData));
 		escribirArchivoTxt();
+		escribirArchivoSerializado();
 		return true;
 	}
 

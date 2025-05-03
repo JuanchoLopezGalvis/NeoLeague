@@ -13,6 +13,7 @@ public class JugadorDAO implements OperacionDAO<JugadorDTO, Jugador> {
 	
 	public JugadorDAO() {
 		listaJugadores = new ArrayList<Jugador>();
+		leerArchivoSerializado();
 	}
 	@Override
 	public String showAll() {
@@ -29,6 +30,8 @@ public class JugadorDAO implements OperacionDAO<JugadorDTO, Jugador> {
 	@Override
 	public boolean add(JugadorDTO newData) {
 		listaJugadores.add(DataMapper.JugadorDTOToJugador(newData));
+		escribirArchivoSerializado();
+		escribirArchivoTxt();
 		return true;
 	}
 
