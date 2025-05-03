@@ -45,13 +45,10 @@ public abstract class Usuario implements Serializable {
 	 * @param contrasena
 	 * @param correo
 	 * @param edad
-	 * @param trayectoriaCompetitiva
-	 * @param experiencia
-	 * @param especialidad
+	 * @param pais
 	 * @param urlFoto
 	 */
-	public Usuario(String nombre, String contrasena, String correo, int edad, 
-		                   String especialidad, String pais,String urlFoto) {
+	 public Usuario(String nombre, String contrasena, String correo, int edad, String pais, String urlFoto) {
 		super();
 		this.nombre = nombre;
 		this.contrasena = contrasena;
@@ -61,13 +58,13 @@ public abstract class Usuario implements Serializable {
 		this.urlFoto = urlFoto;
 	}
 
-	/**
-	 * Este metodo se encarga de obtener el nombre del usuario.
-	 * @return nombre
-	 */	public String getNombre() {
-		return nombre;
-	}
 	 /**
+	  * Este metodo se encarga de obtener el nombre del usuario.
+	  * @return nombre
+	  */	public String getNombre() {
+		  return nombre;
+	  }
+	/**
 	 * Este metodo se encarga de establecer el nombre del usuario.
 	 * @param nombre
 	 */

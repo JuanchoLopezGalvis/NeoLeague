@@ -8,8 +8,8 @@ import javax.swing.JMenuItem;
 public class VentanaAdmin extends JFrame{
 	
 	private JMenuBar menuBar;
-	private JMenu administrarGamer, administrarCouch;
-	private JMenuItem mostrarGamers, mostrarCouchs, eliminarGamer, eliminarCouch;
+	private JMenu administrarGamer, administrarCouch, administrarTorneos, administrarPartidas;
+	private JMenuItem mostrarGamers, mostrarCouchs, eliminarGamer, eliminarCouch, eliminarTorneo, eliminarPartida, crearTorneo, crearPartida, mostrarTorneos, mostrarPartidas, actualizarTorneo, actualizarPartida;
 	
 
 	/**
@@ -30,6 +30,26 @@ public class VentanaAdmin extends JFrame{
 		mostrarCouchs = new JMenuItem("Show Couchs");
 		eliminarGamer = new JMenuItem("Delete Gamer");
 		eliminarCouch = new JMenuItem("Delete Couch");
+		administrarTorneos = new JMenu("Manage Tournaments");
+		administrarPartidas = new JMenu("Manage Matches");
+		crearTorneo = new JMenuItem("Create Tournament");
+		crearPartida = new JMenuItem("Create Match");
+		mostrarTorneos = new JMenuItem("Show Tournaments");
+		mostrarPartidas = new JMenuItem("Show Matches");
+		actualizarTorneo = new JMenuItem("Update Tournament");
+		actualizarPartida = new JMenuItem("Update Match");
+		eliminarTorneo = new JMenuItem("Delete Tournament");
+		eliminarPartida = new JMenuItem("Delete Match");
+		menuBar.add(administrarTorneos);
+		menuBar.add(administrarPartidas);
+		administrarTorneos.add(crearTorneo);
+		administrarTorneos.add(mostrarTorneos);
+		administrarTorneos.add(actualizarTorneo);
+		administrarTorneos.add(eliminarTorneo);
+		administrarPartidas.add(crearPartida);
+		administrarPartidas.add(mostrarPartidas);
+		administrarPartidas.add(actualizarPartida);
+		administrarPartidas.add(eliminarPartida);
 		administrarGamer.add(mostrarGamers);
 		administrarGamer.add(eliminarGamer);
 		administrarCouch.add(mostrarCouchs);
@@ -37,7 +57,7 @@ public class VentanaAdmin extends JFrame{
 		menuBar.add(administrarGamer);
 		menuBar.add(administrarCouch);
 		setJMenuBar(menuBar);
-//		setVisible(true);
+		setVisible(true);
 		
 	}
 	

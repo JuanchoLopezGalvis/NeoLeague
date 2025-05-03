@@ -24,21 +24,16 @@ public class EntrenadorDTO extends Usuario{
 		this.especialidadDeEntreno = especialidadDeEntreno;
 		AnosDeEntrenamiento = anosDeEntrenamiento;
 	}
-
-
-	public EntrenadorDTO(String nombre, String contrasena, String correo, int edad, String especialidad, String pais,
-			String urlFoto, String trayectoriaProfesional, String especialidadDeEntreno, int anosDeEntrenamiento) {
-		super(nombre, contrasena, correo, edad, especialidad, pais, urlFoto);
+	public EntrenadorDTO(String nombre, String contrasena, String correo, int edad, String pais, String urlFoto,
+			String trayectoriaProfesional, String especialidadDeEntreno, int anosDeEntrenamiento) {
+		super(nombre, contrasena, correo, edad, pais, urlFoto);
 		this.trayectoriaProfesional = trayectoriaProfesional;
 		this.especialidadDeEntreno = especialidadDeEntreno;
 		AnosDeEntrenamiento = anosDeEntrenamiento;
 	}
 
-	
-
-	public EntrenadorDTO(String nombre, String contrasena, String correo, int edad, String especialidad, String pais,
-			String urlFoto) {
-		super(nombre, contrasena, correo, edad, especialidad, pais, urlFoto);
+	public EntrenadorDTO(String nombre, String contrasena, String correo, int edad, String pais, String urlFoto) {
+		super(nombre, contrasena, correo, edad, pais, urlFoto);
 		// TODO Auto-generated constructor stub
 	}
 

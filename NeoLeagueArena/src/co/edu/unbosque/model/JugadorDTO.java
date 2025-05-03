@@ -25,21 +25,16 @@ public class JugadorDTO extends Usuario{
 		this.anosDeExperiencia = anosDeExperiencia;
 	}
 
-
-
-	public JugadorDTO(String nombre, String contrasena, String correo, int edad, String especialidad, String pais,
-			String urlFoto, String trayectoriaCompetitiva, String juegoEspecialidad, int anosDeExperiencia) {
-		super(nombre, contrasena, correo, edad, especialidad, pais, urlFoto);
+	public JugadorDTO(String nombre, String contrasena, String correo, int edad, String pais, String urlFoto,
+			String trayectoriaCompetitiva, String juegoEspecialidad, int anosDeExperiencia) {
+		super(nombre, contrasena, correo, edad, pais, urlFoto);
 		this.trayectoriaCompetitiva = trayectoriaCompetitiva;
 		this.juegoEspecialidad = juegoEspecialidad;
 		this.anosDeExperiencia = anosDeExperiencia;
 	}
 
-	
-
-	public JugadorDTO(String nombre, String contrasena, String correo, int edad, String especialidad, String pais,
-			String urlFoto) {
-		super(nombre, contrasena, correo, edad, especialidad, pais, urlFoto);
+	public JugadorDTO(String nombre, String contrasena, String correo, int edad, String pais, String urlFoto) {
+		super(nombre, contrasena, correo, edad, pais, urlFoto);
 		// TODO Auto-generated constructor stub
 	}
 

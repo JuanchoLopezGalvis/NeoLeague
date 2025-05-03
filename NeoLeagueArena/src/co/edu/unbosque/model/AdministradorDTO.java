@@ -28,30 +28,17 @@ public class AdministradorDTO extends Usuario {
 		super();
 		this.cargoEspecifico = cargoEspecifico;
 	}
-	
-	
 
-
-
-	public AdministradorDTO(String nombre, String contrasena, String correo, int edad, String especialidad, String pais,
-			String urlFoto, String cargoEspecifico) {
-		super(nombre, contrasena, correo, edad, especialidad, pais, urlFoto);
+	public AdministradorDTO(String nombre, String contrasena, String correo, int edad, String pais, String urlFoto,
+			String cargoEspecifico) {
+		super(nombre, contrasena, correo, edad, pais, urlFoto);
 		this.cargoEspecifico = cargoEspecifico;
 	}
-	
-	
 
-
-
-	public AdministradorDTO(String nombre, String contrasena, String correo, int edad, String especialidad, String pais,
-			String urlFoto) {
-		super(nombre, contrasena, correo, edad, especialidad, pais, urlFoto);
+	public AdministradorDTO(String nombre, String contrasena, String correo, int edad, String pais, String urlFoto) {
+		super(nombre, contrasena, correo, edad, pais, urlFoto);
 		// TODO Auto-generated constructor stub
 	}
-	//a ver
-	//buerfgngh
-
-
 
 	public String getCargoEspecifico() {
 		return cargoEspecifico;

@@ -27,21 +27,17 @@ public class Administrador extends Usuario {
 		this.cargoEspecifico = cargoEspecifico;
 	}
 
-	public Administrador(String nombre, String contrasena, String correo, int edad, String especialidad, String pais,
-			String urlFoto, String cargoEspecifico) {
-		super(nombre, contrasena, correo, edad, especialidad, pais, urlFoto);
+
+	public Administrador(String nombre, String contrasena, String correo, int edad, String pais, String urlFoto,
+			String cargoEspecifico) {
+		super(nombre, contrasena, correo, edad, pais, urlFoto);
 		this.cargoEspecifico = cargoEspecifico;
 	}
 
-
-
-	public Administrador(String nombre, String contrasena, String correo, int edad, String especialidad, String pais,
-			String urlFoto) {
-		super(nombre, contrasena, correo, edad, especialidad, pais, urlFoto);
+	public Administrador(String nombre, String contrasena, String correo, int edad, String pais, String urlFoto) {
+		super(nombre, contrasena, correo, edad, pais, urlFoto);
 		// TODO Auto-generated constructor stub
 	}
-
-
 
 	public String getCargoEspecifico() {
 		return cargoEspecifico;
