@@ -51,7 +51,7 @@ public class Administrador extends Usuario {
 
 	@Override
 	public String toString() {
-		return super.toString()+ " Administrador [cargoEspecifico=" + cargoEspecifico + "]";
+		return super.toString() +  cargoEspecifico + "\n";
 	}
 	
 	

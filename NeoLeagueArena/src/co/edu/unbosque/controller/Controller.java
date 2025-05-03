@@ -59,6 +59,10 @@ public class Controller implements ActionListener {
 		vf.getVsu().getRoles().setActionCommand("comboRoles");
 		vf.getVsu().getCardSignUp().getCrearGamer().getSeleccionarFoto().addActionListener(this);
 		vf.getVsu().getCardSignUp().getCrearGamer().getSeleccionarFoto().setActionCommand("fotoGamer");
+		vf.getVsu().getCardSignUp().getCrearCoach().getSeleccionarFoto().addActionListener(this);
+		vf.getVsu().getCardSignUp().getCrearCoach().getSeleccionarFoto().setActionCommand("fotoCoach");
+		vf.getVsu().getCardSignUp().getCrearAdmin().getSeleccionarFoto().addActionListener(this);
+		vf.getVsu().getCardSignUp().getCrearAdmin().getSeleccionarFoto().setActionCommand("fotoAdmin");
 		vf.getVsu().getCardSignUp().getCrearGamer().getVerContrasena().addActionListener(this);
 		vf.getVsu().getCardSignUp().getCrearGamer().getVerContrasena().setActionCommand("verContrasenaGamer");
 		vf.getVsu().getCardSignUp().getCrearCoach().getVerContrasena().addActionListener(this);
@@ -70,7 +74,7 @@ public class Controller implements ActionListener {
 		vf.getVsu().getCardSignUp().getCrearGamer().getBotonCrearGamer().addActionListener(this);
 		vf.getVsu().getCardSignUp().getCrearGamer().getBotonCrearGamer().setActionCommand("btnCrearGamer");
 		vf.getVsu().getCardSignUp().getCrearCoach().getBotonCrearCoach().addActionListener(this);
-		vf.getVsu().getCardSignUp().getCrearCoach().getBotonCrearCoach().setActionCommand("btnCrearCouch");
+		vf.getVsu().getCardSignUp().getCrearCoach().getBotonCrearCoach().setActionCommand("btnCrearCoach");
 		vf.getVsu().getCardSignUp().getCrearAdmin().getBotonCrearAdmin().addActionListener(this);
 		vf.getVsu().getCardSignUp().getCrearAdmin().getBotonCrearAdmin().setActionCommand("btnCrearAdmin");
 
@@ -113,7 +117,7 @@ public class Controller implements ActionListener {
 			case "Admin":
 				vf.getVsu().getCardSignUp().mostrarPanel("CrearAdmin");
 				break;
-			case "Couch":
+			case "Coach":
 				vf.getVsu().getCardSignUp().mostrarPanel("CrearCoach");
 				break;
 			case "Gamer":
@@ -133,6 +137,24 @@ public class Controller implements ActionListener {
 				break;
 			}else {
 				FileManager.leerImagen(vf.getVsu().getCardSignUp().getCrearGamer(), vf.getVsu().getCardSignUp().getCrearGamer().getDatoNombre().getText());
+			}
+			break;
+		}
+		case "fotoCoach":{
+			if (vf.getVsu().getCardSignUp().getCrearCoach().getDatoNombre().getText().isEmpty() || vf.getVsu().getCardSignUp().getCrearCoach().getDatoNombre().getText() == null) {
+				JOptionPane.showMessageDialog(vf.getVsu(), "Please enter your name", "Error", JOptionPane.ERROR_MESSAGE);
+				break;
+			}else {
+				FileManager.leerImagen(vf.getVsu().getCardSignUp().getCrearCoach(), vf.getVsu().getCardSignUp().getCrearCoach().getDatoNombre().getText());
+			}
+			break;
+		}
+		case "fotoAdmin":{
+			if (vf.getVsu().getCardSignUp().getCrearAdmin().getDatoNombre().getText().isEmpty() || vf.getVsu().getCardSignUp().getCrearAdmin().getDatoNombre().getText() == null) {
+				JOptionPane.showMessageDialog(vf.getVsu(), "Please enter your name", "Error", JOptionPane.ERROR_MESSAGE);
+				break;
+			}else {
+				FileManager.leerImagen(vf.getVsu().getCardSignUp().getCrearAdmin(), vf.getVsu().getCardSignUp().getCrearAdmin().getDatoNombre().getText());
 			}
 			break;
 		}
@@ -262,6 +284,7 @@ public class Controller implements ActionListener {
 			String [] extensiones = {".jpg", ".png", ".jpeg"};
 			String urlFoto = "imageUser/" + nombre;
 			String cargoEspecifico = vf.getVsu().getCardSignUp().getCrearAdmin().getDatoCargoEspecifico().getText();
+			String contrasenaAdmins = String.valueOf(vf.getVsu().getCardSignUp().getCrearAdmin().getPasswordAdmins().getPassword());
 			File imagen = null;
 			for (String extension : extensiones) {
 				File f  = new File(urlFoto + extension);
@@ -273,13 +296,17 @@ public class Controller implements ActionListener {
 			}
 			if(!nombre.isEmpty() && !contrasena.isEmpty() && !correo.isEmpty() && edad != 0 && !pais.isEmpty() && imagen != null && !cargoEspecifico.isEmpty()) {
 				if (contrasena.equals(contrasenaConf)) {
-					if (mf.getAdao().find(new Administrador(nombre, null, null, 0, null, null, null)) == null) {
-						AdministradorDTO admin = new AdministradorDTO(nombre, contrasena, correo, edad, pais, urlFoto, cargoEspecifico);
-						mf.getAdao().add(admin);
-						JOptionPane.showMessageDialog(vf.getVsu(), "User created successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
-						vf.getVsu().setVisible(false);
+					if(contrasenaAdmins.equals("Transparencia290")) {
+						if (mf.getAdao().find(new Administrador(nombre, null, null, 0, null, null, null)) == null) {
+							AdministradorDTO admin = new AdministradorDTO(nombre, contrasena, correo, edad, pais, urlFoto, cargoEspecifico);
+							mf.getAdao().add(admin);
+							JOptionPane.showMessageDialog(vf.getVsu(), "User created successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+							vf.getVsu().setVisible(false);
+						}else {
+							JOptionPane.showMessageDialog(vf.getVsu(), "User already exists", "Error", JOptionPane.ERROR_MESSAGE);
+						}
 					}else {
-						JOptionPane.showMessageDialog(vf.getVsu(), "User already exists", "Error", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(vf.getVsu(), "Incorrect password for admins", "Error", JOptionPane.ERROR_MESSAGE);
 					}
 				}else {
 					JOptionPane.showMessageDialog(vf.getVsu(), "Passwords do not match", "Error", JOptionPane.ERROR_MESSAGE);

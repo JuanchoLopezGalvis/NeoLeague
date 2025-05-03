@@ -144,8 +144,8 @@ public abstract class Usuario implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Usuario [nombre=" + nombre + ", contrasena=" + contrasena + ", correo=" + correo + ", edad=" + edad
-				+ ", pais=" + pais + ", foto=" + urlFoto + "]";
+		return nombre + ";" + contrasena + ";" + correo + ";" + edad
+				+ ";" + pais + ";" + urlFoto + ";";
 	}
 	
 	
