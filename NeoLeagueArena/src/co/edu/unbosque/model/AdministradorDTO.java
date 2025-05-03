@@ -1,11 +1,12 @@
 package co.edu.unbosque.model;
 
+import java.io.Serializable;
 
 /**
  * La clase {@link Administrador} es la encargada de establecer los atributos de
  * un administrador. Esta clase hereda de la clase {@link Usuario}.
  */
-public class AdministradorDTO extends Usuario {
+public class AdministradorDTO extends Usuario implements Serializable{
 
 	/**
 	 * 
@@ -50,7 +51,7 @@ public class AdministradorDTO extends Usuario {
 
 	@Override
 	public String toString() {
-		return super.toString() + " Administrador [cargoEspecifico=" + cargoEspecifico + "]";
+		return super.toString() + cargoEspecifico + "\n";
 	}
 
 }

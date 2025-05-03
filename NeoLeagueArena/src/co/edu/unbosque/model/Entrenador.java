@@ -1,7 +1,8 @@
 package co.edu.unbosque.model;
 
+import java.io.Serializable;
 
-public class Entrenador extends Usuario{
+public class Entrenador extends Usuario implements Serializable{
 	
 	/**
 	 * 
@@ -65,8 +66,7 @@ public class Entrenador extends Usuario{
 
 	@Override
 	public String toString() {
-		return super.toString()+  " Entrenador [trayectoriaProfesional=" + trayectoriaProfesional + ", especialidadDeEntreno="
-				+ especialidadDeEntreno + ", AnosDeEntrenamiento=" + AnosDeEntrenamiento + "]";
+		return super.toString()+ trayectoriaProfesional + ";" + especialidadDeEntreno + ";" + AnosDeEntrenamiento + "\n";
 	}
 	
 	

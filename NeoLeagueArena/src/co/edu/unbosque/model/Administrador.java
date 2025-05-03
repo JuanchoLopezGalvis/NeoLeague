@@ -1,10 +1,12 @@
 package co.edu.unbosque.model;
 
+import java.io.Serializable;
+
 /**
  * La clase {@link Administrador} es la encargada de establecer los atributos de un administrador.
  * Esta clase hereda de la clase {@link Usuario}.
  */
-public class Administrador extends Usuario {
+public class Administrador extends Usuario implements Serializable{
 	
 	/**
 	 * 
