@@ -55,6 +55,8 @@ public class Controller implements ActionListener {
 		vf.getVp().getPanelPrincipal().getBtnGamer().setActionCommand("Gamer");
 		vf.getVp().getPanelPrincipal().getBtnRegistrar().addActionListener(this);
 		vf.getVp().getPanelPrincipal().getBtnRegistrar().setActionCommand("btnSignUp");
+		vf.getVp().getPanelPrincipal().getBtnEntrar().addActionListener(this);
+		vf.getVp().getPanelPrincipal().getBtnEntrar().setActionCommand("btnEntrar");
 		vf.getVsu().getRoles().addActionListener(this);
 		vf.getVsu().getRoles().setActionCommand("comboRoles");
 		vf.getVsu().getCardSignUp().getCrearGamer().getSeleccionarFoto().addActionListener(this);
@@ -313,6 +315,44 @@ public class Controller implements ActionListener {
 				}
 			}else {
 				JOptionPane.showMessageDialog(vf.getVsu(), "Please fill in all fields", "Error", JOptionPane.ERROR_MESSAGE);
+			}
+			break;
+		}
+		case "btnEntrar":{
+			String nombre = vf.getVp().getPanelPrincipal().getDatoUsuario().getText();
+			String contrasena = String.valueOf(vf.getVp().getPanelPrincipal().getDatoContrasena().getPassword());
+			if (vf.getVp().getPanelPrincipal().getBtnAdmin().isSelected()) {
+				Administrador admin = new Administrador(nombre, contrasena, null, 0, null, null, null);
+				if (mf.getAdao().find(admin) != null) {
+					//					vf.getVp().setVisible(false);
+					//					vf.getVam().setVisible(true);
+					//					vf.getVam().setAdmin(mf.getAdao().find(admin));
+					JOptionPane.showMessageDialog(vf.getVp(), "Welcome " + nombre, "Success", JOptionPane.INFORMATION_MESSAGE);
+				}else {
+					JOptionPane.showMessageDialog(vf.getVp(), "User not found", "Error", JOptionPane.ERROR_MESSAGE);
+				}
+			}else if (vf.getVp().getPanelPrincipal().getBtnCouch().isSelected()) {
+				Entrenador coach = new Entrenador(nombre, contrasena, null, 0, null, null, null, null, 0);
+				if (mf.getEdao().find(coach) != null) {
+					//					vf.getVp().setVisible(false);
+					//					vf.getVco().setVisible(true);
+					//					vf.getVco().setEntrenador(mf.getEdao().find(coach));
+					JOptionPane.showMessageDialog(vf.getVp(), "Welcome " + nombre, "Success", JOptionPane.INFORMATION_MESSAGE);
+				}else {
+					JOptionPane.showMessageDialog(vf.getVp(), "User not found", "Error", JOptionPane.ERROR_MESSAGE);
+				}
+			}else if (vf.getVp().getPanelPrincipal().getBtnGamer().isSelected()) {
+				Jugador gamer = new Jugador(nombre, contrasena, null, 0, null, null, null, null, 0);
+				if (mf.getJdao().find(gamer) != null) {
+					//					vf.getVp().setVisible(false);
+					//					vf.getVga().setVisible(true);
+					//					vf.getVga().setJugador(mf.getJdao().find(gamer));
+					JOptionPane.showMessageDialog(vf.getVp(), "Welcome " + nombre, "Success", JOptionPane.INFORMATION_MESSAGE);
+				}else {
+					JOptionPane.showMessageDialog(vf.getVp(), "User not found", "Error", JOptionPane.ERROR_MESSAGE);
+				}
+			}else {
+				JOptionPane.showMessageDialog(vf.getVp(), "Select your rol", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 			break;
 		}
