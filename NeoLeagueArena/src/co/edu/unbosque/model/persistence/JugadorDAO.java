@@ -7,6 +7,8 @@ import co.edu.unbosque.model.JugadorDTO;
 
 public class JugadorDAO implements OperacionDAO<JugadorDTO, Jugador> {
 	
+	private final String TEXT_FILE_NAME = "gamer.csv";
+	private final String SERIAL_FILE_NAME = "gamer.dat";
 	private ArrayList<Jugador> listaJugadores;
 	
 	public JugadorDAO() {
@@ -62,5 +64,24 @@ public class JugadorDAO implements OperacionDAO<JugadorDTO, Jugador> {
 	public void setListaJugadores(ArrayList<Jugador> listaJugadores) {
 		this.listaJugadores = listaJugadores;
 	}
+	public void escribirArchivoTxt() {
+		StringBuilder contenido = new StringBuilder();
+		for (Jugador jugador : listaJugadores) {
+			contenido.append(jugador.toString());
+		}
+		FileManager.escribirEnArchivoDeTexto(TEXT_FILE_NAME, contenido.toString());
+	}
+	public void escribirArchivoSerializado() {
+		FileManager.escribirArchivoSerializado(SERIAL_FILE_NAME, listaJugadores);
+	}
+	public void leerArchivoSerializado() {
+		listaJugadores = (ArrayList<Jugador>) FileManager.leerArchivoSerializado(SERIAL_FILE_NAME);
+		escribirArchivoSerializado();
+		escribirArchivoTxt();
+		if (listaJugadores == null ) {
+			listaJugadores = new ArrayList<>();
+		}
+	}
+	
 
 }

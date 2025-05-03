@@ -8,8 +8,8 @@ import co.edu.unbosque.model.EntrenadorDTO;
 public class EntrenadorDAO implements OperacionDAO<EntrenadorDTO, Entrenador>{
 	
 	private ArrayList<Entrenador> listaEntrenadores;
-	private final String TEXT_FILE_NAME = "entrenador.csv";
-	private final String SERIAL_FILE_NAME = "entrenador.dat";
+	private final String TEXT_FILE_NAME = "coach.csv";
+	private final String SERIAL_FILE_NAME = "coach.dat";
 	
 	public EntrenadorDAO() {
 		listaEntrenadores = new ArrayList<Entrenador>();
@@ -30,6 +30,7 @@ public class EntrenadorDAO implements OperacionDAO<EntrenadorDTO, Entrenador>{
 	@Override
 	public boolean add(EntrenadorDTO newData) {
 		listaEntrenadores.add(DataMapper.EntrenadorDTOToEntrenador(newData));
+		escribirArchivoTxt();
 		return true;
 	}
 
@@ -70,11 +71,25 @@ public class EntrenadorDAO implements OperacionDAO<EntrenadorDTO, Entrenador>{
 	
 	public void escribirArchivoTxt() {
 		StringBuilder contenido = new StringBuilder();
-		for (Entrenador admin : listaEntrenadores) {
-			contenido.append(admin.toString());
+		for (Entrenador coach : listaEntrenadores) {
+			contenido.append(coach.toString());
 		}
 		FileManager.escribirEnArchivoDeTexto(TEXT_FILE_NAME, contenido.toString());
 	}
+	
+	public void escribirArchivoSerializado() {
+		FileManager.escribirArchivoSerializado(SERIAL_FILE_NAME, listaEntrenadores);
+	}
+	public void leerArchivoSerializado() {
+		listaEntrenadores = (ArrayList<Entrenador>) FileManager.leerArchivoSerializado(SERIAL_FILE_NAME);
+		escribirArchivoSerializado();
+		escribirArchivoTxt();
+		if (listaEntrenadores == null ) {
+			listaEntrenadores = new ArrayList<>();			
+		}
+		
+	}
+	
 	
 
 }

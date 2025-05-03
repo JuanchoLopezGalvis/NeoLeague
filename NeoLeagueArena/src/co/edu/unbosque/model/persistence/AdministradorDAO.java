@@ -7,8 +7,8 @@ import co.edu.unbosque.model.AdministradorDTO;
 
 public class AdministradorDAO implements OperacionDAO<AdministradorDTO, Administrador>{
 
-	private final String TEXT_FILE_NAME = "administrador.csv";
-	private final String SERIAL_FILE_NAME = "administrador.dat";
+	private final String TEXT_FILE_NAME = "admin.csv";
+	private final String SERIAL_FILE_NAME = "admin.dat";
 	private ArrayList<Administrador> listaAdministradores;
 
 	public AdministradorDAO() {
@@ -82,6 +82,17 @@ public class AdministradorDAO implements OperacionDAO<AdministradorDTO, Administ
 			contenido.append(admin.toString());
 		}
 		FileManager.escribirEnArchivoDeTexto(TEXT_FILE_NAME, contenido.toString());
+	}
+	public void escribirArchivoSerializado() {
+		FileManager.escribirArchivoSerializado(SERIAL_FILE_NAME, listaAdministradores);
+	}
+	public void leerArchivoSerializado() {
+		listaAdministradores = (ArrayList<Administrador>) FileManager.leerArchivoSerializado(SERIAL_FILE_NAME);
+		escribirArchivoTxt();
+		escribirArchivoSerializado();
+		if (listaAdministradores == null ) {
+			listaAdministradores = new ArrayList<>();			
+		}
 	}
 
 }
