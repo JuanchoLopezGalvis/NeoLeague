@@ -64,9 +64,9 @@ public class CrearCoach extends JPanel{
 	 */
 	private BotonRedondeado seleccionarFoto;
 	/**
-	 * Este atributo es el encargado de guardar el boton para crear el couch.
+	 * Este atributo es el encargado de guardar el boton para crear el coach.
 	 */
-	private BotonRedondeado botonCrearCouch;
+	private BotonRedondeado botonCrearCoach;
 	/**
 	 * Este atributo es el encargado de guardar el check box para ver las contraseñas.
 	 */
@@ -101,7 +101,7 @@ public class CrearCoach extends JPanel{
 		datoJuegoEspecialidad = new JComboBox<String>(txtJuego);
 		datoAnosDeExperiencia = new JSpinner();
 		seleccionarFoto = new BotonRedondeado("Select your photo", 20, Color.decode("#002d69"), Color.black, Color.WHITE, Color.white, 1f);
-		botonCrearCouch = new BotonRedondeado("SignUp", 20, Color.decode("#002d69"), Color.black, Color.WHITE, Color.white, 1f);
+		botonCrearCoach = new BotonRedondeado("SignUp", 20, Color.decode("#002d69"), Color.black, Color.WHITE, Color.white, 1f);
 		verContrasena = new JCheckBox();
 		datoNombre.setBounds(170, 280, 250, 30);
 		datoContrasena.setBounds(170, 350, 250, 30);
@@ -113,7 +113,7 @@ public class CrearCoach extends JPanel{
 		datoJuegoEspecialidad.setBounds(580, 350, 250, 30);
 		datoTrayectoriaProfesional.setBounds(580, 420, 250, 30);
 		seleccionarFoto.setBounds(580, 490, 250, 30);
-		botonCrearCouch.setBounds(580, 630, 250, 30);
+		botonCrearCoach.setBounds(580, 630, 250, 30);
 		verContrasena.setBounds(430, 350, 30, 30);
 		bloquearSpinner(datoEdad, 0, 1, Color.decode("#002d69"), Color.white);
 		bloquearSpinner(datoAnosDeExperiencia, 0, 1, Color.decode("#002d69"), Color.white);
@@ -142,7 +142,7 @@ public class CrearCoach extends JPanel{
 		add(datoJuegoEspecialidad);
 		add(datoAnosDeExperiencia);
 		add(seleccionarFoto);
-		add(botonCrearCouch);
+		add(botonCrearCoach);
 		add(verContrasena);
 		
 	}
@@ -317,17 +317,17 @@ public class CrearCoach extends JPanel{
 	}
 	/**
 	 * Este metodo se encarga de obtener el boton para crear el couch.
-	 * @return botonCrearCouch
+	 * @return botonCrearCoach
 	 */
-	public BotonRedondeado getBotonCrearCouch() {
-		return botonCrearCouch;
+	public BotonRedondeado getBotonCrearCoach() {
+		return botonCrearCoach;
 	}
 	/**
 	 * Este metodo se encarga de establecer el boton para crear el couch.
-	 * @param botonCrearCouch
+	 * @param botonCrearCoach
 	 */
-	public void setBotonCrearCouch(BotonRedondeado botonCrearCouch) {
-		this.botonCrearCouch = botonCrearCouch;
+	public void setBotonCrearCoach(BotonRedondeado botonCrearCoach) {
+		this.botonCrearCoach = botonCrearCoach;
 	}
 	/**
 	 * Este metodo se encarga de obtener el check box para ver la contraseña.

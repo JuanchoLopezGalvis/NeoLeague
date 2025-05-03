@@ -26,8 +26,8 @@ public class JugadorDAO implements OperacionDAO<JugadorDTO, Jugador> {
 
 	@Override
 	public boolean add(JugadorDTO newData) {
-		// TODO Auto-generated method stub
-		return false;
+		listaJugadores.add(DataMapper.JugadorDTOToJugador(newData));
+		return true;
 	}
 
 	@Override
@@ -38,7 +38,16 @@ public class JugadorDAO implements OperacionDAO<JugadorDTO, Jugador> {
 
 	@Override
 	public Jugador find(Jugador toFind) {
-		// TODO Auto-generated method stub
+		Jugador found = null;
+		if (!listaJugadores.isEmpty()) {
+			for (Jugador jugador : listaJugadores) {
+				if (jugador.getNombre().equals(toFind.getNombre())) {
+					found = jugador;
+					break;
+				}
+			}
+			return found;
+		}
 		return null;
 	}
 

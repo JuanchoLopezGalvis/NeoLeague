@@ -2,9 +2,16 @@ package co.edu.unbosque.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.JOptionPane;
 
+import co.edu.unbosque.model.Administrador;
+import co.edu.unbosque.model.AdministradorDTO;
+import co.edu.unbosque.model.Entrenador;
+import co.edu.unbosque.model.EntrenadorDTO;
+import co.edu.unbosque.model.Jugador;
+import co.edu.unbosque.model.JugadorDTO;
 import co.edu.unbosque.model.ModelFacade;
 import co.edu.unbosque.model.persistence.FileManager;
 import co.edu.unbosque.view.ViewFacade;
@@ -54,13 +61,19 @@ public class Controller implements ActionListener {
 		vf.getVsu().getCardSignUp().getCrearGamer().getSeleccionarFoto().setActionCommand("fotoGamer");
 		vf.getVsu().getCardSignUp().getCrearGamer().getVerContrasena().addActionListener(this);
 		vf.getVsu().getCardSignUp().getCrearGamer().getVerContrasena().setActionCommand("verContrasenaGamer");
-		vf.getVsu().getCardSignUp().getCrearCouch().getVerContrasena().addActionListener(this);
-		vf.getVsu().getCardSignUp().getCrearCouch().getVerContrasena().setActionCommand("verContrasenaCouch");
+		vf.getVsu().getCardSignUp().getCrearCoach().getVerContrasena().addActionListener(this);
+		vf.getVsu().getCardSignUp().getCrearCoach().getVerContrasena().setActionCommand("verContrasenaCouch");
 		vf.getVsu().getCardSignUp().getCrearAdmin().getVerContrasena().addActionListener(this);
 		vf.getVsu().getCardSignUp().getCrearAdmin().getVerContrasena().setActionCommand("verContrasenaAdmin");
 		vf.getVsu().getCardSignUp().getCrearAdmin().getVerContrasenaAdmins().addActionListener(this);
 		vf.getVsu().getCardSignUp().getCrearAdmin().getVerContrasenaAdmins().setActionCommand("verContrasenaAdmins");
-		
+		vf.getVsu().getCardSignUp().getCrearGamer().getBotonCrearGamer().addActionListener(this);
+		vf.getVsu().getCardSignUp().getCrearGamer().getBotonCrearGamer().setActionCommand("btnCrearGamer");
+		vf.getVsu().getCardSignUp().getCrearCoach().getBotonCrearCoach().addActionListener(this);
+		vf.getVsu().getCardSignUp().getCrearCoach().getBotonCrearCoach().setActionCommand("btnCrearCouch");
+		vf.getVsu().getCardSignUp().getCrearAdmin().getBotonCrearAdmin().addActionListener(this);
+		vf.getVsu().getCardSignUp().getCrearAdmin().getBotonCrearAdmin().setActionCommand("btnCrearAdmin");
+
 	}
 	/**
 	 * Este metodo se encarga de asignar los eventos a cada uno de los objetos que lo requieren.
@@ -134,12 +147,12 @@ public class Controller implements ActionListener {
 			break;
 		}
 		case "verContrasenaCouch":{
-			if (vf.getVsu().getCardSignUp().getCrearCouch().getVerContrasena().isSelected()) {
-				vf.getVsu().getCardSignUp().getCrearCouch().getDatoContrasena().setEchoChar((char)0);
-				vf.getVsu().getCardSignUp().getCrearCouch().getDatoContrasenaConf().setEchoChar((char)0);
+			if (vf.getVsu().getCardSignUp().getCrearCoach().getVerContrasena().isSelected()) {
+				vf.getVsu().getCardSignUp().getCrearCoach().getDatoContrasena().setEchoChar((char)0);
+				vf.getVsu().getCardSignUp().getCrearCoach().getDatoContrasenaConf().setEchoChar((char)0);
 			}else {
-				vf.getVsu().getCardSignUp().getCrearCouch().getDatoContrasena().setEchoChar('●');
-				vf.getVsu().getCardSignUp().getCrearCouch().getDatoContrasenaConf().setEchoChar('●');
+				vf.getVsu().getCardSignUp().getCrearCoach().getDatoContrasena().setEchoChar('●');
+				vf.getVsu().getCardSignUp().getCrearCoach().getDatoContrasenaConf().setEchoChar('●');
 			}
 			break;
 		}
@@ -161,7 +174,121 @@ public class Controller implements ActionListener {
 			}
 			break;
 		}
-
-	}
+		case "btnCrearGamer":{
+			String nombre = vf.getVsu().getCardSignUp().getCrearGamer().getDatoNombre().getText();
+			String contrasena = String.valueOf(vf.getVsu().getCardSignUp().getCrearGamer().getDatoContrasena().getPassword());
+			String contrasenaConf = String.valueOf(vf.getVsu().getCardSignUp().getCrearGamer().getDatoContrasenaConf().getPassword());
+			String correo = vf.getVsu().getCardSignUp().getCrearGamer().getDatoCorreo().getText();
+			int edad = (int) vf.getVsu().getCardSignUp().getCrearGamer().getDatoEdad().getValue();
+			String pais = vf.getVsu().getCardSignUp().getCrearGamer().getDatoPais().getSelectedItem().toString();
+			String [] extensiones = {".jpg", ".png", ".jpeg"};
+			String urlFoto = "imageUser/" + nombre;
+			File imagen = null;
+			for (String extension : extensiones) {
+				File f  = new File(urlFoto + extension);
+				if (f.exists()) {
+					imagen = f;
+					urlFoto += extension;
+					break;
+				}
+			}
+			String trayectoriaCompetitiva = vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().getSelectedItem().toString();
+			String juegoEspecialidad = vf.getVsu().getCardSignUp().getCrearGamer().getDatoJuegoEspecialidad().getSelectedItem().toString();
+			int anosDeExperiencia = (int) vf.getVsu().getCardSignUp().getCrearGamer().getDatoAnosDeExperiencia().getValue();
+			if(!nombre.isEmpty() && !contrasena.isEmpty() && !correo.isEmpty() && edad != 0 && !pais.isEmpty() && imagen != null && !trayectoriaCompetitiva.isEmpty() && !juegoEspecialidad.isEmpty()) {
+				if (contrasena.equals(contrasenaConf)) {
+					if (mf.getJdao().find(new Jugador(nombre, null, null, 0, null, null, null, null, 0)) == null) {
+						JugadorDTO gamer = new JugadorDTO(nombre, contrasena, correo, edad, pais, urlFoto, trayectoriaCompetitiva, juegoEspecialidad, anosDeExperiencia);
+						mf.getJdao().add(gamer);
+						JOptionPane.showMessageDialog(vf.getVsu(), "User created successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+						vf.getVsu().setVisible(false);
+					}else {
+						JOptionPane.showMessageDialog(vf.getVsu(), "User already exists", "Error", JOptionPane.ERROR_MESSAGE);
+					}
+				}else {
+					JOptionPane.showMessageDialog(vf.getVsu(), "Passwords do not match", "Error", JOptionPane.ERROR_MESSAGE);
+				}
+			}else {
+				JOptionPane.showMessageDialog(vf.getVsu(), "Please fill in all fields", "Error", JOptionPane.ERROR_MESSAGE);
+			}
+			break;
+		}
+		case "btnCrearCoach":{
+			String nombre = vf.getVsu().getCardSignUp().getCrearCoach().getDatoNombre().getText();
+			String contrasena = String.valueOf(vf.getVsu().getCardSignUp().getCrearCoach().getDatoContrasena().getPassword());
+			String contrasenaConf = String.valueOf(vf.getVsu().getCardSignUp().getCrearCoach().getDatoContrasenaConf().getPassword());
+			String correo = vf.getVsu().getCardSignUp().getCrearCoach().getDatoCorreo().getText();
+			int edad = (int) vf.getVsu().getCardSignUp().getCrearCoach().getDatoEdad().getValue();
+			String pais = vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().getSelectedItem().toString();
+			String [] extensiones = {".jpg", ".png", ".jpeg"};
+			String urlFoto = "imageUser/" + nombre;
+			File imagen = null;
+			for (String extension : extensiones) {
+				File f  = new File(urlFoto + extension);
+				if (f.exists()) {
+					imagen = f;
+					urlFoto += extension;
+					break;
+				}
+			}
+			String trayectoriaCompetitiva = vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional().getSelectedItem().toString();
+			String juegoEspecialidad = vf.getVsu().getCardSignUp().getCrearCoach().getDatoJuegoEspecialidad().getSelectedItem().toString();
+			int anosDeExperiencia = (int) vf.getVsu().getCardSignUp().getCrearCoach().getDatoAnosDeExperiencia().getValue();
+			if(!nombre.isEmpty() && !contrasena.isEmpty() && !correo.isEmpty() && edad != 0 && !pais.isEmpty() && imagen != null && !trayectoriaCompetitiva.isEmpty() && !juegoEspecialidad.isEmpty()) {
+				if (contrasena.equals(contrasenaConf)) {
+					if (mf.getEdao().find(new Entrenador(nombre, null, null, 0, null, null, null, null, 0)) == null) {
+						EntrenadorDTO coach = new EntrenadorDTO(nombre, contrasena, correo, edad, pais, urlFoto, trayectoriaCompetitiva, juegoEspecialidad, anosDeExperiencia);
+						mf.getEdao().add(coach);
+						JOptionPane.showMessageDialog(vf.getVsu(), "User created successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+						vf.getVsu().setVisible(false);
+					}else {
+						JOptionPane.showMessageDialog(vf.getVsu(), "User already exists", "Error", JOptionPane.ERROR_MESSAGE);
+					}
+				}else {
+					JOptionPane.showMessageDialog(vf.getVsu(), "Passwords do not match", "Error", JOptionPane.ERROR_MESSAGE);
+				}
+			}else {
+				JOptionPane.showMessageDialog(vf.getVsu(), "Please fill in all fields", "Error", JOptionPane.ERROR_MESSAGE);
+			}
+			break;
+		}
+		case "btnCrearAdmin":{
+			String nombre = vf.getVsu().getCardSignUp().getCrearAdmin().getDatoNombre().getText();
+			String contrasena = String.valueOf(vf.getVsu().getCardSignUp().getCrearAdmin().getDatoContrasena().getPassword());
+			String contrasenaConf = String.valueOf(vf.getVsu().getCardSignUp().getCrearAdmin().getDatoContrasenaConf().getPassword());
+			String correo = vf.getVsu().getCardSignUp().getCrearAdmin().getDatoCorreo().getText();
+			int edad = (int) vf.getVsu().getCardSignUp().getCrearAdmin().getDatoEdad().getValue();
+			String pais = vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().getSelectedItem().toString();
+			String [] extensiones = {".jpg", ".png", ".jpeg"};
+			String urlFoto = "imageUser/" + nombre;
+			String cargoEspecifico = vf.getVsu().getCardSignUp().getCrearAdmin().getDatoCargoEspecifico().getText();
+			File imagen = null;
+			for (String extension : extensiones) {
+				File f  = new File(urlFoto + extension);
+				if (f.exists()) {
+					imagen = f;
+					urlFoto += extension;
+					break;
+				}
+			}
+			if(!nombre.isEmpty() && !contrasena.isEmpty() && !correo.isEmpty() && edad != 0 && !pais.isEmpty() && imagen != null && !cargoEspecifico.isEmpty()) {
+				if (contrasena.equals(contrasenaConf)) {
+					if (mf.getAdao().find(new Administrador(nombre, null, null, 0, null, null, null)) == null) {
+						AdministradorDTO admin = new AdministradorDTO(nombre, contrasena, correo, edad, pais, urlFoto, cargoEspecifico);
+						mf.getAdao().add(admin);
+						JOptionPane.showMessageDialog(vf.getVsu(), "User created successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+						vf.getVsu().setVisible(false);
+					}else {
+						JOptionPane.showMessageDialog(vf.getVsu(), "User already exists", "Error", JOptionPane.ERROR_MESSAGE);
+					}
+				}else {
+					JOptionPane.showMessageDialog(vf.getVsu(), "Passwords do not match", "Error", JOptionPane.ERROR_MESSAGE);
+				}
+			}else {
+				JOptionPane.showMessageDialog(vf.getVsu(), "Please fill in all fields", "Error", JOptionPane.ERROR_MESSAGE);
+			}
+			break;
+		}
+		}
 	}
 }

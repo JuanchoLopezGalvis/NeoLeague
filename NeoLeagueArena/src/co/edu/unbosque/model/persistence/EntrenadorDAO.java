@@ -27,8 +27,8 @@ public class EntrenadorDAO implements OperacionDAO<EntrenadorDTO, Entrenador>{
 
 	@Override
 	public boolean add(EntrenadorDTO newData) {
-		// TODO Auto-generated method stub
-		return false;
+		listaEntrenadores.add(DataMapper.EntrenadorDTOToEntrenador(newData));
+		return true;
 	}
 
 	@Override
@@ -39,7 +39,16 @@ public class EntrenadorDAO implements OperacionDAO<EntrenadorDTO, Entrenador>{
 
 	@Override
 	public Entrenador find(Entrenador toFind) {
-		// TODO Auto-generated method stub
+		Entrenador found = null;
+		if (!listaEntrenadores.isEmpty()) {
+			for (Entrenador entrenador : listaEntrenadores) {
+				if (entrenador.getNombre().equals(toFind.getNombre())) {
+					found = entrenador;
+					break;
+				}
+			}
+			return found;
+		}
 		return null;
 	}
 

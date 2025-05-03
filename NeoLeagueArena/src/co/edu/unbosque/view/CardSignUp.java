@@ -41,10 +41,10 @@ public class CardSignUp extends JPanel{
 	public void setCrearAdmin(CrearAdmin crearAdmin) {
 		this.crearAdmin = crearAdmin;
 	}
-	public CrearCoach getCrearCouch() {
+	public CrearCoach getCrearCoach() {
 		return crearCoach;
 	}
-	public void setCrearCouch(CrearCoach crearCoach) {
+	public void setCrearCoach(CrearCoach crearCoach) {
 		this.crearCoach = crearCoach;
 	}
 	public CrearGamer getCrearGamer() {

@@ -6,9 +6,9 @@ import co.edu.unbosque.model.Administrador;
 import co.edu.unbosque.model.AdministradorDTO;
 
 public class AdministradorDAO implements OperacionDAO<AdministradorDTO, Administrador>{
-	
+
 	private ArrayList<Administrador> listaAdministradores;
-	
+
 	public AdministradorDAO() {
 		listaAdministradores = new ArrayList<Administrador>();
 	}
@@ -34,11 +34,8 @@ public class AdministradorDAO implements OperacionDAO<AdministradorDTO, Administ
 
 	@Override
 	public boolean add(AdministradorDTO newData) {
-		if (find(DataMapper.AdministradorDTOToAdministrador(newData)) == null) {
-			listaAdministradores.add(DataMapper.AdministradorDTOToAdministrador(newData));
-			return true;
-		}
-		return false;
+		listaAdministradores.add(DataMapper.AdministradorDTOToAdministrador(newData));
+		return true;
 	}
 
 	@Override
@@ -49,10 +46,15 @@ public class AdministradorDAO implements OperacionDAO<AdministradorDTO, Administ
 
 	@Override
 	public Administrador find(Administrador toFind) {
-		for (Administrador admin : listaAdministradores) {
-			if (admin.getNombre() == toFind.getNombre()) {
-				return admin;
+		Administrador found = null;
+		if (!listaAdministradores.isEmpty()) {
+			for (Administrador admin : listaAdministradores) {
+				if (admin.getNombre().equals(toFind.getNombre())) {
+					found = admin;
+					break;
+				}
 			}
+			return found;
 		}
 		return null;
 	}
