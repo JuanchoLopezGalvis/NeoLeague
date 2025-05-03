@@ -84,8 +84,6 @@ public class EntrenadorDAO implements OperacionDAO<EntrenadorDTO, Entrenador>{
 	}
 	public void leerArchivoSerializado() {
 		listaEntrenadores = (ArrayList<Entrenador>) FileManager.leerArchivoSerializado(SERIAL_FILE_NAME);
-		escribirArchivoSerializado();
-		escribirArchivoTxt();
 		if (listaEntrenadores == null ) {
 			listaEntrenadores = new ArrayList<>();			
 		}

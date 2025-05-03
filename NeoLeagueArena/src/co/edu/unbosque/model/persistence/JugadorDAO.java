@@ -79,8 +79,6 @@ public class JugadorDAO implements OperacionDAO<JugadorDTO, Jugador> {
 	}
 	public void leerArchivoSerializado() {
 		listaJugadores = (ArrayList<Jugador>) FileManager.leerArchivoSerializado(SERIAL_FILE_NAME);
-		escribirArchivoSerializado();
-		escribirArchivoTxt();
 		if (listaJugadores == null ) {
 			listaJugadores = new ArrayList<>();
 		}

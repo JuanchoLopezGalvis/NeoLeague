@@ -90,8 +90,6 @@ public class AdministradorDAO implements OperacionDAO<AdministradorDTO, Administ
 	}
 	public void leerArchivoSerializado() {
 		listaAdministradores = (ArrayList<Administrador>) FileManager.leerArchivoSerializado(SERIAL_FILE_NAME);
-		escribirArchivoTxt();
-		escribirArchivoSerializado();
 		if (listaAdministradores == null ) {
 			listaAdministradores = new ArrayList<>();			
 		}
