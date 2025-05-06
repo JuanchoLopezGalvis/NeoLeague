@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -19,6 +20,10 @@ public class PanelPrincipal extends JPanel{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	
+	private JCheckBox checkEspañol;
+	private JCheckBox checkIngles;
 	/**
 	 * Esta intancia esta encargada de guardar el boton de admin, boton de gamer y boton de couch.
 	 */
@@ -26,7 +31,7 @@ public class PanelPrincipal extends JPanel{
 	/**
 	 * Esta instancia es la encargada de guardar las etiquetas.
 	 */
-	private JLabel  etiqueta0, etiqueta1, etiqueta2;
+	private JLabel  etiqueta0, etiqueta1, etiqueta2, etiqueta3;
 	/**
 	 * Esta instancia esta encargada de guardar el campo de texto de usuario.
 	 */
@@ -52,6 +57,10 @@ public class PanelPrincipal extends JPanel{
 		setSize(1280,720);
 		setLayout(null); 
 		setBorder(new EmptyBorder(20, 20, 20, 20));
+		
+		checkEspañol = new JCheckBox("Spanish");
+		checkIngles = new JCheckBox("English");
+
 		datoUsuario = new TextFieldRedondeado(Color.white, Color.decode("#002d69"), 20, Color.white, 1f);
 		datoContrasena = new PassworFieldRedondeado(Color.white, Color.decode("#002d69"), 20, Color.white, 1f);
 		btnAdmin = new ToggleBtnRedondeado("Admin", 20, Color.decode("#002d69"), Color.black, Color.WHITE, Color.white, 1f);
@@ -63,17 +72,31 @@ public class PanelPrincipal extends JPanel{
 		etiqueta0 = new JLabel("Username:");
 		etiqueta1 = new JLabel("Select your role", SwingConstants.CENTER);
 		etiqueta2 = new JLabel("Password:");
+		etiqueta3 = new JLabel("Select your language:");
 		etiqueta0.setForeground(Color.WHITE);
 		etiqueta1.setForeground(Color.WHITE);
 		etiqueta2.setForeground(Color.WHITE);
+		etiqueta3.setForeground(Color.WHITE);
 		etiqueta0.setFont(new Font("Arial", 1, 15));
 		etiqueta1.setFont(new Font("Arial", 1, 15));
 		etiqueta2.setFont(new Font("Arial", 1, 15)); 
+		etiqueta3.setFont(new Font("Arial", 1, 15)); 
 		btnAdmin.setFont(new Font("Arial", 1, 15));
 		btnGamer.setFont(new Font("Arial", 1, 15));
 		btnCouch.setFont(new Font("Arial", 1, 15));
 		btnEntrar.setFont(new Font("Arial", 1, 15));
 		btnRegistrar.setFont(new Font("Arial", 1, 15));
+		checkEspañol.setFont(new Font("Arial", 1, 13));
+		checkIngles.setFont(new Font("Arial", 1, 13));
+		
+		checkEspañol.setForeground(Color.white);
+		checkIngles.setForeground(Color.white);
+		checkEspañol.setBackground(Color.DARK_GRAY);
+		checkIngles.setBackground(Color.DARK_GRAY);
+		
+		etiqueta3.setBounds(700, 600, 200, 30);
+		checkEspañol.setBounds(900, 600, 80, 30);
+		checkIngles.setBounds(990,600, 80,30);
 		datoUsuario.setBounds(890, 250, 200, 30);
 		datoContrasena.setBounds(890, 300, 200, 30);
 		btnAdmin.setBounds(750, 420, 100, 30);
@@ -85,6 +108,9 @@ public class PanelPrincipal extends JPanel{
 		btnEntrar.setBounds(750, 520, 160, 30);
 		btnRegistrar.setBounds(930, 520, 160, 30);
 
+		add(etiqueta3);
+		add(checkEspañol);
+		add(checkIngles);
 		add(etiqueta0);
 		add(etiqueta2);
 		add(datoContrasena);
@@ -207,6 +233,20 @@ public class PanelPrincipal extends JPanel{
 	public void setBtnRegistrar(BotonRedondeado btnRegistrar) {
 		this.btnRegistrar = btnRegistrar;
 	}
+	public JCheckBox getCheckEspañol() {
+		return checkEspañol;
+	}
+	public void setCheckEspañol(JCheckBox checkEspañol) {
+		this.checkEspañol = checkEspañol;
+	}
+	public JCheckBox getCheckIngles() {
+		return checkIngles;
+	}
+	public void setCheckIngles(JCheckBox checkIngles) {
+		this.checkIngles = checkIngles;
+	}
+	
+	
 
 
 }
