@@ -3,6 +3,10 @@ package co.edu.unbosque.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
 
 import javax.swing.JOptionPane;
 
@@ -29,9 +33,14 @@ public class Controller implements ActionListener {
 	 * {@link ViewFacade} es la fachada de la vista, que se encarga de crear cada una de las ventanas del aplicativop.
 	 */
 	private ViewFacade vf;
+	
+	private Properties prop;
+	
 	public Controller() {
 		mf = new ModelFacade();
 		vf = new ViewFacade();
+		prop = new Properties();
+		
 		asignarLectores();
 	}
 	/**
@@ -47,6 +56,13 @@ public class Controller implements ActionListener {
 	 * Este metodo se encarga de asignar los oyentes a los botones de la ventana principal.
 	 */
 	public void asignarLectores() {
+		
+		
+		vf.getVp().getPanelPrincipal().getCheckEspañol().addActionListener(this);
+		vf.getVp().getPanelPrincipal().getCheckEspañol().setActionCommand("checkEspañol");
+		vf.getVp().getPanelPrincipal().getCheckIngles().addActionListener(this);
+		vf.getVp().getPanelPrincipal().getCheckIngles().setActionCommand("checkIngles");
+		
 		vf.getVp().getPanelPrincipal().getBtnAdmin().addActionListener(this);
 		vf.getVp().getPanelPrincipal().getBtnAdmin().setActionCommand("Admin");
 		vf.getVp().getPanelPrincipal().getBtnCouch().addActionListener(this);
@@ -111,6 +127,71 @@ public class Controller implements ActionListener {
 		}
 		case "btnSignUp":{
 			vf.getVsu().setVisible(true);
+			break;
+		}
+		case "checkEspañol":{
+			if (vf.getVp().getPanelPrincipal().getCheckEspañol().isSelected()) {
+				try {
+					prop.load(new FileInputStream(new File("src/archivos/textosespaniol.properties")));
+					
+					
+					vf.getVp().getPanelPrincipal().getBtnAdmin().setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnadmin"));
+					vf.getVp().getPanelPrincipal().getBtnCouch().setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnentrenador"));
+					vf.getVp().getPanelPrincipal().getBtnGamer().setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnjugador"));
+					vf.getVp().getPanelPrincipal().getBtnEntrar().setText(prop.getProperty("archivosdepropiedades.paneprincipal.btniniciarsesion"));
+					vf.getVp().getPanelPrincipal().getBtnRegistrar().setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnregistrarse"));
+					vf.getVp().getPanelPrincipal().getEtiqueta0().setText(prop.getProperty("archivosdepropiedades.paneprincipal.usuario"));
+					vf.getVp().getPanelPrincipal().getEtiqueta1().setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionrol"));
+					vf.getVp().getPanelPrincipal().getEtiqueta2().setText(prop.getProperty("archivosdepropiedades.paneprincipal.contrasenia"));
+					vf.getVp().getPanelPrincipal().getEtiqueta3().setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionidioma"));
+					vf.getVp().getPanelPrincipal().getCheckEspañol().setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionidiomaespañol"));
+					vf.getVp().getPanelPrincipal().getCheckIngles().setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionidiomaingles"));
+					
+					
+
+					
+					
+				}catch (FileNotFoundException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				vf.getVp().getPanelPrincipal().getCheckIngles().setSelected(false);
+
+					
+				}
+
+			break;
+		}
+		case "checkIngles":{
+			if (vf.getVp().getPanelPrincipal().getCheckIngles().isSelected()) {
+				try {
+					prop.load(new FileInputStream(new File("src/archivos/textosingles.properties")));
+					
+					
+					vf.getVp().getPanelPrincipal().getBtnAdmin().setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnadmin"));
+					vf.getVp().getPanelPrincipal().getBtnCouch().setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnentrenador"));
+					vf.getVp().getPanelPrincipal().getBtnGamer().setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnjugador"));
+					vf.getVp().getPanelPrincipal().getBtnEntrar().setText(prop.getProperty("archivosdepropiedades.paneprincipal.btniniciarsesion"));
+					vf.getVp().getPanelPrincipal().getBtnRegistrar().setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnregistrarse"));
+					vf.getVp().getPanelPrincipal().getEtiqueta0().setText(prop.getProperty("archivosdepropiedades.paneprincipal.usuario"));
+					vf.getVp().getPanelPrincipal().getEtiqueta1().setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionrol"));
+					vf.getVp().getPanelPrincipal().getEtiqueta2().setText(prop.getProperty("archivosdepropiedades.paneprincipal.contrasenia"));
+					vf.getVp().getPanelPrincipal().getEtiqueta3().setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionidioma"));
+					vf.getVp().getPanelPrincipal().getCheckEspañol().setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionidiomaespañol"));
+					vf.getVp().getPanelPrincipal().getCheckIngles().setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionidiomaingles"));
+					
+					
+					
+				}catch (FileNotFoundException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				vf.getVp().getPanelPrincipal().getCheckEspañol().setSelected(false);
+
+					
+				}
 			break;
 		}
 		case "comboRoles":{
