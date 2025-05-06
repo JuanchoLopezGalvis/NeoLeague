@@ -135,6 +135,21 @@ public class Controller implements ActionListener {
 					prop.load(new FileInputStream(new File("src/archivos/textosespaniol.properties")));
 					
 					
+					vf.getVp().getPanelPrincipal().getBtnAdmin().setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnadmin"));
+					vf.getVp().getPanelPrincipal().getBtnCouch().setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnentrenador"));
+					vf.getVp().getPanelPrincipal().getBtnGamer().setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnjugador"));
+					vf.getVp().getPanelPrincipal().getBtnEntrar().setText(prop.getProperty("archivosdepropiedades.paneprincipal.btniniciarsesion"));
+					vf.getVp().getPanelPrincipal().getBtnRegistrar().setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnregistrarse"));
+					vf.getVp().getPanelPrincipal().getEtiqueta0().setText(prop.getProperty("archivosdepropiedades.paneprincipal.usuario"));
+					vf.getVp().getPanelPrincipal().getEtiqueta1().setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionrol"));
+					vf.getVp().getPanelPrincipal().getEtiqueta2().setText(prop.getProperty("archivosdepropiedades.paneprincipal.contrasenia"));
+					vf.getVp().getPanelPrincipal().getEtiqueta3().setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionidioma"));
+					vf.getVp().getPanelPrincipal().getCheckEspañol().setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionidiomaespañol"));
+					vf.getVp().getPanelPrincipal().getCheckIngles().setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionidiomaingles"));
+					
+					
+
+					
 					
 				}catch (FileNotFoundException e1) {
 					e1.printStackTrace();
@@ -152,6 +167,19 @@ public class Controller implements ActionListener {
 			if (vf.getVp().getPanelPrincipal().getCheckIngles().isSelected()) {
 				try {
 					prop.load(new FileInputStream(new File("src/archivos/textosingles.properties")));
+					
+					
+					vf.getVp().getPanelPrincipal().getBtnAdmin().setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnadmin"));
+					vf.getVp().getPanelPrincipal().getBtnCouch().setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnentrenador"));
+					vf.getVp().getPanelPrincipal().getBtnGamer().setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnjugador"));
+					vf.getVp().getPanelPrincipal().getBtnEntrar().setText(prop.getProperty("archivosdepropiedades.paneprincipal.btniniciarsesion"));
+					vf.getVp().getPanelPrincipal().getBtnRegistrar().setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnregistrarse"));
+					vf.getVp().getPanelPrincipal().getEtiqueta0().setText(prop.getProperty("archivosdepropiedades.paneprincipal.usuario"));
+					vf.getVp().getPanelPrincipal().getEtiqueta1().setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionrol"));
+					vf.getVp().getPanelPrincipal().getEtiqueta2().setText(prop.getProperty("archivosdepropiedades.paneprincipal.contrasenia"));
+					vf.getVp().getPanelPrincipal().getEtiqueta3().setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionidioma"));
+					vf.getVp().getPanelPrincipal().getCheckEspañol().setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionidiomaespañol"));
+					vf.getVp().getPanelPrincipal().getCheckIngles().setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionidiomaingles"));
 					
 					
 					

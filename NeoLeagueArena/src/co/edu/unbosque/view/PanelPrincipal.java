@@ -245,6 +245,40 @@ public class PanelPrincipal extends JPanel{
 	public void setCheckIngles(JCheckBox checkIngles) {
 		this.checkIngles = checkIngles;
 	}
+	public JLabel getEtiqueta0() {
+		return etiqueta0;
+	}
+	public void setEtiqueta0(JLabel etiqueta0) {
+		this.etiqueta0 = etiqueta0;
+	}
+	public JLabel getEtiqueta1() {
+		return etiqueta1;
+	}
+	public void setEtiqueta1(JLabel etiqueta1) {
+		this.etiqueta1 = etiqueta1;
+	}
+	public JLabel getEtiqueta2() {
+		return etiqueta2;
+	}
+	public void setEtiqueta2(JLabel etiqueta2) {
+		this.etiqueta2 = etiqueta2;
+	}
+	public JLabel getEtiqueta3() {
+		return etiqueta3;
+	}
+	public void setEtiqueta3(JLabel etiqueta3) {
+		this.etiqueta3 = etiqueta3;
+	}
+	public Image getFondo() {
+		return fondo;
+	}
+	public void setFondo(Image fondo) {
+		this.fondo = fondo;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
 	
 	
 
