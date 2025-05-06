@@ -342,4 +342,5 @@ public class CrearAdmin extends JPanel{
 		this.verContrasenaAdmins = verContrasenaAdmins;
 	}
 	
+	
 }

@@ -147,6 +147,17 @@ public class Controller implements ActionListener {
 					vf.getVp().getPanelPrincipal().getCheckEspañol().setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionidiomaespañol"));
 					vf.getVp().getPanelPrincipal().getCheckIngles().setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionidiomaingles"));
 					
+					vf.getVsu().getCardSignUp().getCrearAdmin().getDatoNombre().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registrarnombre"));
+					vf.getVsu().getCardSignUp().getCrearAdmin().getDatoContrasena().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registrarcontraseña"));
+					vf.getVsu().getCardSignUp().getCrearAdmin().getDatoContrasenaConf().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registrarcontraseña2"));
+					vf.getVsu().getCardSignUp().getCrearAdmin().getDatoCorreo().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registrarcorreo"));
+					vf.getVsu().getCardSignUp().getCrearAdmin().getDatoEdad().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registraredad"));
+					vf.getVsu().getCardSignUp().getCrearAdmin().getDatoCargoEspecifico().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registrarrol"));
+					vf.getVsu().getCardSignUp().getCrearAdmin().getVerContrasena().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.mostrarcontraseña"));
+					vf.getVsu().getCardSignUp().getCrearAdmin().getPasswordAdmins().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registrarcontraseñaadmin"));
+					vf.getVsu().getCardSignUp().getCrearAdmin().getVerContrasenaAdmins().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.mostrarcontraseña"));
+					vf.getVsu().getCardSignUp().getCrearAdmin().getBotonCrearAdmin().setText(prop.getProperty("archivosdepropiedades.panelcrearadmin.btnregistrarse"));
+					vf.getVsu().getCardSignUp().getCrearAdmin().getSeleccionarFoto().setText(prop.getProperty("archivosdepropiedades.panelcrearadmin.seleccionafoto"));
 					
 
 					
@@ -180,6 +191,18 @@ public class Controller implements ActionListener {
 					vf.getVp().getPanelPrincipal().getEtiqueta3().setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionidioma"));
 					vf.getVp().getPanelPrincipal().getCheckEspañol().setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionidiomaespañol"));
 					vf.getVp().getPanelPrincipal().getCheckIngles().setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionidiomaingles"));
+					
+					vf.getVsu().getCardSignUp().getCrearAdmin().getDatoNombre().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registrarnombre"));
+					vf.getVsu().getCardSignUp().getCrearAdmin().getDatoContrasena().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registrarcontraseña"));
+					vf.getVsu().getCardSignUp().getCrearAdmin().getDatoContrasenaConf().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registrarcontraseña2"));
+					vf.getVsu().getCardSignUp().getCrearAdmin().getDatoCorreo().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registrarcorreo"));
+					vf.getVsu().getCardSignUp().getCrearAdmin().getDatoEdad().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registraredad"));
+					vf.getVsu().getCardSignUp().getCrearAdmin().getDatoCargoEspecifico().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registrarrol"));
+					vf.getVsu().getCardSignUp().getCrearAdmin().getVerContrasena().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.mostrarcontraseña"));
+					vf.getVsu().getCardSignUp().getCrearAdmin().getPasswordAdmins().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registrarcontraseñaadmin"));
+					vf.getVsu().getCardSignUp().getCrearAdmin().getVerContrasenaAdmins().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.mostrarcontraseña"));
+					vf.getVsu().getCardSignUp().getCrearAdmin().getBotonCrearAdmin().setText(prop.getProperty("archivosdepropiedades.panelcrearadmin.btnregistrarse"));
+					vf.getVsu().getCardSignUp().getCrearAdmin().getSeleccionarFoto().setText(prop.getProperty("archivosdepropiedades.panelcrearadmin.seleccionafoto"));
 					
 					
 					
