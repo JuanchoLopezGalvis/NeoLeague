@@ -99,9 +99,9 @@ public class PanelPrincipal extends JPanel{
 		checkIngles.setBounds(990,600, 80,30);
 		datoUsuario.setBounds(890, 250, 200, 30);
 		datoContrasena.setBounds(890, 300, 200, 30);
-		btnAdmin.setBounds(750, 420, 100, 30);
-		btnCouch.setBounds(870, 420, 100, 30);
-		btnGamer.setBounds(990, 420, 100, 30);
+		btnAdmin.setBounds(730, 420, 120, 30);
+		btnCouch.setBounds(870, 420, 120, 30);
+		btnGamer.setBounds(1010, 420, 120, 30);
 		etiqueta0.setBounds(770, 250, 200, 30);
 		etiqueta1.setBounds(820, 365, 200, 30);
 		etiqueta2.setBounds(770, 300, 200, 30);
