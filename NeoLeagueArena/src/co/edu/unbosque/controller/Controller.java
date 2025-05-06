@@ -48,6 +48,8 @@ public class Controller implements ActionListener {
 		vf.getVp().getPanelPrincipal().getBtnGamer().setActionCommand("Gamer");
 		vf.getVp().getPanelPrincipal().getBtnRegistrar().addActionListener(this);
 		vf.getVp().getPanelPrincipal().getBtnRegistrar().setActionCommand("btnSignUp");
+		vf.getVp().getPanelPrincipal().getBtnEntrar().addActionListener(this);
+		vf.getVp().getPanelPrincipal().getBtnEntrar().setActionCommand("btnLogIn");
 		vf.getVsu().getRoles().addActionListener(this);
 		vf.getVsu().getRoles().setActionCommand("comboRoles");
 		vf.getVsu().getCardSignUp().getCrearGamer().getSeleccionarFoto().addActionListener(this);
@@ -92,6 +94,18 @@ public class Controller implements ActionListener {
 		}
 		case "btnSignUp":{
 			vf.getVsu().setVisible(true);
+			break;
+		}
+				case "btnLogIn":{
+			try {
+				String usuario = vf.getVp().getPanelPrincipal().getDatoUsuario().getText();
+				
+					ExceptionChecker.checkStringField(usuario, "Please fill the user field");
+				} catch (EmptyStringFieldException e1) {
+					JOptionPane.showMessageDialog(null, e1.getMessage());
+					//vf.getVsu().setVisible(true);
+				}
+
 			break;
 		}
 		case "comboRoles":{
