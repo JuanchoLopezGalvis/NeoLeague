@@ -159,7 +159,12 @@ public class Controller implements ActionListener {
 					vf.getVsu().getCardSignUp().getCrearAdmin().getBotonCrearAdmin().setText(prop.getProperty("archivosdepropiedades.panelcrearadmin.btnregistrarse"));
 					vf.getVsu().getCardSignUp().getCrearAdmin().getSeleccionarFoto().setText(prop.getProperty("archivosdepropiedades.panelcrearadmin.seleccionafoto"));
 					
-
+					vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().removeItem("Select your country");
+					vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearadmin.seleccionarpais"), 0);
+					vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().setSelectedIndex(0);
+					vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().repaint();
+					vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().revalidate();
+					
 					
 					
 				}catch (FileNotFoundException e1) {
@@ -204,6 +209,11 @@ public class Controller implements ActionListener {
 					vf.getVsu().getCardSignUp().getCrearAdmin().getBotonCrearAdmin().setText(prop.getProperty("archivosdepropiedades.panelcrearadmin.btnregistrarse"));
 					vf.getVsu().getCardSignUp().getCrearAdmin().getSeleccionarFoto().setText(prop.getProperty("archivosdepropiedades.panelcrearadmin.seleccionafoto"));
 					
+					vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().removeItem("Seleccione su país");
+					vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearadmin.seleccionarpais"), 0);
+					vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().setSelectedIndex(0);
+					vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().repaint();
+					vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().revalidate();
 					
 					
 				}catch (FileNotFoundException e1) {
