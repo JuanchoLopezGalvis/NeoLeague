@@ -123,6 +123,7 @@ public class ExceptionChecker {
 
             if (!pattern.matcher(email).matches()) {
                 throw new InvalidEmailException(errorMessage);
-            }}
+            }
+            }
 
 }
