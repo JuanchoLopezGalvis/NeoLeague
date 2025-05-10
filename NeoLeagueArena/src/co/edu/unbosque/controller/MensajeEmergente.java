@@ -2,6 +2,7 @@ package co.edu.unbosque.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 import javax.swing.JOptionPane;
@@ -25,6 +26,8 @@ public class MensajeEmergente {
 	public static void cargarPropiedadesParaMensajesEmergentes(String direccionArchivo) {
 		try {
 			propiedades.load(new FileInputStream(new File(direccionArchivo)));
+		}catch (FileNotFoundException e0) {
+			e0.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

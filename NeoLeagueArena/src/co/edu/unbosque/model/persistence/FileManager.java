@@ -19,6 +19,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import co.edu.unbosque.controller.MensajeEmergente;
+
 /**
  * Clase que se encarga de manejar la creación, lectura y escritura de archivos
  * de texto y archivos serializados.
@@ -209,11 +211,11 @@ public class FileManager {
 	        } catch (IOException ex) {
 	            ex.printStackTrace();
 	            JOptionPane.showMessageDialog(panel, 
-	                "Error saving image", "Error", JOptionPane.ERROR_MESSAGE);
+	                "<html>Error saving image<br>Error al guardar la imagen</html>", "Error", JOptionPane.ERROR_MESSAGE);
 	        }
 	    } else {
 	    	JOptionPane.showMessageDialog(panel, 
-	            "No image was selected", "Error", JOptionPane.ERROR_MESSAGE);
+	            "<html>No image was selected<br>Imagen no seleccionada</html>", "Error", JOptionPane.ERROR_MESSAGE);
 	    }
 	}
 	/**
