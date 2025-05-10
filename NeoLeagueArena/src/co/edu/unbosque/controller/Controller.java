@@ -374,7 +374,6 @@ public class Controller implements ActionListener {
 		}
 		case "fotoCoach":{
 			if (vf.getVsu().getCardSignUp().getCrearCoach().getDatoNombre().getText().isEmpty() || vf.getVsu().getCardSignUp().getCrearCoach().getDatoNombre().getText() == null) {
-				JOptionPane.showMessageDialog(vf.getVsu(), "Please enter your name", "Error", JOptionPane.ERROR_MESSAGE);
 				MensajeEmergente.mensajeAdvertencia("archivosdepropiedades.mensajes.errorfoto", "archivosdepropiedades.mensajes.error");
 				break;
 			}else {
