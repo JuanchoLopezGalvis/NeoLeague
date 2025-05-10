@@ -366,7 +366,6 @@ public class Controller implements ActionListener {
 		case "fotoGamer":{
 			if (vf.getVsu().getCardSignUp().getCrearGamer().getDatoNombre().getText().isEmpty() || vf.getVsu().getCardSignUp().getCrearGamer().getDatoNombre().getText() == null) {
 				MensajeEmergente.mensajeAdvertencia("archivosdepropiedades.mensajes.errorfoto", "archivosdepropiedades.mensajes.error");
-//				JOptionPane.showMessageDialog(vf.getVsu(), "Please enter your name", "Error", JOptionPane.ERROR_MESSAGE);
 				break;
 			}else {
 				FileManager.leerImagen(vf.getVsu().getCardSignUp().getCrearGamer(), vf.getVsu().getCardSignUp().getCrearGamer().getDatoNombre().getText());
