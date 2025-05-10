@@ -1,5 +1,11 @@
 package co.edu.unbosque.view;
 
-public class VentanaEntrenador {
+import javax.swing.JFrame;
 
+public class VentanaEntrenador extends JFrame{
+	
+	public VentanaEntrenador() {
+		setSize(1280,720);
+	}
+	
 }

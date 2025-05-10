@@ -14,6 +14,18 @@ public class ViewFacade {
 	 */
 	private VentanaPrincipal vp;
 	/**
+	 * VentanaGamer es la ventana del gamer del aplicativo.
+	 */
+	private VentanaGamer vg;
+	/**
+	 * VentanaEntrenador es la ventana del entrenador del aplicativo.
+	 */
+	private VentanaEntrenador ve;
+	/**
+	 * VentanaCouch es la ventana del couch del aplicativo.
+	 */
+	private VentanaAdmin vc;
+	/**
 	 * Constructor de la clase ViewFacade, que se encarga de crear la ventana principal del aplicativo.
 	 */
 	private VentanaAdmin va;
@@ -21,6 +33,9 @@ public class ViewFacade {
 		vp = new VentanaPrincipal();
 		vsu = new VentanaSignUp();
 		va = new VentanaAdmin();
+		vg = new VentanaGamer();
+		ve = new VentanaEntrenador();
+		vc = new VentanaAdmin();
 	}
 	/**
 	 * Metodo que se encarga de devolver la ventana principal del aplicativo.

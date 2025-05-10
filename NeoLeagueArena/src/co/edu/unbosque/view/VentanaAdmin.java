@@ -57,7 +57,6 @@ public class VentanaAdmin extends JFrame{
 		menuBar.add(administrarGamer);
 		menuBar.add(administrarCouch);
 		setJMenuBar(menuBar);
-		setVisible(true);
 		
 	}
 	
