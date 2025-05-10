@@ -8,8 +8,8 @@ import javax.swing.JMenuItem;
 public class VentanaAdmin extends JFrame{
 	
 	private JMenuBar menuBar;
-	private JMenu administrarGamer, administrarCouch, administrarTorneos, administrarPartidas;
-	private JMenuItem mostrarGamers, mostrarCouchs, eliminarGamer, eliminarCouch, eliminarTorneo, eliminarPartida, crearTorneo, crearPartida, mostrarTorneos, mostrarPartidas, actualizarTorneo, actualizarPartida;
+	private JMenu administrarGamer, administrarCouch, administrarTorneos, administrarPartidas, administrarEquipo;
+	private JMenuItem mostrarGamers, mostrarCouchs, eliminarGamer, eliminarCouch, eliminarTorneo, eliminarPartida, crearTorneo, crearPartida, mostrarTorneos, mostrarPartidas, actualizarTorneo, actualizarPartida, actualizarEquipo, eliminarEquipo, mostrarEquipos;
 	
 
 	/**
@@ -21,7 +21,6 @@ public class VentanaAdmin extends JFrame{
 		setSize(1280,720);
 		setResizable(false);
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(null);
 		menuBar = new JMenuBar();
 		administrarGamer = new JMenu("Manage Gamers");
@@ -40,6 +39,13 @@ public class VentanaAdmin extends JFrame{
 		actualizarPartida = new JMenuItem("Update Match");
 		eliminarTorneo = new JMenuItem("Delete Tournament");
 		eliminarPartida = new JMenuItem("Delete Match");
+		administrarEquipo = new JMenu("Manage Teams");
+		actualizarEquipo = new JMenuItem("Update Team");
+		eliminarEquipo = new JMenuItem("Delete Team");
+		mostrarEquipos = new JMenuItem("Show Teams");
+		menuBar.add(administrarGamer);
+		menuBar.add(administrarCouch);
+		menuBar.add(administrarEquipo);
 		menuBar.add(administrarTorneos);
 		menuBar.add(administrarPartidas);
 		administrarTorneos.add(crearTorneo);
@@ -54,10 +60,11 @@ public class VentanaAdmin extends JFrame{
 		administrarGamer.add(eliminarGamer);
 		administrarCouch.add(mostrarCouchs);
 		administrarCouch.add(eliminarCouch);
-		menuBar.add(administrarGamer);
-		menuBar.add(administrarCouch);
+		administrarEquipo.add(actualizarEquipo);
+		administrarEquipo.add(eliminarEquipo);
+		administrarEquipo.add(mostrarEquipos);		
 		setJMenuBar(menuBar);
-		
+//		setVisible(true);
 	}
 	
 	
