@@ -464,7 +464,7 @@ public class Controller implements ActionListener {
 						vf.getVsu().getCardSignUp().getCrearGamer().getDatoAnosDeExperiencia().setValue(0);
 						vf.getVsu().getCardSignUp().getCrearGamer().getSeleccionarFoto().setIcon(null);
 						//JOptionPane.showMessageDialog(vf.getVsu(), "User created successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
-						MensajeEmergente.mensajeConfirmacion("trayectoriarchivosdepropiedades.mensajes.confirmacion.exitousuario", "archivosdepropiedades.mensajes.confirmacion.exito");
+						MensajeEmergente.mensajeNormal("trayectoriarchivosdepropiedades.mensajes.confirmacion.exitousuario", "archivosdepropiedades.mensajes.confirmacion.exito");
 						vf.getVsu().setVisible(false);
 					}else {
 						//JOptionPane.showMessageDialog(vf.getVsu(), "User already exists", "Error", JOptionPane.ERROR_MESSAGE);
@@ -516,7 +516,7 @@ public class Controller implements ActionListener {
 						vf.getVsu().getCardSignUp().getCrearCoach().getDatoJuegoEspecialidad().setSelectedIndex(0);
 						vf.getVsu().getCardSignUp().getCrearCoach().getDatoAnosDeExperiencia().setValue(0);
 						vf.getVsu().getCardSignUp().getCrearCoach().getSeleccionarFoto().setIcon(null);
-						MensajeEmergente.mensajeConfirmacion("trayectoriarchivosdepropiedades.mensajes.confirmacion.exitousuario", "archivosdepropiedades.mensajes.confirmacion.exito");
+						MensajeEmergente.mensajeNormal("trayectoriarchivosdepropiedades.mensajes.confirmacion.exitousuario", "archivosdepropiedades.mensajes.confirmacion.exito");
 						vf.getVsu().setVisible(false);
 					}else {
 						MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.usuarioexistente", "archivosdepropiedades.mensajes.error");
@@ -564,7 +564,7 @@ public class Controller implements ActionListener {
 							vf.getVsu().getCardSignUp().getCrearAdmin().getDatoCargoEspecifico().setText("");
 							vf.getVsu().getCardSignUp().getCrearAdmin().getPasswordAdmins().setText("");
 							vf.getVsu().getCardSignUp().getCrearAdmin().getSeleccionarFoto().setIcon(null);
-							MensajeEmergente.mensajeConfirmacion("trayectoriarchivosdepropiedades.mensajes.confirmacion.exitousuario", "archivosdepropiedades.mensajes.confirmacion.exito");
+							MensajeEmergente.mensajeNormal("trayectoriarchivosdepropiedades.mensajes.confirmacion.exitousuario", "archivosdepropiedades.mensajes.confirmacion.exito");
 							vf.getVsu().setVisible(false);
 						}else {
 							MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.usuarioexistente", "archivosdepropiedades.mensajes.error");
@@ -586,7 +586,7 @@ public class Controller implements ActionListener {
 			if (vf.getVp().getPanelPrincipal().getBtnAdmin().isSelected()) {
 				Administrador admin = new Administrador(nombre, contrasena, null, 0, null, null, null);
 				if (mf.getAdao().find(admin) != null) {
-					MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.bienvenida"+nombre,"archivosdepropiedades.mensajes.confirmacion.exito");
+					MensajeEmergente.mensajeNormalMasAlgo("archivosdepropiedades.mensajes.bienvenida", " "+nombre ,"archivosdepropiedades.mensajes.confirmacion.exito");
 					vf.getVa().setVisible(true);
 				}else {
 					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.usuarionoencontrado", "archivosdepropiedades.mensajes.error");
@@ -594,7 +594,7 @@ public class Controller implements ActionListener {
 			}else if (vf.getVp().getPanelPrincipal().getBtnCouch().isSelected()) {
 				Entrenador coach = new Entrenador(nombre, contrasena, null, 0, null, null, null, null, 0);
 				if (mf.getEdao().find(coach) != null) {
-					MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.bienvenida"+nombre,"archivosdepropiedades.mensajes.confirmacion.exito");
+					MensajeEmergente.mensajeNormalMasAlgo("archivosdepropiedades.mensajes.bienvenida"," "+ nombre ,"archivosdepropiedades.mensajes.confirmacion.exito");
 					vf.getVe().setVisible(true);
 				}else {
 					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.usuarionoencontrado", "archivosdepropiedades.mensajes.error");
@@ -602,7 +602,7 @@ public class Controller implements ActionListener {
 			}else if (vf.getVp().getPanelPrincipal().getBtnGamer().isSelected()) {
 				Jugador gamer = new Jugador(nombre, contrasena, null, 0, null, null, null, null, 0);
 				if (mf.getJdao().find(gamer) != null) {
-					MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.bienvenida"+nombre,"archivosdepropiedades.mensajes.confirmacion.exito");
+					MensajeEmergente.mensajeNormalMasAlgo("archivosdepropiedades.mensajes.bienvenida", " "+nombre ,"archivosdepropiedades.mensajes.confirmacion.exito");
 					vf.getVg().setVisible(true);
 				}else {
 					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.usuarionoencontrado", "archivosdepropiedades.mensajes.error");
