@@ -42,6 +42,10 @@ public class MensajeEmergente {
 		JOptionPane.showMessageDialog(null, propiedades.getProperty(llaveArchivoPropiedades), propiedades.getProperty(tituloMensaje), JOptionPane.INFORMATION_MESSAGE);
 	}
 	
+	public static void mensajeNormalMasAlgo(String llaveArchivoPropiedades,String algoMas, String tituloMensaje) {
+		JOptionPane.showMessageDialog(null, propiedades.getProperty(llaveArchivoPropiedades)+algoMas, propiedades.getProperty(tituloMensaje), JOptionPane.INFORMATION_MESSAGE);
+	}
+	
 	/**
 	 * Muestra un mensaje emergente de tipo error.
 	 * @param llaveArchivoPropiedades
