@@ -383,7 +383,7 @@ public class Controller implements ActionListener {
 		}
 		case "fotoAdmin":{
 			if (vf.getVsu().getCardSignUp().getCrearAdmin().getDatoNombre().getText().isEmpty() || vf.getVsu().getCardSignUp().getCrearAdmin().getDatoNombre().getText() == null) {
-				JOptionPane.showMessageDialog(vf.getVsu(), "Please enter your name", "Error", JOptionPane.ERROR_MESSAGE);
+				MensajeEmergente.mensajeAdvertencia("archivosdepropiedades.mensajes.errorfoto", "archivosdepropiedades.mensajes.error");
 				break;
 			}else {
 				FileManager.leerImagen(vf.getVsu().getCardSignUp().getCrearAdmin(), vf.getVsu().getCardSignUp().getCrearAdmin().getDatoNombre().getText());
@@ -464,16 +464,20 @@ public class Controller implements ActionListener {
 						vf.getVsu().getCardSignUp().getCrearGamer().getDatoJuegoEspecialidad().setSelectedIndex(0);
 						vf.getVsu().getCardSignUp().getCrearGamer().getDatoAnosDeExperiencia().setValue(0);
 						vf.getVsu().getCardSignUp().getCrearGamer().getSeleccionarFoto().setIcon(null);
-						JOptionPane.showMessageDialog(vf.getVsu(), "User created successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+						//JOptionPane.showMessageDialog(vf.getVsu(), "User created successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+						MensajeEmergente.mensajeConfirmacion("trayectoriarchivosdepropiedades.mensajes.confirmacion.exitousuario", "archivosdepropiedades.mensajes.confirmacion.exito");
 						vf.getVsu().setVisible(false);
 					}else {
-						JOptionPane.showMessageDialog(vf.getVsu(), "User already exists", "Error", JOptionPane.ERROR_MESSAGE);
+						//JOptionPane.showMessageDialog(vf.getVsu(), "User already exists", "Error", JOptionPane.ERROR_MESSAGE);
+						MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.usuarioexistente", "archivosdepropiedades.mensajes.error");
 					}
 				}else {
-					JOptionPane.showMessageDialog(vf.getVsu(), "Passwords do not match", "Error", JOptionPane.ERROR_MESSAGE);
+					//JOptionPane.showMessageDialog(vf.getVsu(), "Passwords do not match", "Error", JOptionPane.ERROR_MESSAGE);
+					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.contrasenanoigual", "archivosdepropiedades.mensajes.error");
 				}
 			}else {
-				JOptionPane.showMessageDialog(vf.getVsu(), "Please fill in all fields", "Error", JOptionPane.ERROR_MESSAGE);
+				//JOptionPane.showMessageDialog(vf.getVsu(), "Please fill in all fields", "Error", JOptionPane.ERROR_MESSAGE);
+				MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.camposincompletos", "archivosdepropiedades.mensajes.error");
 			}
 			break;
 		}
@@ -513,16 +517,16 @@ public class Controller implements ActionListener {
 						vf.getVsu().getCardSignUp().getCrearCoach().getDatoJuegoEspecialidad().setSelectedIndex(0);
 						vf.getVsu().getCardSignUp().getCrearCoach().getDatoAnosDeExperiencia().setValue(0);
 						vf.getVsu().getCardSignUp().getCrearCoach().getSeleccionarFoto().setIcon(null);
-						JOptionPane.showMessageDialog(vf.getVsu(), "User created successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+						MensajeEmergente.mensajeConfirmacion("trayectoriarchivosdepropiedades.mensajes.confirmacion.exitousuario", "archivosdepropiedades.mensajes.confirmacion.exito");
 						vf.getVsu().setVisible(false);
 					}else {
-						JOptionPane.showMessageDialog(vf.getVsu(), "User already exists", "Error", JOptionPane.ERROR_MESSAGE);
+						MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.usuarioexistente", "archivosdepropiedades.mensajes.error");
 					}
 				}else {
-					JOptionPane.showMessageDialog(vf.getVsu(), "Passwords do not match", "Error", JOptionPane.ERROR_MESSAGE);
+					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.contrasenanoigual", "archivosdepropiedades.mensajes.error");
 				}
 			}else {
-				JOptionPane.showMessageDialog(vf.getVsu(), "Please fill in all fields", "Error", JOptionPane.ERROR_MESSAGE);
+				MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.camposincompletos", "archivosdepropiedades.mensajes.error");
 			}
 			break;
 		}
@@ -561,19 +565,19 @@ public class Controller implements ActionListener {
 							vf.getVsu().getCardSignUp().getCrearAdmin().getDatoCargoEspecifico().setText("");
 							vf.getVsu().getCardSignUp().getCrearAdmin().getPasswordAdmins().setText("");
 							vf.getVsu().getCardSignUp().getCrearAdmin().getSeleccionarFoto().setIcon(null);
-							JOptionPane.showMessageDialog(vf.getVsu(), "User created successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+							MensajeEmergente.mensajeConfirmacion("trayectoriarchivosdepropiedades.mensajes.confirmacion.exitousuario", "archivosdepropiedades.mensajes.confirmacion.exito");
 							vf.getVsu().setVisible(false);
 						}else {
-							JOptionPane.showMessageDialog(vf.getVsu(), "User already exists", "Error", JOptionPane.ERROR_MESSAGE);
+							MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.usuarioexistente", "archivosdepropiedades.mensajes.error");
 						}
 					}else {
-						JOptionPane.showMessageDialog(vf.getVsu(), "Incorrect password for admins", "Error", JOptionPane.ERROR_MESSAGE);
+						MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.contrasenaincorrectaadmin", "archivosdepropiedades.mensajes.error");
 					}
 				}else {
-					JOptionPane.showMessageDialog(vf.getVsu(), "Passwords do not match", "Error", JOptionPane.ERROR_MESSAGE);
+					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.contrasenanoigual", "archivosdepropiedades.mensajes.error");
 				}
 			}else {
-				JOptionPane.showMessageDialog(vf.getVsu(), "Please fill in all fields", "Error", JOptionPane.ERROR_MESSAGE);
+				MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.camposincompletos", "archivosdepropiedades.mensajes.error");
 			}
 			break;
 		}
@@ -583,29 +587,29 @@ public class Controller implements ActionListener {
 			if (vf.getVp().getPanelPrincipal().getBtnAdmin().isSelected()) {
 				Administrador admin = new Administrador(nombre, contrasena, null, 0, null, null, null);
 				if (mf.getAdao().find(admin) != null) {
-					JOptionPane.showMessageDialog(vf.getVp(), "Welcome " + nombre, "Success", JOptionPane.INFORMATION_MESSAGE);
+					MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.bienvenida"+nombre,"archivosdepropiedades.mensajes.confirmacion.exito");
 					vf.getVa().setVisible(true);
 				}else {
-					JOptionPane.showMessageDialog(vf.getVp(), "User not found", "Error", JOptionPane.ERROR_MESSAGE);
+					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.usuarionoencontrado", "archivosdepropiedades.mensajes.error");
 				}
 			}else if (vf.getVp().getPanelPrincipal().getBtnCouch().isSelected()) {
 				Entrenador coach = new Entrenador(nombre, contrasena, null, 0, null, null, null, null, 0);
 				if (mf.getEdao().find(coach) != null) {
-					JOptionPane.showMessageDialog(vf.getVp(), "Welcome " + nombre, "Success", JOptionPane.INFORMATION_MESSAGE);
+					MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.bienvenida"+nombre,"archivosdepropiedades.mensajes.confirmacion.exito");
 					vf.getVe().setVisible(true);
 				}else {
-					JOptionPane.showMessageDialog(vf.getVp(), "User not found", "Error", JOptionPane.ERROR_MESSAGE);
+					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.usuarionoencontrado", "archivosdepropiedades.mensajes.error");
 				}
 			}else if (vf.getVp().getPanelPrincipal().getBtnGamer().isSelected()) {
 				Jugador gamer = new Jugador(nombre, contrasena, null, 0, null, null, null, null, 0);
 				if (mf.getJdao().find(gamer) != null) {
-					JOptionPane.showMessageDialog(vf.getVp(), "Welcome " + nombre, "Success", JOptionPane.INFORMATION_MESSAGE);
+					MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.bienvenida"+nombre,"archivosdepropiedades.mensajes.confirmacion.exito");
 					vf.getVg().setVisible(true);
 				}else {
-					JOptionPane.showMessageDialog(vf.getVp(), "User not found", "Error", JOptionPane.ERROR_MESSAGE);
+					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.usuarionoencontrado", "archivosdepropiedades.mensajes.error");
 				}
 			}else {
-				JOptionPane.showMessageDialog(vf.getVp(), "Select your rol", "Error", JOptionPane.ERROR_MESSAGE);
+				MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.errorrol", "archivosdepropiedades.mensajes.error");
 			}
 			break;
 		}
