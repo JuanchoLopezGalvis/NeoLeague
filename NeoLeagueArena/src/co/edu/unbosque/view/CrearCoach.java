@@ -95,7 +95,7 @@ public class CrearCoach extends JPanel{
 		    String countryName = countryLocale.getDisplayCountry(englishLocale); 
 		    datoPais.addItem(countryName);
 		}
-		String[] txtTrayectoria = {"How many teams have you managed?", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten or more"};
+		String[] txtTrayectoria = {"How many teams have you managed?", " 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", " +10"};
 		datoTrayectoriaProfesional = new JComboBox<String>(txtTrayectoria);
 		String [] txtJuego = {"What is the game in which you specialize?", "FIFA", "Rocket League", "Formula1", "Gran Turismo"};
 		datoJuegoEspecialidad = new JComboBox<String>(txtJuego);
@@ -132,6 +132,7 @@ public class CrearCoach extends JPanel{
 		datoCorreo.setToolTipText("Enter your email");
 		datoEdad.setToolTipText("Enter your age");
 		datoAnosDeExperiencia.setToolTipText("Enter your years of experience");
+		verContrasena.setToolTipText("Show password");
 		add(datoNombre);
 		add(datoContrasena);
 		add(datoContrasenaConf);
