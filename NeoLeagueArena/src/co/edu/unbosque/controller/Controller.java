@@ -167,6 +167,8 @@ public class Controller implements ActionListener {
 					
 					
 					
+					
+					
 				}catch (FileNotFoundException e1) {
 					e1.printStackTrace();
 				} catch (IOException e1) {
@@ -214,6 +216,11 @@ public class Controller implements ActionListener {
 					vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().setSelectedIndex(0);
 					vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().repaint();
 					vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().revalidate();
+					
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoNombre().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registrarnombre"));
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoContrasena().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registrarcontraseña"));
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoContrasenaConf().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registrarcontraseña2"));
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoCorreo().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registrarcorreo"));
 					
 					
 				}catch (FileNotFoundException e1) {
