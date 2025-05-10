@@ -582,30 +582,24 @@ public class Controller implements ActionListener {
 			if (vf.getVp().getPanelPrincipal().getBtnAdmin().isSelected()) {
 				Administrador admin = new Administrador(nombre, contrasena, null, 0, null, null, null);
 				if (mf.getAdao().find(admin) != null) {
-					//					vf.getVp().setVisible(false);
-					//					vf.getVam().setVisible(true);
-					//					vf.getVam().setAdmin(mf.getAdao().find(admin));
 					JOptionPane.showMessageDialog(vf.getVp(), "Welcome " + nombre, "Success", JOptionPane.INFORMATION_MESSAGE);
+					vf.getVa().setVisible(true);
 				}else {
 					JOptionPane.showMessageDialog(vf.getVp(), "User not found", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}else if (vf.getVp().getPanelPrincipal().getBtnCouch().isSelected()) {
 				Entrenador coach = new Entrenador(nombre, contrasena, null, 0, null, null, null, null, 0);
 				if (mf.getEdao().find(coach) != null) {
-					//					vf.getVp().setVisible(false);
-					//					vf.getVco().setVisible(true);
-					//					vf.getVco().setEntrenador(mf.getEdao().find(coach));
 					JOptionPane.showMessageDialog(vf.getVp(), "Welcome " + nombre, "Success", JOptionPane.INFORMATION_MESSAGE);
+					vf.getVe().setVisible(true);
 				}else {
 					JOptionPane.showMessageDialog(vf.getVp(), "User not found", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}else if (vf.getVp().getPanelPrincipal().getBtnGamer().isSelected()) {
 				Jugador gamer = new Jugador(nombre, contrasena, null, 0, null, null, null, null, 0);
 				if (mf.getJdao().find(gamer) != null) {
-					//					vf.getVp().setVisible(false);
-					//					vf.getVga().setVisible(true);
-					//					vf.getVga().setJugador(mf.getJdao().find(gamer));
 					JOptionPane.showMessageDialog(vf.getVp(), "Welcome " + nombre, "Success", JOptionPane.INFORMATION_MESSAGE);
+					vf.getVg().setVisible(true);
 				}else {
 					JOptionPane.showMessageDialog(vf.getVp(), "User not found", "Error", JOptionPane.ERROR_MESSAGE);
 				}

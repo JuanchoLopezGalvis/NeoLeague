@@ -24,18 +24,17 @@ public class ViewFacade {
 	/**
 	 * VentanaCouch es la ventana del couch del aplicativo.
 	 */
-	private VentanaAdmin vc;
-	/**
-	 * Constructor de la clase ViewFacade, que se encarga de crear la ventana principal del aplicativo.
-	 */
 	private VentanaAdmin va;
+	/**
+	 * Constructor de la clase ViewFacade, que se encarga de crear cada una de las ventanas del aplicativo.
+	 */
 	public ViewFacade() {
 		vp = new VentanaPrincipal();
 		vsu = new VentanaSignUp();
 		va = new VentanaAdmin();
 		vg = new VentanaGamer();
 		ve = new VentanaEntrenador();
-		vc = new VentanaAdmin();
+		va = new VentanaAdmin();
 	}
 	/**
 	 * Metodo que se encarga de devolver la ventana principal del aplicativo.
@@ -65,11 +64,47 @@ public class ViewFacade {
 	public void setVsu(VentanaSignUp vsu) {
 		this.vsu = vsu;
 	}
+	/**
+	 * Metodo que se encarga de devolver la ventana del admin del aplicativo.
+	 * @return VentanaAdmin
+	 */
 	public VentanaAdmin getVa() {
 		return va;
 	}
+	/**
+	 * Metodo que se encarga de setear la ventana del admin del aplicativo.
+	 * @param va VentanaAdmin
+	 */
 	public void setVa(VentanaAdmin va) {
 		this.va = va;
 	}
-	
+	/**
+	 * Metodo que se encarga de devolver la ventana del gamer del aplicativo.
+	 * @return VentanaGamer
+	 */
+	public VentanaGamer getVg() {
+		return vg;
+	}
+	/**
+	 * Metodo que se encarga de setear la ventana del gamer del aplicativo.
+	 * @param vg VentanaGamer
+	 */
+	public void setVg(VentanaGamer vg) {
+		this.vg = vg;
+	}
+	/**
+	 * Metodo que se encarga de devolver la ventana del entrenador del aplicativo.
+	 * @return VentanaEntrenador
+	 */
+	public VentanaEntrenador getVe() {
+		return ve;
+	}
+	/**
+	 * Metodo que se encarga de setear la ventana del entrenador del aplicativo.
+	 * @param ve VentanaEntrenador
+	 */
+	public void setVe(VentanaEntrenador ve) {
+		this.ve = ve;
+	}
+
 }
