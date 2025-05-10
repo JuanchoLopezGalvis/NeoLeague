@@ -132,6 +132,7 @@ public class CrearCoach extends JPanel{
 		datoCorreo.setToolTipText("Enter your email");
 		datoEdad.setToolTipText("Enter your age");
 		datoAnosDeExperiencia.setToolTipText("Enter your years of experience");
+		verContrasena.setToolTipText("Show password");
 		add(datoNombre);
 		add(datoContrasena);
 		add(datoContrasenaConf);

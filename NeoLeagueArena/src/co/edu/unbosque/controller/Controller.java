@@ -173,6 +173,7 @@ public class Controller implements ActionListener {
 					vf.getVsu().getCardSignUp().getCrearCoach().getDatoAnosDeExperiencia().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearcoach.mensajeerror"));
 					vf.getVsu().getCardSignUp().getCrearCoach().getSeleccionarFoto().setText(prop.getProperty("archivosdepropiedades.panelcrearadmin.seleccionafoto"));
 					vf.getVsu().getCardSignUp().getCrearCoach().getBotonCrearCoach().setText(prop.getProperty("archivosdepropiedades.panelcrearadmin.btnregistrarse"));
+					vf.getVsu().getCardSignUp().getCrearCoach().getVerContrasena().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.mostrarcontraseña"));
 					
 					vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().removeItem("Select your country");
 					vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearadmin.seleccionarpais"), 0);
@@ -191,6 +192,36 @@ public class Controller implements ActionListener {
 					vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional().setSelectedIndex(0);
 					vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional().repaint();
 					vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional().revalidate();
+					
+					
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoNombre().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registrarnombre"));
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoContrasena().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registrarcontraseña"));
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoContrasenaConf().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registrarcontraseña2"));
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoCorreo().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registrarcorreo"));
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoEdad().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registraredad"));
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoAnosDeExperiencia().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearcoach.mensajeerror"));
+					vf.getVsu().getCardSignUp().getCrearGamer().getSeleccionarFoto().setText(prop.getProperty("archivosdepropiedades.panelcrearadmin.seleccionafoto"));
+					vf.getVsu().getCardSignUp().getCrearGamer().getBotonCrearGamer().setText(prop.getProperty("archivosdepropiedades.panelcrearadmin.btnregistrarse"));
+					vf.getVsu().getCardSignUp().getCrearGamer().getVerContrasena().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.mostrarcontraseña"));
+					
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoPais().removeItem("Select your country");
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoPais().insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearadmin.seleccionarpais"), 0);
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoPais().setSelectedIndex(0);
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoPais().repaint();
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoPais().revalidate();
+					
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoJuegoEspecialidad().removeItem("What is the game in which you specialize?");
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoJuegoEspecialidad().insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearcoach.juegoespecialidadcoach"), 0);
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoJuegoEspecialidad().setSelectedIndex(0);
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoJuegoEspecialidad().repaint();
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoJuegoEspecialidad().revalidate();
+					
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().removeItem("How many tournaments have you played?");
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().insertItemAt(prop.getProperty("archivosdepropiedades.panelcreargamer.torneosjugados"), 0);
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().setSelectedIndex(0);
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().repaint();
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().revalidate();
+					
 					
 					
 					
@@ -268,6 +299,36 @@ public class Controller implements ActionListener {
 					vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional().setSelectedIndex(0);
 					vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional().repaint();
 					vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional().revalidate();
+					
+					
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoNombre().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registrarnombre"));
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoContrasena().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registrarcontraseña"));
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoContrasenaConf().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registrarcontraseña2"));
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoCorreo().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registrarcorreo"));
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoEdad().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registraredad"));
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoAnosDeExperiencia().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearcoach.mensajeerror"));
+					vf.getVsu().getCardSignUp().getCrearGamer().getSeleccionarFoto().setText(prop.getProperty("archivosdepropiedades.panelcrearadmin.seleccionafoto"));
+					vf.getVsu().getCardSignUp().getCrearGamer().getBotonCrearGamer().setText(prop.getProperty("archivosdepropiedades.panelcrearadmin.btnregistrarse"));
+					
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoPais().removeItem("Select your country");
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoPais().insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearadmin.seleccionarpais"), 0);
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoPais().setSelectedIndex(0);
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoPais().repaint();
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoPais().revalidate();
+					
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoJuegoEspecialidad().removeItem("What is the game in which you specialize?");
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoJuegoEspecialidad().insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearcoach.juegoespecialidadcoach"), 0);
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoJuegoEspecialidad().setSelectedIndex(0);
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoJuegoEspecialidad().repaint();
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoJuegoEspecialidad().revalidate();
+					
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().removeItem("How many tournaments have you played?");
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().insertItemAt(prop.getProperty("archivosdepropiedades.panelcreargamer.torneosjugados"), 0);
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().setSelectedIndex(0);
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().repaint();
+					vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().revalidate();
+					
+					
 					
 					
 				}catch (FileNotFoundException e1) {
