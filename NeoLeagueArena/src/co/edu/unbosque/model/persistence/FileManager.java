@@ -19,7 +19,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import co.edu.unbosque.controller.MensajeEmergente;
 
 /**
  * Clase que se encarga de manejar la creación, lectura y escritura de archivos

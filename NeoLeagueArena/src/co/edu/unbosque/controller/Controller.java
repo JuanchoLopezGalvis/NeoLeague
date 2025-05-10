@@ -366,7 +366,6 @@ public class Controller implements ActionListener {
 		case "fotoGamer":{
 			if (vf.getVsu().getCardSignUp().getCrearGamer().getDatoNombre().getText().isEmpty() || vf.getVsu().getCardSignUp().getCrearGamer().getDatoNombre().getText() == null) {
 				MensajeEmergente.mensajeAdvertencia("archivosdepropiedades.mensajes.errorfoto", "archivosdepropiedades.mensajes.error");
-//				JOptionPane.showMessageDialog(vf.getVsu(), "Please enter your name", "Error", JOptionPane.ERROR_MESSAGE);
 				break;
 			}else {
 				FileManager.leerImagen(vf.getVsu().getCardSignUp().getCrearGamer(), vf.getVsu().getCardSignUp().getCrearGamer().getDatoNombre().getText());
@@ -376,6 +375,7 @@ public class Controller implements ActionListener {
 		case "fotoCoach":{
 			if (vf.getVsu().getCardSignUp().getCrearCoach().getDatoNombre().getText().isEmpty() || vf.getVsu().getCardSignUp().getCrearCoach().getDatoNombre().getText() == null) {
 				JOptionPane.showMessageDialog(vf.getVsu(), "Please enter your name", "Error", JOptionPane.ERROR_MESSAGE);
+				MensajeEmergente.mensajeAdvertencia("archivosdepropiedades.mensajes.errorfoto", "archivosdepropiedades.mensajes.error");
 				break;
 			}else {
 				FileManager.leerImagen(vf.getVsu().getCardSignUp().getCrearCoach(), vf.getVsu().getCardSignUp().getCrearCoach().getDatoNombre().getText());
