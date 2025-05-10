@@ -165,7 +165,32 @@ public class Controller implements ActionListener {
 					vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().repaint();
 					vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().revalidate();
 					
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoNombre().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registrarnombre"));
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoContrasena().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registrarcontraseña"));
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoContrasenaConf().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registrarcontraseña2"));
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoCorreo().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registrarcorreo"));
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoEdad().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registraredad"));
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoAnosDeExperiencia().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearcoach.mensajeerror"));
+					vf.getVsu().getCardSignUp().getCrearCoach().getSeleccionarFoto().setText(prop.getProperty("archivosdepropiedades.panelcrearadmin.seleccionafoto"));
+					vf.getVsu().getCardSignUp().getCrearCoach().getBotonCrearCoach().setText(prop.getProperty("archivosdepropiedades.panelcrearadmin.btnregistrarse"));
 					
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().removeItem("Select your country");
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearadmin.seleccionarpais"), 0);
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().setSelectedIndex(0);
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().repaint();
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().revalidate();
+					
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoJuegoEspecialidad().removeItem("What is the game in which you specialize?");
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoJuegoEspecialidad().insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearcoach.juegoespecialidadcoach"), 0);
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoJuegoEspecialidad().setSelectedIndex(0);
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoJuegoEspecialidad().repaint();
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoJuegoEspecialidad().revalidate();
+					
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional().removeItem("How many teams have you managed?");
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional().insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearcoach.equiposcoach"), 0);
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional().setSelectedIndex(0);
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional().repaint();
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional().revalidate();
 					
 					
 					
@@ -221,6 +246,28 @@ public class Controller implements ActionListener {
 					vf.getVsu().getCardSignUp().getCrearCoach().getDatoContrasena().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registrarcontraseña"));
 					vf.getVsu().getCardSignUp().getCrearCoach().getDatoContrasenaConf().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registrarcontraseña2"));
 					vf.getVsu().getCardSignUp().getCrearCoach().getDatoCorreo().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registrarcorreo"));
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoEdad().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearadmin.registraredad"));
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoAnosDeExperiencia().setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearcoach.mensajeerror"));
+					vf.getVsu().getCardSignUp().getCrearCoach().getSeleccionarFoto().setText(prop.getProperty("archivosdepropiedades.panelcrearadmin.seleccionafoto"));
+					vf.getVsu().getCardSignUp().getCrearCoach().getBotonCrearCoach().setText(prop.getProperty("archivosdepropiedades.panelcrearadmin.btnregistrarse"));
+					
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().removeItem("Seleccione su país");
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearadmin.seleccionarpais"), 0);
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().setSelectedIndex(0);
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().repaint();
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().revalidate();
+					
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoJuegoEspecialidad().removeItem("¿En qué juego se especializa?");
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoJuegoEspecialidad().insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearcoach.juegoespecialidadcoach"), 0);
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoJuegoEspecialidad().setSelectedIndex(0);
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoJuegoEspecialidad().repaint();
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoJuegoEspecialidad().revalidate();
+					
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional().removeItem("¿Cuantos equipos ha dirigido?");
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional().insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearcoach.equiposcoach"), 0);
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional().setSelectedIndex(0);
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional().repaint();
+					vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional().revalidate();
 					
 					
 				}catch (FileNotFoundException e1) {
