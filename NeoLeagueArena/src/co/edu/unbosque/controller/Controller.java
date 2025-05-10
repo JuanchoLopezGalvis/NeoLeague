@@ -133,7 +133,7 @@ public class Controller implements ActionListener {
 
 				try {
 					prop.load(new FileInputStream(new File("src/archivos/textosespaniol.properties")));
-					
+					MensajeEmergente.cargarPropiedadesParaMensajesEmergentes("src/archivos/textosespaniol.properties");
 					
 					vf.getVp().getPanelPrincipal().getBtnAdmin().setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnadmin"));
 					vf.getVp().getPanelPrincipal().getBtnCouch().setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnentrenador"));
@@ -241,6 +241,7 @@ public class Controller implements ActionListener {
 			if (vf.getVp().getPanelPrincipal().getCheckIngles().isSelected()) {
 				try {
 					prop.load(new FileInputStream(new File("src/archivos/textosingles.properties")));
+					MensajeEmergente.cargarPropiedadesParaMensajesEmergentes("src/archivos/textosingles.properties");
 					
 					
 					vf.getVp().getPanelPrincipal().getBtnAdmin().setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnadmin"));
@@ -356,7 +357,7 @@ public class Controller implements ActionListener {
 				break;
 
 			default:
-				JOptionPane.showMessageDialog(vf.getVsu(), "Select your rol", "Error", JOptionPane.ERROR_MESSAGE);
+				MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.error", "archivosdepropiedades.mensajes.errorrol");
 				break;
 			}
 
@@ -364,7 +365,8 @@ public class Controller implements ActionListener {
 		}
 		case "fotoGamer":{
 			if (vf.getVsu().getCardSignUp().getCrearGamer().getDatoNombre().getText().isEmpty() || vf.getVsu().getCardSignUp().getCrearGamer().getDatoNombre().getText() == null) {
-				JOptionPane.showMessageDialog(vf.getVsu(), "Please enter your name", "Error", JOptionPane.ERROR_MESSAGE);
+				MensajeEmergente.mensajeAdvertencia("archivosdepropiedades.mensajes.errorfoto", "archivosdepropiedades.mensajes.error");
+//				JOptionPane.showMessageDialog(vf.getVsu(), "Please enter your name", "Error", JOptionPane.ERROR_MESSAGE);
 				break;
 			}else {
 				FileManager.leerImagen(vf.getVsu().getCardSignUp().getCrearGamer(), vf.getVsu().getCardSignUp().getCrearGamer().getDatoNombre().getText());
