@@ -11,7 +11,7 @@ public class VentanaEntrenador extends JFrame{
 	 */
 	private static final long serialVersionUID = 1L;
 	private JMenuBar menuBar;
-	private JMenu menuBar2;
+//	private JMenu gestionarEquipos, gestionarCuenta, ;
 	
 	public VentanaEntrenador() {
 		setSize(1280,720);
