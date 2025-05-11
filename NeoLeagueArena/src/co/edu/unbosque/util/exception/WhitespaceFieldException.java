@@ -5,7 +5,12 @@ package co.edu.unbosque.util.exception;
  */
 public class WhitespaceFieldException extends Exception {
 
-    public WhitespaceFieldException(String message) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public WhitespaceFieldException(String message) {
         super(message);
     }
 }

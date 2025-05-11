@@ -4,6 +4,11 @@ import java.io.Serializable;
 
 public class TorneoDTO implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private String formato;
 	
 	private int numEquipos;

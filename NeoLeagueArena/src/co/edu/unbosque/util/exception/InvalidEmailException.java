@@ -5,7 +5,12 @@ package co.edu.unbosque.util.exception;
  * Extiende la clase Exception para proporcionar información adicional sobre el error.
  */
 public class InvalidEmailException extends Exception {
-    public InvalidEmailException(String message) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public InvalidEmailException(String message) {
         super(message);
     }
 }

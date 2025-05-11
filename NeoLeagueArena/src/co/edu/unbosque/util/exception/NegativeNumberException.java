@@ -5,7 +5,12 @@ package co.edu.unbosque.util.exception;
  * Extiende la clase Exception para proporcionar información adicional sobre el error.
  */
 public class NegativeNumberException extends Exception {
-    public NegativeNumberException(String message) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public NegativeNumberException(String message) {
         super(message);
     }
 }

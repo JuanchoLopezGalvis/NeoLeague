@@ -5,7 +5,12 @@ package co.edu.unbosque.util.exception;
  * Extiende la clase Exception para proporcionar información adicional sobre el error.
  */
 public class EmptyStringFieldException extends Exception {
-    public EmptyStringFieldException(String message) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public EmptyStringFieldException(String message) {
         super(message); // Almacena el mensaje en la excepción
     }
 }
