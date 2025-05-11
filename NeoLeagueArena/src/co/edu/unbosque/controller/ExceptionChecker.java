@@ -36,7 +36,7 @@ public class ExceptionChecker {
     	 */
     public static void checkNumberInString(String text, String errorMessage) throws NumberInStringException {
         if (text.matches(".*\\d.*")) {
-            throw new NumberInStringException();
+            throw new NumberInStringException(errorMessage);
         }
     }
 
