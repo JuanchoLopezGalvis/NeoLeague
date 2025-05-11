@@ -17,6 +17,7 @@ import co.edu.unbosque.model.Jugador;
 import co.edu.unbosque.model.JugadorDTO;
 import co.edu.unbosque.model.ModelFacade;
 import co.edu.unbosque.model.persistence.FileManager;
+import co.edu.unbosque.util.exception.EmptyStringFieldException;
 import co.edu.unbosque.view.ViewFacade;
 
 /**
@@ -33,7 +34,7 @@ public class Controller implements ActionListener {
 	 */
 	private ViewFacade vf;
 	
-	private Properties prop;
+	private static Properties prop;
 	
 	public Controller() {
 		mf = new ModelFacade();
@@ -428,7 +429,12 @@ public class Controller implements ActionListener {
 			break;
 		}
 		case "btnCrearGamer":{
+			try { 
+				
+		
 			String nombre = vf.getVsu().getCardSignUp().getCrearGamer().getDatoNombre().getText();
+			ExceptionChecker.checkStringField(nombre, prop.getProperty("archivosdepropiedades.mensajes.error.nombre"));
+ 
 			String contrasena = String.valueOf(vf.getVsu().getCardSignUp().getCrearGamer().getDatoContrasena().getPassword());
 			String contrasenaConf = String.valueOf(vf.getVsu().getCardSignUp().getCrearGamer().getDatoContrasenaConf().getPassword());
 			String correo = vf.getVsu().getCardSignUp().getCrearGamer().getDatoCorreo().getText();
@@ -479,6 +485,10 @@ public class Controller implements ActionListener {
 				MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.camposincompletos", "archivosdepropiedades.mensajes.error");
 			}
 			break;
+			} catch (EmptyStringFieldException e1 ) {
+
+				MensajeEmergente.mensajeError(e1.getMessage(), "archivosdepropiedades.mensajes.error");
+			}
 		}
 		case "btnCrearCoach":{
 			String nombre = vf.getVsu().getCardSignUp().getCrearCoach().getDatoNombre().getText();
