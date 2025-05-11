@@ -7,7 +7,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
-
 import co.edu.unbosque.model.Administrador;
 import co.edu.unbosque.model.AdministradorDTO;
 import co.edu.unbosque.model.Entrenador;
@@ -290,7 +289,7 @@ public class Controller implements ActionListener {
 		case "checkIngles": {
 			if (vf.getVp().getPanelPrincipal().getCheckIngles().isSelected()) {
 				try {
-					
+
 					prop.load(new FileInputStream(new File("src/archivos/textosingles.properties")));
 					MensajeEmergente.cargarPropiedadesParaMensajesEmergentes("src/archivos/textosingles.properties");
 				} catch (FileNotFoundException e1) {
@@ -532,16 +531,17 @@ public class Controller implements ActionListener {
 			try {
 
 				String nombre = vf.getVsu().getCardSignUp().getCrearGamer().getDatoNombre().getText();
-				ExceptionChecker.checkStringField(nombre,"archivosdepropiedades.mensajes.error.camposincompletos");
-
+				ExceptionChecker.checkStringField(nombre, "archivosdepropiedades.mensajes.error.camposincompletos");
 				String contrasena = String
 						.valueOf(vf.getVsu().getCardSignUp().getCrearGamer().getDatoContrasena().getPassword());
-				ExceptionChecker.checkPasswordField(contrasena,"archivosdepropiedades.mensajes.error.contrasenainconsistente");
+				ExceptionChecker.checkPasswordField(contrasena,
+						"archivosdepropiedades.mensajes.error.contrasenainconsistente");
 				String contrasenaConf = String
 						.valueOf(vf.getVsu().getCardSignUp().getCrearGamer().getDatoContrasenaConf().getPassword());
-				ExceptionChecker.checkPasswordField(contrasenaConf,"archivosdepropiedades.mensajes.error.camposincompletos");
+				ExceptionChecker.checkPasswordField(contrasenaConf,
+						"archivosdepropiedades.mensajes.error.camposincompletos");
 				String correo = vf.getVsu().getCardSignUp().getCrearGamer().getDatoCorreo().getText();
-				ExceptionChecker.checkEmailField(correo, "archivosdepropiedades.mensajes.error.camposincompletos");
+				ExceptionChecker.checkEmailField(correo, "archivosdepropiedades.mensajes.error.correo");
 				int edad = (int) vf.getVsu().getCardSignUp().getCrearGamer().getDatoEdad().getValue();
 				String pais = vf.getVsu().getCardSignUp().getCrearGamer().getDatoPais().getSelectedItem().toString();
 				String[] extensiones = { ".jpg", ".png", ".jpeg" };
@@ -562,9 +562,12 @@ public class Controller implements ActionListener {
 				int anosDeExperiencia = (int) vf.getVsu().getCardSignUp().getCrearGamer().getDatoAnosDeExperiencia()
 						.getValue();
 				if (!nombre.isEmpty() && !contrasena.isEmpty() && !correo.isEmpty() && edad != 0 && !pais.isEmpty()
-						&& imagen != null && !trayectoriaCompetitiva.isEmpty() && !juegoEspecialidad.isEmpty() && vf.getVsu().getCardSignUp().getCrearGamer()
-						.getDatoTrayectoriaCompetitiva().getSelectedIndex() != 0 &&  vf.getVsu().getCardSignUp().getCrearGamer().getDatoJuegoEspecialidad()
-						.getSelectedIndex() != 0  && vf.getVsu().getCardSignUp().getCrearGamer().getDatoPais().getSelectedIndex() != 0) {
+						&& imagen != null && !trayectoriaCompetitiva.isEmpty() && !juegoEspecialidad.isEmpty()
+						&& vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva()
+								.getSelectedIndex() != 0
+						&& vf.getVsu().getCardSignUp().getCrearGamer().getDatoJuegoEspecialidad()
+								.getSelectedIndex() != 0
+						&& vf.getVsu().getCardSignUp().getCrearGamer().getDatoPais().getSelectedIndex() != 0) {
 					if (contrasena.equals(contrasenaConf)) {
 						if (mf.getJdao().find(new Jugador(nombre, null, null, 0, null, null, null, null, 0)) == null) {
 							JugadorDTO gamer = new JugadorDTO(nombre, contrasena, correo, edad, pais, urlFoto,
@@ -581,8 +584,7 @@ public class Controller implements ActionListener {
 							vf.getVsu().getCardSignUp().getCrearGamer().getDatoJuegoEspecialidad().setSelectedIndex(0);
 							vf.getVsu().getCardSignUp().getCrearGamer().getDatoAnosDeExperiencia().setValue(0);
 							vf.getVsu().getCardSignUp().getCrearGamer().getSeleccionarFoto().setIcon(null);
-							MensajeEmergente.mensajeNormal(
-									"archivosdepropiedades.mensajes.confirmacion.exitousuario",
+							MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.confirmacion.exitousuario",
 									"archivosdepropiedades.mensajes.confirmacion.exito");
 							vf.getVsu().setVisible(false);
 						} else {
@@ -598,115 +600,70 @@ public class Controller implements ActionListener {
 							"archivosdepropiedades.mensajes.error");
 				}
 				break;
-			} catch (EmptyStringFieldException | InvalidEmailException eMe) {
-				MensajeEmergente.mensajeAdvertencia(eMe.getMessage() , "archivosdepropiedades.mensajes.advertencia");
-			} catch (InvalidPasswordException  e2) {
-				MensajeEmergente.mensajeError(e2.getMessage(), "archivosdepropiedades.mensajes.error");
+			} catch (EmptyStringFieldException e1) {
+				MensajeEmergente.mensajeAdvertencia(e1.getMessage(), "archivosdepropiedades.mensajes.advertencia");
+			} catch (InvalidPasswordException e2) {
+				MensajeEmergente.mensajeAdvertencia(e2.getMessage(), "archivosdepropiedades.mensajes.advertencia");
+			} catch (InvalidEmailException e3) {
+				MensajeEmergente.mensajeAdvertencia(e3.getMessage(), "archivosdepropiedades.mensajes.advertencia");
 			}
 		}
 		case "btnCrearCoach": {
-			String nombre = vf.getVsu().getCardSignUp().getCrearCoach().getDatoNombre().getText();
-			String contrasena = String
-					.valueOf(vf.getVsu().getCardSignUp().getCrearCoach().getDatoContrasena().getPassword());
-			String contrasenaConf = String
-					.valueOf(vf.getVsu().getCardSignUp().getCrearCoach().getDatoContrasenaConf().getPassword());
-			String correo = vf.getVsu().getCardSignUp().getCrearCoach().getDatoCorreo().getText();
-			int edad = (int) vf.getVsu().getCardSignUp().getCrearCoach().getDatoEdad().getValue();
-			String pais = vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().getSelectedItem().toString();
-			String[] extensiones = { ".jpg", ".png", ".jpeg" };
-			String urlFoto = "imageUser/" + nombre;
-			File imagen = null;
-			for (String extension : extensiones) {
-				File f = new File(urlFoto + extension);
-				if (f.exists()) {
-					imagen = f;
-					urlFoto += extension;
-					break;
-				}
-			}
-			String trayectoriaCompetitiva = vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional()
-					.getSelectedItem().toString();
-			String juegoEspecialidad = vf.getVsu().getCardSignUp().getCrearCoach().getDatoJuegoEspecialidad()
-					.getSelectedItem().toString();
-			int anosDeExperiencia = (int) vf.getVsu().getCardSignUp().getCrearCoach().getDatoAnosDeExperiencia()
-					.getValue();
-			if (!nombre.isEmpty() && !contrasena.isEmpty() && !correo.isEmpty() && edad != 0 && !pais.isEmpty()
-					&& imagen != null && !trayectoriaCompetitiva.isEmpty() && !juegoEspecialidad.isEmpty() &&  vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional()
-							.getSelectedIndex() != 0 && vf.getVsu().getCardSignUp().getCrearCoach().getDatoJuegoEspecialidad()
-							.getSelectedIndex() != 0 && vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().getSelectedIndex() != 0) {
-				if (contrasena.equals(contrasenaConf)) {
-					if (mf.getEdao().find(new Entrenador(nombre, null, null, 0, null, null, null, null, 0)) == null) {
-						EntrenadorDTO coach = new EntrenadorDTO(nombre, contrasena, correo, edad, pais, urlFoto,
-								trayectoriaCompetitiva, juegoEspecialidad, anosDeExperiencia);
-						mf.getEdao().add(coach);
-						vf.getVsu().getCardSignUp().getCrearCoach().getDatoNombre().setText("");
-						vf.getVsu().getCardSignUp().getCrearCoach().getDatoContrasena().setText("");
-						vf.getVsu().getCardSignUp().getCrearCoach().getDatoContrasenaConf().setText("");
-						vf.getVsu().getCardSignUp().getCrearCoach().getDatoCorreo().setText("");
-						vf.getVsu().getCardSignUp().getCrearCoach().getDatoEdad().setValue(0);
-						vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().setSelectedIndex(0);
-						vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional().setSelectedIndex(0);
-						vf.getVsu().getCardSignUp().getCrearCoach().getDatoJuegoEspecialidad().setSelectedIndex(0);
-						vf.getVsu().getCardSignUp().getCrearCoach().getDatoAnosDeExperiencia().setValue(0);
-						vf.getVsu().getCardSignUp().getCrearCoach().getSeleccionarFoto().setIcon(null);
-						MensajeEmergente.mensajeNormal(
-								"trayectoriarchivosdepropiedades.mensajes.confirmacion.exitousuario",
-								"archivosdepropiedades.mensajes.confirmacion.exito");
-						vf.getVsu().setVisible(false);
-					} else {
-						MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.usuarioexistente",
-								"archivosdepropiedades.mensajes.error");
+			try {
+				String nombre = vf.getVsu().getCardSignUp().getCrearCoach().getDatoNombre().getText();
+				ExceptionChecker.checkStringField(nombre, "archivosdepropiedades.mensajes.error.camposincompletos");
+				String contrasena = String
+						.valueOf(vf.getVsu().getCardSignUp().getCrearCoach().getDatoContrasena().getPassword());
+				ExceptionChecker.checkPasswordField(contrasena,
+						"archivosdepropiedades.mensajes.error.contrasenainconsistente");
+				String contrasenaConf = String
+						.valueOf(vf.getVsu().getCardSignUp().getCrearCoach().getDatoContrasenaConf().getPassword());
+				ExceptionChecker.checkStringField(nombre, "archivosdepropiedades.mensajes.error.camposincompletos");
+				String correo = vf.getVsu().getCardSignUp().getCrearCoach().getDatoCorreo().getText();
+				ExceptionChecker.checkEmailField(correo, "archivosdepropiedades.mensajes.error.correo");
+				int edad = (int) vf.getVsu().getCardSignUp().getCrearCoach().getDatoEdad().getValue();
+				String pais = vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().getSelectedItem().toString();
+				String[] extensiones = { ".jpg", ".png", ".jpeg" };
+				String urlFoto = "imageUser/" + nombre;
+				File imagen = null;
+				for (String extension : extensiones) {
+					File f = new File(urlFoto + extension);
+					if (f.exists()) {
+						imagen = f;
+						urlFoto += extension;
+						break;
 					}
-				} else {
-					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.contrasenanoigual",
-							"archivosdepropiedades.mensajes.error");
 				}
-			} else {
-				MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.camposincompletos",
-						"archivosdepropiedades.mensajes.error");
-			}
-			break;
-		}
-		case "btnCrearAdmin": {
-			String nombre = vf.getVsu().getCardSignUp().getCrearAdmin().getDatoNombre().getText();
-			String contrasena = String
-					.valueOf(vf.getVsu().getCardSignUp().getCrearAdmin().getDatoContrasena().getPassword());
-			String contrasenaConf = String
-					.valueOf(vf.getVsu().getCardSignUp().getCrearAdmin().getDatoContrasenaConf().getPassword());
-			String correo = vf.getVsu().getCardSignUp().getCrearAdmin().getDatoCorreo().getText();
-			int edad = (int) vf.getVsu().getCardSignUp().getCrearAdmin().getDatoEdad().getValue();
-			String pais = vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().getSelectedItem().toString();
-			String[] extensiones = { ".jpg", ".png", ".jpeg" };
-			String urlFoto = "imageUser/" + nombre;
-			String cargoEspecifico = vf.getVsu().getCardSignUp().getCrearAdmin().getDatoCargoEspecifico().getText();
-			String contrasenaAdmins = String
-					.valueOf(vf.getVsu().getCardSignUp().getCrearAdmin().getPasswordAdmins().getPassword());
-			File imagen = null;
-			for (String extension : extensiones) {
-				File f = new File(urlFoto + extension);
-				if (f.exists()) {
-					imagen = f;
-					urlFoto += extension;
-					break;
-				}
-			}
-			if (!nombre.isEmpty() && !contrasena.isEmpty() && !correo.isEmpty() && edad != 0 && !pais.isEmpty()
-					&& imagen != null && !cargoEspecifico.isEmpty() && vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().getSelectedIndex() != 0) {
-				if (contrasena.equals(contrasenaConf)) {
-					if (contrasenaAdmins.equals("Transparencia290")) {
-						if (mf.getAdao().find(new Administrador(nombre, null, null, 0, null, null, null)) == null) {
-							AdministradorDTO admin = new AdministradorDTO(nombre, contrasena, correo, edad, pais,
-									urlFoto, cargoEspecifico);
-							mf.getAdao().add(admin);
-							vf.getVsu().getCardSignUp().getCrearAdmin().getDatoNombre().setText("");
-							vf.getVsu().getCardSignUp().getCrearAdmin().getDatoContrasena().setText("");
-							vf.getVsu().getCardSignUp().getCrearAdmin().getDatoContrasenaConf().setText("");
-							vf.getVsu().getCardSignUp().getCrearAdmin().getDatoCorreo().setText("");
-							vf.getVsu().getCardSignUp().getCrearAdmin().getDatoEdad().setValue(0);
-							vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().setSelectedIndex(0);
-							vf.getVsu().getCardSignUp().getCrearAdmin().getDatoCargoEspecifico().setText("");
-							vf.getVsu().getCardSignUp().getCrearAdmin().getPasswordAdmins().setText("");
-							vf.getVsu().getCardSignUp().getCrearAdmin().getSeleccionarFoto().setIcon(null);
+				String trayectoriaCompetitiva = vf.getVsu().getCardSignUp().getCrearCoach()
+						.getDatoTrayectoriaProfesional().getSelectedItem().toString();
+				String juegoEspecialidad = vf.getVsu().getCardSignUp().getCrearCoach().getDatoJuegoEspecialidad()
+						.getSelectedItem().toString();
+				int anosDeExperiencia = (int) vf.getVsu().getCardSignUp().getCrearCoach().getDatoAnosDeExperiencia()
+						.getValue();
+				if (!nombre.isEmpty() && !contrasena.isEmpty() && !correo.isEmpty() && edad != 0 && !pais.isEmpty()
+						&& imagen != null && !trayectoriaCompetitiva.isEmpty() && !juegoEspecialidad.isEmpty()
+						&& vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional()
+								.getSelectedIndex() != 0
+						&& vf.getVsu().getCardSignUp().getCrearCoach().getDatoJuegoEspecialidad()
+								.getSelectedIndex() != 0
+						&& vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().getSelectedIndex() != 0) {
+					if (contrasena.equals(contrasenaConf)) {
+						if (mf.getEdao()
+								.find(new Entrenador(nombre, null, null, 0, null, null, null, null, 0)) == null) {
+							EntrenadorDTO coach = new EntrenadorDTO(nombre, contrasena, correo, edad, pais, urlFoto,
+									trayectoriaCompetitiva, juegoEspecialidad, anosDeExperiencia);
+							mf.getEdao().add(coach);
+							vf.getVsu().getCardSignUp().getCrearCoach().getDatoNombre().setText("");
+							vf.getVsu().getCardSignUp().getCrearCoach().getDatoContrasena().setText("");
+							vf.getVsu().getCardSignUp().getCrearCoach().getDatoContrasenaConf().setText("");
+							vf.getVsu().getCardSignUp().getCrearCoach().getDatoCorreo().setText("");
+							vf.getVsu().getCardSignUp().getCrearCoach().getDatoEdad().setValue(0);
+							vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().setSelectedIndex(0);
+							vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional()
+									.setSelectedIndex(0);
+							vf.getVsu().getCardSignUp().getCrearCoach().getDatoJuegoEspecialidad().setSelectedIndex(0);
+							vf.getVsu().getCardSignUp().getCrearCoach().getDatoAnosDeExperiencia().setValue(0);
+							vf.getVsu().getCardSignUp().getCrearCoach().getSeleccionarFoto().setIcon(null);
 							MensajeEmergente.mensajeNormal(
 									"trayectoriarchivosdepropiedades.mensajes.confirmacion.exitousuario",
 									"archivosdepropiedades.mensajes.confirmacion.exito");
@@ -716,18 +673,99 @@ public class Controller implements ActionListener {
 									"archivosdepropiedades.mensajes.error");
 						}
 					} else {
-						MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.contrasenaincorrectaadmin",
+						MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.contrasenanoigual",
 								"archivosdepropiedades.mensajes.error");
 					}
 				} else {
-					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.contrasenanoigual",
+					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.camposincompletos",
 							"archivosdepropiedades.mensajes.error");
 				}
-			} else {
-				MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.camposincompletos",
-						"archivosdepropiedades.mensajes.error");
+				break;
+			} catch (EmptyStringFieldException e1) {
+				MensajeEmergente.mensajeAdvertencia(e1.getMessage(), "archivosdepropiedades.mensajes.advertencia");
+			} catch (InvalidPasswordException e2) {
+				MensajeEmergente.mensajeAdvertencia(e2.getMessage(), "archivosdepropiedades.mensajes.advertencia");
+			} catch (InvalidEmailException e3) {
+				MensajeEmergente.mensajeAdvertencia(e3.getMessage(), "archivosdepropiedades.mensajes.advertencia");
 			}
-			break;
+		}
+		case "btnCrearAdmin": {
+			try {
+				String nombre = vf.getVsu().getCardSignUp().getCrearAdmin().getDatoNombre().getText();
+				ExceptionChecker.checkStringField(nombre, "archivosdepropiedades.mensajes.error.camposincompletos");
+				String contrasena = String
+						.valueOf(vf.getVsu().getCardSignUp().getCrearAdmin().getDatoContrasena().getPassword());
+				ExceptionChecker.checkPasswordField(contrasena,
+						"archivosdepropiedades.mensajes.error.contrasenainconsistente");
+				String contrasenaConf = String
+						.valueOf(vf.getVsu().getCardSignUp().getCrearAdmin().getDatoContrasenaConf().getPassword());
+				ExceptionChecker.checkStringField(nombre, "archivosdepropiedades.mensajes.error.camposincompletos");
+				String correo = vf.getVsu().getCardSignUp().getCrearAdmin().getDatoCorreo().getText();
+				ExceptionChecker.checkEmailField(correo, "archivosdepropiedades.mensajes.error.correo");
+				int edad = (int) vf.getVsu().getCardSignUp().getCrearAdmin().getDatoEdad().getValue();
+				String pais = vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().getSelectedItem().toString();
+				String[] extensiones = { ".jpg", ".png", ".jpeg" };
+				String urlFoto = "imageUser/" + nombre;
+				String cargoEspecifico = vf.getVsu().getCardSignUp().getCrearAdmin().getDatoCargoEspecifico().getText();
+				ExceptionChecker.checkStringField(cargoEspecifico,
+						"archivosdepropiedades.mensajes.error.camposincompletos");
+				String contrasenaAdmins = String
+						.valueOf(vf.getVsu().getCardSignUp().getCrearAdmin().getPasswordAdmins().getPassword());
+				File imagen = null;
+				for (String extension : extensiones) {
+					File f = new File(urlFoto + extension);
+					if (f.exists()) {
+						imagen = f;
+						urlFoto += extension;
+						break;
+					}
+				}
+				if (!nombre.isEmpty() && !contrasena.isEmpty() && !correo.isEmpty() && edad != 0 && !pais.isEmpty()
+						&& imagen != null && !cargoEspecifico.isEmpty()
+						&& vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().getSelectedIndex() != 0) {
+					if (contrasena.equals(contrasenaConf)) {
+						if (contrasenaAdmins.equals("Transparencia290")) {
+							if (mf.getAdao().find(new Administrador(nombre, null, null, 0, null, null, null)) == null) {
+								AdministradorDTO admin = new AdministradorDTO(nombre, contrasena, correo, edad, pais,
+										urlFoto, cargoEspecifico);
+								mf.getAdao().add(admin);
+								vf.getVsu().getCardSignUp().getCrearAdmin().getDatoNombre().setText("");
+								vf.getVsu().getCardSignUp().getCrearAdmin().getDatoContrasena().setText("");
+								vf.getVsu().getCardSignUp().getCrearAdmin().getDatoContrasenaConf().setText("");
+								vf.getVsu().getCardSignUp().getCrearAdmin().getDatoCorreo().setText("");
+								vf.getVsu().getCardSignUp().getCrearAdmin().getDatoEdad().setValue(0);
+								vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().setSelectedIndex(0);
+								vf.getVsu().getCardSignUp().getCrearAdmin().getDatoCargoEspecifico().setText("");
+								vf.getVsu().getCardSignUp().getCrearAdmin().getPasswordAdmins().setText("");
+								vf.getVsu().getCardSignUp().getCrearAdmin().getSeleccionarFoto().setIcon(null);
+								MensajeEmergente.mensajeNormal(
+										"trayectoriarchivosdepropiedades.mensajes.confirmacion.exitousuario",
+										"archivosdepropiedades.mensajes.confirmacion.exito");
+								vf.getVsu().setVisible(false);
+							} else {
+								MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.usuarioexistente",
+										"archivosdepropiedades.mensajes.error");
+							}
+						} else {
+							MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.contrasenaincorrectaadmin",
+									"archivosdepropiedades.mensajes.error");
+						}
+					} else {
+						MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.contrasenanoigual",
+								"archivosdepropiedades.mensajes.error");
+					}
+				} else {
+					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.camposincompletos",
+							"archivosdepropiedades.mensajes.error");
+				}
+				break;
+			} catch (EmptyStringFieldException e1) {
+				MensajeEmergente.mensajeAdvertencia(e1.getMessage(), "archivosdepropiedades.mensajes.advertencia");
+			} catch (InvalidPasswordException e2) {
+				MensajeEmergente.mensajeAdvertencia(e2.getMessage(), "archivosdepropiedades.mensajes.advertencia");
+			} catch (InvalidEmailException e3) {
+				MensajeEmergente.mensajeAdvertencia(e3.getMessage(), "archivosdepropiedades.mensajes.advertencia");
+			}
 		}
 		case "btnEntrar": {
 			String nombre = vf.getVp().getPanelPrincipal().getDatoUsuario().getText();
