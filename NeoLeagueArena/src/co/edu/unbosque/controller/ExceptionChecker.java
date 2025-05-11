@@ -94,7 +94,7 @@ public class ExceptionChecker {
         Pattern pattern = Pattern.compile(PASSWORD_REGEX);
 
         if (!pattern.matcher(password).matches()) {
-            throw new InvalidPasswordException(errorMessage);
+            throw new InvalidPasswordException( errorMessage);
         }
     }
  

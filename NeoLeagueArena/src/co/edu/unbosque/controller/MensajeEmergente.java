@@ -72,5 +72,8 @@ public class MensajeEmergente {
 	public static void mensajeConfirmacion(String llaveArchivoPropiedades, String tituloMensaje) {
 		JOptionPane.showConfirmDialog(null, propiedades.getProperty(llaveArchivoPropiedades), propiedades.getProperty(tituloMensaje), JOptionPane.YES_NO_OPTION);
 	}
+	public static String obtenerMensaje(String llaveArchivoPropiedades) {
+		return propiedades.getProperty(llaveArchivoPropiedades);
+	}
 
 }
