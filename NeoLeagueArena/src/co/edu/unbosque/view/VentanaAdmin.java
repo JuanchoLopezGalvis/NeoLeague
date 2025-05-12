@@ -10,7 +10,7 @@ public class VentanaAdmin extends JFrame{
 	private JMenuBar menuBar;
 	private JMenu administrarGamer, administrarCouch, administrarTorneos, administrarPartidas, administrarEquipo, reportes;
 	private JMenuItem configurarNotificaciones, mostrarGamers, mostrarCouchs, eliminarGamer, eliminarCouch, eliminarTorneo, eliminarPartida, crearTorneo, crearPartida, mostrarTorneos, mostrarPartidas, actualizarTorneo, actualizarPartida, actualizarEquipo, eliminarEquipo, mostrarEquipos, analiytics;
-	
+	private CardAdmin cardAdmin;
 
 	/**
 	 * 
@@ -70,6 +70,8 @@ public class VentanaAdmin extends JFrame{
 		administrarEquipo.add(mostrarEquipos);		
 		reportes.add(analiytics);
 		setJMenuBar(menuBar);
+		cardAdmin = new CardAdmin();
+		add(cardAdmin);
 	}
 	
 	
