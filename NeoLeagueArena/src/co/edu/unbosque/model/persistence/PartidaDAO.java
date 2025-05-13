@@ -2,6 +2,8 @@ package co.edu.unbosque.model.persistence;
 
 import java.util.ArrayList;
 
+import javax.swing.JTable;
+
 import co.edu.unbosque.model.Partida;
 import co.edu.unbosque.model.PartidaDTO;
 
@@ -10,9 +12,9 @@ public class PartidaDAO implements OperacionDAO<PartidaDTO, Partida> {
 	public PartidaDAO() {
 		listaPartidas = new ArrayList<Partida>();
 	}	@Override
-	public String showAll() {
+	public boolean showAll(JTable tabla) {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}	@Override
 	public ArrayList<PartidaDTO> getAll() {
 		// TODO Auto-generated method stub

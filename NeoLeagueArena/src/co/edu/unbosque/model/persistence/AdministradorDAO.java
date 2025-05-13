@@ -2,6 +2,8 @@ package co.edu.unbosque.model.persistence;
 
 import java.util.ArrayList;
 
+import javax.swing.JTable;
+
 import co.edu.unbosque.model.Administrador;
 import co.edu.unbosque.model.AdministradorDTO;
 
@@ -17,7 +19,7 @@ public class AdministradorDAO implements OperacionDAO<AdministradorDTO, Administ
 	}
 
 	@Override
-	public String showAll() {
+	public boolean showAll(JTable tabla) {
 		StringBuilder sb = new StringBuilder();
 		if (listaAdministradores.isEmpty()) {
 			sb.append("There are no registered administrators.");
@@ -26,7 +28,7 @@ public class AdministradorDAO implements OperacionDAO<AdministradorDTO, Administ
 				sb.append(admin.toString()).append("\n");
 			}
 		}
-		return sb.toString();
+		return false;
 	}
 
 	@Override

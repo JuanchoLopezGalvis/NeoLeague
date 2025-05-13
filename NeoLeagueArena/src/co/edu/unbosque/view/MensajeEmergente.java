@@ -1,4 +1,4 @@
-package co.edu.unbosque.controller;
+package co.edu.unbosque.view;
 
 import java.io.File;
 import java.io.FileInputStream;

@@ -1,6 +1,11 @@
 package co.edu.unbosque.model.persistence;
 
+
 import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import co.edu.unbosque.model.Jugador;
 import co.edu.unbosque.model.JugadorDTO;
@@ -16,9 +21,19 @@ public class JugadorDAO implements OperacionDAO<JugadorDTO, Jugador> {
 		leerArchivoSerializado();
 	}
 	@Override
-	public String showAll() {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean showAll(JTable tabla) {
+		if (listaJugadores.isEmpty()) {
+			return false;
+		}else {
+			DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+			modelo.setRowCount(0);
+			for (Jugador jugador : listaJugadores) {
+				ImageIcon icon = FileManager.graficarImagen(jugador.getUrlFoto(), 80, 80);
+				Object[] row = {jugador.getNombre(), jugador.getContrasena(), jugador.getCorreo(), jugador.getEdad(), jugador.getPais(), jugador.getTrayectoriaCompetitiva(), jugador.getJuegoEspecialidad(), jugador.getAnosDeExperiencia(), icon};
+				modelo.addRow(row);
+			}
+		}
+		return true;
 	}
 
 	@Override

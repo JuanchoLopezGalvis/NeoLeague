@@ -7,6 +7,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
+
+import javax.swing.JOptionPane;
+
 import co.edu.unbosque.model.Administrador;
 import co.edu.unbosque.model.AdministradorDTO;
 import co.edu.unbosque.model.Entrenador;
@@ -18,6 +21,7 @@ import co.edu.unbosque.model.persistence.FileManager;
 import co.edu.unbosque.util.exception.EmptyStringFieldException;
 import co.edu.unbosque.util.exception.InvalidEmailException;
 import co.edu.unbosque.util.exception.InvalidPasswordException;
+import co.edu.unbosque.view.MensajeEmergente;
 import co.edu.unbosque.view.ViewFacade;
 
 /**
@@ -98,6 +102,8 @@ public class Controller implements ActionListener {
 		vf.getVsu().getCardSignUp().getCrearCoach().getBotonCrearCoach().setActionCommand("btnCrearCoach");
 		vf.getVsu().getCardSignUp().getCrearAdmin().getBotonCrearAdmin().addActionListener(this);
 		vf.getVsu().getCardSignUp().getCrearAdmin().getBotonCrearAdmin().setActionCommand("btnCrearAdmin");
+		vf.getVa().getMostrarGamers().addActionListener(this);
+		vf.getVa().getMostrarGamers().setActionCommand("btnMostrarGamers");
 
 	}
 
@@ -132,7 +138,13 @@ public class Controller implements ActionListener {
 			break;
 		}
 		case "btnSignUp": {
-			vf.getVsu().setVisible(true);
+			if (vf.getVp().getPanelPrincipal().getCheckEspañol().isSelected()
+					|| vf.getVp().getPanelPrincipal().getCheckIngles().isSelected()) {
+				vf.getVsu().setVisible(true);
+			} else {
+				JOptionPane.showMessageDialog(vf.getVp(), "Plis select your language.", "Warning.",
+						JOptionPane.WARNING_MESSAGE);
+			}
 			break;
 		}
 		case "checkEspañol": {
@@ -768,43 +780,58 @@ public class Controller implements ActionListener {
 			}
 		}
 		case "btnEntrar": {
-			String nombre = vf.getVp().getPanelPrincipal().getDatoUsuario().getText();
-			String contrasena = String.valueOf(vf.getVp().getPanelPrincipal().getDatoContrasena().getPassword());
-			if (vf.getVp().getPanelPrincipal().getBtnAdmin().isSelected()) {
-				Administrador admin = new Administrador(nombre, contrasena, null, 0, null, null, null);
-				if (mf.getAdao().find(admin) != null) {
-					MensajeEmergente.mensajeNormalMasAlgo("archivosdepropiedades.mensajes.bienvenida", " " + nombre,
-							"archivosdepropiedades.mensajes.confirmacion.exito");
-					vf.getVa().setVisible(true);
+			if (vf.getVp().getPanelPrincipal().getCheckEspañol().isSelected()
+					|| vf.getVp().getPanelPrincipal().getCheckIngles().isSelected()) {
+				String nombre = vf.getVp().getPanelPrincipal().getDatoUsuario().getText();
+				String contrasena = String.valueOf(vf.getVp().getPanelPrincipal().getDatoContrasena().getPassword());
+				if (vf.getVp().getPanelPrincipal().getBtnAdmin().isSelected()) {
+					Administrador admin = new Administrador(nombre, contrasena, null, 0, null, null, null);
+					if (mf.getAdao().find(admin) != null) {
+						MensajeEmergente.mensajeNormalMasAlgo("archivosdepropiedades.mensajes.bienvenida", " " + nombre,
+								"archivosdepropiedades.mensajes.confirmacion.exito");
+						vf.getVa().setVisible(true);
+					} else {
+						MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.usuarionoencontrado",
+								"archivosdepropiedades.mensajes.error");
+					}
+				} else if (vf.getVp().getPanelPrincipal().getBtnCouch().isSelected()) {
+					Entrenador coach = new Entrenador(nombre, contrasena, null, 0, null, null, null, null, 0);
+					if (mf.getEdao().find(coach) != null) {
+						MensajeEmergente.mensajeNormalMasAlgo("archivosdepropiedades.mensajes.bienvenida", " " + nombre,
+								"archivosdepropiedades.mensajes.confirmacion.exito");
+						vf.getVe().setVisible(true);
+					} else {
+						MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.usuarionoencontrado",
+								"archivosdepropiedades.mensajes.error");
+					}
+				} else if (vf.getVp().getPanelPrincipal().getBtnGamer().isSelected()) {
+					Jugador gamer = new Jugador(nombre, contrasena, null, 0, null, null, null, null, 0);
+					if (mf.getJdao().find(gamer) != null) {
+						MensajeEmergente.mensajeNormalMasAlgo("archivosdepropiedades.mensajes.bienvenida", " " + nombre,
+								"archivosdepropiedades.mensajes.confirmacion.exito");
+						vf.getVg().setVisible(true);
+					} else {
+						MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.usuarionoencontrado",
+								"archivosdepropiedades.mensajes.error");
+					}
 				} else {
-					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.usuarionoencontrado",
-							"archivosdepropiedades.mensajes.error");
-				}
-			} else if (vf.getVp().getPanelPrincipal().getBtnCouch().isSelected()) {
-				Entrenador coach = new Entrenador(nombre, contrasena, null, 0, null, null, null, null, 0);
-				if (mf.getEdao().find(coach) != null) {
-					MensajeEmergente.mensajeNormalMasAlgo("archivosdepropiedades.mensajes.bienvenida", " " + nombre,
-							"archivosdepropiedades.mensajes.confirmacion.exito");
-					vf.getVe().setVisible(true);
-				} else {
-					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.usuarionoencontrado",
-							"archivosdepropiedades.mensajes.error");
-				}
-			} else if (vf.getVp().getPanelPrincipal().getBtnGamer().isSelected()) {
-				Jugador gamer = new Jugador(nombre, contrasena, null, 0, null, null, null, null, 0);
-				if (mf.getJdao().find(gamer) != null) {
-					MensajeEmergente.mensajeNormalMasAlgo("archivosdepropiedades.mensajes.bienvenida", " " + nombre,
-							"archivosdepropiedades.mensajes.confirmacion.exito");
-					vf.getVg().setVisible(true);
-				} else {
-					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.usuarionoencontrado",
+					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.errorrol",
 							"archivosdepropiedades.mensajes.error");
 				}
 			} else {
-				MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.errorrol",
-						"archivosdepropiedades.mensajes.error");
+				JOptionPane.showMessageDialog(vf.getVp(), "Plis select your language.", "Warning.",
+						JOptionPane.WARNING_MESSAGE);
 			}
 			break;
+		}
+		case "btnMostrarGamers": {
+		    String[] titulos = {"Nombre", "Contraseña", "Correo", "Edad", "Pais", "Trayectoria Competitiva", "Juego Especialidad", "Años de Experiencia", "Foto"};
+		    vf.getVa().getCardAdmin().getPanelMostrar().setModelo(titulos);
+		    mf.getJdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
+		    vf.getVa().getCardAdmin().getPanelMostrar().getTabla().revalidate();
+		    vf.getVa().getCardAdmin().getPanelMostrar().getTabla().repaint();
+		    vf.getVa().getCardAdmin().mostrarPanel("PanelMostrar");
+		    break;
 		}
 		}
 	}
