@@ -50,6 +50,7 @@ public class PanelAgregarTorneo extends JPanel{
 	        etiqueta1.setFont(new java.awt.Font("Arial", 1, 12));
 	        fondo = new ImageIcon(getClass().getResource("/recursos/fondoATorneo.png")).getImage();
 	        datoJuego.setBackground(Color.decode("#002d69"));
+	        recompensa.setToolTipText("Recompensa");
 	        datoFormatoTorneo.setBackground(Color.decode("#002d69"));
 	        datoMaxEquipos.setBackground(Color.decode("#002d69"));
 	        recompensa.setBackground(Color.decode("#002d69"));
