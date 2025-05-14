@@ -20,7 +20,6 @@ public class VentanaAdmin extends JFrame{
 		setTitle("Window Admin");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280,720);
-//		setResizable(false);
 		setLocationRelativeTo(null);
 		setLayout(null);
 		menuBar = new JMenuBar();
@@ -74,6 +73,7 @@ public class VentanaAdmin extends JFrame{
 		cardAdmin = new CardAdmin();
 		cardAdmin.setBounds(0, 0, 1280, 720);
 		add(cardAdmin);
+		setVisible(true);
 	}
 	public JMenu getAdministrarCouch() {
 		return administrarCouch;

@@ -1,7 +1,12 @@
 package co.edu.unbosque.view;
 
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import de.wannawork.jcalendar.JCalendarComboBox;
@@ -16,6 +21,8 @@ public class PanelAgregarTorneo extends JPanel{
 	private JSpinner datoMaxEquipos;
 	private JComboBox<String> datoFormatoTorneo;
 	private JComboBox<String> datoJuego;
+	private JLabel etiqueta0, etiqueta1;
+	private Image fondo;
 	    public PanelAgregarTorneo() {
 	        setLayout(null);
 	        setSize(1280, 720);
@@ -34,16 +41,20 @@ public class PanelAgregarTorneo extends JPanel{
 	        datoFechaInicio.setToolTipText("Fecha de inicio");
 	        datoFechaFin.setToolTipText("Fecha de fin");
 	        datoMaxEquipos.setToolTipText("Maximo de equipos");
-	        datoNombreTorneo.setText("Nombre del torneo");
 	        datoJuego.setToolTipText("Juego");
 	        datoFormatoTorneo.setToolTipText("Formato del torneo");
-	        datoNombreTorneo.setBounds(100, 100, 200, 30);
-	        datoJuego.setBounds(100, 150, 200, 30);
-	        datoFechaInicio.setBounds(100, 200, 200, 30);
-	        datoFechaFin.setBounds(100, 250, 200, 30);
-	        datoFormatoTorneo.setBounds(100, 300, 200, 30);
-	        datoMaxEquipos.setBounds(100, 350, 200, 30);
-	        btnAgregar.setBounds(100, 400, 200, 30);
+	        etiqueta1 = new JLabel("Fecha de fin");
+	        etiqueta0 = new JLabel("Fecha de inicio");
+	        fondo = new ImageIcon(getClass().getResource("/recursos/fondoATorneo.png")).getImage();
+	        datoNombreTorneo.setBounds(250, 150, 200, 30);
+	        datoJuego.setBounds(250, 200, 200, 30);
+	        datoFechaInicio.setBounds(250, 250, 200, 30);
+	        datoFechaFin.setBounds(250, 300, 200, 30);
+	        datoFormatoTorneo.setBounds(250, 350, 200, 30);
+	        datoMaxEquipos.setBounds(250, 400, 200, 30);
+	        btnAgregar.setBounds(250, 450, 200, 30);
+	        etiqueta0.setBounds(250, 230, 200, 30);
+	        etiqueta1.setBounds(250, 270, 200, 30);
 	        add(datoFechaInicio);
 	        add(datoFechaFin);
 	        add(btnAgregar);
@@ -51,5 +62,19 @@ public class PanelAgregarTorneo extends JPanel{
 	        add(datoMaxEquipos);
 	        add(datoFormatoTorneo);
 	        add(datoJuego);
+	        add(etiqueta0);
+	        add(etiqueta1);
 	    }
+		/**
+		 * Este metodo se encarga de pintar el panel con el fondo.
+		 */
+		protected void paintComponent(Graphics g) {
+			super.paintComponent(g);
+
+			if (fondo != null) {
+				g.drawImage(fondo, 0, 0, 1267, 700, this);
+			} else {
+
+			}
+		}
 }
