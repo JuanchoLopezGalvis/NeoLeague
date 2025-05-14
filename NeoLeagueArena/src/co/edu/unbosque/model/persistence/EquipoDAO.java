@@ -2,6 +2,8 @@ package co.edu.unbosque.model.persistence;
 
 import java.util.ArrayList;
 
+import javax.swing.JTable;
+
 import co.edu.unbosque.model.Equipo;
 import co.edu.unbosque.model.EquipoDTO;
 
@@ -14,9 +16,9 @@ public class EquipoDAO implements OperacionDAO<EquipoDTO, Equipo> {
 	}
 	
 	@Override
-	public String showAll() {
+	public boolean showAll(JTable tabla) {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 
 	@Override

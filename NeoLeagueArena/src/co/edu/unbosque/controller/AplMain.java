@@ -1,3 +1,4 @@
+
 package co.edu.unbosque.controller;
 /**
  * * La clase {@link AplMain} es la clase principal de la aplicacion.
@@ -11,6 +12,5 @@ public class AplMain {
 	public static void main(String[] args) {
 		Controller controller = new Controller();
 		controller.run();
-		// try 4 test 
 	}
 }

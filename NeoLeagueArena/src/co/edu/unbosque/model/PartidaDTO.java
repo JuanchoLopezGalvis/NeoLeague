@@ -1,13 +1,6 @@
 package co.edu.unbosque.model;
 
-import java.io.Serializable;
-
-public class PartidaDTO implements Serializable{
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class PartidaDTO {
 
 	private int duracionMinTotal;
 	
@@ -75,8 +68,7 @@ public class PartidaDTO implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Partida [duracionMinTotal=" + duracionMinTotal + ", duracionSetMin=" + duracionSetMin + ", juego="
-				+ juego + ", numParticipantes=" + numParticipantes + ", set=" + set + "]";
+		return  + duracionMinTotal + ";" + duracionSetMin + ";"+ juego + ";" + numParticipantes + ";" + set + "\n";
 	}
 	
 	

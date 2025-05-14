@@ -7,6 +7,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
+
+import javax.swing.JOptionPane;
+
 import co.edu.unbosque.model.Administrador;
 import co.edu.unbosque.model.AdministradorDTO;
 import co.edu.unbosque.model.Entrenador;
@@ -18,6 +21,7 @@ import co.edu.unbosque.model.persistence.FileManager;
 import co.edu.unbosque.util.exception.EmptyStringFieldException;
 import co.edu.unbosque.util.exception.InvalidEmailException;
 import co.edu.unbosque.util.exception.InvalidPasswordException;
+import co.edu.unbosque.view.MensajeEmergente;
 import co.edu.unbosque.view.ViewFacade;
 
 /**
@@ -98,6 +102,10 @@ public class Controller implements ActionListener {
 		vf.getVsu().getCardSignUp().getCrearCoach().getBotonCrearCoach().setActionCommand("btnCrearCoach");
 		vf.getVsu().getCardSignUp().getCrearAdmin().getBotonCrearAdmin().addActionListener(this);
 		vf.getVsu().getCardSignUp().getCrearAdmin().getBotonCrearAdmin().setActionCommand("btnCrearAdmin");
+		vf.getVa().getMostrarGamers().addActionListener(this);
+		vf.getVa().getMostrarGamers().setActionCommand("btnMostrarGamers");
+		vf.getVa().getMostrarCoachs().addActionListener(this);
+		vf.getVa().getMostrarCoachs().setActionCommand("btnMostrarCoaches");
 
 	}
 
@@ -132,7 +140,13 @@ public class Controller implements ActionListener {
 			break;
 		}
 		case "btnSignUp": {
-			vf.getVsu().setVisible(true);
+			if (vf.getVp().getPanelPrincipal().getCheckEspañol().isSelected()
+					|| vf.getVp().getPanelPrincipal().getCheckIngles().isSelected()) {
+				vf.getVsu().setVisible(true);
+			} else {
+				JOptionPane.showMessageDialog(vf.getVp(), "Plis select your language.", "Warning.",
+						JOptionPane.WARNING_MESSAGE);
+			}
 			break;
 		}
 		case "checkEspañol": {
@@ -148,80 +162,80 @@ public class Controller implements ActionListener {
 					e1.printStackTrace();
 				}
 				vf.getVp().getPanelPrincipal().getBtnAdmin()
-						.setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnadmin"));
+				.setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnadmin"));
 				vf.getVp().getPanelPrincipal().getBtnCouch()
-						.setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnentrenador"));
+				.setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnentrenador"));
 				vf.getVp().getPanelPrincipal().getBtnGamer()
-						.setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnjugador"));
+				.setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnjugador"));
 				vf.getVp().getPanelPrincipal().getBtnEntrar()
-						.setText(prop.getProperty("archivosdepropiedades.paneprincipal.btniniciarsesion"));
+				.setText(prop.getProperty("archivosdepropiedades.paneprincipal.btniniciarsesion"));
 				vf.getVp().getPanelPrincipal().getBtnRegistrar()
-						.setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnregistrarse"));
+				.setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnregistrarse"));
 				vf.getVp().getPanelPrincipal().getEtiqueta0()
-						.setText(prop.getProperty("archivosdepropiedades.paneprincipal.usuario"));
+				.setText(prop.getProperty("archivosdepropiedades.paneprincipal.usuario"));
 				vf.getVp().getPanelPrincipal().getEtiqueta1()
-						.setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionrol"));
+				.setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionrol"));
 				vf.getVp().getPanelPrincipal().getEtiqueta2()
-						.setText(prop.getProperty("archivosdepropiedades.paneprincipal.contrasenia"));
+				.setText(prop.getProperty("archivosdepropiedades.paneprincipal.contrasenia"));
 				vf.getVp().getPanelPrincipal().getEtiqueta3()
-						.setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionidioma"));
+				.setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionidioma"));
 				vf.getVp().getPanelPrincipal().getCheckEspañol()
-						.setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionidiomaespañol"));
+				.setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionidiomaespañol"));
 				vf.getVp().getPanelPrincipal().getCheckIngles()
-						.setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionidiomaingles"));
+				.setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionidiomaingles"));
 
 				vf.getVsu().getCardSignUp().getCrearAdmin().getDatoNombre()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarnombre"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarnombre"));
 				vf.getVsu().getCardSignUp().getCrearAdmin().getDatoContrasena()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcontraseña"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcontraseña"));
 				vf.getVsu().getCardSignUp().getCrearAdmin().getDatoContrasenaConf()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcontraseña2"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcontraseña2"));
 				vf.getVsu().getCardSignUp().getCrearAdmin().getDatoCorreo()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcorreo"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcorreo"));
 				vf.getVsu().getCardSignUp().getCrearAdmin().getDatoEdad()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registraredad"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registraredad"));
 				vf.getVsu().getCardSignUp().getCrearAdmin().getDatoCargoEspecifico()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarrol"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarrol"));
 				vf.getVsu().getCardSignUp().getCrearAdmin().getVerContrasena()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.mostrarcontraseña"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.mostrarcontraseña"));
 				vf.getVsu().getCardSignUp().getCrearAdmin().getPasswordAdmins().setToolTipText(
 						prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcontraseñaadmin"));
 				vf.getVsu().getCardSignUp().getCrearAdmin().getVerContrasenaAdmins()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.mostrarcontraseña"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.mostrarcontraseña"));
 				vf.getVsu().getCardSignUp().getCrearAdmin().getBotonCrearAdmin()
-						.setText(prop.getProperty("archivosdepropiedades.panelcrearuser.btnregistrarse"));
+				.setText(prop.getProperty("archivosdepropiedades.panelcrearuser.btnregistrarse"));
 				vf.getVsu().getCardSignUp().getCrearAdmin().getSeleccionarFoto()
-						.setText(prop.getProperty("archivosdepropiedades.panelcrearuser.seleccionafoto"));
+				.setText(prop.getProperty("archivosdepropiedades.panelcrearuser.seleccionafoto"));
 
 				vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().removeItemAt(0);
 				vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais()
-						.insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearuser.seleccionarpais"), 0);
+				.insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearuser.seleccionarpais"), 0);
 				vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().setSelectedIndex(0);
 				vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().repaint();
 				vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().revalidate();
 
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoNombre()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarnombre"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarnombre"));
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoContrasena()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcontraseña"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcontraseña"));
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoContrasenaConf()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcontraseña2"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcontraseña2"));
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoCorreo()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcorreo"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcorreo"));
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoEdad()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registraredad"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registraredad"));
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoAnosDeExperiencia()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.anosexperiencia"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.anosexperiencia"));
 				vf.getVsu().getCardSignUp().getCrearCoach().getSeleccionarFoto()
-						.setText(prop.getProperty("archivosdepropiedades.panelcrearuser.seleccionafoto"));
+				.setText(prop.getProperty("archivosdepropiedades.panelcrearuser.seleccionafoto"));
 				vf.getVsu().getCardSignUp().getCrearCoach().getBotonCrearCoach()
-						.setText(prop.getProperty("archivosdepropiedades.panelcrearuser.btnregistrarse"));
+				.setText(prop.getProperty("archivosdepropiedades.panelcrearuser.btnregistrarse"));
 				vf.getVsu().getCardSignUp().getCrearCoach().getVerContrasena()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.mostrarcontraseña"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.mostrarcontraseña"));
 
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().removeItemAt(0);
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais()
-						.insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearuser.seleccionarpais"), 0);
+				.insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearuser.seleccionarpais"), 0);
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().setSelectedIndex(0);
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().repaint();
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().revalidate();
@@ -235,33 +249,33 @@ public class Controller implements ActionListener {
 
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional().removeItemAt(0);
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional()
-						.insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearuser.equiposcoach"), 0);
+				.insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearuser.equiposcoach"), 0);
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional().setSelectedIndex(0);
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional().repaint();
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional().revalidate();
 
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoNombre()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarnombre"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarnombre"));
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoContrasena()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcontraseña"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcontraseña"));
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoContrasenaConf()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcontraseña2"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcontraseña2"));
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoCorreo()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcorreo"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcorreo"));
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoEdad()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registraredad"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registraredad"));
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoAnosDeExperiencia()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.anosexperiencia"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.anosexperiencia"));
 				vf.getVsu().getCardSignUp().getCrearGamer().getSeleccionarFoto()
-						.setText(prop.getProperty("archivosdepropiedades.panelcrearuser.seleccionafoto"));
+				.setText(prop.getProperty("archivosdepropiedades.panelcrearuser.seleccionafoto"));
 				vf.getVsu().getCardSignUp().getCrearGamer().getBotonCrearGamer()
-						.setText(prop.getProperty("archivosdepropiedades.panelcrearuser.btnregistrarse"));
+				.setText(prop.getProperty("archivosdepropiedades.panelcrearuser.btnregistrarse"));
 				vf.getVsu().getCardSignUp().getCrearGamer().getVerContrasena()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.mostrarcontraseña"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.mostrarcontraseña"));
 
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoPais().removeItemAt(0);
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoPais()
-						.insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearuser.seleccionarpais"), 0);
+				.insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearuser.seleccionarpais"), 0);
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoPais().setSelectedIndex(0);
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoPais().repaint();
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoPais().revalidate();
@@ -275,10 +289,35 @@ public class Controller implements ActionListener {
 
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().removeItemAt(0);
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva()
-						.insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearuser.torneosjugados"), 0);
+				.insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearuser.torneosjugados"), 0);
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().setSelectedIndex(0);
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().repaint();
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().revalidate();
+				
+				
+				vf.getVa().getReportes().setText(prop.getProperty("archivosdepropiedades.panelAdmin.informes"));
+				vf.getVa().getAdministrarGamer().setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrarjugadores"));
+				vf.getVa().getAdministrarCouch().setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrarentrenador"));
+				vf.getVa().getMostrarGamers().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarjugadores"));
+				vf.getVa().getMostrarCoachs().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarentrenadores"));
+				vf.getVa().getEliminarGamer().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarjugadores"));
+				vf.getVa().getEliminarCouch().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarentrenadores"));
+				vf.getVa().getAdministrarTorneos().setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrartorneos"));
+				vf.getVa().getAdministrarPartidas().setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrartorneos"));
+				vf.getVa().getCrearTorneo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.creartorneos"));
+				vf.getVa().getCrearPartida().setText(prop.getProperty("archivosdepropiedades.panelAdmin.crearpartidos"));
+				vf.getVa().getMostrarTorneos().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrartorneos"));
+				vf.getVa().getMostrarPartidas().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarpartidos"));
+				vf.getVa().getActualizarTorneo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.actualizartorneo"));
+				vf.getVa().getActualizarPartida().setText(prop.getProperty("archivosdepropiedades.panelAdmin.actializarpartidos"));
+				vf.getVa().getEliminarTorneo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminartorneos"));
+				vf.getVa().getEliminarPartida().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarpartidos"));
+				vf.getVa().getAdministrarEquipo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.Administrarequipos"));
+				vf.getVa().getActualizarEquipo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.actualizarequipos"));
+				vf.getVa().getEliminarEquipo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarequipos"));
+				vf.getVa().getMostrarEquipos().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarequipos"));
+				vf.getVa().getConfigurarNotificaciones().setText(prop.getProperty("archivosdepropiedades.panelAdmin.configurarnotificaciones"));
+				vf.getVa().getAnaliytics().setText(prop.getProperty("archivosdepropiedades.panelAdmin.analitica"));
 
 				vf.getVp().getPanelPrincipal().getCheckIngles().setSelected(false);
 
@@ -299,78 +338,78 @@ public class Controller implements ActionListener {
 				}
 
 				vf.getVp().getPanelPrincipal().getBtnAdmin()
-						.setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnadmin"));
+				.setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnadmin"));
 				vf.getVp().getPanelPrincipal().getBtnCouch()
-						.setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnentrenador"));
+				.setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnentrenador"));
 				vf.getVp().getPanelPrincipal().getBtnGamer()
-						.setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnjugador"));
+				.setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnjugador"));
 				vf.getVp().getPanelPrincipal().getBtnEntrar()
-						.setText(prop.getProperty("archivosdepropiedades.paneprincipal.btniniciarsesion"));
+				.setText(prop.getProperty("archivosdepropiedades.paneprincipal.btniniciarsesion"));
 				vf.getVp().getPanelPrincipal().getBtnRegistrar()
-						.setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnregistrarse"));
+				.setText(prop.getProperty("archivosdepropiedades.paneprincipal.btnregistrarse"));
 				vf.getVp().getPanelPrincipal().getEtiqueta0()
-						.setText(prop.getProperty("archivosdepropiedades.paneprincipal.usuario"));
+				.setText(prop.getProperty("archivosdepropiedades.paneprincipal.usuario"));
 				vf.getVp().getPanelPrincipal().getEtiqueta1()
-						.setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionrol"));
+				.setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionrol"));
 				vf.getVp().getPanelPrincipal().getEtiqueta2()
-						.setText(prop.getProperty("archivosdepropiedades.paneprincipal.contrasenia"));
+				.setText(prop.getProperty("archivosdepropiedades.paneprincipal.contrasenia"));
 				vf.getVp().getPanelPrincipal().getEtiqueta3()
-						.setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionidioma"));
+				.setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionidioma"));
 				vf.getVp().getPanelPrincipal().getCheckEspañol()
-						.setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionidiomaespañol"));
+				.setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionidiomaespañol"));
 				vf.getVp().getPanelPrincipal().getCheckIngles()
-						.setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionidiomaingles"));
+				.setText(prop.getProperty("archivosdepropiedades.paneprincipal.seleccionidiomaingles"));
 
 				vf.getVsu().getCardSignUp().getCrearAdmin().getDatoNombre()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarnombre"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarnombre"));
 				vf.getVsu().getCardSignUp().getCrearAdmin().getDatoContrasena()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcontraseña"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcontraseña"));
 				vf.getVsu().getCardSignUp().getCrearAdmin().getDatoContrasenaConf()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcontraseña2"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcontraseña2"));
 				vf.getVsu().getCardSignUp().getCrearAdmin().getDatoCorreo()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcorreo"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcorreo"));
 				vf.getVsu().getCardSignUp().getCrearAdmin().getDatoEdad()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registraredad"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registraredad"));
 				vf.getVsu().getCardSignUp().getCrearAdmin().getDatoCargoEspecifico()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarrol"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarrol"));
 				vf.getVsu().getCardSignUp().getCrearAdmin().getVerContrasena()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.mostrarcontraseña"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.mostrarcontraseña"));
 				vf.getVsu().getCardSignUp().getCrearAdmin().getPasswordAdmins().setToolTipText(
 						prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcontraseñaadmin"));
 				vf.getVsu().getCardSignUp().getCrearAdmin().getVerContrasenaAdmins()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.mostrarcontraseña"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.mostrarcontraseña"));
 				vf.getVsu().getCardSignUp().getCrearAdmin().getBotonCrearAdmin()
-						.setText(prop.getProperty("archivosdepropiedades.panelcrearuser.btnregistrarse"));
+				.setText(prop.getProperty("archivosdepropiedades.panelcrearuser.btnregistrarse"));
 				vf.getVsu().getCardSignUp().getCrearAdmin().getSeleccionarFoto()
-						.setText(prop.getProperty("archivosdepropiedades.panelcrearuser.seleccionafoto"));
+				.setText(prop.getProperty("archivosdepropiedades.panelcrearuser.seleccionafoto"));
 
 				vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().removeItemAt(0);
 				vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais()
-						.insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearuser.seleccionarpais"), 0);
+				.insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearuser.seleccionarpais"), 0);
 				vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().setSelectedIndex(0);
 				vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().repaint();
 				vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().revalidate();
 
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoNombre()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarnombre"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarnombre"));
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoContrasena()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcontraseña"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcontraseña"));
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoContrasenaConf()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcontraseña2"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcontraseña2"));
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoCorreo()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcorreo"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcorreo"));
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoEdad()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registraredad"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registraredad"));
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoAnosDeExperiencia()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.anosexperiencia"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.anosexperiencia"));
 				vf.getVsu().getCardSignUp().getCrearCoach().getSeleccionarFoto()
-						.setText(prop.getProperty("archivosdepropiedades.panelcrearuser.seleccionafoto"));
+				.setText(prop.getProperty("archivosdepropiedades.panelcrearuser.seleccionafoto"));
 				vf.getVsu().getCardSignUp().getCrearCoach().getBotonCrearCoach()
-						.setText(prop.getProperty("archivosdepropiedades.panelcrearuser.btnregistrarse"));
+				.setText(prop.getProperty("archivosdepropiedades.panelcrearuser.btnregistrarse"));
 
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().removeItemAt(0);
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais()
-						.insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearuser.seleccionarpais"), 0);
+				.insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearuser.seleccionarpais"), 0);
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().setSelectedIndex(0);
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().repaint();
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().revalidate();
@@ -384,31 +423,31 @@ public class Controller implements ActionListener {
 
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional().removeItemAt(0);
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional()
-						.insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearuser.equiposcoach"), 0);
+				.insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearuser.equiposcoach"), 0);
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional().setSelectedIndex(0);
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional().repaint();
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional().revalidate();
 
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoNombre()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarnombre"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarnombre"));
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoContrasena()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcontraseña"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcontraseña"));
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoContrasenaConf()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcontraseña2"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcontraseña2"));
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoCorreo()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcorreo"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registrarcorreo"));
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoEdad()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registraredad"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.registraredad"));
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoAnosDeExperiencia()
-						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.anosexperiencia"));
+				.setToolTipText(prop.getProperty("archivosdepropiedades.panelcrearuser.anosexperiencia"));
 				vf.getVsu().getCardSignUp().getCrearGamer().getSeleccionarFoto()
-						.setText(prop.getProperty("archivosdepropiedades.panelcrearuser.seleccionafoto"));
+				.setText(prop.getProperty("archivosdepropiedades.panelcrearuser.seleccionafoto"));
 				vf.getVsu().getCardSignUp().getCrearGamer().getBotonCrearGamer()
-						.setText(prop.getProperty("archivosdepropiedades.panelcrearuser.btnregistrarse"));
+				.setText(prop.getProperty("archivosdepropiedades.panelcrearuser.btnregistrarse"));
 
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoPais().removeItemAt(0);
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoPais()
-						.insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearuser.seleccionarpais"), 0);
+				.insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearuser.seleccionarpais"), 0);
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoPais().setSelectedIndex(0);
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoPais().repaint();
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoPais().revalidate();
@@ -422,10 +461,35 @@ public class Controller implements ActionListener {
 
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().removeItemAt(0);
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva()
-						.insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearuser.torneosjugados"), 0);
+				.insertItemAt(prop.getProperty("archivosdepropiedades.panelcrearuser.torneosjugados"), 0);
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().setSelectedIndex(0);
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().repaint();
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().revalidate();
+				
+				
+				vf.getVa().getReportes().setText(prop.getProperty("archivosdepropiedades.panelAdmin.informes"));
+				vf.getVa().getAdministrarGamer().setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrarjugadores"));
+				vf.getVa().getAdministrarCouch().setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrarentrenador"));
+				vf.getVa().getMostrarGamers().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarjugadores"));
+				vf.getVa().getMostrarCoachs().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarentrenadores"));
+				vf.getVa().getEliminarGamer().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarjugadores"));
+				vf.getVa().getEliminarCouch().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarentrenadores"));
+				vf.getVa().getAdministrarTorneos().setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrartorneos"));
+				vf.getVa().getAdministrarPartidas().setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrartorneos"));
+				vf.getVa().getCrearTorneo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.creartorneos"));
+				vf.getVa().getCrearPartida().setText(prop.getProperty("archivosdepropiedades.panelAdmin.crearpartidos"));
+				vf.getVa().getMostrarTorneos().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrartorneos"));
+				vf.getVa().getMostrarPartidas().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarpartidos"));
+				vf.getVa().getActualizarTorneo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.actualizartorneo"));
+				vf.getVa().getActualizarPartida().setText(prop.getProperty("archivosdepropiedades.panelAdmin.actializarpartidos"));
+				vf.getVa().getEliminarTorneo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminartorneos"));
+				vf.getVa().getEliminarPartida().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarpartidos"));
+				vf.getVa().getAdministrarEquipo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.Administrarequipos"));
+				vf.getVa().getActualizarEquipo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.actualizarequipos"));
+				vf.getVa().getEliminarEquipo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarequipos"));
+				vf.getVa().getMostrarEquipos().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarequipos"));
+				vf.getVa().getConfigurarNotificaciones().setText(prop.getProperty("archivosdepropiedades.panelAdmin.configurarnotificaciones"));
+				vf.getVa().getAnaliytics().setText(prop.getProperty("archivosdepropiedades.panelAdmin.analitica"));
 
 				vf.getVp().getPanelPrincipal().getCheckEspañol().setSelected(false);
 
@@ -564,9 +628,9 @@ public class Controller implements ActionListener {
 				if (!nombre.isEmpty() && !contrasena.isEmpty() && !correo.isEmpty() && edad != 0 && !pais.isEmpty()
 						&& imagen != null && !trayectoriaCompetitiva.isEmpty() && !juegoEspecialidad.isEmpty()
 						&& vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva()
-								.getSelectedIndex() != 0
+						.getSelectedIndex() != 0
 						&& vf.getVsu().getCardSignUp().getCrearGamer().getDatoJuegoEspecialidad()
-								.getSelectedIndex() != 0
+						.getSelectedIndex() != 0
 						&& vf.getVsu().getCardSignUp().getCrearGamer().getDatoPais().getSelectedIndex() != 0) {
 					if (contrasena.equals(contrasenaConf)) {
 						if (mf.getJdao().find(new Jugador(nombre, null, null, 0, null, null, null, null, 0)) == null) {
@@ -580,7 +644,7 @@ public class Controller implements ActionListener {
 							vf.getVsu().getCardSignUp().getCrearGamer().getDatoEdad().setValue(0);
 							vf.getVsu().getCardSignUp().getCrearGamer().getDatoPais().setSelectedIndex(0);
 							vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva()
-									.setSelectedIndex(0);
+							.setSelectedIndex(0);
 							vf.getVsu().getCardSignUp().getCrearGamer().getDatoJuegoEspecialidad().setSelectedIndex(0);
 							vf.getVsu().getCardSignUp().getCrearGamer().getDatoAnosDeExperiencia().setValue(0);
 							vf.getVsu().getCardSignUp().getCrearGamer().getSeleccionarFoto().setIcon(null);
@@ -643,9 +707,9 @@ public class Controller implements ActionListener {
 				if (!nombre.isEmpty() && !contrasena.isEmpty() && !correo.isEmpty() && edad != 0 && !pais.isEmpty()
 						&& imagen != null && !trayectoriaCompetitiva.isEmpty() && !juegoEspecialidad.isEmpty()
 						&& vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional()
-								.getSelectedIndex() != 0
+						.getSelectedIndex() != 0
 						&& vf.getVsu().getCardSignUp().getCrearCoach().getDatoJuegoEspecialidad()
-								.getSelectedIndex() != 0
+						.getSelectedIndex() != 0
 						&& vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().getSelectedIndex() != 0) {
 					if (contrasena.equals(contrasenaConf)) {
 						if (mf.getEdao()
@@ -660,7 +724,7 @@ public class Controller implements ActionListener {
 							vf.getVsu().getCardSignUp().getCrearCoach().getDatoEdad().setValue(0);
 							vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().setSelectedIndex(0);
 							vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional()
-									.setSelectedIndex(0);
+							.setSelectedIndex(0);
 							vf.getVsu().getCardSignUp().getCrearCoach().getDatoJuegoEspecialidad().setSelectedIndex(0);
 							vf.getVsu().getCardSignUp().getCrearCoach().getDatoAnosDeExperiencia().setValue(0);
 							vf.getVsu().getCardSignUp().getCrearCoach().getSeleccionarFoto().setIcon(null);
@@ -768,42 +832,93 @@ public class Controller implements ActionListener {
 			}
 		}
 		case "btnEntrar": {
-			String nombre = vf.getVp().getPanelPrincipal().getDatoUsuario().getText();
-			String contrasena = String.valueOf(vf.getVp().getPanelPrincipal().getDatoContrasena().getPassword());
-			if (vf.getVp().getPanelPrincipal().getBtnAdmin().isSelected()) {
-				Administrador admin = new Administrador(nombre, contrasena, null, 0, null, null, null);
-				if (mf.getAdao().find(admin) != null) {
-					MensajeEmergente.mensajeNormalMasAlgo("archivosdepropiedades.mensajes.bienvenida", " " + nombre,
-							"archivosdepropiedades.mensajes.confirmacion.exito");
-					vf.getVa().setVisible(true);
+			if (vf.getVp().getPanelPrincipal().getCheckEspañol().isSelected()
+					|| vf.getVp().getPanelPrincipal().getCheckIngles().isSelected()) {
+				String nombre = vf.getVp().getPanelPrincipal().getDatoUsuario().getText();
+				String contrasena = String.valueOf(vf.getVp().getPanelPrincipal().getDatoContrasena().getPassword());
+				if (vf.getVp().getPanelPrincipal().getBtnAdmin().isSelected()) {
+					Administrador admin = new Administrador(nombre, contrasena, null, 0, null, null, null);
+					if (mf.getAdao().find(admin) != null) {
+						MensajeEmergente.mensajeNormalMasAlgo("archivosdepropiedades.mensajes.bienvenida", " " + nombre,
+								"archivosdepropiedades.mensajes.confirmacion.exito");
+						vf.getVa().setVisible(true);
+					} else {
+						MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.usuarionoencontrado",
+								"archivosdepropiedades.mensajes.error");
+					}
+				} else if (vf.getVp().getPanelPrincipal().getBtnCouch().isSelected()) {
+					Entrenador coach = new Entrenador(nombre, contrasena, null, 0, null, null, null, null, 0);
+					if (mf.getEdao().find(coach) != null) {
+						MensajeEmergente.mensajeNormalMasAlgo("archivosdepropiedades.mensajes.bienvenida", " " + nombre,
+								"archivosdepropiedades.mensajes.confirmacion.exito");
+						vf.getVe().setVisible(true);
+					} else {
+						MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.usuarionoencontrado",
+								"archivosdepropiedades.mensajes.error");
+					}
+				} else if (vf.getVp().getPanelPrincipal().getBtnGamer().isSelected()) {
+					Jugador gamer = new Jugador(nombre, contrasena, null, 0, null, null, null, null, 0);
+					if (mf.getJdao().find(gamer) != null) {
+						MensajeEmergente.mensajeNormalMasAlgo("archivosdepropiedades.mensajes.bienvenida", " " + nombre,
+								"archivosdepropiedades.mensajes.confirmacion.exito");
+						vf.getVg().setVisible(true);
+					} else {
+						MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.usuarionoencontrado",
+								"archivosdepropiedades.mensajes.error");
+					}
 				} else {
-					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.usuarionoencontrado",
-							"archivosdepropiedades.mensajes.error");
-				}
-			} else if (vf.getVp().getPanelPrincipal().getBtnCouch().isSelected()) {
-				Entrenador coach = new Entrenador(nombre, contrasena, null, 0, null, null, null, null, 0);
-				if (mf.getEdao().find(coach) != null) {
-					MensajeEmergente.mensajeNormalMasAlgo("archivosdepropiedades.mensajes.bienvenida", " " + nombre,
-							"archivosdepropiedades.mensajes.confirmacion.exito");
-					vf.getVe().setVisible(true);
-				} else {
-					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.usuarionoencontrado",
-							"archivosdepropiedades.mensajes.error");
-				}
-			} else if (vf.getVp().getPanelPrincipal().getBtnGamer().isSelected()) {
-				Jugador gamer = new Jugador(nombre, contrasena, null, 0, null, null, null, null, 0);
-				if (mf.getJdao().find(gamer) != null) {
-					MensajeEmergente.mensajeNormalMasAlgo("archivosdepropiedades.mensajes.bienvenida", " " + nombre,
-							"archivosdepropiedades.mensajes.confirmacion.exito");
-					vf.getVg().setVisible(true);
-				} else {
-					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.usuarionoencontrado",
+					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.errorrol",
 							"archivosdepropiedades.mensajes.error");
 				}
 			} else {
-				MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.errorrol",
-						"archivosdepropiedades.mensajes.error");
+				JOptionPane.showMessageDialog(vf.getVp(), "Plis select your language.", "Warning.",
+						JOptionPane.WARNING_MESSAGE);
 			}
+			break;
+		}
+		case "btnMostrarGamers": {
+			
+			String nombre = prop.getProperty("archivosdepropiedades.arraymostrar.nombre");
+			String contrasena = prop.getProperty("archivosdepropiedades.arraymostrar.contrasena");
+			String correo = prop.getProperty("archivosdepropiedades.arraymostrar.correo");
+			String edad = prop.getProperty("archivosdepropiedades.arraymostrar.edad");
+			String pais = prop.getProperty("archivosdepropiedades.arraymostrar.pais");
+			String trayectoriaCompetitiva = prop.getProperty("archivosdepropiedades.arraymostrar.trayectoriacompetitiva");
+			String juegoEspecialidad = prop.getProperty("archivosdepropiedades.arraymostrar.juegoespecialidad");
+			String anosDeExperiencia = prop.getProperty("archivosdepropiedades.arraymostrar.anosexperiencia");
+			String foto = prop.getProperty("archivosdepropiedades.arraymostrar.foto");
+			
+			
+			String[] titulos = { nombre, contrasena, correo, edad, pais, trayectoriaCompetitiva,
+					juegoEspecialidad, anosDeExperiencia, foto };
+			vf.getVa().getCardAdmin().getPanelMostrar().setModelo(titulos);
+			mf.getJdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
+			vf.getVa().getCardAdmin().getPanelMostrar().getTabla().revalidate();
+			vf.getVa().getCardAdmin().getPanelMostrar().getTabla().repaint();
+			vf.getVa().getCardAdmin().mostrarPanel("PanelMostrar");
+			break;
+		}
+		case "btnMostrarCoaches": {
+			
+			String nombre = prop.getProperty("archivosdepropiedades.arraymostrar.nombre");
+			String contrasena = prop.getProperty("archivosdepropiedades.arraymostrar.contrasena");
+			String correo = prop.getProperty("archivosdepropiedades.arraymostrar.correo");
+			String edad = prop.getProperty("archivosdepropiedades.arraymostrar.edad");
+			String pais = prop.getProperty("archivosdepropiedades.arraymostrar.pais");
+			String trayectoriaProfesional = prop.getProperty("archivosdepropiedades.arraymostrar.trayectoriaprofesional");
+			String juegoEspecialidad = prop.getProperty("archivosdepropiedades.arraymostrar.juegoespecialidad");
+			String anosDeExperiencia = prop.getProperty("archivosdepropiedades.arraymostrar.anosexperiencia");
+			String foto = prop.getProperty("archivosdepropiedades.arraymostrar.foto");
+			
+			
+			
+			String[] titulos = { nombre, contrasena, correo, edad, pais, trayectoriaProfesional,
+					juegoEspecialidad, anosDeExperiencia, foto };
+			vf.getVa().getCardAdmin().getPanelMostrar().setModelo(titulos);
+			mf.getEdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
+			vf.getVa().getCardAdmin().getPanelMostrar().getTabla().revalidate();
+			vf.getVa().getCardAdmin().getPanelMostrar().getTabla().repaint();
+			vf.getVa().getCardAdmin().mostrarPanel("PanelMostrar");
 			break;
 		}
 		}

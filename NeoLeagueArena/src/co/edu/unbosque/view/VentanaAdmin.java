@@ -9,8 +9,8 @@ public class VentanaAdmin extends JFrame{
 	
 	private JMenuBar menuBar;
 	private JMenu administrarGamer, administrarCouch, administrarTorneos, administrarPartidas, administrarEquipo, reportes;
-	private JMenuItem configurarNotificaciones, mostrarGamers, mostrarCouchs, eliminarGamer, eliminarCouch, eliminarTorneo, eliminarPartida, crearTorneo, crearPartida, mostrarTorneos, mostrarPartidas, actualizarTorneo, actualizarPartida, actualizarEquipo, eliminarEquipo, mostrarEquipos, analiytics;
-	
+	private JMenuItem configurarNotificaciones, mostrarGamers, mostrarCoachs, eliminarGamer, eliminarCouch, eliminarTorneo, eliminarPartida, crearTorneo, crearPartida, mostrarTorneos, mostrarPartidas, actualizarTorneo, actualizarPartida, actualizarEquipo, eliminarEquipo, mostrarEquipos, analiytics;
+	private CardAdmin cardAdmin;
 
 	/**
 	 * 
@@ -18,8 +18,9 @@ public class VentanaAdmin extends JFrame{
 	private static final long serialVersionUID = 1L;
 	public VentanaAdmin() {
 		setTitle("Window Admin");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1280,720);
-		setResizable(false);
+//		setResizable(false);
 		setLocationRelativeTo(null);
 		setLayout(null);
 		menuBar = new JMenuBar();
@@ -27,7 +28,7 @@ public class VentanaAdmin extends JFrame{
 		administrarGamer = new JMenu("Manage Gamers");
 		administrarCouch = new JMenu("Manage Couchs");
 		mostrarGamers = new JMenuItem("Show Gamers");
-		mostrarCouchs = new JMenuItem("Show Couchs");
+		mostrarCoachs = new JMenuItem("Show Couchs");
 		eliminarGamer = new JMenuItem("Delete Gamer");
 		eliminarCouch = new JMenuItem("Delete Couch");
 		administrarTorneos = new JMenu("Manage Tournaments");
@@ -63,14 +64,163 @@ public class VentanaAdmin extends JFrame{
 		administrarPartidas.add(eliminarPartida);
 		administrarGamer.add(mostrarGamers);
 		administrarGamer.add(eliminarGamer);
-		administrarCouch.add(mostrarCouchs);
+		administrarCouch.add(mostrarCoachs);
 		administrarCouch.add(eliminarCouch);
 		administrarEquipo.add(actualizarEquipo);
 		administrarEquipo.add(eliminarEquipo);
 		administrarEquipo.add(mostrarEquipos);		
 		reportes.add(analiytics);
 		setJMenuBar(menuBar);
+		cardAdmin = new CardAdmin();
+		cardAdmin.setBounds(0, 0, 1280, 720);
+		add(cardAdmin);
+		setVisible(true);
 	}
+	public JMenu getAdministrarCouch() {
+		return administrarCouch;
+	}
+	public void setAdministrarCouch(JMenu administrarCouch) {
+		this.administrarCouch = administrarCouch;
+	}
+	public JMenu getReportes() {
+		return reportes;
+	}
+	public void setReportes(JMenu reportes) {
+		this.reportes = reportes;
+	}
+	public JMenuItem getConfigurarNotificaciones() {
+		return configurarNotificaciones;
+	}
+	public void setConfigurarNotificaciones(JMenuItem configurarNotificaciones) {
+		this.configurarNotificaciones = configurarNotificaciones;
+	}
+	public JMenuItem getMostrarGamers() {
+		return mostrarGamers;
+	}
+	public void setMostrarGamers(JMenuItem mostrarGamers) {
+		this.mostrarGamers = mostrarGamers;
+	}
+	public JMenuItem getMostrarCoachs() {
+		return mostrarCoachs;
+	}
+	public void setMostrarCoachs(JMenuItem mostrarCoachs) {
+		this.mostrarCoachs = mostrarCoachs;
+	}
+	public JMenuItem getEliminarGamer() {
+		return eliminarGamer;
+	}
+	public void setEliminarGamer(JMenuItem eliminarGamer) {
+		this.eliminarGamer = eliminarGamer;
+	}
+	public JMenuItem getEliminarCouch() {
+		return eliminarCouch;
+	}
+	public void setEliminarCouch(JMenuItem eliminarCouch) {
+		this.eliminarCouch = eliminarCouch;
+	}
+	public JMenuItem getEliminarTorneo() {
+		return eliminarTorneo;
+	}
+	public void setEliminarTorneo(JMenuItem eliminarTorneo) {
+		this.eliminarTorneo = eliminarTorneo;
+	}
+	public JMenuItem getEliminarPartida() {
+		return eliminarPartida;
+	}
+	public void setEliminarPartida(JMenuItem eliminarPartida) {
+		this.eliminarPartida = eliminarPartida;
+	}
+	public JMenuItem getCrearTorneo() {
+		return crearTorneo;
+	}
+	public void setCrearTorneo(JMenuItem crearTorneo) {
+		this.crearTorneo = crearTorneo;
+	}
+	public JMenuItem getCrearPartida() {
+		return crearPartida;
+	}
+	public void setCrearPartida(JMenuItem crearPartida) {
+		this.crearPartida = crearPartida;
+	}
+	public JMenuItem getMostrarTorneos() {
+		return mostrarTorneos;
+	}
+	public void setMostrarTorneos(JMenuItem mostrarTorneos) {
+		this.mostrarTorneos = mostrarTorneos;
+	}
+	public JMenuItem getMostrarPartidas() {
+		return mostrarPartidas;
+	}
+	public void setMostrarPartidas(JMenuItem mostrarPartidas) {
+		this.mostrarPartidas = mostrarPartidas;
+	}
+	public JMenuItem getActualizarTorneo() {
+		return actualizarTorneo;
+	}
+	public void setActualizarTorneo(JMenuItem actualizarTorneo) {
+		this.actualizarTorneo = actualizarTorneo;
+	}
+	public JMenuItem getActualizarPartida() {
+		return actualizarPartida;
+	}
+	public void setActualizarPartida(JMenuItem actualizarPartida) {
+		this.actualizarPartida = actualizarPartida;
+	}
+	public JMenuItem getActualizarEquipo() {
+		return actualizarEquipo;
+	}
+	public void setActualizarEquipo(JMenuItem actualizarEquipo) {
+		this.actualizarEquipo = actualizarEquipo;
+	}
+	public JMenuItem getEliminarEquipo() {
+		return eliminarEquipo;
+	}
+	public void setEliminarEquipo(JMenuItem eliminarEquipo) {
+		this.eliminarEquipo = eliminarEquipo;
+	}
+	public JMenuItem getMostrarEquipos() {
+		return mostrarEquipos;
+	}
+	public void setMostrarEquipos(JMenuItem mostrarEquipos) {
+		this.mostrarEquipos = mostrarEquipos;
+	}
+	public CardAdmin getCardAdmin() {
+		return cardAdmin;
+	}
+	public void setCardAdmin(CardAdmin cardAdmin) {
+		this.cardAdmin = cardAdmin;
+	}
+	public JMenu getAdministrarGamer() {
+		return administrarGamer;
+	}
+	public void setAdministrarGamer(JMenu administrarGamer) {
+		this.administrarGamer = administrarGamer;
+	}
+	public JMenu getAdministrarTorneos() {
+		return administrarTorneos;
+	}
+	public void setAdministrarTorneos(JMenu administrarTorneos) {
+		this.administrarTorneos = administrarTorneos;
+	}
+	public JMenu getAdministrarPartidas() {
+		return administrarPartidas;
+	}
+	public void setAdministrarPartidas(JMenu administrarPartidas) {
+		this.administrarPartidas = administrarPartidas;
+	}
+	public JMenu getAdministrarEquipo() {
+		return administrarEquipo;
+	}
+	public void setAdministrarEquipo(JMenu administrarEquipo) {
+		this.administrarEquipo = administrarEquipo;
+	}
+	public JMenuItem getAnaliytics() {
+		return analiytics;
+	}
+	public void setAnaliytics(JMenuItem analiytics) {
+		this.analiytics = analiytics;
+	}
+	
 	
 	
 
