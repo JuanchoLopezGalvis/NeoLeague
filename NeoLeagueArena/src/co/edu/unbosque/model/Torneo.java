@@ -10,19 +10,27 @@ public class Torneo {
 	private Date fechaFin;
 	private String formato;
 	private int maxEquipos;
+	private long premio;
 
 	public Torneo() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Torneo(String nombre, String juego, Date fechaInicio, Date fechaFin, String formato, int maxEquipos) {
+
+
+	public Torneo(String nombre, String juego, Date fechaInicio, Date fechaFin, String formato, int maxEquipos,
+			long premio) {
+		super();
 		this.nombre = nombre;
 		this.juego = juego;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 		this.formato = formato;
 		this.maxEquipos = maxEquipos;
+		this.premio = premio;
 	}
+
+
 
 	public String getNombre() {
 		return nombre;
@@ -71,10 +79,23 @@ public class Torneo {
 	public void setMaxEquipos(int maxEquipos) {
 		this.maxEquipos = maxEquipos;
 	}
+	
+
+	public long getPremio() {
+		return premio;
+	}
+
+
+
+	public void setPremio(long premio) {
+		this.premio = premio;
+	}
+
+
 
 	@Override
 	public String toString() {
-		return ";" + nombre + ";" + juego + ";" + fechaInicio + ";"+ fechaFin + ";" + formato + ";" + maxEquipos + "\n";
+		return ";" + nombre + ";" + juego + ";" + fechaInicio + ";"+ fechaFin + ";" + formato + ";" + maxEquipos + "\n"+ premio+"\n";
 	}
 	
 	
