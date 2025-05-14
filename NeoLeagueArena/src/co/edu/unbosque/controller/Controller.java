@@ -304,7 +304,7 @@ public class Controller implements ActionListener {
 				vf.getVa().getEliminarGamer().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarjugadores"));
 				vf.getVa().getEliminarCouch().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarentrenadores"));
 				vf.getVa().getAdministrarTorneos().setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrartorneos"));
-				vf.getVa().getAdministrarPartidas().setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrartorneos"));
+				vf.getVa().getAdministrarPartidas().setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrarpartidos"));
 				vf.getVa().getCrearTorneo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.creartorneos"));
 				vf.getVa().getCrearPartida().setText(prop.getProperty("archivosdepropiedades.panelAdmin.crearpartidos"));
 				vf.getVa().getMostrarTorneos().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrartorneos"));
@@ -320,6 +320,13 @@ public class Controller implements ActionListener {
 				vf.getVa().getConfigurarNotificaciones().setText(prop.getProperty("archivosdepropiedades.panelAdmin.configurarnotificaciones"));
 				vf.getVa().getAnaliytics().setText(prop.getProperty("archivosdepropiedades.panelAdmin.analitica"));
 
+				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoJuego().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.nombrejuego"));
+				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoNombreTorneo().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.nombretorneo"));
+				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoFormatoTorneo().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.formatodeltorneo"));
+				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoMaxEquipos().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.maxequipos"));
+				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getEtiqueta0().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.fechainicio"));
+				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getEtiqueta1().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.fechafin"));
+				
 				vf.getVp().getPanelPrincipal().getCheckIngles().setSelected(false);
 
 			}
@@ -476,7 +483,7 @@ public class Controller implements ActionListener {
 				vf.getVa().getEliminarGamer().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarjugadores"));
 				vf.getVa().getEliminarCouch().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarentrenadores"));
 				vf.getVa().getAdministrarTorneos().setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrartorneos"));
-				vf.getVa().getAdministrarPartidas().setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrartorneos"));
+				vf.getVa().getAdministrarPartidas().setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrarpartidos"));
 				vf.getVa().getCrearTorneo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.creartorneos"));
 				vf.getVa().getCrearPartida().setText(prop.getProperty("archivosdepropiedades.panelAdmin.crearpartidos"));
 				vf.getVa().getMostrarTorneos().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrartorneos"));
@@ -491,6 +498,13 @@ public class Controller implements ActionListener {
 				vf.getVa().getMostrarEquipos().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarequipos"));
 				vf.getVa().getConfigurarNotificaciones().setText(prop.getProperty("archivosdepropiedades.panelAdmin.configurarnotificaciones"));
 				vf.getVa().getAnaliytics().setText(prop.getProperty("archivosdepropiedades.panelAdmin.analitica"));
+				
+				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoJuego().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.nombrejuego"));
+				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoNombreTorneo().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.nombretorneo"));
+				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoFormatoTorneo().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.formatodeltorneo"));
+				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoMaxEquipos().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.maxequipos"));
+				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getEtiqueta0().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.fechainicio"));
+				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getEtiqueta1().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.fechafin"));
 
 				vf.getVp().getPanelPrincipal().getCheckEspañol().setSelected(false);
 
