@@ -293,6 +293,31 @@ public class Controller implements ActionListener {
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().setSelectedIndex(0);
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().repaint();
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().revalidate();
+				
+				
+				vf.getVa().getReportes().setText(prop.getProperty("archivosdepropiedades.panelAdmin.informes"));
+				vf.getVa().getAdministrarGamer().setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrarjugadores"));
+				vf.getVa().getAdministrarCouch().setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrarentrenador"));
+				vf.getVa().getMostrarGamers().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarjugadores"));
+				vf.getVa().getMostrarCoachs().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarentrenadores"));
+				vf.getVa().getEliminarGamer().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarjugadores"));
+				vf.getVa().getEliminarCouch().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarentrenadores"));
+				vf.getVa().getAdministrarTorneos().setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrartorneos"));
+				vf.getVa().getAdministrarPartidas().setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrartorneos"));
+				vf.getVa().getCrearTorneo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.creartorneos"));
+				vf.getVa().getCrearPartida().setText(prop.getProperty("archivosdepropiedades.panelAdmin.crearpartidos"));
+				vf.getVa().getMostrarTorneos().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrartorneos"));
+				vf.getVa().getMostrarPartidas().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarpartidos"));
+				vf.getVa().getActualizarTorneo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.actualizartorneo"));
+				vf.getVa().getActualizarPartida().setText(prop.getProperty("archivosdepropiedades.panelAdmin.actializarpartidos"));
+				vf.getVa().getEliminarTorneo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminartorneos"));
+				vf.getVa().getEliminarPartida().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarpartidos"));
+				vf.getVa().getAdministrarEquipo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.Administrarequipos"));
+				vf.getVa().getActualizarEquipo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.actualizarequipos"));
+				vf.getVa().getEliminarEquipo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarequipos"));
+				vf.getVa().getMostrarEquipos().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarequipos"));
+				vf.getVa().getConfigurarNotificaciones().setText(prop.getProperty("archivosdepropiedades.panelAdmin.configurarnotificaciones"));
+				vf.getVa().getAnaliytics().setText(prop.getProperty("archivosdepropiedades.panelAdmin.analitica"));
 
 				vf.getVp().getPanelPrincipal().getCheckIngles().setSelected(false);
 
@@ -440,6 +465,31 @@ public class Controller implements ActionListener {
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().setSelectedIndex(0);
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().repaint();
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().revalidate();
+				
+				
+				vf.getVa().getReportes().setText(prop.getProperty("archivosdepropiedades.panelAdmin.informes"));
+				vf.getVa().getAdministrarGamer().setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrarjugadores"));
+				vf.getVa().getAdministrarCouch().setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrarentrenador"));
+				vf.getVa().getMostrarGamers().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarjugadores"));
+				vf.getVa().getMostrarCoachs().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarentrenadores"));
+				vf.getVa().getEliminarGamer().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarjugadores"));
+				vf.getVa().getEliminarCouch().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarentrenadores"));
+				vf.getVa().getAdministrarTorneos().setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrartorneos"));
+				vf.getVa().getAdministrarPartidas().setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrartorneos"));
+				vf.getVa().getCrearTorneo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.creartorneos"));
+				vf.getVa().getCrearPartida().setText(prop.getProperty("archivosdepropiedades.panelAdmin.crearpartidos"));
+				vf.getVa().getMostrarTorneos().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrartorneos"));
+				vf.getVa().getMostrarPartidas().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarpartidos"));
+				vf.getVa().getActualizarTorneo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.actualizartorneo"));
+				vf.getVa().getActualizarPartida().setText(prop.getProperty("archivosdepropiedades.panelAdmin.actializarpartidos"));
+				vf.getVa().getEliminarTorneo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminartorneos"));
+				vf.getVa().getEliminarPartida().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarpartidos"));
+				vf.getVa().getAdministrarEquipo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.Administrarequipos"));
+				vf.getVa().getActualizarEquipo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.actualizarequipos"));
+				vf.getVa().getEliminarEquipo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarequipos"));
+				vf.getVa().getMostrarEquipos().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarequipos"));
+				vf.getVa().getConfigurarNotificaciones().setText(prop.getProperty("archivosdepropiedades.panelAdmin.configurarnotificaciones"));
+				vf.getVa().getAnaliytics().setText(prop.getProperty("archivosdepropiedades.panelAdmin.analitica"));
 
 				vf.getVp().getPanelPrincipal().getCheckEspañol().setSelected(false);
 

@@ -190,6 +190,37 @@ public class VentanaAdmin extends JFrame{
 	public void setCardAdmin(CardAdmin cardAdmin) {
 		this.cardAdmin = cardAdmin;
 	}
+	public JMenu getAdministrarGamer() {
+		return administrarGamer;
+	}
+	public void setAdministrarGamer(JMenu administrarGamer) {
+		this.administrarGamer = administrarGamer;
+	}
+	public JMenu getAdministrarTorneos() {
+		return administrarTorneos;
+	}
+	public void setAdministrarTorneos(JMenu administrarTorneos) {
+		this.administrarTorneos = administrarTorneos;
+	}
+	public JMenu getAdministrarPartidas() {
+		return administrarPartidas;
+	}
+	public void setAdministrarPartidas(JMenu administrarPartidas) {
+		this.administrarPartidas = administrarPartidas;
+	}
+	public JMenu getAdministrarEquipo() {
+		return administrarEquipo;
+	}
+	public void setAdministrarEquipo(JMenu administrarEquipo) {
+		this.administrarEquipo = administrarEquipo;
+	}
+	public JMenuItem getAnaliytics() {
+		return analiytics;
+	}
+	public void setAnaliytics(JMenuItem analiytics) {
+		this.analiytics = analiytics;
+	}
+	
 	
 	
 
