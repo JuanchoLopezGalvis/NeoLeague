@@ -326,6 +326,7 @@ public class Controller implements ActionListener {
 				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoMaxEquipos().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.maxequipos"));
 				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getEtiqueta0().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.fechainicio"));
 				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getEtiqueta1().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.fechafin"));
+				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getRecompensa().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.reconpensa"));
 				
 				vf.getVp().getPanelPrincipal().getCheckIngles().setSelected(false);
 
@@ -505,6 +506,7 @@ public class Controller implements ActionListener {
 				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoMaxEquipos().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.maxequipos"));
 				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getEtiqueta0().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.fechainicio"));
 				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getEtiqueta1().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.fechafin"));
+				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getRecompensa().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.reconpensa"));
 
 				vf.getVp().getPanelPrincipal().getCheckEspañol().setSelected(false);
 
