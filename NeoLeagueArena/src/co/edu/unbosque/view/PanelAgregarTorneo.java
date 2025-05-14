@@ -6,9 +6,13 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.text.NumberFormatter;
+
 import de.wannawork.jcalendar.JCalendarComboBox;
 public class PanelAgregarTorneo extends JPanel{
 	/**
@@ -52,12 +56,11 @@ public class PanelAgregarTorneo extends JPanel{
 	        datoJuego.setBackground(Color.decode("#002d69"));
 	        recompensa.setToolTipText("Recompensa");
 	        datoFormatoTorneo.setBackground(Color.decode("#002d69"));
-	        datoMaxEquipos.setBackground(Color.decode("#002d69"));
-	        recompensa.setBackground(Color.decode("#002d69"));
+	        datoJuego.setBackground(Color.decode("#002d69"));
 	        datoJuego.setForeground(Color.white);
 	        datoFormatoTorneo.setForeground(Color.white);
-	        datoMaxEquipos.setForeground(Color.white);
-	        recompensa.setForeground(Color.white);
+	        bloquearSpinner(datoMaxEquipos, 0, 1, Color.decode("#002d69"), Color.white);
+	        bloquearSpinner(recompensa, 0, 1, Color.decode("#002d69"), Color.white);
 	        datoNombreTorneo.setBounds(250, 150, 200, 30);
 	        datoJuego.setBounds(250, 200, 200, 30);
 	        datoFechaInicio.setBounds(250, 255, 200, 30);
@@ -79,6 +82,23 @@ public class PanelAgregarTorneo extends JPanel{
 	        add(etiqueta1);
 	        add(recompensa);
 	    }
+		/**
+		 * Este metodo se encarga de bloquear el spinner y de establecer el color del fondo y del texto.
+		 * @param spinner el spinner que se va a bloquear.
+		 * @param minimo el valor minimo que puede tener el spinner.
+		 * @param stepSize el tamaño del paso del spinner.
+		 * @param color1 el color del fondo del spinner.
+		 * @param color2 el color del texto del spinner.
+		 */
+		public void bloquearSpinner(JSpinner spinner, int minimo, int stepSize, Color color1, Color color2) {
+			spinner.setModel(new SpinnerNumberModel(0, 0, Integer.MAX_VALUE, 1));
+			((JSpinner.DefaultEditor) spinner.getEditor()).getTextField().setBackground(color1);
+			((JSpinner.DefaultEditor) spinner.getEditor()).getTextField().setForeground(color2);
+			JFormattedTextField txt = ((JSpinner.DefaultEditor) spinner.getEditor()).getTextField();
+			NumberFormatter formatter = (NumberFormatter) txt.getFormatter();
+			formatter.setAllowsInvalid(false); 
+			formatter.setMinimum(0); 
+		}
 		/**
 		 * Este metodo se encarga de pintar el panel con el fondo.
 		 */
