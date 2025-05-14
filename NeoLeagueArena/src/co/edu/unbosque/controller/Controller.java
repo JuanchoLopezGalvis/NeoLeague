@@ -877,8 +877,20 @@ public class Controller implements ActionListener {
 			break;
 		}
 		case "btnMostrarGamers": {
-			String[] titulos = { "Nombre", "Contraseña", "Correo", "Edad", "Pais", "Trayectoria Competitiva",
-					"Juego Especialidad", "Años de Experiencia", "Foto" };
+			
+			String nombre = prop.getProperty("archivosdepropiedades.arraymostrar.nombre");
+			String contrasena = prop.getProperty("archivosdepropiedades.arraymostrar.contrasena");
+			String correo = prop.getProperty("archivosdepropiedades.arraymostrar.correo");
+			String edad = prop.getProperty("archivosdepropiedades.arraymostrar.edad");
+			String pais = prop.getProperty("archivosdepropiedades.arraymostrar.pais");
+			String trayectoriaCompetitiva = prop.getProperty("archivosdepropiedades.arraymostrar.trayectoriacompetitiva");
+			String juegoEspecialidad = prop.getProperty("archivosdepropiedades.arraymostrar.juegoespecialidad");
+			String anosDeExperiencia = prop.getProperty("archivosdepropiedades.arraymostrar.anosexperiencia");
+			String foto = prop.getProperty("archivosdepropiedades.arraymostrar.foto");
+			
+			
+			String[] titulos = { nombre, contrasena, correo, edad, pais, trayectoriaCompetitiva,
+					juegoEspecialidad, anosDeExperiencia, foto };
 			vf.getVa().getCardAdmin().getPanelMostrar().setModelo(titulos);
 			mf.getJdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
 			vf.getVa().getCardAdmin().getPanelMostrar().getTabla().revalidate();
@@ -887,8 +899,21 @@ public class Controller implements ActionListener {
 			break;
 		}
 		case "btnMostrarCoaches": {
-			String[] titulos = { "Nombre", "Contraseña", "Correo", "Edad", "Pais", "Trayectoria Profesional",
-					"Juego Especialidad", "Años de Experiencia", "Foto" };
+			
+			String nombre = prop.getProperty("archivosdepropiedades.arraymostrar.nombre");
+			String contrasena = prop.getProperty("archivosdepropiedades.arraymostrar.contrasena");
+			String correo = prop.getProperty("archivosdepropiedades.arraymostrar.correo");
+			String edad = prop.getProperty("archivosdepropiedades.arraymostrar.edad");
+			String pais = prop.getProperty("archivosdepropiedades.arraymostrar.pais");
+			String trayectoriaProfesional = prop.getProperty("archivosdepropiedades.arraymostrar.trayectoriaprofesional");
+			String juegoEspecialidad = prop.getProperty("archivosdepropiedades.arraymostrar.juegoespecialidad");
+			String anosDeExperiencia = prop.getProperty("archivosdepropiedades.arraymostrar.anosexperiencia");
+			String foto = prop.getProperty("archivosdepropiedades.arraymostrar.foto");
+			
+			
+			
+			String[] titulos = { nombre, contrasena, correo, edad, pais, trayectoriaProfesional,
+					juegoEspecialidad, anosDeExperiencia, foto };
 			vf.getVa().getCardAdmin().getPanelMostrar().setModelo(titulos);
 			mf.getEdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
 			vf.getVa().getCardAdmin().getPanelMostrar().getTabla().revalidate();
