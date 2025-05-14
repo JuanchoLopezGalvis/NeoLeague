@@ -68,8 +68,7 @@ public class Partida {
 
 	@Override
 	public String toString() {
-		return "Partida [duracionMinTotal=" + duracionMinTotal + ", duracionSetMin=" + duracionSetMin + ", juego="
-				+ juego + ", numParticipantes=" + numParticipantes + ", set=" + set + "]";
+		return  + duracionMinTotal + ";" + duracionSetMin + ";"+ juego + ";" + numParticipantes + ";" + set + "\n";
 	}
 	
 	
