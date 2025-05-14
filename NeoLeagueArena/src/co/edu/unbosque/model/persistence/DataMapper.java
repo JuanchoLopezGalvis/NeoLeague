@@ -8,6 +8,8 @@ import co.edu.unbosque.model.Entrenador;
 import co.edu.unbosque.model.EntrenadorDTO;
 import co.edu.unbosque.model.Jugador;
 import co.edu.unbosque.model.JugadorDTO;
+import co.edu.unbosque.model.Torneo;
+import co.edu.unbosque.model.TorneoDTO;
 
 
 public class DataMapper {
@@ -122,10 +124,38 @@ public class DataMapper {
 		return entityList;
 	}
 	
-	
-	
-	
-	
+	//Torneo
+	public static Torneo TorneoDTOToTorneo(TorneoDTO dto) {
+		Torneo entity;
+		entity = new Torneo(dto.getNombre(), dto.getJuego(), dto.getFechaInicio(), dto.getFechaFin(), dto.getFormato(),
+				dto.getMaxEquipos(), dto.getPremio(), dto.getListaEquiposInscritos());
+		return entity;
+	}
+	public static TorneoDTO TorneoToTorneoDTO(Torneo entity) {
+		TorneoDTO dto;
+		dto = new TorneoDTO(entity.getNombre(), entity.getJuego(), entity.getFechaInicio(), entity.getFechaFin(), entity.getFormato(),
+				entity.getMaxEquipos(), entity.getPremio(), entity.getListaEquiposInscritos());
+		return dto;
+	}
+	public static ArrayList<TorneoDTO> listaTorneoToListaTorneoDTO(
+			ArrayList<Torneo> entityList) {
+		ArrayList<TorneoDTO> dtoList = new ArrayList<>();
+		for (Torneo entity : entityList) {
+			dtoList.add(new TorneoDTO(entity.getNombre(), entity.getJuego(), entity.getFechaInicio(), entity.getFechaFin(), entity.getFormato(),
+				entity.getMaxEquipos(), entity.getPremio(), entity.getListaEquiposInscritos()));
+		}
+		return dtoList;
+	}
+	public static ArrayList<Torneo> listaTorneoDTOToListaTorneo
+	(ArrayList<TorneoDTO> dtoList){
+		ArrayList<Torneo> entityList = new ArrayList<>();
+		for (TorneoDTO dto : dtoList) {
+			entityList.add(new Torneo(dto.getNombre(), dto.getJuego(), dto.getFechaInicio(), dto.getFechaFin(), dto.getFormato(),
+				dto.getMaxEquipos(), dto.getPremio(), dto.getListaEquiposInscritos()));
+		}
+		return entityList;
+	}
+
 
 	//Falta completar el DataMapper para los demas DTOs
 }

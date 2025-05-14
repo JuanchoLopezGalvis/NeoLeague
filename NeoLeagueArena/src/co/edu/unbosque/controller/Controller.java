@@ -1,11 +1,13 @@
 package co.edu.unbosque.controller;
 
 import java.awt.event.ActionEvent;
+
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Date;
 import java.util.Properties;
 
 import javax.swing.JOptionPane;
@@ -14,9 +16,12 @@ import co.edu.unbosque.model.Administrador;
 import co.edu.unbosque.model.AdministradorDTO;
 import co.edu.unbosque.model.Entrenador;
 import co.edu.unbosque.model.EntrenadorDTO;
+import co.edu.unbosque.model.Equipo;
 import co.edu.unbosque.model.Jugador;
 import co.edu.unbosque.model.JugadorDTO;
 import co.edu.unbosque.model.ModelFacade;
+import co.edu.unbosque.model.Torneo;
+import co.edu.unbosque.model.TorneoDTO;
 import co.edu.unbosque.model.persistence.FileManager;
 import co.edu.unbosque.util.exception.EmptyStringFieldException;
 import co.edu.unbosque.util.exception.InvalidEmailException;
@@ -56,7 +61,14 @@ public class Controller implements ActionListener {
 		FileManager.crearCarpeta();
 		vf.getVp().setVisible(true);
 		vf.getVsu().getRoles().setSelectedIndex(0);
-
+		Torneo torneo = mf.getTdao().getListaTorneos().get(0);
+		torneo.inscribirEquipo(new Equipo(0, "Rocket League", "Los bugays", 0), null);
+		for (int i = 0; i < torneo.getListaEquiposInscritos().size(); i++) {
+			System.out.println(torneo.getListaEquiposInscritos().get(i).toString());
+			
+		}
+		mf.getTdao().escribirArchivoSerializado();
+		mf.getTdao().escribirArchivoTxt();
 	}
 
 	/**
@@ -108,6 +120,8 @@ public class Controller implements ActionListener {
 		vf.getVa().getMostrarCoachs().setActionCommand("btnMostrarCoaches");
 		vf.getVa().getCrearTorneo().addActionListener(this);
 		vf.getVa().getCrearTorneo().setActionCommand("PanelCrearTorneo");
+		vf.getVa().getCardAdmin().getPanelAgregarTorneo().getBtnAgregar().addActionListener(this);
+		vf.getVa().getCardAdmin().getPanelAgregarTorneo().getBtnAgregar().setActionCommand("btnAgregarTorneo");
 	}
 
 	/**
@@ -940,6 +954,40 @@ public class Controller implements ActionListener {
 			vf.getVa().getCardAdmin().mostrarPanel("PanelAgregarTorneo"); 
 			break;
 		}
+		case "btnAgregarTorneo": {
+		try {
+				String nombreJuego = vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoJuego().getSelectedItem().toString();
+				String nombreTorneo = vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoNombreTorneo()
+						.getText();
+				ExceptionChecker.checkStringField(nombreTorneo,
+						"archivosdepropiedades.mensajes.error.camposincompletos");
+				String formatoTorneo = vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoFormatoTorneo()
+						.getSelectedItem().toString();
+				int maxEquipos = (int) vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoMaxEquipos()
+						.getValue();
+				long premio = ((Number)vf.getVa().getCardAdmin().getPanelAgregarTorneo().getRecompensa().getValue()).longValue();
+				Date fechaInicio = vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoFechaInicio().getDate();
+				Date fechaFin = vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoFechaFin().getDate();
+				if (!nombreJuego.isEmpty() && !nombreTorneo.isEmpty() && !formatoTorneo.isEmpty() && maxEquipos != 0) {
+					TorneoDTO torneo = new TorneoDTO(nombreTorneo, nombreJuego, fechaInicio, fechaFin, formatoTorneo,
+							maxEquipos, premio);
+					mf.getTdao().add(torneo);
+					vf.getVa().getCardAdmin().getPanelAgregarTorneo().setVisible(false);
+					
+					MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.confirmacion.exitotorneo",
+							"archivosdepropiedades.mensajes.confirmacion.exito");
+					JOptionPane.showConfirmDialog(null, mf.getTdao().getListaTorneos().get(0).toString());
+					vf.getVa().setVisible(false);
+				} else {
+					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.camposincompletos",
+							"archivosdepropiedades.mensajes.error");
+				}
+		}catch (EmptyStringFieldException e1) {
+			MensajeEmergente.mensajeAdvertencia(e1.getMessage(), "archivosdepropiedades.mensajes.advertencia");
+		}
+			break;
+		}
+		
 		}
 	}
 

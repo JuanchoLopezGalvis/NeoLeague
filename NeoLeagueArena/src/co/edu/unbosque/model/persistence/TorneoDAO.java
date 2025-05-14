@@ -13,10 +13,9 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 	private final String TEXT_FILE_NAME = "torneo.csv";
 	private final String SERIAL_FILE_NAME = "torneo.dat";
 	private ArrayList<Torneo> listaTorneos;
-	private ArrayList<Equipo> listaEquiposInscritos;
 	public TorneoDAO() {
 		listaTorneos = new ArrayList<Torneo>();
-		listaEquiposInscritos = new ArrayList<Equipo>();
+		leerArchivoSerializado();
 	}
 	@Override
 	public boolean showAll(JTable tabla) {
@@ -26,14 +25,19 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 
 	@Override
 	public ArrayList<TorneoDTO> getAll() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean add(TorneoDTO newData) {
-		// TODO Auto-generated method stub
-		return false;
+		if (newData.getListaEquiposInscritos() == null) {
+			newData.setListaEquiposInscritos(new ArrayList<>());
+		}
+        Torneo torneo = DataMapper.TorneoDTOToTorneo(newData);
+        listaTorneos.add(torneo);
+        escribirArchivoSerializado();
+        escribirArchivoTxt();
+        return true;
 	}
 
 	@Override
