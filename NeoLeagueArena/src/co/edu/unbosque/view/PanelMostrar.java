@@ -39,6 +39,7 @@ public class PanelMostrar extends JPanel {
 	 * atributo de la clase encargado de almacenar el boton de buscar.
 	 */
 	private BotonRedondeado buscar;
+	private BotonRedondeado btnShowllAll;
 
 	/**
 	 * Constructor de la clase {@link PanelMostrar} donde se inicializan los
@@ -63,18 +64,17 @@ public class PanelMostrar extends JPanel {
 		deslizador.setBackground(Color.WHITE);
 		deslizador.setForeground(Color.black);
 		buscar = new BotonRedondeado("Search", 20, Color.decode("#6981c9"), Color.white, Color.BLACK, Color.white, 1f);
+		btnShowllAll = new BotonRedondeado("Show All", 20, Color.decode("#6981c9"), Color.white, Color.BLACK, Color.white, 1f);
 		aBuscar = new TextFieldRedondeado(Color.BLACK, Color.decode("#6981c9"), 20, Color.white, 1f);
 		aBuscar.setToolTipText("Enter the name of the object to search");
+		btnShowllAll.setToolTipText("Show all objects");
 		aBuscar.setBounds(330, 75, 550, 30);
 		buscar.setBounds(845, 75, 150, 30);
+		btnShowllAll.setBounds(720, 75, 150, 30);
+		add(btnShowllAll);
 		add(deslizador);
 		add(buscar);
 		add(aBuscar);
-	}
-
-	private void setDefaultExitOperation(int exitOnClose) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	/**
@@ -119,6 +119,54 @@ public class PanelMostrar extends JPanel {
 	 */
 	public JTable getTabla() {
 		return tablaDeUsuarios;
+	}
+
+	public JTable getTablaDeUsuarios() {
+		return tablaDeUsuarios;
+	}
+
+	public void setTablaDeUsuarios(JTable tablaDeUsuarios) {
+		this.tablaDeUsuarios = tablaDeUsuarios;
+	}
+
+	public JScrollPane getDeslizador() {
+		return deslizador;
+	}
+
+	public void setDeslizador(JScrollPane deslizador) {
+		this.deslizador = deslizador;
+	}
+
+	public Image getImagenFondo() {
+		return imagenFondo;
+	}
+
+	public void setImagenFondo(Image imagenFondo) {
+		this.imagenFondo = imagenFondo;
+	}
+
+	public TextFieldRedondeado getaBuscar() {
+		return aBuscar;
+	}
+
+	public void setaBuscar(TextFieldRedondeado aBuscar) {
+		this.aBuscar = aBuscar;
+	}
+
+	public BotonRedondeado getBuscar() {
+		return buscar;
+	}
+
+	public void setBuscar(BotonRedondeado buscar) {
+		this.buscar = buscar;
+	}
+
+	public BotonRedondeado getBtnShowllAll() {
+		return btnShowllAll;
+	}
+
+	public void setBtnShowllAll(BotonRedondeado btnShowllAll) {
+		this.btnShowllAll = btnShowllAll;
 	}
 
 }

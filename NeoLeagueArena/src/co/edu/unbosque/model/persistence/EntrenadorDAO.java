@@ -65,11 +65,28 @@ public class EntrenadorDAO implements OperacionDAO<EntrenadorDTO, Entrenador>{
 				if (entrenador.getNombre().equals(toFind.getNombre())) {
 					found = entrenador;
 					break;
+				}else {
+					continue;
 				}
 			}
 			return found;
 		}
 		return null;
+	}
+	public void showOne(JTable table, Entrenador toShow, String mensaje) {
+		Entrenador entrenador = find(toShow);
+		if (entrenador != null) {
+			DefaultTableModel modelo = (DefaultTableModel) table.getModel();
+			modelo.setRowCount(0);
+			ImageIcon icon = FileManager.graficarImagen(entrenador.getUrlFoto(), 80, 80);
+			Object[] row = {entrenador.getNombre(), entrenador.getContrasena(), entrenador.getCorreo(), entrenador.getEdad(), entrenador.getPais(), entrenador.getTrayectoriaProfesional(), entrenador.getEspecialidadDeEntreno(), entrenador.getAnosDeEntrenamiento(), icon};
+			modelo.addRow(row);
+		}else {
+			DefaultTableModel modelo = (DefaultTableModel) table.getModel();
+			modelo.setRowCount(0);
+			Object[] row = {mensaje};
+			modelo.addRow(row);
+		}
 	}
 
 	@Override

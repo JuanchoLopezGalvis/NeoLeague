@@ -42,6 +42,7 @@ public class VentanaGamer extends JFrame{
 		setJMenuBar(menuBar);
 		cardGamer = new CardGamer();
 		add(cardGamer);
+		setVisible(true);
 	}
 
 

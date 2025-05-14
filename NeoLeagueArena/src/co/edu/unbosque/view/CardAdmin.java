@@ -19,8 +19,8 @@ public class CardAdmin extends JPanel{
 		setLayout(cardLayout);
 		panelMostrar = new PanelMostrar();
 		panelAgregarTorneo = new PanelAgregarTorneo();
-		add(panelMostrar, "PanelMostrar");
 		add(panelAgregarTorneo, "PanelAgregarTorneo");
+		add(panelMostrar, "PanelMostrar");
 	}
 	public void mostrarPanel(String nombrePanel) {
 		cardLayout.show(this, nombrePanel);

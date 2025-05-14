@@ -16,11 +16,9 @@ import co.edu.unbosque.model.Administrador;
 import co.edu.unbosque.model.AdministradorDTO;
 import co.edu.unbosque.model.Entrenador;
 import co.edu.unbosque.model.EntrenadorDTO;
-import co.edu.unbosque.model.Equipo;
 import co.edu.unbosque.model.Jugador;
 import co.edu.unbosque.model.JugadorDTO;
 import co.edu.unbosque.model.ModelFacade;
-import co.edu.unbosque.model.Torneo;
 import co.edu.unbosque.model.TorneoDTO;
 import co.edu.unbosque.model.persistence.FileManager;
 import co.edu.unbosque.util.exception.EmptyStringFieldException;
@@ -44,13 +42,14 @@ public class Controller implements ActionListener {
 	 * una de las ventanas del aplicativop.
 	 */
 	private ViewFacade vf;
-
+	private String panelActual;
 	private static Properties prop;
 
 	public Controller() {
 		mf = new ModelFacade();
 		vf = new ViewFacade();
 		prop = new Properties();
+		panelActual = "PanelPrincipal";
 		asignarLectores();
 	}
 
@@ -60,15 +59,6 @@ public class Controller implements ActionListener {
 	public void run() {
 		FileManager.crearCarpeta();
 		vf.getVp().setVisible(true);
-		vf.getVsu().getRoles().setSelectedIndex(0);
-		Torneo torneo = mf.getTdao().getListaTorneos().get(0);
-		torneo.inscribirEquipo(new Equipo(0, "Rocket League", "Los bugays", 0), null);
-		for (int i = 0; i < torneo.getListaEquiposInscritos().size(); i++) {
-			System.out.println(torneo.getListaEquiposInscritos().get(i).toString());
-			
-		}
-		mf.getTdao().escribirArchivoSerializado();
-		mf.getTdao().escribirArchivoTxt();
 	}
 
 	/**
@@ -122,6 +112,10 @@ public class Controller implements ActionListener {
 		vf.getVa().getCrearTorneo().setActionCommand("PanelCrearTorneo");
 		vf.getVa().getCardAdmin().getPanelAgregarTorneo().getBtnAgregar().addActionListener(this);
 		vf.getVa().getCardAdmin().getPanelAgregarTorneo().getBtnAgregar().setActionCommand("btnAgregarTorneo");
+		vf.getVa().getCardAdmin().getPanelMostrar().getBuscar().addActionListener(this);
+		vf.getVa().getCardAdmin().getPanelMostrar().getBuscar().setActionCommand("btnBuscar");
+		vf.getVa().getCardAdmin().getPanelMostrar().getBtnShowllAll().addActionListener(this);
+		vf.getVa().getCardAdmin().getPanelMostrar().getBtnShowllAll().setActionCommand("btnShowllAll");
 	}
 
 	/**
@@ -908,7 +902,7 @@ public class Controller implements ActionListener {
 			break;
 		}
 		case "btnMostrarGamers": {
-			
+			panelActual = "mostrarG";
 			String nombre = prop.getProperty("archivosdepropiedades.arraymostrar.nombre");
 			String contrasena = prop.getProperty("archivosdepropiedades.arraymostrar.contrasena");
 			String correo = prop.getProperty("archivosdepropiedades.arraymostrar.correo");
@@ -930,7 +924,7 @@ public class Controller implements ActionListener {
 			break;
 		}
 		case "btnMostrarCoaches": {
-			
+			panelActual = "mostrarC";
 			String nombre = prop.getProperty("archivosdepropiedades.arraymostrar.nombre");
 			String contrasena = prop.getProperty("archivosdepropiedades.arraymostrar.contrasena");
 			String correo = prop.getProperty("archivosdepropiedades.arraymostrar.correo");
@@ -989,7 +983,36 @@ public class Controller implements ActionListener {
 		}
 			break;
 		}
-		
+		case "btnBuscar":{
+			if (panelActual == "mostrarC") {
+				String nombre = vf.getVa().getCardAdmin().getPanelMostrar().getaBuscar().getText();
+				Entrenador coach = new Entrenador(nombre, null, null, 0, null, null, null, null, 0);
+				mf.getEdao().showOne(vf.getVa().getCardAdmin().getPanelMostrar().getTabla(), coach, MensajeEmergente.obtenerMensaje("archivosdepropiedades.panelmostrar.noencontrado"));
+			} else if (panelActual == "mostrarG") {
+				String nombre = vf.getVa().getCardAdmin().getPanelMostrar().getaBuscar().getText();
+				Jugador gamer = new Jugador(nombre, null, null, 0, null, null, null, null, 0);
+				mf.getJdao().showOne(vf.getVa().getCardAdmin().getPanelMostrar().getTabla(), gamer, MensajeEmergente.obtenerMensaje("archivosdepropiedades.panelmostrar.noencontrado"));
+			} else {
+				MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.camposincompletos",
+						"archivosdepropiedades.mensajes.error");
+			}
+			break;
+		}
+		case "btnShowllAll": {
+			if (panelActual == "mostrarC") {
+				mf.getEdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
+				vf.getVa().getCardAdmin().getPanelMostrar().getTabla().revalidate();
+				vf.getVa().getCardAdmin().getPanelMostrar().getTabla().repaint();
+			} else if (panelActual == "mostrarG") {
+				mf.getJdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
+				vf.getVa().getCardAdmin().getPanelMostrar().getTabla().revalidate();
+				vf.getVa().getCardAdmin().getPanelMostrar().getTabla().repaint();
+			} else {
+				MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.camposincompletos",
+						"archivosdepropiedades.mensajes.error");
+			}
+			break;
+		}
 		}
 	}
 

@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import co.edu.unbosque.model.Entrenador;
 import co.edu.unbosque.model.Jugador;
 import co.edu.unbosque.model.JugadorDTO;
 
@@ -70,7 +71,21 @@ public class JugadorDAO implements OperacionDAO<JugadorDTO, Jugador> {
 		}
 		return null;
 	}
-
+	public void showOne(JTable table, Jugador toShow, String mensaje) {
+		Jugador jugador = find(toShow);
+		if (jugador != null) {
+			DefaultTableModel modelo = (DefaultTableModel) table.getModel();
+			modelo.setRowCount(0);
+			ImageIcon icon = FileManager.graficarImagen(jugador.getUrlFoto(), 80, 80);
+			Object[] row = {jugador.getNombre(), jugador.getContrasena(), jugador.getCorreo(), jugador.getEdad(), jugador.getPais(), jugador.getTrayectoriaCompetitiva(), jugador.getJuegoEspecialidad(), jugador.getAnosDeExperiencia(), icon};
+			modelo.addRow(row);
+		}else {
+			DefaultTableModel modelo = (DefaultTableModel) table.getModel();
+			modelo.setRowCount(0);
+			Object[] row = {mensaje};
+			modelo.addRow(row);
+		}
+	}
 	@Override
 	public boolean update(JugadorDTO previous, JugadorDTO newData) {
 		// TODO Auto-generated method stub

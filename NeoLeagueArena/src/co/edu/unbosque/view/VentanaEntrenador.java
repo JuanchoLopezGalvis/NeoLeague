@@ -56,6 +56,7 @@ public class VentanaEntrenador extends JFrame{
 		setJMenuBar(menuBar);
 		cardCoach = new CardCoach();
 		add(cardCoach);
+		setVisible(true);
 	}
 	
 }
