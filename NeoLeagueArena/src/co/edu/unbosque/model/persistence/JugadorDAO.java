@@ -21,11 +21,11 @@ public class JugadorDAO implements OperacionDAO<JugadorDTO, Jugador> {
 		leerArchivoSerializado();
 	}
 	@Override
-	public boolean showAll(JTable tabla) {
+	public boolean showAll(JTable table) {
 		if (listaJugadores.isEmpty()) {
 			return false;
 		}else {
-			DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+			DefaultTableModel modelo = (DefaultTableModel) table.getModel();
 			modelo.setRowCount(0);
 			for (Jugador jugador : listaJugadores) {
 				ImageIcon icon = FileManager.graficarImagen(jugador.getUrlFoto(), 80, 80);

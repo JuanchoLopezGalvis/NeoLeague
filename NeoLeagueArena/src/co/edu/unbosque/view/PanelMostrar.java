@@ -31,6 +31,14 @@ public class PanelMostrar extends JPanel {
 	 * atributo de la clase encargado de almacenar la imagen de fondo del panel.
 	 */
 	private Image imagenFondo;
+	/**
+	 * atributo de la clase encargado de almacenar el campo de texto para buscar.
+	 */
+	private TextFieldRedondeado aBuscar;
+	/**
+	 * atributo de la clase encargado de almacenar el boton de buscar.
+	 */
+	private BotonRedondeado buscar;
 
 	/**
 	 * Constructor de la clase {@link PanelMostrar} donde se inicializan los
@@ -54,8 +62,14 @@ public class PanelMostrar extends JPanel {
 		deslizador.setBounds(258, 114, 755, 478);
 		deslizador.setBackground(Color.WHITE);
 		deslizador.setForeground(Color.black);
-
+		buscar = new BotonRedondeado("Search", 20, Color.decode("#6981c9"), Color.white, Color.BLACK, Color.white, 1f);
+		aBuscar = new TextFieldRedondeado(Color.BLACK, Color.decode("#6981c9"), 20, Color.white, 1f);
+		aBuscar.setToolTipText("Enter the name of the object to search");
+		aBuscar.setBounds(330, 75, 550, 30);
+		buscar.setBounds(845, 75, 150, 30);
 		add(deslizador);
+		add(buscar);
+		add(aBuscar);
 	}
 
 	private void setDefaultExitOperation(int exitOnClose) {

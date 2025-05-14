@@ -9,7 +9,7 @@ public class VentanaAdmin extends JFrame{
 	
 	private JMenuBar menuBar;
 	private JMenu administrarGamer, administrarCouch, administrarTorneos, administrarPartidas, administrarEquipo, reportes;
-	private JMenuItem configurarNotificaciones, mostrarGamers, mostrarCouchs, eliminarGamer, eliminarCouch, eliminarTorneo, eliminarPartida, crearTorneo, crearPartida, mostrarTorneos, mostrarPartidas, actualizarTorneo, actualizarPartida, actualizarEquipo, eliminarEquipo, mostrarEquipos, analiytics;
+	private JMenuItem configurarNotificaciones, mostrarGamers, mostrarCoachs, eliminarGamer, eliminarCouch, eliminarTorneo, eliminarPartida, crearTorneo, crearPartida, mostrarTorneos, mostrarPartidas, actualizarTorneo, actualizarPartida, actualizarEquipo, eliminarEquipo, mostrarEquipos, analiytics;
 	private CardAdmin cardAdmin;
 
 	/**
@@ -28,7 +28,7 @@ public class VentanaAdmin extends JFrame{
 		administrarGamer = new JMenu("Manage Gamers");
 		administrarCouch = new JMenu("Manage Couchs");
 		mostrarGamers = new JMenuItem("Show Gamers");
-		mostrarCouchs = new JMenuItem("Show Couchs");
+		mostrarCoachs = new JMenuItem("Show Couchs");
 		eliminarGamer = new JMenuItem("Delete Gamer");
 		eliminarCouch = new JMenuItem("Delete Couch");
 		administrarTorneos = new JMenu("Manage Tournaments");
@@ -64,7 +64,7 @@ public class VentanaAdmin extends JFrame{
 		administrarPartidas.add(eliminarPartida);
 		administrarGamer.add(mostrarGamers);
 		administrarGamer.add(eliminarGamer);
-		administrarCouch.add(mostrarCouchs);
+		administrarCouch.add(mostrarCoachs);
 		administrarCouch.add(eliminarCouch);
 		administrarEquipo.add(actualizarEquipo);
 		administrarEquipo.add(eliminarEquipo);
@@ -100,11 +100,11 @@ public class VentanaAdmin extends JFrame{
 	public void setMostrarGamers(JMenuItem mostrarGamers) {
 		this.mostrarGamers = mostrarGamers;
 	}
-	public JMenuItem getMostrarCouchs() {
-		return mostrarCouchs;
+	public JMenuItem getMostrarCoachs() {
+		return mostrarCoachs;
 	}
-	public void setMostrarCouchs(JMenuItem mostrarCouchs) {
-		this.mostrarCouchs = mostrarCouchs;
+	public void setMostrarCoachs(JMenuItem mostrarCoachs) {
+		this.mostrarCoachs = mostrarCoachs;
 	}
 	public JMenuItem getEliminarGamer() {
 		return eliminarGamer;
