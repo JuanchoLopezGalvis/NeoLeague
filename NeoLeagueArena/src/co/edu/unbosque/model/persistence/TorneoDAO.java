@@ -25,8 +25,7 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 			modelo.setRowCount(0);
 			for (Torneo torneo : listaTorneos) {
 				int size = torneo.getListaEquiposInscritos().size();
-				String s = String.valueOf(size);
-				Object[] row = {torneo.getNombre(), torneo.getJuego(), torneo.getFechaInicio(), torneo.getFechaFin(), torneo.getFormato(), torneo.getMaxEquipos(), s};
+				Object[] row = {torneo.getNombre(), torneo.getJuego(), torneo.getFechaInicio(), torneo.getFechaFin(), torneo.getFormato(), torneo.getMaxEquipos(), torneo.getPremio(), size};
 				modelo.addRow(row);
 			}
 		}

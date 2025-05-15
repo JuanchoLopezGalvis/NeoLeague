@@ -182,7 +182,7 @@ public class PanelMostrar extends JPanel {
 		return btnEliminar;
 	}
 
-	public void setBtnEliminar(BotonRedondeado btnEliminar) {
+	public void setBtoonEliminar(BotonRedondeado btnEliminar) {
 		this.btnEliminar = btnEliminar;
 	}
 
