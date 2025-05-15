@@ -8,7 +8,6 @@ import javax.swing.table.DefaultTableModel;
 
 import co.edu.unbosque.model.Entrenador;
 import co.edu.unbosque.model.EntrenadorDTO;
-import co.edu.unbosque.model.Jugador;
 
 public class EntrenadorDAO implements OperacionDAO<EntrenadorDTO, Entrenador>{
 	
@@ -53,8 +52,15 @@ public class EntrenadorDAO implements OperacionDAO<EntrenadorDTO, Entrenador>{
 
 	@Override
 	public boolean delete(EntrenadorDTO toDelete) {
-		// TODO Auto-generated method stub
-		return false;
+		Entrenador entrenador = find(DataMapper.EntrenadorDTOToEntrenador(toDelete));
+		if (entrenador != null) {
+			listaEntrenadores.remove(entrenador);
+			escribirArchivoTxt();
+			escribirArchivoSerializado();
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 	@Override

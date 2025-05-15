@@ -24,6 +24,7 @@ import co.edu.unbosque.model.persistence.FileManager;
 import co.edu.unbosque.util.exception.EmptyStringFieldException;
 import co.edu.unbosque.util.exception.InvalidEmailException;
 import co.edu.unbosque.util.exception.InvalidPasswordException;
+import co.edu.unbosque.util.exception.NegativeNumberException;
 import co.edu.unbosque.view.MensajeEmergente;
 import co.edu.unbosque.view.ViewFacade;
 
@@ -116,6 +117,10 @@ public class Controller implements ActionListener {
 		vf.getVa().getCardAdmin().getPanelMostrar().getBuscar().setActionCommand("btnBuscar");
 		vf.getVa().getCardAdmin().getPanelMostrar().getBtnShowllAll().addActionListener(this);
 		vf.getVa().getCardAdmin().getPanelMostrar().getBtnShowllAll().setActionCommand("btnShowllAll");
+		vf.getVa().getCardAdmin().getPanelMostrar().getBtnEliminar().addActionListener(this);
+		vf.getVa().getCardAdmin().getPanelMostrar().getBtnEliminar().setActionCommand("btnEliminar");
+		vf.getVa().getMostrarTorneos().addActionListener(this);
+		vf.getVa().getMostrarTorneos().setActionCommand("btnMostrarTorneos");
 	}
 
 	/**
@@ -302,40 +307,60 @@ public class Controller implements ActionListener {
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().setSelectedIndex(0);
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().repaint();
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().revalidate();
-				
-				
+
 				vf.getVa().getReportes().setText(prop.getProperty("archivosdepropiedades.panelAdmin.informes"));
-				vf.getVa().getAdministrarGamer().setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrarjugadores"));
-				vf.getVa().getAdministrarCouch().setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrarentrenador"));
-				vf.getVa().getMostrarGamers().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarjugadores"));
-				vf.getVa().getMostrarCoachs().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarentrenadores"));
-				vf.getVa().getEliminarGamer().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarjugadores"));
-				vf.getVa().getEliminarCouch().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarentrenadores"));
-				vf.getVa().getAdministrarTorneos().setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrartorneos"));
-				vf.getVa().getAdministrarPartidas().setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrarpartidos"));
+				vf.getVa().getAdministrarGamer()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrarjugadores"));
+				vf.getVa().getAdministrarCouch()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrarentrenador"));
+				vf.getVa().getMostrarGamers()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarjugadores"));
+				vf.getVa().getMostrarCoachs()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarentrenadores"));
+				vf.getVa().getAdministrarTorneos()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrartorneos"));
+				vf.getVa().getAdministrarPartidas()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrarpartidos"));
 				vf.getVa().getCrearTorneo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.creartorneos"));
-				vf.getVa().getCrearPartida().setText(prop.getProperty("archivosdepropiedades.panelAdmin.crearpartidos"));
-				vf.getVa().getMostrarTorneos().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrartorneos"));
-				vf.getVa().getMostrarPartidas().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarpartidos"));
-				vf.getVa().getActualizarTorneo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.actualizartorneo"));
-				vf.getVa().getActualizarPartida().setText(prop.getProperty("archivosdepropiedades.panelAdmin.actializarpartidos"));
-				vf.getVa().getEliminarTorneo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminartorneos"));
-				vf.getVa().getEliminarPartida().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarpartidos"));
-				vf.getVa().getAdministrarEquipo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.Administrarequipos"));
-				vf.getVa().getActualizarEquipo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.actualizarequipos"));
-				vf.getVa().getEliminarEquipo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarequipos"));
-				vf.getVa().getMostrarEquipos().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarequipos"));
-				vf.getVa().getConfigurarNotificaciones().setText(prop.getProperty("archivosdepropiedades.panelAdmin.configurarnotificaciones"));
+				vf.getVa().getCrearPartida()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.crearpartidos"));
+				vf.getVa().getMostrarTorneos()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrartorneos"));
+				vf.getVa().getMostrarPartidas()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarpartidos"));
+				vf.getVa().getActualizarTorneo()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.actualizartorneo"));
+				vf.getVa().getActualizarPartida()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.actializarpartidos"));
+				vf.getVa().getEliminarPartida()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarpartidos"));
+				vf.getVa().getAdministrarEquipo()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.Administrarequipos"));
+				vf.getVa().getActualizarEquipo()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.actualizarequipos"));
+				vf.getVa().getEliminarEquipo()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarequipos"));
+				vf.getVa().getMostrarEquipos()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarequipos"));
+				vf.getVa().getConfigurarNotificaciones()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.configurarnotificaciones"));
 				vf.getVa().getAnaliytics().setText(prop.getProperty("archivosdepropiedades.panelAdmin.analitica"));
 
-				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoJuego().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.nombrejuego"));
-				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoNombreTorneo().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.nombretorneo"));
-				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoFormatoTorneo().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.formatodeltorneo"));
-				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoMaxEquipos().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.maxequipos"));
-				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getEtiqueta0().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.fechainicio"));
-				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getEtiqueta1().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.fechafin"));
-				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getRecompensa().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.reconpensa"));
-				
+				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoJuego()
+						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.nombrejuego"));
+				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoNombreTorneo()
+						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.nombretorneo"));
+				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoFormatoTorneo()
+						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.formatodeltorneo"));
+				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoMaxEquipos()
+						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.maxequipos"));
+				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getEtiqueta0()
+						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.fechainicio"));
+				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getEtiqueta1()
+						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.fechafin"));
+				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getRecompensa()
+						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.reconpensa"));
+
 				vf.getVp().getPanelPrincipal().getCheckIngles().setSelected(false);
 
 			}
@@ -482,39 +507,59 @@ public class Controller implements ActionListener {
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().setSelectedIndex(0);
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().repaint();
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva().revalidate();
-				
-				
+
 				vf.getVa().getReportes().setText(prop.getProperty("archivosdepropiedades.panelAdmin.informes"));
-				vf.getVa().getAdministrarGamer().setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrarjugadores"));
-				vf.getVa().getAdministrarCouch().setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrarentrenador"));
-				vf.getVa().getMostrarGamers().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarjugadores"));
-				vf.getVa().getMostrarCoachs().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarentrenadores"));
-				vf.getVa().getEliminarGamer().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarjugadores"));
-				vf.getVa().getEliminarCouch().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarentrenadores"));
-				vf.getVa().getAdministrarTorneos().setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrartorneos"));
-				vf.getVa().getAdministrarPartidas().setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrarpartidos"));
+				vf.getVa().getAdministrarGamer()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrarjugadores"));
+				vf.getVa().getAdministrarCouch()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrarentrenador"));
+				vf.getVa().getMostrarGamers()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarjugadores"));
+				vf.getVa().getMostrarCoachs()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarentrenadores"));
+				vf.getVa().getAdministrarTorneos()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrartorneos"));
+				vf.getVa().getAdministrarPartidas()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.administrarpartidos"));
 				vf.getVa().getCrearTorneo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.creartorneos"));
-				vf.getVa().getCrearPartida().setText(prop.getProperty("archivosdepropiedades.panelAdmin.crearpartidos"));
-				vf.getVa().getMostrarTorneos().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrartorneos"));
-				vf.getVa().getMostrarPartidas().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarpartidos"));
-				vf.getVa().getActualizarTorneo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.actualizartorneo"));
-				vf.getVa().getActualizarPartida().setText(prop.getProperty("archivosdepropiedades.panelAdmin.actializarpartidos"));
-				vf.getVa().getEliminarTorneo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminartorneos"));
-				vf.getVa().getEliminarPartida().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarpartidos"));
-				vf.getVa().getAdministrarEquipo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.Administrarequipos"));
-				vf.getVa().getActualizarEquipo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.actualizarequipos"));
-				vf.getVa().getEliminarEquipo().setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarequipos"));
-				vf.getVa().getMostrarEquipos().setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarequipos"));
-				vf.getVa().getConfigurarNotificaciones().setText(prop.getProperty("archivosdepropiedades.panelAdmin.configurarnotificaciones"));
+				vf.getVa().getCrearPartida()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.crearpartidos"));
+				vf.getVa().getMostrarTorneos()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrartorneos"));
+				vf.getVa().getMostrarPartidas()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarpartidos"));
+				vf.getVa().getActualizarTorneo()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.actualizartorneo"));
+				vf.getVa().getActualizarPartida()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.actializarpartidos"));
+				vf.getVa().getEliminarPartida()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarpartidos"));
+				vf.getVa().getAdministrarEquipo()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.Administrarequipos"));
+				vf.getVa().getActualizarEquipo()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.actualizarequipos"));
+				vf.getVa().getEliminarEquipo()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarequipos"));
+				vf.getVa().getMostrarEquipos()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarequipos"));
+				vf.getVa().getConfigurarNotificaciones()
+						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.configurarnotificaciones"));
 				vf.getVa().getAnaliytics().setText(prop.getProperty("archivosdepropiedades.panelAdmin.analitica"));
-				
-				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoJuego().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.nombrejuego"));
-				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoNombreTorneo().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.nombretorneo"));
-				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoFormatoTorneo().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.formatodeltorneo"));
-				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoMaxEquipos().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.maxequipos"));
-				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getEtiqueta0().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.fechainicio"));
-				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getEtiqueta1().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.fechafin"));
-				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getRecompensa().setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.reconpensa"));
+
+				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoJuego()
+						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.nombrejuego"));
+				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoNombreTorneo()
+						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.nombretorneo"));
+				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoFormatoTorneo()
+						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.formatodeltorneo"));
+				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoMaxEquipos()
+						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.maxequipos"));
+				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getEtiqueta0()
+						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.fechainicio"));
+				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getEtiqueta1()
+						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.fechafin"));
+				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getRecompensa()
+						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.reconpensa"));
 
 				vf.getVp().getPanelPrincipal().getCheckEspañol().setSelected(false);
 
@@ -650,9 +695,7 @@ public class Controller implements ActionListener {
 						.getSelectedItem().toString();
 				int anosDeExperiencia = (int) vf.getVsu().getCardSignUp().getCrearGamer().getDatoAnosDeExperiencia()
 						.getValue();
-				if (!nombre.isEmpty() && !contrasena.isEmpty() && !correo.isEmpty() && edad != 0 && !pais.isEmpty()
-						&& imagen != null && !trayectoriaCompetitiva.isEmpty() && !juegoEspecialidad.isEmpty()
-						&& vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva()
+				if ( imagen != null && vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva()
 								.getSelectedIndex() != 0
 						&& vf.getVsu().getCardSignUp().getCrearGamer().getDatoJuegoEspecialidad()
 								.getSelectedIndex() != 0
@@ -711,6 +754,7 @@ public class Controller implements ActionListener {
 				String correo = vf.getVsu().getCardSignUp().getCrearCoach().getDatoCorreo().getText();
 				ExceptionChecker.checkEmailField(correo, "archivosdepropiedades.mensajes.error.correo");
 				int edad = (int) vf.getVsu().getCardSignUp().getCrearCoach().getDatoEdad().getValue();
+				ExceptionChecker.checkNegativeNumber(edad, "archivosdepropiedades.mensajes.error.camposincompletos");
 				String pais = vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().getSelectedItem().toString();
 				String[] extensiones = { ".jpg", ".png", ".jpeg" };
 				String urlFoto = "imageUser/" + nombre;
@@ -729,8 +773,7 @@ public class Controller implements ActionListener {
 						.getSelectedItem().toString();
 				int anosDeExperiencia = (int) vf.getVsu().getCardSignUp().getCrearCoach().getDatoAnosDeExperiencia()
 						.getValue();
-				if (!nombre.isEmpty() && !contrasena.isEmpty() && !correo.isEmpty() && edad != 0 && !pais.isEmpty()
-						&& imagen != null && !trayectoriaCompetitiva.isEmpty() && !juegoEspecialidad.isEmpty()
+				if (imagen != null
 						&& vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional()
 								.getSelectedIndex() != 0
 						&& vf.getVsu().getCardSignUp().getCrearCoach().getDatoJuegoEspecialidad()
@@ -776,6 +819,8 @@ public class Controller implements ActionListener {
 				MensajeEmergente.mensajeAdvertencia(e2.getMessage(), "archivosdepropiedades.mensajes.advertencia");
 			} catch (InvalidEmailException e3) {
 				MensajeEmergente.mensajeAdvertencia(e3.getMessage(), "archivosdepropiedades.mensajes.advertencia");
+			} catch (NegativeNumberException e4) {
+				MensajeEmergente.mensajeAdvertencia(e4.getMessage(), "archivosdepropiedades.mensajes.advertencia");
 			}
 		}
 		case "btnCrearAdmin": {
@@ -792,6 +837,7 @@ public class Controller implements ActionListener {
 				String correo = vf.getVsu().getCardSignUp().getCrearAdmin().getDatoCorreo().getText();
 				ExceptionChecker.checkEmailField(correo, "archivosdepropiedades.mensajes.error.correo");
 				int edad = (int) vf.getVsu().getCardSignUp().getCrearAdmin().getDatoEdad().getValue();
+				ExceptionChecker.checkNegativeNumber(edad, "archivosdepropiedades.mensajes.error.camposincompletos");
 				String pais = vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().getSelectedItem().toString();
 				String[] extensiones = { ".jpg", ".png", ".jpeg" };
 				String urlFoto = "imageUser/" + nombre;
@@ -809,9 +855,7 @@ public class Controller implements ActionListener {
 						break;
 					}
 				}
-				if (!nombre.isEmpty() && !contrasena.isEmpty() && !correo.isEmpty() && edad != 0 && !pais.isEmpty()
-						&& imagen != null && !cargoEspecifico.isEmpty()
-						&& vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().getSelectedIndex() != 0) {
+				if (imagen != null && vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().getSelectedIndex() != 0 ) {
 					if (contrasena.equals(contrasenaConf)) {
 						if (contrasenaAdmins.equals("Transparencia290")) {
 							if (mf.getAdao().find(new Administrador(nombre, null, null, 0, null, null, null)) == null) {
@@ -844,7 +888,7 @@ public class Controller implements ActionListener {
 								"archivosdepropiedades.mensajes.error");
 					}
 				} else {
-					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.camposincompletos",
+					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.camposincompleto",
 							"archivosdepropiedades.mensajes.error");
 				}
 				break;
@@ -854,6 +898,8 @@ public class Controller implements ActionListener {
 				MensajeEmergente.mensajeAdvertencia(e2.getMessage(), "archivosdepropiedades.mensajes.advertencia");
 			} catch (InvalidEmailException e3) {
 				MensajeEmergente.mensajeAdvertencia(e3.getMessage(), "archivosdepropiedades.mensajes.advertencia");
+			} catch (NegativeNumberException e4) {
+				MensajeEmergente.mensajeAdvertencia(e4.getMessage(), "archivosdepropiedades.mensajes.advertencia");
 			}
 		}
 		case "btnEntrar": {
@@ -908,16 +954,34 @@ public class Controller implements ActionListener {
 			String correo = prop.getProperty("archivosdepropiedades.arraymostrar.correo");
 			String edad = prop.getProperty("archivosdepropiedades.arraymostrar.edad");
 			String pais = prop.getProperty("archivosdepropiedades.arraymostrar.pais");
-			String trayectoriaCompetitiva = prop.getProperty("archivosdepropiedades.arraymostrar.trayectoriacompetitiva");
+			String trayectoriaCompetitiva = prop
+					.getProperty("archivosdepropiedades.arraymostrar.trayectoriacompetitiva");
 			String juegoEspecialidad = prop.getProperty("archivosdepropiedades.arraymostrar.juegoespecialidad");
 			String anosDeExperiencia = prop.getProperty("archivosdepropiedades.arraymostrar.anosexperiencia");
 			String foto = prop.getProperty("archivosdepropiedades.arraymostrar.foto");
-			
-			
-			String[] titulos = { nombre, contrasena, correo, edad, pais, trayectoriaCompetitiva,
-					juegoEspecialidad, anosDeExperiencia, foto };
-			vf.getVa().getCardAdmin().getPanelMostrar().setModelo(titulos);
+
+			String[] titulos = { nombre, contrasena, correo, edad, pais, trayectoriaCompetitiva, juegoEspecialidad,
+					anosDeExperiencia, foto };
+			vf.getVa().getCardAdmin().getPanelMostrar().setModelo(titulos,1 );
 			mf.getJdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
+			vf.getVa().getCardAdmin().getPanelMostrar().getTabla().revalidate();
+			vf.getVa().getCardAdmin().getPanelMostrar().getTabla().repaint();
+			vf.getVa().getCardAdmin().mostrarPanel("PanelMostrar");
+			break;
+		}
+		case "btnMostrarTorneos":{
+			panelActual = "mostrarT";
+			String nombre = prop.getProperty("archivosdepropiedades.arraymostrar.nombre");
+			String juegoEspecialidad = prop.getProperty("archivosdepropiedades.arraymostrar.juegoespecialidad");
+			String fechaInicio = prop.getProperty("archivosdepropiedades.arraymostrar.fechainicio");
+			String fechaFin = prop.getProperty("archivosdepropiedades.arraymostrar.fechafin");
+			String formato = prop.getProperty("archivosdepropiedades.arraymostrar.tipotorneo");
+			String maxEquipos =prop.getProperty("archivosdepropiedades.arraymostrar.maxequipos");
+			String recompensa = prop.getProperty("archivosdepropiedades.arraymostrar.recompensa");
+			String equi = prop.getProperty("archivosdepropiedades.arraymostrar.equiposinscritos");
+			String [] titulos = {nombre, juegoEspecialidad, fechaInicio, fechaFin, formato, maxEquipos, recompensa, equi};
+			vf.getVa().getCardAdmin().getPanelMostrar().setModelo(titulos, 0);
+			mf.getTdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
 			vf.getVa().getCardAdmin().getPanelMostrar().getTabla().revalidate();
 			vf.getVa().getCardAdmin().getPanelMostrar().getTabla().repaint();
 			vf.getVa().getCardAdmin().mostrarPanel("PanelMostrar");
@@ -930,16 +994,15 @@ public class Controller implements ActionListener {
 			String correo = prop.getProperty("archivosdepropiedades.arraymostrar.correo");
 			String edad = prop.getProperty("archivosdepropiedades.arraymostrar.edad");
 			String pais = prop.getProperty("archivosdepropiedades.arraymostrar.pais");
-			String trayectoriaProfesional = prop.getProperty("archivosdepropiedades.arraymostrar.trayectoriaprofesional");
+			String trayectoriaProfesional = prop
+					.getProperty("archivosdepropiedades.arraymostrar.trayectoriaprofesional");
 			String juegoEspecialidad = prop.getProperty("archivosdepropiedades.arraymostrar.juegoespecialidad");
 			String anosDeExperiencia = prop.getProperty("archivosdepropiedades.arraymostrar.anosexperiencia");
 			String foto = prop.getProperty("archivosdepropiedades.arraymostrar.foto");
-			
-			
-			
-			String[] titulos = { nombre, contrasena, correo, edad, pais, trayectoriaProfesional,
-					juegoEspecialidad, anosDeExperiencia, foto };
-			vf.getVa().getCardAdmin().getPanelMostrar().setModelo(titulos);
+
+			String[] titulos = { nombre, contrasena, correo, edad, pais, trayectoriaProfesional, juegoEspecialidad,
+					anosDeExperiencia, foto };
+			vf.getVa().getCardAdmin().getPanelMostrar().setModelo(titulos,1);
 			mf.getEdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
 			vf.getVa().getCardAdmin().getPanelMostrar().getTabla().revalidate();
 			vf.getVa().getCardAdmin().getPanelMostrar().getTabla().repaint();
@@ -947,51 +1010,47 @@ public class Controller implements ActionListener {
 			break;
 		}
 		case "PanelCrearTorneo": {
-			vf.getVa().getCardAdmin().mostrarPanel("PanelAgregarTorneo"); 
+			vf.getVa().getCardAdmin().mostrarPanel("PanelAgregarTorneo");
 			break;
 		}
 		case "btnAgregarTorneo": {
-		try {
-				String nombreJuego = vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoJuego().getSelectedItem().toString();
-				String nombreTorneo = vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoNombreTorneo()
-						.getText();
+			try {
+				String nombreJuego = vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoJuego().getSelectedItem()
+						.toString();
+				String nombreTorneo = vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoNombreTorneo().getText();
 				ExceptionChecker.checkStringField(nombreTorneo,
 						"archivosdepropiedades.mensajes.error.camposincompletos");
 				String formatoTorneo = vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoFormatoTorneo()
 						.getSelectedItem().toString();
-				int maxEquipos = (int) vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoMaxEquipos()
-						.getValue();
-				long premio = ((Number)vf.getVa().getCardAdmin().getPanelAgregarTorneo().getRecompensa().getValue()).longValue();
+				int maxEquipos = (int) vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoMaxEquipos().getValue();
+				long premio = ((Number) vf.getVa().getCardAdmin().getPanelAgregarTorneo().getRecompensa().getValue())
+						.longValue();
 				Date fechaInicio = vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoFechaInicio().getDate();
 				Date fechaFin = vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoFechaFin().getDate();
-				if (!nombreJuego.isEmpty() && !nombreTorneo.isEmpty() && !formatoTorneo.isEmpty() && maxEquipos != 0) {
-					TorneoDTO torneo = new TorneoDTO(nombreTorneo, nombreJuego, fechaInicio, fechaFin, formatoTorneo,
-							maxEquipos, premio);
-					mf.getTdao().add(torneo);
-					vf.getVa().getCardAdmin().getPanelAgregarTorneo().setVisible(false);
-					
-					MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.confirmacion.exitotorneo",
-							"archivosdepropiedades.mensajes.confirmacion.exito");
-					JOptionPane.showConfirmDialog(null, mf.getTdao().getListaTorneos().get(0).toString());
-					vf.getVa().setVisible(false);
-				} else {
-					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.camposincompletos",
-							"archivosdepropiedades.mensajes.error");
-				}
-		}catch (EmptyStringFieldException e1) {
-			MensajeEmergente.mensajeAdvertencia(e1.getMessage(), "archivosdepropiedades.mensajes.advertencia");
-		}
+				TorneoDTO torneo = new TorneoDTO(nombreTorneo, nombreJuego, fechaInicio, fechaFin, formatoTorneo,
+						maxEquipos, premio);
+				mf.getTdao().add(torneo);
+				vf.getVa().getCardAdmin().getPanelAgregarTorneo().setVisible(false);
+				MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.confirmacion.exitotorneo",
+						"archivosdepropiedades.mensajes.confirmacion.exito");
+				JOptionPane.showConfirmDialog(null, mf.getTdao().getListaTorneos().get(0).toString());
+				vf.getVa().setVisible(false);
+			} catch (EmptyStringFieldException e1) {
+				MensajeEmergente.mensajeAdvertencia(e1.getMessage(), "archivosdepropiedades.mensajes.advertencia");
+			}
 			break;
 		}
-		case "btnBuscar":{
+		case "btnBuscar": {
 			if (panelActual == "mostrarC") {
 				String nombre = vf.getVa().getCardAdmin().getPanelMostrar().getaBuscar().getText();
 				Entrenador coach = new Entrenador(nombre, null, null, 0, null, null, null, null, 0);
-				mf.getEdao().showOne(vf.getVa().getCardAdmin().getPanelMostrar().getTabla(), coach, MensajeEmergente.obtenerMensaje("archivosdepropiedades.panelmostrar.noencontrado"));
+				mf.getEdao().showOne(vf.getVa().getCardAdmin().getPanelMostrar().getTabla(), coach,
+						MensajeEmergente.obtenerMensaje("archivosdepropiedades.panelmostrar.noencontrado"));
 			} else if (panelActual == "mostrarG") {
 				String nombre = vf.getVa().getCardAdmin().getPanelMostrar().getaBuscar().getText();
 				Jugador gamer = new Jugador(nombre, null, null, 0, null, null, null, null, 0);
-				mf.getJdao().showOne(vf.getVa().getCardAdmin().getPanelMostrar().getTabla(), gamer, MensajeEmergente.obtenerMensaje("archivosdepropiedades.panelmostrar.noencontrado"));
+				mf.getJdao().showOne(vf.getVa().getCardAdmin().getPanelMostrar().getTabla(), gamer,
+						MensajeEmergente.obtenerMensaje("archivosdepropiedades.panelmostrar.noencontrado"));
 			} else {
 				MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.camposincompletos",
 						"archivosdepropiedades.mensajes.error");
@@ -1012,6 +1071,30 @@ public class Controller implements ActionListener {
 						"archivosdepropiedades.mensajes.error");
 			}
 			break;
+		}
+		case "btnEliminar": {
+			int fila = vf.getVa().getCardAdmin().getPanelMostrar().getTabla().getSelectedRow();
+			if (fila == -1) {
+				MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.camposincompletos",
+						"archivosdepropiedades.mensajes.error");
+				break;
+			} else if (fila != -1) {
+				String nombre = vf.getVa().getCardAdmin().getPanelMostrar().getTabla().getValueAt(fila, 0).toString();
+
+				if (panelActual == "mostrarC") {
+					EntrenadorDTO en = new EntrenadorDTO(nombre, null, null, 0, null, null, null, null, 0);
+					mf.getEdao().delete(en);
+					mf.getEdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
+				} else if (panelActual == "mostrarG") {
+					JugadorDTO en = new JugadorDTO(nombre, null, null, 0, null, null, null, null, 0);
+					mf.getJdao().delete(en);
+					mf.getJdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
+				} else {
+					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.camposincompletos",
+							"archivosdepropiedades.mensajes.error");
+				}
+				break;
+			}
 		}
 		}
 	}

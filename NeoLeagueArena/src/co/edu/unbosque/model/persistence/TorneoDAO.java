@@ -3,9 +3,8 @@ package co.edu.unbosque.model.persistence;
 import java.util.ArrayList;
 
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
-import co.edu.unbosque.model.Equipo;
-import co.edu.unbosque.model.Jugador;
 import co.edu.unbosque.model.Torneo;
 import co.edu.unbosque.model.TorneoDTO;
 
@@ -19,8 +18,19 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 	}
 	@Override
 	public boolean showAll(JTable tabla) {
-		// TODO Auto-generated method stub
-		return false;
+		if (listaTorneos.isEmpty()) {
+			return false;
+		}else {
+			DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+			modelo.setRowCount(0);
+			for (Torneo torneo : listaTorneos) {
+				int size = torneo.getListaEquiposInscritos().size();
+				String s = String.valueOf(size);
+				Object[] row = {torneo.getNombre(), torneo.getJuego(), torneo.getFechaInicio(), torneo.getFechaFin(), torneo.getFormato(), torneo.getMaxEquipos(), s};
+				modelo.addRow(row);
+			}
+		}
+		return true;
 	}
 
 	@Override

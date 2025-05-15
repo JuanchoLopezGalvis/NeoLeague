@@ -10,7 +10,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 
 public class PanelMostrar extends JPanel {
@@ -40,6 +39,7 @@ public class PanelMostrar extends JPanel {
 	 */
 	private BotonRedondeado buscar;
 	private BotonRedondeado btnShowllAll;
+	private BotonRedondeado btnEliminar;
 
 	/**
 	 * Constructor de la clase {@link PanelMostrar} donde se inicializan los
@@ -55,25 +55,29 @@ public class PanelMostrar extends JPanel {
 		tablaDeUsuarios.setFillsViewportHeight(true);
 		tablaDeUsuarios.setRowHeight(80);
 		tablaDeUsuarios.getTableHeader().setPreferredSize(new Dimension(tablaDeUsuarios.getWidth(), 40));
-		tablaDeUsuarios.setBackground(Color.decode("#6981c9"));
+		tablaDeUsuarios.setBackground(Color.decode("#bbdefb"));
 		tablaDeUsuarios.setForeground(Color.black);
 		tablaDeUsuarios.setGridColor(Color.black);
 		tablaDeUsuarios.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		deslizador = new JScrollPane(tablaDeUsuarios);
-		deslizador.setBounds(258, 114, 755, 478);
-		deslizador.setBackground(Color.WHITE);
+		deslizador.setBounds(257, 114, 755, 420);
+		deslizador.setBackground(Color.decode("#bbdefb"));
 		deslizador.setForeground(Color.black);
-		buscar = new BotonRedondeado("Search", 20, Color.decode("#6981c9"), Color.white, Color.BLACK, Color.white, 1f);
-		btnShowllAll = new BotonRedondeado("Show All", 20, Color.decode("#6981c9"), Color.white, Color.BLACK, Color.white, 1f);
-		aBuscar = new TextFieldRedondeado(Color.BLACK, Color.decode("#6981c9"), 20, Color.white, 1f);
+		btnEliminar = new BotonRedondeado("Delete", 20, Color.decode("#bbdefb"), Color.white, Color.BLACK, Color.BLACK, 1f);
+		buscar = new BotonRedondeado("Search", 20, Color.decode("#bbdefb"), Color.white, Color.BLACK, Color.BLACK, 1f);
+		btnShowllAll = new BotonRedondeado("Show All", 20, Color.decode("#bbdefb"), Color.white, Color.BLACK, Color.BLACK, 1f);
+		aBuscar = new TextFieldRedondeado(Color.BLACK, Color.decode("#bbdefb"), 20, Color.BLACK, 1f);
 		aBuscar.setToolTipText("Enter the name of the object to search");
 		btnShowllAll.setToolTipText("Show all objects");
-		aBuscar.setBounds(330, 75, 550, 30);
-		buscar.setBounds(845, 75, 150, 30);
-		btnShowllAll.setBounds(720, 75, 150, 30);
+		btnEliminar.setToolTipText("Select the row to delete");
+		aBuscar.setBounds(330, 75, 380, 30);
+		buscar.setBounds(650, 75, 150, 30);
+		btnShowllAll.setBounds(820, 75, 150, 30);
+		btnEliminar.setBounds(545, 550, 150, 30);
 		add(btnShowllAll);
 		add(deslizador);
 		add(buscar);
+		add(btnEliminar);
 		add(aBuscar);
 	}
 
@@ -92,17 +96,22 @@ public class PanelMostrar extends JPanel {
 		}
 	}
 
-	public void setModelo(String[] nombresColumnas) {
+	public void setModelo(String[] nombresColumnas, int f) {
 		DefaultTableModel modelo = new DefaultTableModel(new Object[][] {}, nombresColumnas) {
 			/**
 			 * 
 			 */
 			private static final long serialVersionUID = 1L;
 
-			@Override
-			public Class<?> getColumnClass(int column) {
-				return column == nombresColumnas.length - 1 ? ImageIcon.class : String.class;
-			}
+			   @Override
+			   public Class<?> getColumnClass(int column) {
+			       if (f == 1) {
+			           return column == nombresColumnas.length - 1 ? ImageIcon.class : String.class;
+			       } else if (f == 0) {
+			           return column == nombresColumnas.length - 1 ? Integer.class : String.class;
+			       }
+			       return Object.class; // Valor por defecto
+			   }
 			@Override
 			public boolean isCellEditable(int row, int column) {
 				return false;
@@ -167,6 +176,14 @@ public class PanelMostrar extends JPanel {
 
 	public void setBtnShowllAll(BotonRedondeado btnShowllAll) {
 		this.btnShowllAll = btnShowllAll;
+	}
+
+	public BotonRedondeado getBtnEliminar() {
+		return btnEliminar;
+	}
+
+	public void setBtnEliminar(BotonRedondeado btnEliminar) {
+		this.btnEliminar = btnEliminar;
 	}
 
 }
