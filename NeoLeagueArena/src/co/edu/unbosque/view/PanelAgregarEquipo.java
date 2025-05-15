@@ -32,13 +32,13 @@ public class PanelAgregarEquipo extends JPanel{
 		String[] juegos = {"FIFA", "Rocket League", "Formula 1", "Gran Turismo"};
 		datoJuego = new JComboBox<>(juegos);
 		etiquetaNombreEquipo = new JLabel("Nombre del equipo");
-		etiquetaNombreEquipo.setBounds(500, 150, 200, 30);
 		etiquetaNombreEquipo.setForeground(Color.white);
 		etiquetaNombreEquipo.setFont(new java.awt.Font("Arial", 1, 20));
-		datoJuego.setBounds(500, 300, 200, 30);
-		datoNombreEquipo.setBounds(500, 200, 200, 30);
-		btnAgregarEquipo.setBounds(500, 350, 200, 30);
 		datoJuego.setToolTipText("Game");
+		etiquetaNombreEquipo.setBounds(900, 200, 300, 30); 
+	    datoNombreEquipo.setBounds(900, 240, 300, 40);    
+	    datoJuego.setBounds(900, 300, 300, 40);            
+	    btnAgregarEquipo.setBounds(900, 360, 300, 50);     
 		add(datoNombreEquipo);
 		add(datoJuego);
 		add(btnAgregarEquipo);
