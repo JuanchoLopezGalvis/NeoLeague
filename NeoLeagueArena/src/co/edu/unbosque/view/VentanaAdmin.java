@@ -9,7 +9,7 @@ public class VentanaAdmin extends JFrame{
 	
 	private JMenuBar menuBar;
 	private JMenu administrarGamer, administrarCouch, administrarTorneos, administrarPartidas, administrarEquipo, reportes;
-	private JMenuItem configurarNotificaciones, mostrarGamers, mostrarCoachs, eliminarGamer, eliminarCouch, eliminarTorneo, eliminarPartida, crearTorneo, crearPartida, mostrarTorneos, mostrarPartidas, actualizarTorneo, actualizarPartida, actualizarEquipo, eliminarEquipo, mostrarEquipos, analiytics;
+	private JMenuItem configurarNotificaciones, mostrarGamers, mostrarCoachs, crearTorneo, crearPartida, mostrarTorneos, mostrarPartidas, actualizarTorneo, actualizarPartida, actualizarEquipo,  mostrarEquipos, analiytics;
 	private CardAdmin cardAdmin;
 
 	/**
@@ -27,8 +27,6 @@ public class VentanaAdmin extends JFrame{
 		administrarCouch = new JMenu("Manage Couchs");
 		mostrarGamers = new JMenuItem("Show Gamers");
 		mostrarCoachs = new JMenuItem("Show Couchs");
-		eliminarGamer = new JMenuItem("Delete Gamer");
-		eliminarCouch = new JMenuItem("Delete Couch");
 		administrarTorneos = new JMenu("Manage Tournaments");
 		administrarPartidas = new JMenu("Manage Matches");
 		crearTorneo = new JMenuItem("Create Tournament");
@@ -37,11 +35,8 @@ public class VentanaAdmin extends JFrame{
 		mostrarPartidas = new JMenuItem("Show Matches");
 		actualizarTorneo = new JMenuItem("Update Tournament");
 		actualizarPartida = new JMenuItem("Update Match");
-		eliminarTorneo = new JMenuItem("Delete Tournament");
-		eliminarPartida = new JMenuItem("Delete Match");
 		administrarEquipo = new JMenu("Manage Teams");
 		actualizarEquipo = new JMenuItem("Update Team");
-		eliminarEquipo = new JMenuItem("Delete Team");
 		mostrarEquipos = new JMenuItem("Show Teams");
 		configurarNotificaciones = new JMenuItem("Configure Notifications");
 		analiytics = new JMenuItem("Analytics");
@@ -54,18 +49,13 @@ public class VentanaAdmin extends JFrame{
 		administrarTorneos.add(crearTorneo);
 		administrarTorneos.add(mostrarTorneos);
 		administrarTorneos.add(actualizarTorneo);
-		administrarTorneos.add(eliminarTorneo);
 		administrarTorneos.add(configurarNotificaciones);
 		administrarPartidas.add(crearPartida);
 		administrarPartidas.add(mostrarPartidas);
 		administrarPartidas.add(actualizarPartida);
-		administrarPartidas.add(eliminarPartida);
 		administrarGamer.add(mostrarGamers);
-		administrarGamer.add(eliminarGamer);
 		administrarCouch.add(mostrarCoachs);
-		administrarCouch.add(eliminarCouch);
 		administrarEquipo.add(actualizarEquipo);
-		administrarEquipo.add(eliminarEquipo);
 		administrarEquipo.add(mostrarEquipos);		
 		reportes.add(analiytics);
 		setJMenuBar(menuBar);
@@ -103,30 +93,6 @@ public class VentanaAdmin extends JFrame{
 	}
 	public void setMostrarCoachs(JMenuItem mostrarCoachs) {
 		this.mostrarCoachs = mostrarCoachs;
-	}
-	public JMenuItem getEliminarGamer() {
-		return eliminarGamer;
-	}
-	public void setEliminarGamer(JMenuItem eliminarGamer) {
-		this.eliminarGamer = eliminarGamer;
-	}
-	public JMenuItem getEliminarCouch() {
-		return eliminarCouch;
-	}
-	public void setEliminarCouch(JMenuItem eliminarCouch) {
-		this.eliminarCouch = eliminarCouch;
-	}
-	public JMenuItem getEliminarTorneo() {
-		return eliminarTorneo;
-	}
-	public void setEliminarTorneo(JMenuItem eliminarTorneo) {
-		this.eliminarTorneo = eliminarTorneo;
-	}
-	public JMenuItem getEliminarPartida() {
-		return eliminarPartida;
-	}
-	public void setEliminarPartida(JMenuItem eliminarPartida) {
-		this.eliminarPartida = eliminarPartida;
 	}
 	public JMenuItem getCrearTorneo() {
 		return crearTorneo;
@@ -169,12 +135,6 @@ public class VentanaAdmin extends JFrame{
 	}
 	public void setActualizarEquipo(JMenuItem actualizarEquipo) {
 		this.actualizarEquipo = actualizarEquipo;
-	}
-	public JMenuItem getEliminarEquipo() {
-		return eliminarEquipo;
-	}
-	public void setEliminarEquipo(JMenuItem eliminarEquipo) {
-		this.eliminarEquipo = eliminarEquipo;
 	}
 	public JMenuItem getMostrarEquipos() {
 		return mostrarEquipos;

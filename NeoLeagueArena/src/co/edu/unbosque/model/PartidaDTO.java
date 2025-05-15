@@ -1,45 +1,63 @@
 package co.edu.unbosque.model;
 
-public class PartidaDTO {
+import java.io.Serializable;
+import java.util.Date;
 
-	private int duracionMinTotal;
-	
-	private int duracionSetMin;
-	
+public class PartidaDTO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private int id;
+	private Equipo equipo1;
+	private Equipo equipo2;
+	private Equipo ganador;
 	private String juego;
+	private Date fecha;
 	
-	private int numParticipantes;
-	
-	private int set;
-
 	public PartidaDTO() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public PartidaDTO(int duracionMinTotal, int duracionSetMin, String juego, int numParticipantes, int set) {
+	public PartidaDTO(int id, Equipo equipo1, Equipo equipo2, Equipo ganador, String juego, Date fecha) {
 		super();
-		this.duracionMinTotal = duracionMinTotal;
-		this.duracionSetMin = duracionSetMin;
+		this.id = id;
+		this.equipo1 = equipo1;
+		this.equipo2 = equipo2;
+		this.ganador = ganador;
 		this.juego = juego;
-		this.numParticipantes = numParticipantes;
-		this.set = set;
+		this.fecha = fecha;
 	}
 
-	public int getDuracionMinTotal() {
-		return duracionMinTotal;
+	public int getId() {
+		return id;
 	}
 
-	public void setDuracionMinTotal(int duracionMinTotal) {
-		this.duracionMinTotal = duracionMinTotal;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public int getDuracionSetMin() {
-		return duracionSetMin;
+	public Equipo getEquipo1() {
+		return equipo1;
 	}
 
-	public void setDuracionSetMin(int duracionSetMin) {
-		this.duracionSetMin = duracionSetMin;
+	public void setEquipo1(Equipo equipo1) {
+		this.equipo1 = equipo1;
+	}
+
+	public Equipo getEquipo2() {
+		return equipo2;
+	}
+
+	public void setEquipo2(Equipo equipo2) {
+		this.equipo2 = equipo2;
+	}
+
+	public Equipo getGanador() {
+		return ganador;
+	}
+
+	public void setGanador(Equipo ganador) {
+		this.ganador = ganador;
 	}
 
 	public String getJuego() {
@@ -50,27 +68,19 @@ public class PartidaDTO {
 		this.juego = juego;
 	}
 
-	public int getNumParticipantes() {
-		return numParticipantes;
+	public Date getFecha() {
+		return fecha;
 	}
 
-	public void setNumParticipantes(int numParticipantes) {
-		this.numParticipantes = numParticipantes;
-	}
-
-	public int getSet() {
-		return set;
-	}
-
-	public void setSet(int set) {
-		this.set = set;
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
 	}
 
 	@Override
 	public String toString() {
-		return  + duracionMinTotal + ";" + duracionSetMin + ";"+ juego + ";" + numParticipantes + ";" + set + "\n";
+		return "PartidaDTO [id=" + id + ", equipo1=" + equipo1 + ", equipo2=" + equipo2 + ", ganador=" + ganador
+				+ ", juego=" + juego + ", fecha=" + fecha + "]";
 	}
-	
 	
 	
 }

@@ -110,7 +110,7 @@ public class PanelMostrar extends JPanel {
 			       } else if (f == 0) {
 			           return column == nombresColumnas.length - 1 ? Integer.class : String.class;
 			       }
-			       return Object.class; // Valor por defecto
+			       return Object.class; 
 			   }
 			@Override
 			public boolean isCellEditable(int row, int column) {

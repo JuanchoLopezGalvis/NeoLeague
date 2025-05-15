@@ -1,41 +1,37 @@
 package co.edu.unbosque.model;
 
-public class EquipoDTO {
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class EquipoDTO implements Serializable{
 	
-	private int cantidadIntegrantes;
-	
-	private String juego;
-	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nombre;
-	
-	private int numTrofeos;
+	private ArrayList<Jugador> integrantes;
+	private String juegoDesempeñado;
+	private ArrayList<Torneo> torneosInscritos;
+	private ArrayList<Partida> partidasJugadas;
 
 	public EquipoDTO() {
-		// TODO Auto-generated constructor stub
 	}
-	
-	public EquipoDTO(int cantidadIntegrantes, String juego, String nombre, int numTrofeos) {
+
+	public EquipoDTO(String nombre, ArrayList<Jugador> integrantes, String juegoDesempeñado,
+			ArrayList<Torneo> torneosInscritos, ArrayList<Partida> partidasJugadas) {
 		super();
-		this.cantidadIntegrantes = cantidadIntegrantes;
-		this.juego = juego;
 		this.nombre = nombre;
-		this.numTrofeos = numTrofeos;
+		this.integrantes = integrantes;
+		this.juegoDesempeñado = juegoDesempeñado;
+		this.torneosInscritos = torneosInscritos;
+		this.partidasJugadas = partidasJugadas;
 	}
 
-	public int getCantidadIntegrantes() {
-		return cantidadIntegrantes;
-	}
-
-	public void setCantidadIntegrantes(int cantidadIntegrantes) {
-		this.cantidadIntegrantes = cantidadIntegrantes;
-	}
-
-	public String getJuego() {
-		return juego;
-	}
-
-	public void setJuego(String juego) {
-		this.juego = juego;
+	public EquipoDTO(String nombre, String juegoDesempeñado) {
+		super();
+		this.nombre = nombre;
+		this.juegoDesempeñado = juegoDesempeñado;
 	}
 
 	public String getNombre() {
@@ -46,20 +42,43 @@ public class EquipoDTO {
 		this.nombre = nombre;
 	}
 
-	public int getNumTrofeos() {
-		return numTrofeos;
+	public ArrayList<Jugador> getIntegrantes() {
+		return integrantes;
 	}
 
-	public void setNumTrofeos(int numTrofeos) {
-		this.numTrofeos = numTrofeos;
+	public void setIntegrantes(ArrayList<Jugador> integrantes) {
+		this.integrantes = integrantes;
 	}
 
+
+	public String getJuegoDesempeñado() {
+		return juegoDesempeñado;
+	}
+
+	public void setJuegoDesempeñado(String juegoDesempeñado) {
+		this.juegoDesempeñado = juegoDesempeñado;
+	}
+
+	public ArrayList<Torneo> getTorneosInscritos() {
+		return torneosInscritos;
+	}
+
+	public void setTorneosInscritos(ArrayList<Torneo> torneosInscritos) {
+		this.torneosInscritos = torneosInscritos;
+	}
+
+	public ArrayList<Partida> getPartidasJugadas() {
+		return partidasJugadas;
+	}
+
+	public void setPartidasJugadas(ArrayList<Partida> partidasJugadas) {
+		this.partidasJugadas = partidasJugadas;
+	}
+	
 	@Override
 	public String toString() {
-		return "Equipo [cantidadIntegrantes=" + cantidadIntegrantes + ", juego=" + juego + ", nombre=" + nombre
-				+ ", numTrofeos=" + numTrofeos + "]";
+		return "EquipoDTO [nombre=" + nombre + ", integrantes=" + integrantes + ", juegoDesempeñado=" + juegoDesempeñado
+				+ ", torneosInscritos=" + torneosInscritos + ", partidasJugadas=" + partidasJugadas + "]";
 	}
 	
-	
-
 }

@@ -13,14 +13,17 @@ public class CardAdmin extends JPanel{
 	private CardLayout cardLayout;
 	private PanelMostrar panelMostrar;
 	private PanelAgregarTorneo panelAgregarTorneo;
+	private PanelAgregarPartida panelAgregarPartida;
 	
 	public CardAdmin() {
 		cardLayout = new CardLayout();
 		setLayout(cardLayout);
 		panelMostrar = new PanelMostrar();
 		panelAgregarTorneo = new PanelAgregarTorneo();
+		panelAgregarPartida = new PanelAgregarPartida();
 		add(panelAgregarTorneo, "PanelAgregarTorneo");
 		add(panelMostrar, "PanelMostrar");
+		add(panelAgregarPartida, "PanelAgregarPartida");
 	}
 	public void mostrarPanel(String nombrePanel) {
 		cardLayout.show(this, nombrePanel);
@@ -37,5 +40,10 @@ public class CardAdmin extends JPanel{
 	public void setPanelAgregarTorneo(PanelAgregarTorneo panelAgregarTorneo) {
 		this.panelAgregarTorneo = panelAgregarTorneo;
 	}
-	
+	public PanelAgregarPartida getPanelAgregarPartida() {
+		return panelAgregarPartida;
+	}
+	public void setPanelAgregarPartida(PanelAgregarPartida panelAgregarPartida) {
+		this.panelAgregarPartida = panelAgregarPartida;
+	}
 }

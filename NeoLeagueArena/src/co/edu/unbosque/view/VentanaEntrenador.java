@@ -19,9 +19,9 @@ public class VentanaEntrenador extends JFrame{
 	public VentanaEntrenador() {
 		setSize(1280,720);
 		setLocationRelativeTo(null);
-		setResizable(false);
 		setTitle("Ventana Entrenador");
 		setLayout(null);
+		setResizable(false);
 		menuBar = new JMenuBar();
 		gestionarEquipos = new JMenu("Gestionar Equipos");
 		gestionarCuenta = new JMenu("Gestionar Cuenta");
@@ -55,8 +55,97 @@ public class VentanaEntrenador extends JFrame{
 		estadisticas.add(verEstadisticasEquipos);
 		setJMenuBar(menuBar);
 		cardCoach = new CardCoach();
+		cardCoach.setBounds(0, 0, 1280, 720);
 		add(cardCoach);
 		setVisible(true);
+	}
+
+	public JMenuItem getActualizarCuenta() {
+		return actualizarCuenta;
+	}
+
+	public void setActualizarCuenta(JMenuItem actualizarCuenta) {
+		this.actualizarCuenta = actualizarCuenta;
+	}
+
+	public JMenuItem getCrearEquipo() {
+		return crearEquipo;
+	}
+
+	public void setCrearEquipo(JMenuItem crearEquipo) {
+		this.crearEquipo = crearEquipo;
+	}
+
+	public JMenuItem getEliminarEquipo() {
+		return eliminarEquipo;
+	}
+
+	public void setEliminarEquipo(JMenuItem eliminarEquipo) {
+		this.eliminarEquipo = eliminarEquipo;
+	}
+
+	public JMenuItem getModificarEquipo() {
+		return modificarEquipo;
+	}
+
+	public void setModificarEquipo(JMenuItem modificarEquipo) {
+		this.modificarEquipo = modificarEquipo;
+	}
+
+	public JMenuItem getVerEquipos() {
+		return verEquipos;
+	}
+
+	public void setVerEquipos(JMenuItem verEquipos) {
+		this.verEquipos = verEquipos;
+	}
+
+	public JMenuItem getInscribirTorneo() {
+		return inscribirTorneo;
+	}
+
+	public void setInscribirTorneo(JMenuItem inscribirTorneo) {
+		this.inscribirTorneo = inscribirTorneo;
+	}
+
+	public JMenuItem getSalirseTorneo() {
+		return salirseTorneo;
+	}
+
+	public void setSalirseTorneo(JMenuItem salirseTorneo) {
+		this.salirseTorneo = salirseTorneo;
+	}
+
+	public JMenuItem getVerTorneos() {
+		return verTorneos;
+	}
+
+	public void setVerTorneos(JMenuItem verTorneos) {
+		this.verTorneos = verTorneos;
+	}
+
+	public JMenuItem getConsultarPartida() {
+		return consultarPartida;
+	}
+
+	public void setConsultarPartida(JMenuItem consultarPartida) {
+		this.consultarPartida = consultarPartida;
+	}
+
+	public JMenuItem getVerEstadisticasEquipos() {
+		return verEstadisticasEquipos;
+	}
+
+	public void setVerEstadisticasEquipos(JMenuItem verEstadisticasEquipos) {
+		this.verEstadisticasEquipos = verEstadisticasEquipos;
+	}
+
+	public CardCoach getCardCoach() {
+		return cardCoach;
+	}
+
+	public void setCardCoach(CardCoach cardCoach) {
+		this.cardCoach = cardCoach;
 	}
 	
 }

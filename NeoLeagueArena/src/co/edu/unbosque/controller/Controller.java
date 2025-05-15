@@ -121,6 +121,10 @@ public class Controller implements ActionListener {
 		vf.getVa().getCardAdmin().getPanelMostrar().getBtnEliminar().setActionCommand("btnEliminar");
 		vf.getVa().getMostrarTorneos().addActionListener(this);
 		vf.getVa().getMostrarTorneos().setActionCommand("btnMostrarTorneos");
+		vf.getVa().getCrearPartida().addActionListener(this);
+		vf.getVa().getCrearPartida().setActionCommand("PanelCrearPartida");
+		vf.getVe().getCrearEquipo().addActionListener(this);
+		vf.getVe().getCrearEquipo().setActionCommand("PanelCrearEquipo");
 	}
 
 	/**
@@ -332,14 +336,10 @@ public class Controller implements ActionListener {
 						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.actualizartorneo"));
 				vf.getVa().getActualizarPartida()
 						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.actializarpartidos"));
-				vf.getVa().getEliminarPartida()
-						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarpartidos"));
 				vf.getVa().getAdministrarEquipo()
 						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.Administrarequipos"));
 				vf.getVa().getActualizarEquipo()
 						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.actualizarequipos"));
-				vf.getVa().getEliminarEquipo()
-						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarequipos"));
 				vf.getVa().getMostrarEquipos()
 						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarequipos"));
 				vf.getVa().getConfigurarNotificaciones()
@@ -532,14 +532,10 @@ public class Controller implements ActionListener {
 						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.actualizartorneo"));
 				vf.getVa().getActualizarPartida()
 						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.actializarpartidos"));
-				vf.getVa().getEliminarPartida()
-						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarpartidos"));
 				vf.getVa().getAdministrarEquipo()
 						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.Administrarequipos"));
 				vf.getVa().getActualizarEquipo()
 						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.actualizarequipos"));
-				vf.getVa().getEliminarEquipo()
-						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.eliminarequipos"));
 				vf.getVa().getMostrarEquipos()
 						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarequipos"));
 				vf.getVa().getConfigurarNotificaciones()
@@ -695,7 +691,8 @@ public class Controller implements ActionListener {
 						.getSelectedItem().toString();
 				int anosDeExperiencia = (int) vf.getVsu().getCardSignUp().getCrearGamer().getDatoAnosDeExperiencia()
 						.getValue();
-				if ( imagen != null && vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva()
+				if (imagen != null
+						&& vf.getVsu().getCardSignUp().getCrearGamer().getDatoTrayectoriaCompetitiva()
 								.getSelectedIndex() != 0
 						&& vf.getVsu().getCardSignUp().getCrearGamer().getDatoJuegoEspecialidad()
 								.getSelectedIndex() != 0
@@ -855,7 +852,8 @@ public class Controller implements ActionListener {
 						break;
 					}
 				}
-				if (imagen != null && vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().getSelectedIndex() != 0 ) {
+				if (imagen != null
+						&& vf.getVsu().getCardSignUp().getCrearAdmin().getDatoPais().getSelectedIndex() != 0) {
 					if (contrasena.equals(contrasenaConf)) {
 						if (contrasenaAdmins.equals("Transparencia290")) {
 							if (mf.getAdao().find(new Administrador(nombre, null, null, 0, null, null, null)) == null) {
@@ -962,24 +960,25 @@ public class Controller implements ActionListener {
 
 			String[] titulos = { nombre, contrasena, correo, edad, pais, trayectoriaCompetitiva, juegoEspecialidad,
 					anosDeExperiencia, foto };
-			vf.getVa().getCardAdmin().getPanelMostrar().setModelo(titulos,1 );
+			vf.getVa().getCardAdmin().getPanelMostrar().setModelo(titulos, 1);
 			mf.getJdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
 			vf.getVa().getCardAdmin().getPanelMostrar().getTabla().revalidate();
 			vf.getVa().getCardAdmin().getPanelMostrar().getTabla().repaint();
 			vf.getVa().getCardAdmin().mostrarPanel("PanelMostrar");
 			break;
 		}
-		case "btnMostrarTorneos":{
+		case "btnMostrarTorneos": {
 			panelActual = "mostrarT";
 			String nombre = prop.getProperty("archivosdepropiedades.arraymostrar.nombre");
 			String juegoEspecialidad = prop.getProperty("archivosdepropiedades.arraymostrar.juegoespecialidad");
 			String fechaInicio = prop.getProperty("archivosdepropiedades.arraymostrar.fechainicio");
 			String fechaFin = prop.getProperty("archivosdepropiedades.arraymostrar.fechafin");
 			String formato = prop.getProperty("archivosdepropiedades.arraymostrar.tipotorneo");
-			String maxEquipos =prop.getProperty("archivosdepropiedades.arraymostrar.maxequipos");
+			String maxEquipos = prop.getProperty("archivosdepropiedades.arraymostrar.maxequipos");
 			String recompensa = prop.getProperty("archivosdepropiedades.arraymostrar.recompensa");
 			String equi = prop.getProperty("archivosdepropiedades.arraymostrar.equiposinscritos");
-			String [] titulos = {nombre, juegoEspecialidad, fechaInicio, fechaFin, formato, maxEquipos, recompensa, equi};
+			String[] titulos = { nombre, juegoEspecialidad, fechaInicio, fechaFin, formato, maxEquipos, recompensa,
+					equi };
 			vf.getVa().getCardAdmin().getPanelMostrar().setModelo(titulos, 0);
 			mf.getTdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
 			vf.getVa().getCardAdmin().getPanelMostrar().getTabla().revalidate();
@@ -1002,7 +1001,7 @@ public class Controller implements ActionListener {
 
 			String[] titulos = { nombre, contrasena, correo, edad, pais, trayectoriaProfesional, juegoEspecialidad,
 					anosDeExperiencia, foto };
-			vf.getVa().getCardAdmin().getPanelMostrar().setModelo(titulos,1);
+			vf.getVa().getCardAdmin().getPanelMostrar().setModelo(titulos, 1);
 			mf.getEdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
 			vf.getVa().getCardAdmin().getPanelMostrar().getTabla().revalidate();
 			vf.getVa().getCardAdmin().getPanelMostrar().getTabla().repaint();
@@ -1095,6 +1094,14 @@ public class Controller implements ActionListener {
 				}
 				break;
 			}
+		}
+		case "PanelCrearEquipo": {
+			vf.getVe().getCardCoach().mostrarPanel("PanelAgregarEquipo");
+			break;
+		}
+		case "PanelCrearPartida": {
+			vf.getVa().getCardAdmin().mostrarPanel("PanelAgregarPartida");
+			break;
 		}
 		}
 	}
