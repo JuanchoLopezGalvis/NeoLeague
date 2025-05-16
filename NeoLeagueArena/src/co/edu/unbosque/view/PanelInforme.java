@@ -38,7 +38,7 @@ public class PanelInforme extends JPanel{
 	 */
 	
 	
-	private BotonRedondeado btnEliminar;
+	private BotonRedondeado btnGenerarInformePDF;
 	
 	private JCheckBox equipos;
 	private JCheckBox jugadores;
@@ -55,28 +55,30 @@ public class PanelInforme extends JPanel{
 		imagenFondo = new ImageIcon(getClass().getResource("/recursos/fondoInforme.png")).getImage();
 		equipos = new JCheckBox("Equipos");
 		jugadores = new JCheckBox("Jugadores");
-		equipos.setBounds(10, 10, 150, 30);
-		jugadores.setBounds(10, 30, 150, 30);
+		equipos.setBounds(10, 10, 100, 30);
+		jugadores.setBounds(10, 30, 100, 30);
+		equipos.setBackground(Color.decode("#8da1ab"));
+		jugadores.setBackground(Color.decode("#8da1ab"));
 		tablaDeUsuarios = new JTable();
 		tablaDeUsuarios.setPreferredScrollableViewportSize(new Dimension(800, 400));
 		tablaDeUsuarios.setFillsViewportHeight(true);
 		tablaDeUsuarios.setRowHeight(80);
 		tablaDeUsuarios.getTableHeader().setPreferredSize(new Dimension(tablaDeUsuarios.getWidth(), 40));
-		tablaDeUsuarios.setBackground(Color.decode("#bbdefb"));
+		tablaDeUsuarios.setBackground(Color.decode("#8da1ab"));
 		tablaDeUsuarios.setForeground(Color.black);
 		tablaDeUsuarios.setGridColor(Color.black);
 		tablaDeUsuarios.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		deslizador = new JScrollPane(tablaDeUsuarios);
-		deslizador.setBounds(257, 114, 755, 420);
-		deslizador.setBackground(Color.decode("#bbdefb"));
+		deslizador.setBounds(257, 160, 755, 360);
+		deslizador.setBackground(Color.decode("#8da1ab"));
 		deslizador.setForeground(Color.black);
-		btnEliminar = new BotonRedondeado("Delete", 20, Color.decode("#bbdefb"), Color.white, Color.BLACK, Color.BLACK, 1f);
-		btnEliminar.setToolTipText("Select the row to delete");
-		btnEliminar.setBounds(545, 550, 150, 30);
+		btnGenerarInformePDF = new BotonRedondeado("Generate PDF report", 20, Color.decode("#8da1ab"), Color.white, Color.BLACK, Color.BLACK, 1f);
+		btnGenerarInformePDF.setToolTipText("Select the row to delete");
+		btnGenerarInformePDF.setBounds(540, 550, 180, 30);
 		
 		add(deslizador);
 		
-		add(btnEliminar);
+		add(btnGenerarInformePDF);
 	
 		add(equipos);
 		add(jugadores);
@@ -154,11 +156,11 @@ public class PanelInforme extends JPanel{
 
 
 	public BotonRedondeado getBtnEliminar() {
-		return btnEliminar;
+		return btnGenerarInformePDF;
 	}
 
 	public void setBtoonEliminar(BotonRedondeado btnEliminar) {
-		this.btnEliminar = btnEliminar;
+		this.btnGenerarInformePDF = btnEliminar;
 	}
 
 }
