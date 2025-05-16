@@ -14,11 +14,13 @@ public class PartidaDTO implements Serializable{
 	private Equipo ganador;
 	private String juego;
 	private Date fecha;
+	private Torneo torneoAlQuePertenece;
 	
 	public PartidaDTO() {
 	}
 
-	public PartidaDTO(int id, Equipo equipo1, Equipo equipo2, Equipo ganador, String juego, Date fecha) {
+	public PartidaDTO(int id, Equipo equipo1, Equipo equipo2, Equipo ganador, String juego, Date fecha,
+			Torneo torneoAlQuePertenece) {
 		super();
 		this.id = id;
 		this.equipo1 = equipo1;
@@ -26,6 +28,7 @@ public class PartidaDTO implements Serializable{
 		this.ganador = ganador;
 		this.juego = juego;
 		this.fecha = fecha;
+		this.torneoAlQuePertenece = torneoAlQuePertenece;
 	}
 
 	public int getId() {
@@ -76,9 +79,17 @@ public class PartidaDTO implements Serializable{
 		this.fecha = fecha;
 	}
 
+	public Torneo getTorneoAlQuePertenece() {
+		return torneoAlQuePertenece;
+	}
+
+	public void setTorneoAlQuePertenece(Torneo torneoAlQuePertenece) {
+		this.torneoAlQuePertenece = torneoAlQuePertenece;
+	}
+
 	@Override
 	public String toString() {
-		return "PartidaDTO [id=" + id + ", equipo1=" + equipo1 + ", equipo2=" + equipo2 + ", ganador=" + ganador
+		return "Partida [id=" + id + ", equipo1=" + equipo1 + ", equipo2=" + equipo2 + ", ganador=" + ganador
 				+ ", juego=" + juego + ", fecha=" + fecha + "]";
 	}
 	

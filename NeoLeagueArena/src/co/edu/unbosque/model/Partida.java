@@ -15,11 +15,13 @@ public class Partida implements Serializable{
 	private Equipo ganador;
 	private String juego;
 	private Date fecha;
+	private Torneo torneoAlQuePertenece;
 	
 	public Partida() {
 	}
 
-	public Partida(int id, Equipo equipo1, Equipo equipo2, Equipo ganador, String juego, Date fecha) {
+	public Partida(int id, Equipo equipo1, Equipo equipo2, Equipo ganador, String juego, Date fecha,
+			Torneo torneoAlQuePertenece) {
 		super();
 		this.id = id;
 		this.equipo1 = equipo1;
@@ -27,6 +29,7 @@ public class Partida implements Serializable{
 		this.ganador = ganador;
 		this.juego = juego;
 		this.fecha = fecha;
+		this.torneoAlQuePertenece = torneoAlQuePertenece;
 	}
 
 	public int getId() {
@@ -75,6 +78,14 @@ public class Partida implements Serializable{
 
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
+	}
+
+	public Torneo getTorneoAlQuePertenece() {
+		return torneoAlQuePertenece;
+	}
+
+	public void setTorneoAlQuePertenece(Torneo torneoAlQuePertenece) {
+		this.torneoAlQuePertenece = torneoAlQuePertenece;
 	}
 
 	@Override
