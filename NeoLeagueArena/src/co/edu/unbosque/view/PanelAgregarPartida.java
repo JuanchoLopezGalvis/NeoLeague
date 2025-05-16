@@ -17,6 +17,7 @@ public class PanelAgregarPartida extends JPanel{
 	 */
 	private Image fondo;
 	
+	
 	public PanelAgregarPartida() {
 		fondo = new ImageIcon(getClass().getResource("/recursos/fondoAPartida.png")).getImage();
 	}

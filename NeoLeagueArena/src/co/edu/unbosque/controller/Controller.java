@@ -361,6 +361,13 @@ public class Controller implements ActionListener {
 				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getRecompensa()
 						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.reconpensa"));
 
+				vf.getVe().getCardCoach().getPanelAgregarEquipo().getEtiquetaNombreEquipo()
+						.setText(prop.getProperty("archivosdepropiedades.panelcreaequipo.nombreequipo"));
+				vf.getVe().getCardCoach().getPanelAgregarEquipo().getDatoJuego()
+						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcreaequipo.nombre"));
+				vf.getVe().getCardCoach().getPanelAgregarEquipo().getBtnAgregarEquipo()
+						.setText(prop.getProperty("archivosdepropiedades.panelcreaequipo.btnagregarequpo"));
+
 				vf.getVp().getPanelPrincipal().getCheckIngles().setSelected(false);
 
 			}
@@ -556,6 +563,13 @@ public class Controller implements ActionListener {
 						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.fechafin"));
 				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getRecompensa()
 						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcreartorneo.reconpensa"));
+
+				vf.getVe().getCardCoach().getPanelAgregarEquipo().getEtiquetaNombreEquipo()
+						.setText(prop.getProperty("archivosdepropiedades.panelcreaequipo.nombreequipo"));
+				vf.getVe().getCardCoach().getPanelAgregarEquipo().getDatoJuego()
+						.setToolTipText(prop.getProperty("archivosdepropiedades.panelcreaequipo.nombre"));
+				vf.getVe().getCardCoach().getPanelAgregarEquipo().getBtnAgregarEquipo()
+						.setText(prop.getProperty("archivosdepropiedades.panelcreaequipo.btnagregarequpo"));
 
 				vf.getVp().getPanelPrincipal().getCheckEspañol().setSelected(false);
 

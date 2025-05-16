@@ -27,18 +27,20 @@ public class PanelAgregarEquipo extends JPanel{
 		setSize(1280,720);
 		setLayout(null);
 		fondo = new ImageIcon(getClass().getResource("/recursos/fondoAEquipo.png")).getImage();
-		datoNombreEquipo = new TextFieldRedondeado(Color.BLACK, Color.decode("#bbdefb"), 20, Color.BLACK, 1f);
-		btnAgregarEquipo = new BotonRedondeado("Agregar Equipo", 20, Color.decode("#bbdefb"), Color.white, Color.BLACK, Color.BLACK, 1f);
+		datoNombreEquipo = new TextFieldRedondeado(Color.white, Color.decode("#002d69"), 20, Color.white, 1f);
+		btnAgregarEquipo = new BotonRedondeado("Agregar Equipo", 20, Color.decode("#002d69"), Color.black, Color.WHITE, Color.white, 1f);
 		String[] juegos = {"FIFA", "Rocket League", "Formula 1", "Gran Turismo"};
 		datoJuego = new JComboBox<>(juegos);
 		etiquetaNombreEquipo = new JLabel("Nombre del equipo");
 		etiquetaNombreEquipo.setForeground(Color.white);
 		etiquetaNombreEquipo.setFont(new java.awt.Font("Arial", 1, 20));
 		datoJuego.setToolTipText("Game");
-		etiquetaNombreEquipo.setBounds(800, 200, 300, 30); 
-	    datoNombreEquipo.setBounds(800, 240, 200, 30);    
-	    datoJuego.setBounds(800, 300, 200, 30);            
-	    btnAgregarEquipo.setBounds(800, 360, 200, 30);     
+		datoJuego.setBackground(Color.decode("#002d69"));
+		datoJuego.setForeground(Color.white);
+		etiquetaNombreEquipo.setBounds(835, 200, 300, 30); 
+	    datoNombreEquipo.setBounds(800, 260, 250, 30);    
+	    datoJuego.setBounds(800, 320, 250, 30);            
+	    btnAgregarEquipo.setBounds(800, 380, 250, 30);     
 		add(datoNombreEquipo);
 		add(datoJuego);
 		add(btnAgregarEquipo);
@@ -56,4 +58,36 @@ public class PanelAgregarEquipo extends JPanel{
 
 		}
 	}
+	public Image getFondo() {
+		return fondo;
+	}
+	public void setFondo(Image fondo) {
+		this.fondo = fondo;
+	}
+	public TextFieldRedondeado getDatoNombreEquipo() {
+		return datoNombreEquipo;
+	}
+	public void setDatoNombreEquipo(TextFieldRedondeado datoNombreEquipo) {
+		this.datoNombreEquipo = datoNombreEquipo;
+	}
+	public JComboBox<String> getDatoJuego() {
+		return datoJuego;
+	}
+	public void setDatoJuego(JComboBox<String> datoJuego) {
+		this.datoJuego = datoJuego;
+	}
+	public JLabel getEtiquetaNombreEquipo() {
+		return etiquetaNombreEquipo;
+	}
+	public void setEtiquetaNombreEquipo(JLabel etiquetaNombreEquipo) {
+		this.etiquetaNombreEquipo = etiquetaNombreEquipo;
+	}
+	public BotonRedondeado getBtnAgregarEquipo() {
+		return btnAgregarEquipo;
+	}
+	public void setBtnAgregarEquipo(BotonRedondeado btnAgregarEquipo) {
+		this.btnAgregarEquipo = btnAgregarEquipo;
+	}
+	
+	
 }
