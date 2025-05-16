@@ -125,6 +125,15 @@ public class Controller implements ActionListener {
 		vf.getVa().getCrearPartida().setActionCommand("PanelCrearPartida");
 		vf.getVe().getCrearEquipo().addActionListener(this);
 		vf.getVe().getCrearEquipo().setActionCommand("PanelCrearEquipo");
+		
+		vf.getVa().getMostrarPartidas().addActionListener(this);
+		vf.getVa().getMostrarPartidas().setActionCommand("btnMostrarPartidas");
+		
+		vf.getVa().getMostrarEquipos().addActionListener(this);
+		vf.getVa().getMostrarEquipos().setActionCommand("btnMostrarEquipos");
+		
+		vf.getVa().getActualizarPartida().addActionListener(this);
+		vf.getVa().getActualizarPartida().setActionCommand("PanelActualizarPartida");
 	}
 
 	/**
@@ -1117,6 +1126,19 @@ public class Controller implements ActionListener {
 			vf.getVa().getCardAdmin().mostrarPanel("PanelAgregarPartida");
 			break;
 		}
+		case "btnMostrarPartidas": {
+			vf.getVa().getCardAdmin().mostrarPanel("PanelMostrar");
+			break;
+		}
+		case "btnMostrarEquipos": {
+			vf.getVa().getCardAdmin().mostrarPanel("PanelMostrar");
+			break;
+		}
+		case "PanelActualizarPartida": {
+			vf.getVa().getCardAdmin().mostrarPanel("PanelActualizarPartida");
+			break;
+		}
+		
 		}
 	}
 

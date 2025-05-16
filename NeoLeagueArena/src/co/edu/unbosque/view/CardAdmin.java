@@ -14,6 +14,8 @@ public class CardAdmin extends JPanel{
 	private PanelMostrar panelMostrar;
 	private PanelAgregarTorneo panelAgregarTorneo;
 	private PanelAgregarPartida panelAgregarPartida;
+	private PanelActualizarPartida panelActualizarPartida;
+	private PanelInforme panelInforme;
 	
 	public CardAdmin() {
 		cardLayout = new CardLayout();
@@ -21,9 +23,13 @@ public class CardAdmin extends JPanel{
 		panelMostrar = new PanelMostrar();
 		panelAgregarTorneo = new PanelAgregarTorneo();
 		panelAgregarPartida = new PanelAgregarPartida();
+		panelActualizarPartida = new PanelActualizarPartida();
+		panelInforme = new PanelInforme();
+		add(panelInforme, "PanelInforme");
 		add(panelAgregarTorneo, "PanelAgregarTorneo");
 		add(panelMostrar, "PanelMostrar");
 		add(panelAgregarPartida, "PanelAgregarPartida");
+		add(panelActualizarPartida, "PanelActualizarPartida");
 	}
 	public void mostrarPanel(String nombrePanel) {
 		cardLayout.show(this, nombrePanel);
@@ -46,4 +52,18 @@ public class CardAdmin extends JPanel{
 	public void setPanelAgregarPartida(PanelAgregarPartida panelAgregarPartida) {
 		this.panelAgregarPartida = panelAgregarPartida;
 	}
+	public PanelActualizarPartida getPanelActualizarPartida() {
+		return panelActualizarPartida;
+	}
+	public void setPanelActualizarPartida(PanelActualizarPartida panelActualizarPartida) {
+		this.panelActualizarPartida = panelActualizarPartida;
+	}
+	public PanelInforme getPanelInforme() {
+		return panelInforme;
+	}
+	public void setPanelInforme(PanelInforme panelInforme) {
+		this.panelInforme = panelInforme;
+	}
+	
+	
 }
