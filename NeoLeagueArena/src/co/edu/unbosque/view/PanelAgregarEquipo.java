@@ -35,10 +35,10 @@ public class PanelAgregarEquipo extends JPanel{
 		etiquetaNombreEquipo.setForeground(Color.white);
 		etiquetaNombreEquipo.setFont(new java.awt.Font("Arial", 1, 20));
 		datoJuego.setToolTipText("Game");
-		etiquetaNombreEquipo.setBounds(900, 200, 300, 30); 
-	    datoNombreEquipo.setBounds(900, 240, 300, 40);    
-	    datoJuego.setBounds(900, 300, 300, 40);            
-	    btnAgregarEquipo.setBounds(900, 360, 300, 50);     
+		etiquetaNombreEquipo.setBounds(800, 200, 300, 30); 
+	    datoNombreEquipo.setBounds(800, 240, 200, 30);    
+	    datoJuego.setBounds(800, 300, 200, 30);            
+	    btnAgregarEquipo.setBounds(800, 360, 200, 30);     
 		add(datoNombreEquipo);
 		add(datoJuego);
 		add(btnAgregarEquipo);
