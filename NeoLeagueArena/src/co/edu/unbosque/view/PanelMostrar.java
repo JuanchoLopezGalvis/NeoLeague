@@ -21,7 +21,7 @@ public class PanelMostrar extends JPanel {
 	/**
 	 * atributo de la clase encargado de almacenar la tabla de usuarios.
 	 */
-	private JTable tablaDeUsuarios;
+	private JTable tabla;
 	/**
 	 * atributo de la clase encargado de almacenar el deslizador de la tabla.
 	 */
@@ -50,16 +50,16 @@ public class PanelMostrar extends JPanel {
 		setSize(1280, 720);
 		setLayout(null);
 		imagenFondo = new ImageIcon(getClass().getResource("/recursos/fondoMostrar.png")).getImage();
-		tablaDeUsuarios = new JTable();
-		tablaDeUsuarios.setPreferredScrollableViewportSize(new Dimension(800, 400));
-		tablaDeUsuarios.setFillsViewportHeight(true);
-		tablaDeUsuarios.setRowHeight(80);
-		tablaDeUsuarios.getTableHeader().setPreferredSize(new Dimension(tablaDeUsuarios.getWidth(), 40));
-		tablaDeUsuarios.setBackground(Color.decode("#bbdefb"));
-		tablaDeUsuarios.setForeground(Color.black);
-		tablaDeUsuarios.setGridColor(Color.black);
-		tablaDeUsuarios.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-		deslizador = new JScrollPane(tablaDeUsuarios);
+		tabla = new JTable();
+		tabla.setPreferredScrollableViewportSize(new Dimension(800, 400));
+		tabla.setFillsViewportHeight(true);
+		tabla.setRowHeight(80);
+		tabla.getTableHeader().setPreferredSize(new Dimension(tabla.getWidth(), 40));
+		tabla.setBackground(Color.decode("#bbdefb"));
+		tabla.setForeground(Color.black);
+		tabla.setGridColor(Color.black);
+		tabla.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+		deslizador = new JScrollPane(tabla);
 		deslizador.setBounds(257, 114, 755, 420);
 		deslizador.setBackground(Color.decode("#bbdefb"));
 		deslizador.setForeground(Color.black);
@@ -118,7 +118,7 @@ public class PanelMostrar extends JPanel {
 			}
 			
 		};
-		tablaDeUsuarios.setModel(modelo);
+		tabla.setModel(modelo);
 	}
 
 	/**
@@ -127,15 +127,15 @@ public class PanelMostrar extends JPanel {
 	 * @return tablaDeProductos es la tabla de productos.
 	 */
 	public JTable getTabla() {
-		return tablaDeUsuarios;
+		return tabla;
 	}
 
 	public JTable getTablaDeUsuarios() {
-		return tablaDeUsuarios;
+		return tabla;
 	}
 
 	public void setTablaDeUsuarios(JTable tablaDeUsuarios) {
-		this.tablaDeUsuarios = tablaDeUsuarios;
+		this.tabla = tablaDeUsuarios;
 	}
 
 	public JScrollPane getDeslizador() {
