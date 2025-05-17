@@ -2,9 +2,11 @@ package co.edu.unbosque.model.persistence;
 
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import co.edu.unbosque.model.Jugador;
 import co.edu.unbosque.model.Torneo;
 import co.edu.unbosque.model.TorneoDTO;
 
@@ -48,6 +50,22 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
         escribirArchivoTxt();
         return true;
 	}
+	
+	public void showOne(JTable table, Torneo toShow, String mensaje) {
+		Torneo torneo = find(toShow);
+		if (torneo != null) {
+			DefaultTableModel modelo = (DefaultTableModel) table.getModel();
+			modelo.setRowCount(0);
+			int size = torneo.getListaEquiposInscritos().size();
+			Object[] row = {torneo.getNombre(), torneo.getJuego(), torneo.getFechaInicio(), torneo.getFechaFin(), torneo.getFormato(), torneo.getMaxEquipos(), torneo.getPremio(), size};
+			modelo.addRow(row);
+		}else {
+			DefaultTableModel modelo = (DefaultTableModel) table.getModel();
+			modelo.setRowCount(0);
+			Object[] row = {mensaje};
+			modelo.addRow(row);
+		}
+	}
 
 	@Override
 	public boolean delete(TorneoDTO toDelete) {
@@ -57,7 +75,16 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 
 	@Override
 	public Torneo find(Torneo toFind) {
-		// TODO Auto-generated method stub
+		Torneo found = null;
+		if (!listaTorneos.isEmpty()) {
+			for (Torneo torneo : listaTorneos) {
+				if (torneo.getNombre().equals(toFind.getNombre())) {
+					found = torneo;
+					break;
+				}
+			}
+			return found;
+		}
 		return null;
 	}
 

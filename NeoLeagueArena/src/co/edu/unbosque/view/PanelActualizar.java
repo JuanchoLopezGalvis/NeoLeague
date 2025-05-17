@@ -17,7 +17,7 @@ public class PanelActualizar extends JPanel{
 	/**
 	 * atributo de la clase encargado de almacenar la tabla de usuarios.
 	 */
-	private JTable tablaDeUsuarios;
+	private JTable tabla;
 	/**
 	 * atributo de la clase encargado de almacenar el deslizador de la tabla.
 	 */
@@ -35,42 +35,47 @@ public class PanelActualizar extends JPanel{
 	 */
 	private BotonRedondeado buscar;
 	private BotonRedondeado btnShowllAll;
-	private BotonRedondeado btnEliminar;
+	private BotonRedondeado btnActualizar;
+	private BotonRedondeado btnEditar;
 	
 	public PanelActualizar() {
 		setBackground(Color.BLACK);
 		setSize(1280, 720);
 		setLayout(null);
 		imagenFondo = new ImageIcon(getClass().getResource("/recursos/fondoActualizar.png")).getImage();
-		tablaDeUsuarios = new JTable();
-		tablaDeUsuarios.setPreferredScrollableViewportSize(new Dimension(800, 400));
-		tablaDeUsuarios.setFillsViewportHeight(true);
-		tablaDeUsuarios.setRowHeight(80);
-		tablaDeUsuarios.getTableHeader().setPreferredSize(new Dimension(tablaDeUsuarios.getWidth(), 40));
-		tablaDeUsuarios.setBackground(Color.decode("#9e9e9e"));
-		tablaDeUsuarios.setForeground(Color.white);
-		tablaDeUsuarios.setGridColor(Color.white);
-		tablaDeUsuarios.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-		deslizador = new JScrollPane(tablaDeUsuarios);
+		tabla = new JTable();
+		tabla.setPreferredScrollableViewportSize(new Dimension(800, 400));
+		tabla.setFillsViewportHeight(true);
+		tabla.setRowHeight(80);
+		tabla.getTableHeader().setPreferredSize(new Dimension(tabla.getWidth(), 40));
+		tabla.setBackground(Color.decode("#9e9e9e"));
+		tabla.setForeground(Color.white);
+		tabla.setGridColor(Color.white);
+		tabla.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+		deslizador = new JScrollPane(tabla);
 		deslizador.setBounds(257, 114, 755, 420);
 		deslizador.setBackground(Color.decode("#9e9e9e"));
 		deslizador.setForeground(Color.black);
-		btnEliminar = new BotonRedondeado("Delete", 20, Color.decode("#9e9e9e"), Color.black, Color.white, Color.WHITE, 1f);
+		btnEditar = new BotonRedondeado("Edit", 20, Color.decode("#9e9e9e"), Color.black, Color.white, Color.white, 1f);
+		btnActualizar = new BotonRedondeado("Update", 20, Color.decode("#9e9e9e"), Color.black, Color.white, Color.WHITE, 1f);
 		buscar = new BotonRedondeado("Search", 20, Color.decode("#9e9e9e"), Color.black, Color.white, Color.white, 1f);
 		btnShowllAll = new BotonRedondeado("Show All", 20, Color.decode("#9e9e9e"), Color.black, Color.white, Color.white, 1f);
 		aBuscar = new TextFieldRedondeado(Color.white, Color.decode("#9e9e9e"), 20, Color.white, 1f);
 		aBuscar.setToolTipText("Enter the name of the object to search");
 		btnShowllAll.setToolTipText("Show all objects");
-		btnEliminar.setToolTipText("Select the row to delete");
+		btnActualizar.setToolTipText("Select the row to delete");
 		aBuscar.setBounds(330, 75, 380, 30);
 		buscar.setBounds(650, 75, 150, 30);
 		btnShowllAll.setBounds(820, 75, 150, 30);
-		btnEliminar.setBounds(545, 550, 150, 30);
+		btnActualizar.setBounds(655, 550, 150, 30);
+		btnEditar.setBounds(455, 550, 150, 30);
 		add(btnShowllAll);
 		add(deslizador);
 		add(buscar);
-		add(btnEliminar);
+		add(btnActualizar);
 		add(aBuscar);
+		add(btnEditar);
+		
 	}
 	
 	@Override
@@ -105,15 +110,17 @@ public class PanelActualizar extends JPanel{
 			}
 			
 		};
-		tablaDeUsuarios.setModel(modelo);
+		tabla.setModel(modelo);
 	}
 
-	public JTable getTablaDeUsuarios() {
-		return tablaDeUsuarios;
+	
+
+	public JTable getTabla() {
+		return tabla;
 	}
 
-	public void setTablaDeUsuarios(JTable tablaDeUsuarios) {
-		this.tablaDeUsuarios = tablaDeUsuarios;
+	public void setTabla(JTable tabla) {
+		this.tabla = tabla;
 	}
 
 	public JScrollPane getDeslizador() {
@@ -156,13 +163,25 @@ public class PanelActualizar extends JPanel{
 		this.btnShowllAll = btnShowllAll;
 	}
 
-	public BotonRedondeado getBtnEliminar() {
-		return btnEliminar;
+	public BotonRedondeado getBtnActualizar() {
+		return btnActualizar;
 	}
 
-	public void setBtnEliminar(BotonRedondeado btnEliminar) {
-		this.btnEliminar = btnEliminar;
+	public void setBtnActualizar(BotonRedondeado btnActualizar) {
+		this.btnActualizar = btnActualizar;
 	}
+
+	public BotonRedondeado getBtnEditar() {
+		return btnEditar;
+	}
+
+	public void setBtnEditar(BotonRedondeado btnEditar) {
+		this.btnEditar = btnEditar;
+	}
+	
+	
+
+	
 
 	
 

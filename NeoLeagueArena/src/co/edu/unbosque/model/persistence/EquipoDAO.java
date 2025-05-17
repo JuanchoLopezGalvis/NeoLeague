@@ -3,9 +3,11 @@ package co.edu.unbosque.model.persistence;
 import java.util.ArrayList;
 
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import co.edu.unbosque.model.Equipo;
 import co.edu.unbosque.model.EquipoDTO;
+import co.edu.unbosque.model.Torneo;
 
 public class EquipoDAO implements OperacionDAO<EquipoDTO, Equipo> {
 	
@@ -17,8 +19,17 @@ public class EquipoDAO implements OperacionDAO<EquipoDTO, Equipo> {
 	
 	@Override
 	public boolean showAll(JTable tabla) {
-		// TODO Auto-generated method stub
-		return false;
+		if (listaEquipos.isEmpty()) {
+			return false;
+		}else {
+			DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+			modelo.setRowCount(0);
+			for (Equipo equipo : listaEquipos) {
+				Object[] row = {equipo.getNombre(), equipo.getJuego(), equipo.getFechaInicio(), equipo.getFechaFin(), equipo.getFormato(), equipo.getMaxEquipos(), equipo.getPremio(), size};
+				modelo.addRow(row);
+			}
+		}
+		return true;
 	}
 
 	@Override
