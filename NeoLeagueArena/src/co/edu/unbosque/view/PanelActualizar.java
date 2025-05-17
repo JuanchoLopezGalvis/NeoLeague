@@ -11,6 +11,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * Esta clase representa un panel que permite actualizar la información de los objetos en la aplicación.
+ * Contiene una tabla para mostrar los datos, un campo de texto para buscar y botones para realizar acciones.
+ */
 public class PanelActualizar extends JPanel{
 	
 	private static final long serialVersionUID = 1L;
@@ -78,6 +82,10 @@ public class PanelActualizar extends JPanel{
 		
 	}
 	
+	/**
+	 * Este método se encarga de pintar el panel y su fondo.
+	 * @param g El objeto Graphics utilizado para dibujar en el panel.
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -87,11 +95,15 @@ public class PanelActualizar extends JPanel{
 			System.out.println("Imagen no cargada correctamente.");
 		}
 	}
-
+	/**
+	 * Este método se encarga de establecer el modelo de la tabla.
+	 * @param nombresColumnas Un arreglo de cadenas que contiene los nombres de las columnas.
+	 * @param f Un entero que indica el tipo de modelo a utilizar (0 o 1).
+	 */
 	public void setModelo(String[] nombresColumnas, int f) {
 		DefaultTableModel modelo = new DefaultTableModel(new Object[][] {}, nombresColumnas) {
 			/**
-			 * 
+			 * La serialVersionUID es un identificador único que se utiliza en la serialización y deserialización de objetos en Java.
 			 */
 			private static final long serialVersionUID = 1L;
 
@@ -104,85 +116,115 @@ public class PanelActualizar extends JPanel{
 			       }
 			       return Object.class; 
 			   }
+			/**
+			 * Este método se encarga de determinar si una celda es editable o no.
+			 * @param row La fila de la celda.
+			 * @param column La columna de la celda.
+			 * @return false, indicando que la celda no es editable.
+			 */
 			@Override
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
-			
 		};
 		tabla.setModel(modelo);
 	}
-
-	
-
+	/**
+	 * Este metodo se encarga de obtener la tabla.
+	 * @return la tabla.
+	 */
 	public JTable getTabla() {
 		return tabla;
 	}
-
+	/**
+	 * Este metodo se encarga de setear la tabla.
+	 * @param tabla la tabla a setear.
+	 */
 	public void setTabla(JTable tabla) {
 		this.tabla = tabla;
 	}
-
+	/**
+	 * Este metodo se encarga de obtener el deslizador.
+	 * @return el deslizador.
+	 */
 	public JScrollPane getDeslizador() {
 		return deslizador;
 	}
-
+	/**
+	 * Este metodo se encarga de setear el deslizador.
+	 * @param deslizador el deslizador a setear.
+	 */
 	public void setDeslizador(JScrollPane deslizador) {
 		this.deslizador = deslizador;
 	}
-
-	public Image getImagenFondo() {
-		return imagenFondo;
-	}
-
-	public void setImagenFondo(Image imagenFondo) {
-		this.imagenFondo = imagenFondo;
-	}
-
+	/**
+	 * Este metodo se encarga de obtener el campo de texto para buscar.
+	 * @return el campo de texto para buscar.
+	 */
 	public TextFieldRedondeado getaBuscar() {
 		return aBuscar;
 	}
-
+	/**
+	 * Este metodo se encarga de setear el campo de texto para buscar.
+	 * @param aBuscar el campo de texto para buscar a setear.
+	 */
 	public void setaBuscar(TextFieldRedondeado aBuscar) {
 		this.aBuscar = aBuscar;
 	}
-
+	/**
+	 * Este metodo se encarga de obtener el boton de buscar.
+	 * @return el boton de buscar.
+	 */
 	public BotonRedondeado getBuscar() {
 		return buscar;
 	}
-
+	/**
+	 * Este metodo se encarga de setear el boton de buscar.
+	 * @param buscar el boton de buscar a setear.
+	 */
 	public void setBuscar(BotonRedondeado buscar) {
 		this.buscar = buscar;
 	}
-
+	/**
+	 * Este metodo se encarga de obtener el boton de mostrar todos.
+	 * @return el boton de mostrar todos.
+	 */
 	public BotonRedondeado getBtnShowllAll() {
 		return btnShowllAll;
 	}
-
+	/**
+	 * Este metodo se encarga de setear el boton de mostrar todos.
+	 * @param btnShowllAll el boton de mostrar todos a setear.
+	 */
 	public void setBtnShowllAll(BotonRedondeado btnShowllAll) {
 		this.btnShowllAll = btnShowllAll;
 	}
-
+	/**
+	 * Este metodo se encarga de obtener el boton de actualizar.
+	 * @return el boton de actualizar.
+	 */
 	public BotonRedondeado getBtnActualizar() {
 		return btnActualizar;
 	}
-
+	/**
+	 * Este metodo se encarga de setear el boton de actualizar.
+	 * @param btnActualizar el boton de actualizar a setear.
+	 */
 	public void setBtnActualizar(BotonRedondeado btnActualizar) {
 		this.btnActualizar = btnActualizar;
 	}
-
+	/**
+	 * Este metodo se encarga de obtener el boton de editar.
+	 * @return el boton de editar.
+	 */
 	public BotonRedondeado getBtnEditar() {
 		return btnEditar;
 	}
-
+	/**
+	 * Este metodo se encarga de setear el boton de editar.
+	 * @param btnEditar el boton de editar a setear.
+	 */
 	public void setBtnEditar(BotonRedondeado btnEditar) {
 		this.btnEditar = btnEditar;
 	}
-	
-	
-
-	
-
-	
-
 }

@@ -3,22 +3,50 @@ package co.edu.unbosque.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * La clase {@link Equipo} que representa un equipo de jugadores.
+ * Es la encargada de establecer los atributos de un equipo.
+ */
 public class Equipo implements Serializable{
 	
 	/**
-	 * 
+	 * La serialVersionUID es un identificador único que se utiliza en la serialización y deserialización de objetos en Java.
 	 */
 	private static final long serialVersionUID = 1L;
+	/**
+	 * Esta instancia es la encargada de guardar el nombre del equipo.
+	 */
 	private String nombre;
+	/**
+	 * Esta instancia es la encargada de guardar los integrantes del equipo.
+	 */
 	private ArrayList<Jugador> integrantes;
+	/**
+	 * Esta instancia es la encargada de guardar el juego desempeñado por el equipo.
+	 */
 	private String juegoDesempeñado;
+	/**
+	 * Esta instancia es la encargada de guardar los torneos inscritos por el equipo.
+	 */
 	private ArrayList<Torneo> torneosInscritos;
+	/**
+	 * Esta instancia es la encargada de guardar las partidas jugadas por el equipo.
+	 */
 	private ArrayList<Partida> partidasJugadas;
-
+	/**
+	 * Constructor por defecto o vacio de la clase {@link Equipo}.
+	 */
 	public Equipo() {
 	}
-
-
+	/**
+	 * Constructor de la clase {@link Equipo} que recibe como parámetro el nombre, los integrantes, el juego desempeñado, los torneos inscritos y las partidas jugadas.
+	 * 
+	 * @param nombre
+	 * @param integrantes
+	 * @param juegoDesempeñado
+	 * @param torneosInscritos
+	 * @param partidasJugadas
+	 */
 	public Equipo(String nombre, ArrayList<Jugador> integrantes, String juegoDesempeñado,
 			ArrayList<Torneo> torneosInscritos, ArrayList<Partida> partidasJugadas) {
 		super();
@@ -28,55 +56,92 @@ public class Equipo implements Serializable{
 		this.torneosInscritos = torneosInscritos;
 		this.partidasJugadas = partidasJugadas;
 	}
-
-
+	/**
+	 * Constructor de la clase {@link Equipo} que recibe como parámetro el nombre y el juego desempeñado.
+	 * 
+	 * @param nombre
+	 * @param juegoDesempeñado
+	 */
 	public Equipo(String nombre, String juegoDesempeñado) {
 		super();
 		this.nombre = nombre;
 		this.juegoDesempeñado = juegoDesempeñado;
 	}
-
-
+	/**
+	 * Metido que retorna el nombre del equipo.
+	 * @return nombre
+	 */
 	public String getNombre() {
 		return nombre;
 	}
-
+	/**
+	 * Método que establece el nombre del equipo.
+	 * @param nombre
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
+	/**
+	 * Método que retorna los integrantes del equipo.
+	 * @return integrantes
+	 */
 	public ArrayList<Jugador> getIntegrantes() {
 		return integrantes;
 	}
-
+	/**
+	 * Método que establece los integrantes del equipo.
+	 * @param integrantes
+	 */
 	public void setIntegrantes(ArrayList<Jugador> integrantes) {
 		this.integrantes = integrantes;
 	}
-
-
+	/**
+	 * Método que retorna el juego desempeñado por el equipo.
+	 * @return juegoDesempeñado
+	 */
 	public String getJuegoDesempeñado() {
 		return juegoDesempeñado;
 	}
-
+	/**
+	 * Método que establece el juego desempeñado por el equipo.
+	 * @param juegoDesempeñado
+	 */
 	public void setJuegoDesempeñado(String juegoDesempeñado) {
 		this.juegoDesempeñado = juegoDesempeñado;
 	}
-
+	/**
+	 * Método que retorna los torneos inscritos por el equipo.
+	 * @return torneosInscritos
+	 */
 	public ArrayList<Torneo> getTorneosInscritos() {
 		return torneosInscritos;
 	}
-
+	/**
+	 * Método que establece los torneos inscritos por el equipo.
+	 * @param torneosInscritos
+	 */
 	public void setTorneosInscritos(ArrayList<Torneo> torneosInscritos) {
 		this.torneosInscritos = torneosInscritos;
 	}
-
+	/**
+	 * Método que retorna las partidas jugadas por el equipo.
+	 * @return partidasJugadas
+	 */
 	public ArrayList<Partida> getPartidasJugadas() {
 		return partidasJugadas;
 	}
-
+	/**
+	 * Método que establece las partidas jugadas por el equipo.
+	 * @param partidasJugadas
+	 */
 	public void setPartidasJugadas(ArrayList<Partida> partidasJugadas) {
 		this.partidasJugadas = partidasJugadas;
 	}
+	/**
+	 * Método que inscribe un jugador al equipo.
+	 * @param jugador
+	 * @param mensaje
+	 */
 	public void inscribirJugador(Jugador jugador, String mensaje) {
 	    if (integrantes.size() < 10) {
 	        integrantes.add(jugador);
@@ -84,6 +149,11 @@ public class Equipo implements Serializable{
 	        throw new IllegalStateException(mensaje+ "(10)!");
 	    }
 	}
+	/**
+	 * Método que inscribe un torneo al equipo.
+	 * @param torneo
+	 * @param mensaje
+	 */
 	public void inscribirTorneo(Torneo torneo, String mensaje) {
 	    if (torneosInscritos.size() < 10) {
 	        torneosInscritos.add(torneo);
@@ -91,14 +161,20 @@ public class Equipo implements Serializable{
 	        throw new IllegalStateException(mensaje+ "(10)!");
 	    }
 	}
+	/**
+	 * Método que registra una partida jugada por el equipo.
+	 * @param partida
+	 * @param mensaje
+	 */
 	public void registrarPartida(Partida partida, String mensaje) {
 			partidasJugadas.add(partida);
 	}
+	/**
+	 * Método que retorna una cadena de texto con la información del equipo.
+	 */
 	@Override
 	public String toString() {
 		return nombre + ";" + "# Gamers" + integrantes.size() + ";" + juegoDesempeñado
 				+ ";" + "# Torneos" + torneosInscritos.size() + ";" + "# Matches played" + partidasJugadas + "\n";
 	}
-	
-
 }

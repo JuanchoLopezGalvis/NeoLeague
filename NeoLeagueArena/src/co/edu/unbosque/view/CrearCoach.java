@@ -14,9 +14,14 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.text.NumberFormatter;
 
+/**
+ * Esta clase representa un panel que permite crear un nuevo entrenador (coach) en la aplicación.
+ * Contiene campos de entrada para el nombre, contraseña, correo electrónico, país, edad, trayectoria profesional,
+ * especialidad en el juego y años de experiencia. También incluye botones para seleccionar una foto y crear el coach.
+ */
 public class CrearCoach extends JPanel{
 	/**
-	 * 
+	 * La serialVersionUID es un identificador único que se utiliza en la serialización y deserialización de objetos en Java.
 	 */
 	private static final long serialVersionUID = 1L;
 	/**

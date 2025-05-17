@@ -144,9 +144,4 @@ public class ModelFacade {
 	public void setEqdao(EquipoDAO eqdao) {
 		this.eqdao = eqdao;
 	}
-	
-	
-	
-	
-
 }

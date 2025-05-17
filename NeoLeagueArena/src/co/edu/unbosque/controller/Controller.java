@@ -46,9 +46,22 @@ public class Controller implements ActionListener {
 	 * una de las ventanas del aplicativop.
 	 */
 	private ViewFacade vf;
+	/**
+	 * {@link String} panel actual es la variable que se encarga de guardar el panel actual, su presencia es fundametal para 
+	 * poder reutilizar algunos paneles que tienen responsabilidades similares pero su comportamiento tiene variaciones 
+	 * y con ayuda de esta variable y condicionales podemos manejar esto.
+	 */
 	private String panelActual;
+	/**
+	 * {@link Properties} prop es la variable que se encarga de guardar las
+	 * propiedades del idioma seleccionado por el usuario.
+	 */
 	private static Properties prop;
 
+	/**
+	 * Constructor de la clase {@link Controller}, que se encarga de inicializar
+	 * las variables de la clase.
+	 */
 	public Controller() {
 		mf = new ModelFacade();
 		vf = new ViewFacade();

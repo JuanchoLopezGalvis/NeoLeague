@@ -14,9 +14,15 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.text.NumberFormatter;
 
+/**
+ * Esta clase representa un panel que permite crear un nuevo administrador.
+ * Contiene campos de texto para ingresar información del administrador, como nombre, contraseña, correo, edad, país y cargo específico.
+ * También incluye botones para seleccionar una foto y crear el administrador.
+ * Además, tiene opciones para mostrar las contraseñas ingresadas.
+ */
 public class CrearAdmin extends JPanel{
 	/**
-	 * 
+	 * La serialVersionUID es un identificador único que se utiliza en la serialización y deserialización de objetos en Java.
 	 */
 	private static final long serialVersionUID = 1L;
 	/**

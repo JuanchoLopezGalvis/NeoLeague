@@ -17,7 +17,7 @@ import javax.swing.JButton;
 public class BotonRedondeado extends JButton{
 	
 	/**
-	 * 
+	 * La serialVersionUID es un identificador único que se utiliza en la serialización y deserialización de objetos en Java.
 	 */
 	private static final long serialVersionUID = 1L;
 	/**

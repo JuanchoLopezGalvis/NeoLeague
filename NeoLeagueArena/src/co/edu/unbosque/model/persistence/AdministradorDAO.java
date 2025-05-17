@@ -7,17 +7,36 @@ import javax.swing.JTable;
 import co.edu.unbosque.model.Administrador;
 import co.edu.unbosque.model.AdministradorDTO;
 
+/**
+ * Clase AdministradorDAO que implementa la interfaz OperacionDAO.
+ * Esta clase se encarga de realizar operaciones CRUD sobre los administradores.
+ */
 public class AdministradorDAO implements OperacionDAO<AdministradorDTO, Administrador>{
-
+	/**
+	 * Este atributo es el nombre del archivo de texto donde se guardan los administradores.
+	 */
 	private final String TEXT_FILE_NAME = "admin.csv";
+	/**
+	 * Este atributo es el nombre del archivo serializado donde se guardan los administradores.
+	 */
 	private final String SERIAL_FILE_NAME = "admin.dat";
+	/**
+	 * Este atributo es una lista de administradores.
+	 */
 	private ArrayList<Administrador> listaAdministradores;
-
+	/**
+	 * Constructor de la clase {@link AdministradorDAO}.
+	 * Inicializa la lista de administradores y carga los datos desde el archivo serializado.
+	 */
 	public AdministradorDAO() {
 		listaAdministradores = new ArrayList<Administrador>();
 		leerArchivoSerializado();
 	}
-
+	/**
+	 * Método que muestra todos los administradores en una tabla.
+	 * @param tabla JTable donde se mostrarán los administradores.
+	 * @return true si se muestran los administradores, false en caso contrario.
+	 */
 	@Override
 	public boolean showAll(JTable tabla) {
 		StringBuilder sb = new StringBuilder();
@@ -30,13 +49,20 @@ public class AdministradorDAO implements OperacionDAO<AdministradorDTO, Administ
 		}
 		return false;
 	}
-
+	/**
+	 * Método que obtiene todos los administradores.
+	 * @return una lista de administradores.
+	 */
 	@Override
 	public ArrayList<AdministradorDTO> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	/**
+	 * Método que agrega un nuevo administrador a la lista y lo guarda en el archivo.
+	 * @param newData el nuevo administrador a agregar.
+	 * @return true si se agrega el administrador, false en caso contrario.
+	 */
 	@Override
 	public boolean add(AdministradorDTO newData) {
 		listaAdministradores.add(DataMapper.AdministradorDTOToAdministrador(newData));

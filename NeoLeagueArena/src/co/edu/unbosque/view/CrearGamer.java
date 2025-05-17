@@ -14,9 +14,15 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.text.NumberFormatter;
 
+/**
+ * Esta clase representa un panel que permite crear un nuevo jugador (gamer) en la aplicación.
+ * Contiene campos de entrada para el nombre, contraseña, correo, país, edad, trayectoria competitiva,
+ * especialidad en juegos y años de experiencia. También incluye botones para seleccionar una foto y
+ * crear el gamer.
+ */
 public class CrearGamer extends JPanel{
 	/**
-	 * 
+	 * La serialVersionUID es un identificador único que se utiliza en la serialización y deserialización de objetos en Java.
 	 */
 	private static final long serialVersionUID = 1L;
 	/**

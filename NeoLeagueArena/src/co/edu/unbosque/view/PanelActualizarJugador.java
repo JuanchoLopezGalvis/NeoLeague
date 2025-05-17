@@ -14,10 +14,14 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.text.NumberFormatter;
 
+/**
+ * Esta clase representa un panel que permite actualizar la información de un jugador.
+ * Contiene campos de texto, spinners y botones para ingresar y enviar la información del jugador.
+ */
 public class PanelActualizarJugador extends JPanel{
 	
 	/**
-	 * 
+	 * La serialVersionUID es un identificador único que se utiliza en la serialización y deserialización de objetos en Java.
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
@@ -65,16 +69,16 @@ public class PanelActualizarJugador extends JPanel{
 	 */
 	private BotonRedondeado seleccionarFoto;
 	/**
-	 * Este atributo es el encargado de guardar el boton para crear el coach.
+	 * Este atributo es el encargado de guardar el boton para actualizar un usuario.
 	 */
-	private BotonRedondeado botonCrearCoach;
+	private BotonRedondeado botonActualizar;
 	/**
 	 * Este atributo es el encargado de guardar el check box para ver las contraseñas.
 	 */
 	private JCheckBox verContrasena;
 	
 	/**
-	 * Este es el constructor de la clase {@link CrearGamer} que no recibe nada.
+	 * Este es el constructor de la clase {@link PanelActualizarJugador} que no recibe nada.
 	 * Se encarga de inicializar los atributos y de crear los componentes del panel.
 	 */
 	
@@ -103,7 +107,7 @@ public class PanelActualizarJugador extends JPanel{
 		datoJuegoEspecialidad = new JComboBox<String>(txtJuego);
 		datoAnosDeExperiencia = new JSpinner();
 		seleccionarFoto = new BotonRedondeado("Select your photo", 20, Color.decode("#7cb58a"), Color.black, Color.WHITE, Color.white, 1f);
-		botonCrearCoach = new BotonRedondeado("SignUp", 20, Color.decode("#7cb58a"), Color.black, Color.WHITE, Color.white, 1f);
+		botonActualizar = new BotonRedondeado("SignUp", 20, Color.decode("#7cb58a"), Color.black, Color.WHITE, Color.white, 1f);
 		verContrasena = new JCheckBox();
 		datoNombre.setBounds(300, 260, 250, 30);
 		datoContrasena.setBounds(300, 320, 250, 30);
@@ -115,7 +119,7 @@ public class PanelActualizarJugador extends JPanel{
 		datoJuegoEspecialidad.setBounds(800, 320, 250, 30);
 		datoTrayectoriaProfesional.setBounds(800, 380, 250, 30);
 		seleccionarFoto.setBounds(800, 445, 250, 30);
-		botonCrearCoach.setBounds(800, 575, 250, 30);
+		botonActualizar.setBounds(800, 575, 250, 30);
 		verContrasena.setBounds(560, 320, 30, 30);
 		bloquearSpinner(datoEdad, 0, 1, Color.decode("#7cb58a"), Color.white);
 		bloquearSpinner(datoAnosDeExperiencia, 0, 1, Color.decode("#7cb58a"), Color.white);
@@ -145,10 +149,9 @@ public class PanelActualizarJugador extends JPanel{
 		add(datoJuegoEspecialidad);
 		add(datoAnosDeExperiencia);
 		add(seleccionarFoto);
-		add(botonCrearCoach);
+		add(botonActualizar);
 		add(verContrasena);
 	}
-	
 	/**
 	 * Este metodo se encarga de pintar el panel con el fondo.
 	 */
@@ -178,6 +181,172 @@ public class PanelActualizarJugador extends JPanel{
 		formatter.setAllowsInvalid(false); 
 		formatter.setMinimum(0); 
 	}
-
-
+	/**
+	 * Este metodo se encarga de obtener el campo de texto para el nombre.
+	 * @return el campo de texto para el nombre.
+	 */
+	public TextFieldRedondeado getDatoNombre() {
+		return datoNombre;
+	}
+	/**
+	 * Este metodo se encarga de setear el campo de texto para el nombre.
+	 * @param datoNombre el campo de texto para el nombre.
+	 */
+	public void setDatoNombre(TextFieldRedondeado datoNombre) {
+		this.datoNombre = datoNombre;
+	}
+	/**
+	 * Este metodo se encarga de obtener el campo de texto para la contraseña.
+	 * @return el campo de texto para la contraseña.
+	 */
+	public PassworFieldRedondeado getDatoContrasena() {
+		return datoContrasena;
+	}
+	/**
+	 * Este metodo se encarga de setear el campo de texto para la contraseña.
+	 * @param datoContrasena el campo de texto para la contraseña.
+	 */
+	public void setDatoContrasena(PassworFieldRedondeado datoContrasena) {
+		this.datoContrasena = datoContrasena;
+	}
+	/**
+	 * Este metodo se encarga de obtener el campo de texto para la confirmacion de la contraseña.
+	 * @return el campo de texto para la confirmacion de la contraseña.
+	 */
+	public PassworFieldRedondeado getDatoContrasenaConf() {
+		return datoContrasenaConf;
+	}
+	/**
+	 * Este metodo se encarga de setear el campo de texto para la confirmacion de la contraseña.
+	 * @param datoContrasenaConf el campo de texto para la confirmacion de la contraseña.
+	 */
+	public void setDatoContrasenaConf(PassworFieldRedondeado datoContrasenaConf) {
+		this.datoContrasenaConf = datoContrasenaConf;
+	}
+	/**
+	 * Este metodo se encarga de obtener el campo de texto para el correo.
+	 * @return el campo de texto para el correo.
+	 */
+	public TextFieldRedondeado getDatoCorreo() {
+		return datoCorreo;
+	}
+	/**
+	 * Este metodo se encarga de setear el campo de texto para el correo.
+	 * @param datoCorreo el campo de texto para el correo.
+	 */
+	public void setDatoCorreo(TextFieldRedondeado datoCorreo) {
+		this.datoCorreo = datoCorreo;
+	}
+	/**
+	 * Este metodo se encarga de obtener el spinner para la edad.
+	 * @return el spinner para la edad.
+	 */
+	public JSpinner getDatoEdad() {
+		return datoEdad;
+	}
+	/**
+	 * Este metodo se encarga de setear el spinner para la edad.
+	 * @param datoEdad el spinner para la edad.
+	 */
+	public void setDatoEdad(JSpinner datoEdad) {
+		this.datoEdad = datoEdad;
+	}
+	/**
+	 * Este metodo se encarga de obtener el combo box para el pais.
+	 * @return el combo box para el pais.
+	 */
+	public JComboBox<String> getDatoPais() {
+		return datoPais;
+	}
+	/**
+	 * Este metodo se encarga de setear el combo box para el pais.
+	 * @param datoPais el combo box para el pais.
+	 */
+	public void setDatoPais(JComboBox<String> datoPais) {
+		this.datoPais = datoPais;
+	}
+	/**
+	 * Este metodo se encarga de obtener el combo box para la trayectoria competitiva.
+	 * @return el combo box para la trayectoria competitiva.
+	 */
+	public JComboBox<String> getDatoTrayectoriaProfesional() {
+		return datoTrayectoriaProfesional;
+	}
+	/**
+	 * Este metodo se encarga de setear el combo box para la trayectoria competitiva.
+	 * @param datoTrayectoriaProfesional el combo box para la trayectoria competitiva.
+	 */
+	public void setDatoTrayectoriaProfesional(JComboBox<String> datoTrayectoriaProfesional) {
+		this.datoTrayectoriaProfesional = datoTrayectoriaProfesional;
+	}
+	/**
+	 * Este metodo se encarga de obtener el combo box para la especialidad.
+	 * @return el combo box para la especialidad.
+	 */
+	public JComboBox<String> getDatoJuegoEspecialidad() {
+		return datoJuegoEspecialidad;
+	}
+	/**
+	 * Este metodo se encarga de setear el combo box para la especialidad.
+	 * @param datoJuegoEspecialidad el combo box para la especialidad.
+	 */
+	public void setDatoJuegoEspecialidad(JComboBox<String> datoJuegoEspecialidad) {
+		this.datoJuegoEspecialidad = datoJuegoEspecialidad;
+	}
+	/**
+	 * Este metodo se encarga de obtener el spinner para los años de experiencia.
+	 * @return el spinner para los años de experiencia.
+	 */
+	public JSpinner getDatoAnosDeExperiencia() {
+		return datoAnosDeExperiencia;
+	}
+	/**
+	 * Este metodo se encarga de setear el spinner para los años de experiencia.
+	 * @param datoAnosDeExperiencia el spinner para los años de experiencia.
+	 */
+	public void setDatoAnosDeExperiencia(JSpinner datoAnosDeExperiencia) {
+		this.datoAnosDeExperiencia = datoAnosDeExperiencia;
+	}
+	/**
+	 * Este metodo se encarga de obtener el boton para seleccionar la foto.
+	 * @return el boton para seleccionar la foto.
+	 */
+	public BotonRedondeado getSeleccionarFoto() {
+		return seleccionarFoto;
+	}
+	/**
+	 * Este metodo se encarga de setear el boton para seleccionar la foto.
+	 * @param seleccionarFoto el boton para seleccionar la foto.
+	 */
+	public void setSeleccionarFoto(BotonRedondeado seleccionarFoto) {
+		this.seleccionarFoto = seleccionarFoto;
+	}
+	/**
+	 * Este metodo se encarga de obtener el boton para actualizar el usuario.
+	 * @return el boton para actualizar el usuario.
+	 */
+	public BotonRedondeado getBotonActualizar() {
+		return botonActualizar;
+	}
+	/**
+	 * Este metodo se encarga de setear el boton para actualizar el usuario.
+	 * @param botonActualizar el boton para actualizar el usuario.
+	 */
+	public void setBotonActualizar(BotonRedondeado botonActualizar) {
+		this.botonActualizar = botonActualizar;
+	}
+	/**
+	 * Este metodo se encarga de obtener el check box para ver las contraseñas.
+	 * @return el check box para ver las contraseñas.
+	 */
+	public JCheckBox getVerContrasena() {
+		return verContrasena;
+	}
+	/**
+	 * Este metodo se encarga de setear el check box para ver las contraseñas.
+	 * @param verContrasena el check box para ver las contraseñas.
+	 */
+	public void setVerContrasena(JCheckBox verContrasena) {
+		this.verContrasena = verContrasena;
+	}
 }

@@ -2,9 +2,13 @@ package co.edu.unbosque.model;
 
 import java.io.Serializable;
 
+/**
+ * La clase {@link Usuario} es la encargada de establecer los atributos de un
+ * usuario.
+ */
 public abstract class Usuario implements Serializable {
 	/**
-	 * 
+	 * La serialVersionUID es un identificador único que se utiliza en la serialización y deserialización de objetos en Java.
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
@@ -57,7 +61,6 @@ public abstract class Usuario implements Serializable {
 		this.pais = pais;
 		this.urlFoto = urlFoto;
 	}
-
 	 /**
 	  * Este metodo se encarga de obtener el nombre del usuario.
 	  * @return nombre
@@ -141,15 +144,13 @@ public abstract class Usuario implements Serializable {
 	public void setPais(String pais) {
 		this.pais = pais;
 	}
-
+	/**
+	 * Este metodo se encarga de obtener la informacion del usuario.
+	 * @return cadena de texto con la informacion del usuario.
+	 */
 	@Override
 	public String toString() {
 		return nombre + ";" + contrasena + ";" + correo + ";" + edad
 				+ ";" + pais + ";" + urlFoto + ";";
 	}
-	
-	
-	
-	
-
 }
