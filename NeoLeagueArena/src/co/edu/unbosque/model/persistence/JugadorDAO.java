@@ -67,7 +67,7 @@ public class JugadorDAO implements OperacionDAO<JugadorDTO, Jugador> {
 		Jugador found = null;
 		if (!listaJugadores.isEmpty()) {
 			for (Jugador jugador : listaJugadores) {
-				if (jugador.getNombre().equals(toFind.getNombre())) {
+				if (jugador.getNombre().toLowerCase().equals(toFind.getNombre().toLowerCase())) {
 					found = jugador;
 					break;
 				}

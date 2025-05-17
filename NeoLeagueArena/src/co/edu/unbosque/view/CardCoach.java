@@ -19,9 +19,9 @@ public class CardCoach extends JPanel{
 	 */
 	private PanelMostrar panelMostrar;
 	/**
-	 * panelMostrar es una instancia de {@link PanelActualizar} que permite actualizar la información.
+	 * panelMostrar es una instancia de {@link PanelActualizarEquipo} que permite actualizar la información.
 	 */
-	private PanelActualizar panelActualizar;
+	private PanelActualizarEquipo panelActualizarEquipo;
 	/**
 	 * panelAgregarTorneo es una instancia de {@link PanelActualizarEntrenador} que permite actualizar la información de un entrenador.
 	 */
@@ -43,12 +43,12 @@ public class CardCoach extends JPanel{
 		cardLayout = new CardLayout();
 		setLayout(cardLayout);
 		panelMostrar = new PanelMostrar();
-		panelActualizar = new PanelActualizar();
+		panelActualizarEquipo = new PanelActualizarEquipo();
 		panelAgregarEquipo = new PanelAgregarEquipo();
 		panelActualizarEntrenador = new PanelActualizarEntrenador();
 		
 		add(panelAgregarEquipo, "PanelAgregarEquipo");
-		add(panelActualizar, "PanelActualizar");
+		add(panelActualizarEquipo, "PanelActualizarEquipo");
 		add(panelMostrar, "PanelMostrar");
 		add(panelActualizarEntrenador, "PanelActualizarEntrenador");
 	}
@@ -91,15 +91,15 @@ public class CardCoach extends JPanel{
 	 * Este metodo se encarga de obtener el panel de actualizar.
 	 * @return el panel de actualizar.
 	 */
-	public PanelActualizar getPanelActualizar() {
-		return panelActualizar;
+	public PanelActualizarEquipo getPanelActualizar() {
+		return panelActualizarEquipo;
 	}
 	/**
 	 * Este metodo se encarga de setear el panel de actualizar.
-	 * @param panelActualizar el panel de actualizar.
+	 * @param panelActualizarEquipo el panel de actualizar.
 	 */
-	public void setPanelActualizar(PanelActualizar panelActualizar) {
-		this.panelActualizar = panelActualizar;
+	public void setPanelActualizar(PanelActualizarEquipo panelActualizarEquipo) {
+		this.panelActualizarEquipo = panelActualizarEquipo;
 	}
 	/**
 	 * Este metodo se encarga de obtener el panel de actualizar entrenador.

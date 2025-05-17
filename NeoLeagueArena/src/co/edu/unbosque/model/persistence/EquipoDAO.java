@@ -2,6 +2,7 @@ package co.edu.unbosque.model.persistence;
 
 import java.util.ArrayList;
 
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -36,13 +37,35 @@ public class EquipoDAO implements OperacionDAO<EquipoDTO, Equipo> {
 		}
 		return true;
 	}
-
+	public void showOne(JTable table, Equipo toShow, String mensaje) {
+		Equipo equipo = find(toShow);
+		if (equipo != null) {
+			DefaultTableModel modelo = (DefaultTableModel) table.getModel();
+			modelo.setRowCount(0);
+			int integrantes = equipo.getIntegrantes().size();
+			int torneos = equipo.getTorneosInscritos().size();
+			int partidas = equipo.getPartidasJugadas().size();
+			Object[] row = {equipo.getNombre(), integrantes, equipo.getJuegoDesempeñado(), torneos, partidas};
+			modelo.addRow(row);
+		}else {
+			DefaultTableModel modelo = (DefaultTableModel) table.getModel();
+			modelo.setRowCount(0);
+			Object[] row = {mensaje};
+			modelo.addRow(row);
+		}
+	}
 	@Override
 	public ArrayList<EquipoDTO> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	public void asignarElmentosCombos(JComboBox<String> comboBox) {
+		comboBox.removeAllItems();
+		for (Equipo equipo : listaEquipos) {
+			comboBox.addItem(equipo.getNombre());
+		}
+	}
+	
 	@Override
 	public boolean add(EquipoDTO newData) {
 		if (newData.getTorneosInscritos() == null && newData.getIntegrantes() == null && newData.getPartidasJugadas() == null) {
@@ -59,7 +82,13 @@ public class EquipoDAO implements OperacionDAO<EquipoDTO, Equipo> {
 
 	@Override
 	public boolean delete(EquipoDTO toDelete) {
-		// TODO Auto-generated method stub
+		Equipo equipo = find(DataMapper.EquipoDTOToEquipo(toDelete));
+		if (equipo != null) {
+			listaEquipos.remove(equipo);
+			escribirArchivoTxt();
+			escribirArchivoSerializado();
+			return true;
+		}
 		return false;
 	}
 
@@ -68,7 +97,7 @@ public class EquipoDAO implements OperacionDAO<EquipoDTO, Equipo> {
 		Equipo found = null;
 		if (!listaEquipos.isEmpty()) {
 			for (Equipo equipo : listaEquipos) {
-				if (equipo.getNombre().equals(toFind.getNombre())) {
+				if (equipo.getNombre().toLowerCase().equals(toFind.getNombre().toLowerCase())) {
 					found = equipo;
 					break;
 				}

@@ -47,9 +47,10 @@ public class Controller implements ActionListener {
 	 */
 	private ViewFacade vf;
 	/**
-	 * {@link String} panel actual es la variable que se encarga de guardar el panel actual, su presencia es fundametal para 
-	 * poder reutilizar algunos paneles que tienen responsabilidades similares pero su comportamiento tiene variaciones 
-	 * y con ayuda de esta variable y condicionales podemos manejar esto.
+	 * {@link String} panel actual es la variable que se encarga de guardar el panel
+	 * actual, su presencia es fundametal para poder reutilizar algunos paneles que
+	 * tienen responsabilidades similares pero su comportamiento tiene variaciones y
+	 * con ayuda de esta variable y condicionales podemos manejar esto.
 	 */
 	private String panelActual;
 	/**
@@ -59,8 +60,8 @@ public class Controller implements ActionListener {
 	private static Properties prop;
 
 	/**
-	 * Constructor de la clase {@link Controller}, que se encarga de inicializar
-	 * las variables de la clase.
+	 * Constructor de la clase {@link Controller}, que se encarga de inicializar las
+	 * variables de la clase.
 	 */
 	public Controller() {
 		mf = new ModelFacade();
@@ -68,6 +69,7 @@ public class Controller implements ActionListener {
 		prop = new Properties();
 		panelActual = "PanelPrincipal";
 		asignarLectores();
+		mf.getEqdao().asignarElmentosCombos(vf.getVa().getCardAdmin().getPanelActualizar().getEquiposExistentes());
 	}
 
 	/**
@@ -147,37 +149,27 @@ public class Controller implements ActionListener {
 		vf.getVa().getMostrarEquipos().setActionCommand("btnMostrarEquipos");
 		vf.getVa().getActualizarPartida().addActionListener(this);
 		vf.getVa().getActualizarPartida().setActionCommand("PanelActualizarPartida");
-		
+
 		vf.getVa().getActualizarEquipo().addActionListener(this);
 		vf.getVa().getActualizarEquipo().setActionCommand("PanelActualizarEquipo");
-		
+
 		vf.getVa().getActualizarTorneo().addActionListener(this);
 		vf.getVa().getActualizarTorneo().setActionCommand("PanelActualizarTorneo");
-		
+
 		vf.getVa().getAnaliytics().addActionListener(this);
 		vf.getVa().getAnaliytics().setActionCommand("PanelAnalytics");
-		
-		vf.getVa().getCardAdmin().getPanelActualizar().getBtnActualizar().addActionListener(this);
-		vf.getVa().getCardAdmin().getPanelActualizar().getBtnActualizar().setActionCommand("btnActualizar");
-		
-		vf.getVa().getCardAdmin().getPanelActualizar().getBtnShowllAll().addActionListener(this);
-		vf.getVa().getCardAdmin().getPanelActualizar().getBtnShowllAll().setActionCommand("btnShowllAllActualizar");
-		
-		vf.getVa().getCardAdmin().getPanelActualizar().getBtnEditar().addActionListener(this);
-		vf.getVa().getCardAdmin().getPanelActualizar().getBtnEditar().setActionCommand("btnEditar");
-		
-		vf.getVa().getCardAdmin().getPanelActualizar().getBuscar().addActionListener(this);
-		vf.getVa().getCardAdmin().getPanelActualizar().getBuscar().setActionCommand("BuscarActualizar");
-		
+
+
+
 		vf.getVe().getCardCoach().getPanelAgregarEquipo().getBtnAgregarEquipo().addActionListener(this);
 		vf.getVe().getCardCoach().getPanelAgregarEquipo().getBtnAgregarEquipo().setActionCommand("btnAgregarEquipo");
-		
+
 		vf.getVe().getVerEquipos().addActionListener(this);
 		vf.getVe().getVerEquipos().setActionCommand("panelMostrarEquipos");
-		
+
 		vf.getVe().getActualizarEquipo().addActionListener(this);
 		vf.getVe().getActualizarEquipo().setActionCommand("panelActualizarEquipo");
-		
+
 		vf.getVe().getActualizarCuenta().addActionListener(this);
 		vf.getVe().getActualizarCuenta().setActionCommand("ActualizarCuentaEntrenador");
 
@@ -599,7 +591,7 @@ public class Controller implements ActionListener {
 						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.Administrarequipos"));
 				vf.getVa().getActualizarEquipo()
 						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.actualizarequipos"));
-				
+
 				vf.getVa().getAnaliytics().setText(prop.getProperty("archivosdepropiedades.panelAdmin.analitica"));
 
 				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoJuego()
@@ -1107,7 +1099,7 @@ public class Controller implements ActionListener {
 				} else {
 					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.torneoesistente",
 							"archivosdepropiedades.mensajes.error");
-					
+
 				}
 			} catch (EmptyStringFieldException e1) {
 				MensajeEmergente.mensajeAdvertencia(e1.getMessage(), "archivosdepropiedades.mensajes.advertencia");
@@ -1118,12 +1110,26 @@ public class Controller implements ActionListener {
 			if (panelActual == "mostrarC") {
 				String nombre = vf.getVa().getCardAdmin().getPanelMostrar().getaBuscar().getText();
 				Entrenador coach = new Entrenador(nombre, null, null, 0, null, null, null, null, 0);
+				vf.getVa().getCardAdmin().getPanelMostrar().getaBuscar().setText("");
 				mf.getEdao().showOne(vf.getVa().getCardAdmin().getPanelMostrar().getTabla(), coach,
 						MensajeEmergente.obtenerMensaje("archivosdepropiedades.panelmostrar.noencontrado"));
 			} else if (panelActual == "mostrarG") {
 				String nombre = vf.getVa().getCardAdmin().getPanelMostrar().getaBuscar().getText();
 				Jugador gamer = new Jugador(nombre, null, null, 0, null, null, null, null, 0);
+				vf.getVa().getCardAdmin().getPanelMostrar().getaBuscar().setText("");
 				mf.getJdao().showOne(vf.getVa().getCardAdmin().getPanelMostrar().getTabla(), gamer,
+						MensajeEmergente.obtenerMensaje("archivosdepropiedades.panelmostrar.noencontrado"));
+			} else if (panelActual == "mostrarT") {
+				String nombre = vf.getVa().getCardAdmin().getPanelMostrar().getaBuscar().getText();
+				Torneo torneo = new Torneo(nombre, null, null, null, null, 0, 0);
+				vf.getVa().getCardAdmin().getPanelMostrar().getaBuscar().setText("");
+				mf.getTdao().showOne(vf.getVa().getCardAdmin().getPanelMostrar().getTabla(), torneo,
+						MensajeEmergente.obtenerMensaje("archivosdepropiedades.panelmostrar.noencontrado"));
+			} else if (panelActual == "mostrarE") {
+				String nombre = vf.getVa().getCardAdmin().getPanelMostrar().getaBuscar().getText();
+				Equipo equipo = new Equipo(nombre, null, null, null, null);
+				vf.getVa().getCardAdmin().getPanelMostrar().getaBuscar().setText("");
+				mf.getEqdao().showOne(vf.getVa().getCardAdmin().getPanelMostrar().getTabla(), equipo,
 						MensajeEmergente.obtenerMensaje("archivosdepropiedades.panelmostrar.noencontrado"));
 			} else {
 				MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.camposincompletos",
@@ -1138,6 +1144,14 @@ public class Controller implements ActionListener {
 				vf.getVa().getCardAdmin().getPanelMostrar().getTabla().repaint();
 			} else if (panelActual == "mostrarG") {
 				mf.getJdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
+				vf.getVa().getCardAdmin().getPanelMostrar().getTabla().revalidate();
+				vf.getVa().getCardAdmin().getPanelMostrar().getTabla().repaint();
+			} else if (panelActual == "mostrarT") {
+				mf.getTdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
+				vf.getVa().getCardAdmin().getPanelMostrar().getTabla().revalidate();
+				vf.getVa().getCardAdmin().getPanelMostrar().getTabla().repaint();
+			} else if (panelActual == "mostrarE") {
+				mf.getEqdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
 				vf.getVa().getCardAdmin().getPanelMostrar().getTabla().revalidate();
 				vf.getVa().getCardAdmin().getPanelMostrar().getTabla().repaint();
 			} else {
@@ -1163,6 +1177,15 @@ public class Controller implements ActionListener {
 					JugadorDTO en = new JugadorDTO(nombre, null, null, 0, null, null, null, null, 0);
 					mf.getJdao().delete(en);
 					mf.getJdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
+				} else if (panelActual == "mostrarT") {
+					TorneoDTO en = new TorneoDTO(nombre, null, null, null, null, 0, 0);
+					mf.getTdao().delete(en);
+					mf.getTdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
+				} else if (panelActual == "mostrarE") {
+					EquipoDTO en = new EquipoDTO(nombre, null, null, null, null);
+					mf.getEqdao().delete(en);
+					mf.getEqdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
+					mf.getEqdao().asignarElmentosCombos(vf.getVa().getCardAdmin().getPanelActualizar().getEquiposExistentes());
 				} else {
 					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.camposincompletos",
 							"archivosdepropiedades.mensajes.error");
@@ -1195,89 +1218,19 @@ public class Controller implements ActionListener {
 			mf.getEqdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
 			vf.getVa().getCardAdmin().getPanelMostrar().getTabla().revalidate();
 			vf.getVa().getCardAdmin().getPanelMostrar().getTabla().repaint();
-						
+
 			vf.getVa().getCardAdmin().mostrarPanel("PanelMostrar");
 			break;
 		}
 		case "PanelActualizarPartida": {
-			
-			
 			vf.getVa().getCardAdmin().mostrarPanel("PanelActualizarPartida");
-			break;
-		}
-		case "PanelActualizarEquipo": {
-			panelActual = "actualizarE";
-			String nombre = prop.getProperty("archivosdepropiedades.arraymostrar.nombre");
-			String cantidadJugadores = prop.getProperty("archivosdepropiedades.arraymostrar.cantidadintegrantes");
-			String juegoEspecialidad = prop.getProperty("archivosdepropiedades.arraymostrar.juegodesempeñado");
-			String torneosInscritos = prop.getProperty("archivosdepropiedades.arraymostrar.cantidadtorneosincritos");
-			String partidasJugadas = prop.getProperty("archivosdepropiedades.arraymostrar.partidasjugadas");
-			String[] titulos = { nombre, cantidadJugadores, juegoEspecialidad, torneosInscritos, partidasJugadas };
-			vf.getVa().getCardAdmin().getPanelActualizar().setModelo(titulos, 0);
-			mf.getEqdao().showAll(vf.getVa().getCardAdmin().getPanelActualizar().getTabla());
-			vf.getVa().getCardAdmin().getPanelActualizar().getTabla().revalidate();
-			vf.getVa().getCardAdmin().getPanelActualizar().getTabla().repaint();
-			
-			vf.getVa().getCardAdmin().mostrarPanel("PanelActualizar");
-			break;
-		}
-		case "PanelActualizarTorneo": {
-			panelActual = "actualizarT";
-			
-			String nombre = prop.getProperty("archivosdepropiedades.arraymostrar.nombre");
-			String juegoEspecialidad = prop.getProperty("archivosdepropiedades.arraymostrar.juegoespecialidad");
-			String fechaInicio = prop.getProperty("archivosdepropiedades.arraymostrar.fechainicio");
-			String fechaFin = prop.getProperty("archivosdepropiedades.arraymostrar.fechafin");
-			String formato = prop.getProperty("archivosdepropiedades.arraymostrar.tipotorneo");
-			String maxEquipos = prop.getProperty("archivosdepropiedades.arraymostrar.maxequipos");
-			String recompensa = prop.getProperty("archivosdepropiedades.arraymostrar.recompensa");
-			String equi = prop.getProperty("archivosdepropiedades.arraymostrar.equiposinscritos");
-			String[] titulos = { nombre, juegoEspecialidad, fechaInicio, fechaFin, formato, maxEquipos, recompensa,
-					equi };
-			vf.getVa().getCardAdmin().getPanelActualizar().setModelo(titulos, 0);
-			mf.getTdao().showAll(vf.getVa().getCardAdmin().getPanelActualizar().getTabla());
-			vf.getVa().getCardAdmin().getPanelActualizar().getTabla().revalidate();
-			vf.getVa().getCardAdmin().getPanelActualizar().getTabla().repaint();
-			vf.getVa().getCardAdmin().mostrarPanel("PanelActualizar");
 			break;
 		}
 		case "PanelAnalytics": {
 			vf.getVa().getCardAdmin().mostrarPanel("PanelInforme");
 			break;
 		}
-		case "btnShowllAllActualizar": {
-			if (panelActual == "actualizarE") {
-				mf.getEdao().showAll(vf.getVa().getCardAdmin().getPanelActualizar().getTabla());
-				vf.getVa().getCardAdmin().getPanelActualizar().getTabla().revalidate();
-				vf.getVa().getCardAdmin().getPanelActualizar().getTabla().repaint();
-			} else  if (panelActual == "actualizarT") {
-				mf.getTdao().showAll(vf.getVa().getCardAdmin().getPanelActualizar().getTabla());
-				vf.getVa().getCardAdmin().getPanelActualizar().getTabla().revalidate();
-				vf.getVa().getCardAdmin().getPanelActualizar().getTabla().repaint();
-			} else {
-				MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.camposincompletos",
-						"archivosdepropiedades.mensajes.error");
-			}
-			break;
-		}
-		case "BuscarActualizar": {
-			if (panelActual == "actualizarE") {
-				String nombre = vf.getVa().getCardAdmin().getPanelActualizar().getaBuscar().getText();
-				Entrenador coach = new Entrenador(nombre, null, null, 0, null, null, null, null, 0);
-				mf.getEdao().showOne(vf.getVa().getCardAdmin().getPanelActualizar().getTabla(), coach,
-						MensajeEmergente.obtenerMensaje("archivosdepropiedades.panelmostrar.noencontrado"));
-			} else if (panelActual == "actualizarT") {
-				String nombre = vf.getVa().getCardAdmin().getPanelActualizar().getaBuscar().getText();
-				Torneo torneo = new Torneo(nombre, null, null, null, null, 0,0);
-				mf.getTdao().showOne(vf.getVa().getCardAdmin().getPanelActualizar().getTabla(), torneo,
-						MensajeEmergente.obtenerMensaje("archivosdepropiedades.panelmostrar.noencontrado"));
-			} else {
-				MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.camposincompletos",
-						"archivosdepropiedades.mensajes.error");
-			}
-			break;
-		}
-		case "btnAgregarEquipo":{
+		case "btnAgregarEquipo": {
 			try {
 				String nombreEquipo = vf.getVe().getCardCoach().getPanelAgregarEquipo().getDatoNombreEquipo().getText();
 				ExceptionChecker.checkStringField(nombreEquipo,
@@ -1289,42 +1242,43 @@ public class Controller implements ActionListener {
 					mf.getEqdao().add(equipo);
 					vf.getVe().getCardCoach().getPanelAgregarEquipo().getDatoNombreEquipo().setText("");
 					vf.getVe().getCardCoach().getPanelAgregarEquipo().getDatoJuego().setSelectedIndex(0);
+					mf.getEqdao().asignarElmentosCombos(vf.getVa().getCardAdmin().getPanelActualizar().getEquiposExistentes());
 					MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.confirmacion.exitousuario",
 							"archivosdepropiedades.mensajes.confirmacion.exito");
 					vf.getVe().setVisible(false);
 				} else {
 					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.usuarioexistente",
 							"archivosdepropiedades.mensajes.error");
-					
+
 				}
 			} catch (EmptyStringFieldException e1) {
 				MensajeEmergente.mensajeAdvertencia(e1.getMessage(), "archivosdepropiedades.mensajes.advertencia");
 			}
 			break;
-			
+
 		}
-		
+
 		case "panelMostrarEquipos": {
 			panelActual = "mostrarE";
-			
+
 			vf.getVe().getCardCoach().mostrarPanel("PanelMostrar");
 			break;
 		}
 		case "panelActualizarEquipo": {
 			panelActual = "actualizarE";
-			
-			vf.getVe().getCardCoach().mostrarPanel("PanelActualizar");
+
+			vf.getVe().getCardCoach().mostrarPanel("PanelActualizarEquipo");
 			break;
 		}
 		case "ActualizarCuentaEntrenador": {
 			panelActual = "actualizarcuentaE";
-			
+
 			vf.getVe().getCardCoach().mostrarPanel("PanelActualizarEntrenador");
 			break;
 		}
 		case "ActualizarCuentaGamer": {
 			panelActual = "actualizarcuentaG";
-			
+
 			vf.getVg().getCardGamer().mostrarPanel("PanelActualizarJugador");
 			break;
 		}

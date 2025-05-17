@@ -69,7 +69,13 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 
 	@Override
 	public boolean delete(TorneoDTO toDelete) {
-		// TODO Auto-generated method stub
+		Torneo torneo = find(DataMapper.TorneoDTOToTorneo(toDelete));
+		if (torneo != null) {
+			listaTorneos.remove(torneo);
+			escribirArchivoTxt();
+			escribirArchivoSerializado();
+			return true;
+		}
 		return false;
 	}
 
@@ -78,7 +84,7 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 		Torneo found = null;
 		if (!listaTorneos.isEmpty()) {
 			for (Torneo torneo : listaTorneos) {
-				if (torneo.getNombre().equals(toFind.getNombre())) {
+				if (torneo.getNombre().toLowerCase().equals(toFind.getNombre().toLowerCase())) {
 					found = torneo;
 					break;
 				}

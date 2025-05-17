@@ -82,7 +82,7 @@ public class AdministradorDAO implements OperacionDAO<AdministradorDTO, Administ
 		Administrador found = null;
 		if (!listaAdministradores.isEmpty()) {
 			for (Administrador admin : listaAdministradores) {
-				if (admin.getNombre().equals(toFind.getNombre())) {
+				if (admin.getNombre().toLowerCase().equals(toFind.getNombre().toLowerCase())) {
 					found = admin;
 					break;
 				}

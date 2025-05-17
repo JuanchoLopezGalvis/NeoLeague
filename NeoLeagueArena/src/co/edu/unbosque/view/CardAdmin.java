@@ -39,9 +39,9 @@ public class CardAdmin extends JPanel{
 	 */
 	private PanelInforme panelInforme;
 	/**
-	 * panelActualizar es una instancia de PanelActualizar que permite actualizar la información de un torneo.
+	 * panelActualizarEquipo es una instancia de PanelActualizarEquipo que permite actualizar la información de un torneo.
 	 */
-	private PanelActualizar panelActualizar;
+	private PanelActualizarEquipo panelActualizarEquipo;
 	/**
 	 * Constructor de la clase {@link CardAdmin}.
 	 * Inicializa el CardLayout y agrega los diferentes paneles al contenedor.
@@ -54,13 +54,13 @@ public class CardAdmin extends JPanel{
 		panelAgregarPartida = new PanelAgregarPartida();
 		panelActualizarPartida = new PanelActualizarPartida();
 		panelInforme = new PanelInforme();
-		panelActualizar = new PanelActualizar();
+		panelActualizarEquipo = new PanelActualizarEquipo();
+		add(panelActualizarEquipo, "PanelActualizarEquipo");
 		add(panelInforme, "PanelInforme");
 		add(panelAgregarTorneo, "PanelAgregarTorneo");
 		add(panelMostrar, "PanelMostrar");
 		add(panelAgregarPartida, "PanelAgregarPartida");
 		add(panelActualizarPartida, "PanelActualizarPartida");
-		add(panelActualizar, "PanelActualizar");
 	}
 	/**
 	 * Cambia el panel visible en función del nombre del panel proporcionado.
@@ -141,16 +141,16 @@ public class CardAdmin extends JPanel{
 	}
 	/**
 	 * Metodo que retorna el panel de actualizar.
-	 * @return panelActualizar
+	 * @return panelActualizarEquipo
 	 */
-	public PanelActualizar getPanelActualizar() {
-		return panelActualizar;
+	public PanelActualizarEquipo getPanelActualizar() {
+		return panelActualizarEquipo;
 	}
 	/**
 	 * Metodo que asigna el panel de actualizar.
-	 * @param panelActualizar
+	 * @param panelActualizarEquipo
 	 */
-	public void setPanelActualizar(PanelActualizar panelActualizar) {
-		this.panelActualizar = panelActualizar;
+	public void setPanelActualizar(PanelActualizarEquipo panelActualizarEquipo) {
+		this.panelActualizarEquipo = panelActualizarEquipo;
 	}
 }
