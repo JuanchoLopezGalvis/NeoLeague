@@ -16,6 +16,8 @@ import co.edu.unbosque.model.Administrador;
 import co.edu.unbosque.model.AdministradorDTO;
 import co.edu.unbosque.model.Entrenador;
 import co.edu.unbosque.model.EntrenadorDTO;
+import co.edu.unbosque.model.Equipo;
+import co.edu.unbosque.model.EquipoDTO;
 import co.edu.unbosque.model.Jugador;
 import co.edu.unbosque.model.JugadorDTO;
 import co.edu.unbosque.model.ModelFacade;
@@ -126,13 +128,10 @@ public class Controller implements ActionListener {
 		vf.getVa().getCrearPartida().setActionCommand("PanelCrearPartida");
 		vf.getVe().getCrearEquipo().addActionListener(this);
 		vf.getVe().getCrearEquipo().setActionCommand("PanelCrearEquipo");
-		
 		vf.getVa().getMostrarPartidas().addActionListener(this);
 		vf.getVa().getMostrarPartidas().setActionCommand("btnMostrarPartidas");
-		
 		vf.getVa().getMostrarEquipos().addActionListener(this);
 		vf.getVa().getMostrarEquipos().setActionCommand("btnMostrarEquipos");
-		
 		vf.getVa().getActualizarPartida().addActionListener(this);
 		vf.getVa().getActualizarPartida().setActionCommand("PanelActualizarPartida");
 		
@@ -157,7 +156,8 @@ public class Controller implements ActionListener {
 		vf.getVa().getCardAdmin().getPanelActualizar().getBuscar().addActionListener(this);
 		vf.getVa().getCardAdmin().getPanelActualizar().getBuscar().setActionCommand("BuscarActualizar");
 		
-		
+		vf.getVe().getCardCoach().getPanelAgregarEquipo().getBtnAgregarEquipo().addActionListener(this);
+		vf.getVe().getCardCoach().getPanelAgregarEquipo().getBtnAgregarEquipo().setActionCommand("btnAgregarEquipo");
 	}
 
 	/**
@@ -1073,14 +1073,22 @@ public class Controller implements ActionListener {
 						.longValue();
 				Date fechaInicio = vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoFechaInicio().getDate();
 				Date fechaFin = vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoFechaFin().getDate();
-				TorneoDTO torneo = new TorneoDTO(nombreTorneo, nombreJuego, fechaInicio, fechaFin, formatoTorneo,
-						maxEquipos, premio);
-				mf.getTdao().add(torneo);
-				vf.getVa().getCardAdmin().getPanelAgregarTorneo().setVisible(false);
-				MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.confirmacion.exitotorneo",
-						"archivosdepropiedades.mensajes.confirmacion.exito");
-				JOptionPane.showConfirmDialog(null, mf.getTdao().getListaTorneos().get(0).toString());
-				vf.getVa().setVisible(false);
+				if (mf.getTdao().find(new Torneo(nombreTorneo, null, null, null, null, 0, 0, null)) == null) {
+					TorneoDTO torneo = new TorneoDTO(nombreTorneo, nombreJuego, fechaInicio, fechaFin, formatoTorneo,
+							maxEquipos, premio);
+					mf.getTdao().add(torneo);
+					vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoNombreTorneo().setText("");
+					vf.getVa().getCardAdmin().getPanelAgregarTorneo().getRecompensa().setValue(0);
+					vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoMaxEquipos().setValue(0);
+					vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoFechaInicio().setDate(null);
+					vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoFechaFin().setDate(null);
+					MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.confirmacion.exitousuario",
+							"archivosdepropiedades.mensajes.confirmacion.exito");
+				} else {
+					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.torneoesistente",
+							"archivosdepropiedades.mensajes.error");
+					
+				}
 			} catch (EmptyStringFieldException e1) {
 				MensajeEmergente.mensajeAdvertencia(e1.getMessage(), "archivosdepropiedades.mensajes.advertencia");
 			}
@@ -1151,6 +1159,7 @@ public class Controller implements ActionListener {
 			break;
 		}
 		case "btnMostrarPartidas": {
+			panelActual = "mostrarP";
 			vf.getVa().getCardAdmin().mostrarPanel("PanelMostrar");
 			break;
 		}
@@ -1221,7 +1230,32 @@ public class Controller implements ActionListener {
 			}
 			break;
 		}
-		
+		case "btnAgregarEquipo":{
+			try {
+				String nombreEquipo = vf.getVe().getCardCoach().getPanelAgregarEquipo().getDatoNombreEquipo().getText();
+				ExceptionChecker.checkStringField(nombreEquipo,
+						"archivosdepropiedades.mensajes.error.camposincompletos");
+				String juegoEspecialidad = vf.getVe().getCardCoach().getPanelAgregarEquipo().getDatoJuego()
+						.getSelectedItem().toString();
+				if (mf.getEqdao().find(new Equipo(nombreEquipo, null, null, null, null)) == null) {
+					EquipoDTO equipo = new EquipoDTO(nombreEquipo, juegoEspecialidad);
+					mf.getEqdao().add(equipo);
+					vf.getVe().getCardCoach().getPanelAgregarEquipo().getDatoNombreEquipo().setText("");
+					vf.getVe().getCardCoach().getPanelAgregarEquipo().getDatoJuego().setSelectedIndex(0);
+					MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.confirmacion.exitousuario",
+							"archivosdepropiedades.mensajes.confirmacion.exito");
+					vf.getVe().setVisible(false);
+				} else {
+					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.usuarioexistente",
+							"archivosdepropiedades.mensajes.error");
+					
+				}
+			} catch (EmptyStringFieldException e1) {
+				MensajeEmergente.mensajeAdvertencia(e1.getMessage(), "archivosdepropiedades.mensajes.advertencia");
+			}
+			break;
+			
+		}
 		}
 	}
 

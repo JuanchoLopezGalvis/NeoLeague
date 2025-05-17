@@ -18,6 +18,7 @@ public class Equipo implements Serializable{
 	public Equipo() {
 	}
 
+
 	public Equipo(String nombre, ArrayList<Jugador> integrantes, String juegoDesempeñado,
 			ArrayList<Torneo> torneosInscritos, ArrayList<Partida> partidasJugadas) {
 		super();
@@ -28,11 +29,13 @@ public class Equipo implements Serializable{
 		this.partidasJugadas = partidasJugadas;
 	}
 
+
 	public Equipo(String nombre, String juegoDesempeñado) {
 		super();
 		this.nombre = nombre;
 		this.juegoDesempeñado = juegoDesempeñado;
 	}
+
 
 	public String getNombre() {
 		return nombre;
@@ -74,11 +77,27 @@ public class Equipo implements Serializable{
 	public void setPartidasJugadas(ArrayList<Partida> partidasJugadas) {
 		this.partidasJugadas = partidasJugadas;
 	}
-	
+	public void inscribirJugador(Jugador jugador, String mensaje) {
+	    if (integrantes.size() < 10) {
+	        integrantes.add(jugador);
+	    } else {
+	        throw new IllegalStateException(mensaje+ "(10)!");
+	    }
+	}
+	public void inscribirTorneo(Torneo torneo, String mensaje) {
+	    if (torneosInscritos.size() < 10) {
+	        torneosInscritos.add(torneo);
+	    } else {
+	        throw new IllegalStateException(mensaje+ "(10)!");
+	    }
+	}
+	public void registrarPartida(Partida partida, String mensaje) {
+			partidasJugadas.add(partida);
+	}
 	@Override
 	public String toString() {
-		return "EquipoDTO [nombre=" + nombre + ", integrantes=" + integrantes + ", juegoDesempeñado=" + juegoDesempeñado
-				+ ", torneosInscritos=" + torneosInscritos + ", partidasJugadas=" + partidasJugadas + "]";
+		return nombre + ";" + "# Gamers" + integrantes.size() + ";" + juegoDesempeñado
+				+ ";" + "# Torneos" + torneosInscritos.size() + ";" + "# Matches played" + partidasJugadas + "\n";
 	}
 	
 

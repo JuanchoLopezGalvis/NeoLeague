@@ -6,15 +6,16 @@ import co.edu.unbosque.model.Administrador;
 import co.edu.unbosque.model.AdministradorDTO;
 import co.edu.unbosque.model.Entrenador;
 import co.edu.unbosque.model.EntrenadorDTO;
+import co.edu.unbosque.model.Equipo;
+import co.edu.unbosque.model.EquipoDTO;
 import co.edu.unbosque.model.Jugador;
 import co.edu.unbosque.model.JugadorDTO;
 import co.edu.unbosque.model.Torneo;
 import co.edu.unbosque.model.TorneoDTO;
 
-
 public class DataMapper {
 
-	//Administrador
+	// Administrador
 	public static Administrador AdministradorDTOToAdministrador(AdministradorDTO dto) {
 		Administrador entity;
 		entity = new Administrador(dto.getNombre(), dto.getContrasena(), dto.getCorreo(), dto.getEdad(), dto.getPais(),
@@ -39,8 +40,8 @@ public class DataMapper {
 		return dtoList;
 	}
 
-	public static ArrayList<Administrador> listaAdministradorDTOToListaAdministrador
-	(ArrayList<AdministradorDTO> dtoList){
+	public static ArrayList<Administrador> listaAdministradorDTOToListaAdministrador(
+			ArrayList<AdministradorDTO> dtoList) {
 		ArrayList<Administrador> entityList = new ArrayList<>();
 		for (AdministradorDTO d : dtoList) {
 			entityList.add(new Administrador(d.getNombre(), d.getContrasena(), d.getCorreo(), d.getEdad(), d.getPais(),
@@ -49,11 +50,11 @@ public class DataMapper {
 		return entityList;
 	}
 
-	//Entrenador
+	// Entrenador
 	public static Entrenador EntrenadorDTOToEntrenador(EntrenadorDTO dto) {
 		Entrenador entity;
-		entity = new Entrenador(dto.getNombre(), dto.getContrasena(), dto.getCorreo(), dto.getEdad(),
-				dto.getPais(), dto.getUrlFoto(), dto.getTrayectoriaProfesional(), dto.getEspecialidadDeEntreno(),
+		entity = new Entrenador(dto.getNombre(), dto.getContrasena(), dto.getCorreo(), dto.getEdad(), dto.getPais(),
+				dto.getUrlFoto(), dto.getTrayectoriaProfesional(), dto.getEspecialidadDeEntreno(),
 				dto.getAnosDeEntrenamiento());
 		return entity;
 	}
@@ -61,101 +62,134 @@ public class DataMapper {
 	public static EntrenadorDTO EntrenadorToEntrenadorDTO(Entrenador entity) {
 		EntrenadorDTO dto;
 		dto = new EntrenadorDTO(entity.getNombre(), entity.getContrasena(), entity.getCorreo(), entity.getEdad(),
-				entity.getPais(), entity.getUrlFoto(), entity.getTrayectoriaProfesional(), entity.getEspecialidadDeEntreno(),
-				entity.getAnosDeEntrenamiento());
+				entity.getPais(), entity.getUrlFoto(), entity.getTrayectoriaProfesional(),
+				entity.getEspecialidadDeEntreno(), entity.getAnosDeEntrenamiento());
 		return dto;
 	}
 
-	public static ArrayList<EntrenadorDTO> listaEntrenadorToListaEntrenadorDTO(
-			ArrayList<Entrenador> entityList) {
+	public static ArrayList<EntrenadorDTO> listaEntrenadorToListaEntrenadorDTO(ArrayList<Entrenador> entityList) {
 		ArrayList<EntrenadorDTO> dtoList = new ArrayList<>();
 		for (Entrenador entity : entityList) {
-			dtoList.add(new EntrenadorDTO(entity.getNombre(), entity.getContrasena(), entity.getCorreo(), entity.getEdad(),
-					entity.getPais(), entity.getUrlFoto(), entity.getTrayectoriaProfesional(), entity.getEspecialidadDeEntreno(),
-					entity.getAnosDeEntrenamiento()));
+			dtoList.add(new EntrenadorDTO(entity.getNombre(), entity.getContrasena(), entity.getCorreo(),
+					entity.getEdad(), entity.getPais(), entity.getUrlFoto(), entity.getTrayectoriaProfesional(),
+					entity.getEspecialidadDeEntreno(), entity.getAnosDeEntrenamiento()));
 		}
 		return dtoList;
 	}
 
-	public static ArrayList<Entrenador> listaEntrenadorDTOToListaEntrenador
-	(ArrayList<EntrenadorDTO> dtoList){
+	public static ArrayList<Entrenador> listaEntrenadorDTOToListaEntrenador(ArrayList<EntrenadorDTO> dtoList) {
 		ArrayList<Entrenador> entityList = new ArrayList<>();
 		for (EntrenadorDTO dto : dtoList) {
-			entityList.add(new Entrenador(dto.getNombre(), dto.getContrasena(), dto.getCorreo(), dto.getEdad(), 
+			entityList.add(new Entrenador(dto.getNombre(), dto.getContrasena(), dto.getCorreo(), dto.getEdad(),
 					dto.getPais(), dto.getUrlFoto(), dto.getTrayectoriaProfesional(), dto.getEspecialidadDeEntreno(),
 					dto.getAnosDeEntrenamiento()));
 		}
 		return entityList;
 	}
-	
-	//Gamer
+
+	// Gamer
 	public static Jugador JugadorDTOToJugador(JugadorDTO dto) {
 		Jugador entity;
-		entity = new Jugador(dto.getNombre(), dto.getContrasena(), dto.getCorreo(), dto.getEdad(),
-				dto.getPais(), dto.getUrlFoto(), dto.getTrayectoriaCompetitiva(), dto.getJuegoEspecialidad(),
+		entity = new Jugador(dto.getNombre(), dto.getContrasena(), dto.getCorreo(), dto.getEdad(), dto.getPais(),
+				dto.getUrlFoto(), dto.getTrayectoriaCompetitiva(), dto.getJuegoEspecialidad(),
 				dto.getAnosDeExperiencia());
 		return entity;
 	}
+
 	public static JugadorDTO JugadorToJugadorDTO(Jugador entity) {
 		JugadorDTO dto;
 		dto = new JugadorDTO(entity.getNombre(), entity.getContrasena(), entity.getCorreo(), entity.getEdad(),
-				entity.getPais(), entity.getUrlFoto(), entity.getTrayectoriaCompetitiva(), entity.getJuegoEspecialidad(),
-				entity.getAnosDeExperiencia());
+				entity.getPais(), entity.getUrlFoto(), entity.getTrayectoriaCompetitiva(),
+				entity.getJuegoEspecialidad(), entity.getAnosDeExperiencia());
 		return dto;
 	}
-	public static ArrayList<JugadorDTO> listaJugadorToListaJugadorDTO(
-			ArrayList<Jugador> entityList) {
+
+	public static ArrayList<JugadorDTO> listaJugadorToListaJugadorDTO(ArrayList<Jugador> entityList) {
 		ArrayList<JugadorDTO> dtoList = new ArrayList<>();
 		for (Jugador entity : entityList) {
 			dtoList.add(new JugadorDTO(entity.getNombre(), entity.getContrasena(), entity.getCorreo(), entity.getEdad(),
-					entity.getPais(), entity.getUrlFoto(), entity.getTrayectoriaCompetitiva(), entity.getJuegoEspecialidad(),
-					entity.getAnosDeExperiencia()));
+					entity.getPais(), entity.getUrlFoto(), entity.getTrayectoriaCompetitiva(),
+					entity.getJuegoEspecialidad(), entity.getAnosDeExperiencia()));
 		}
 		return dtoList;
-	}	
-	public static ArrayList<Jugador> listaJugadorDTOToListaJugador
-	(ArrayList<JugadorDTO> dtoList){
+	}
+
+	public static ArrayList<Jugador> listaJugadorDTOToListaJugador(ArrayList<JugadorDTO> dtoList) {
 		ArrayList<Jugador> entityList = new ArrayList<>();
 		for (JugadorDTO dto : dtoList) {
-			entityList.add(new Jugador(dto.getNombre(), dto.getContrasena(), dto.getCorreo(), dto.getEdad(), 
+			entityList.add(new Jugador(dto.getNombre(), dto.getContrasena(), dto.getCorreo(), dto.getEdad(),
 					dto.getPais(), dto.getUrlFoto(), dto.getTrayectoriaCompetitiva(), dto.getJuegoEspecialidad(),
 					dto.getAnosDeExperiencia()));
 		}
 		return entityList;
 	}
-	
-	//Torneo
+
+	// Torneo
 	public static Torneo TorneoDTOToTorneo(TorneoDTO dto) {
 		Torneo entity;
 		entity = new Torneo(dto.getNombre(), dto.getJuego(), dto.getFechaInicio(), dto.getFechaFin(), dto.getFormato(),
 				dto.getMaxEquipos(), dto.getPremio(), dto.getListaEquiposInscritos());
 		return entity;
 	}
+
 	public static TorneoDTO TorneoToTorneoDTO(Torneo entity) {
 		TorneoDTO dto;
-		dto = new TorneoDTO(entity.getNombre(), entity.getJuego(), entity.getFechaInicio(), entity.getFechaFin(), entity.getFormato(),
-				entity.getMaxEquipos(), entity.getPremio(), entity.getListaEquiposInscritos());
+		dto = new TorneoDTO(entity.getNombre(), entity.getJuego(), entity.getFechaInicio(), entity.getFechaFin(),
+				entity.getFormato(), entity.getMaxEquipos(), entity.getPremio(), entity.getListaEquiposInscritos());
 		return dto;
 	}
-	public static ArrayList<TorneoDTO> listaTorneoToListaTorneoDTO(
-			ArrayList<Torneo> entityList) {
+
+	public static ArrayList<TorneoDTO> listaTorneoToListaTorneoDTO(ArrayList<Torneo> entityList) {
 		ArrayList<TorneoDTO> dtoList = new ArrayList<>();
 		for (Torneo entity : entityList) {
-			dtoList.add(new TorneoDTO(entity.getNombre(), entity.getJuego(), entity.getFechaInicio(), entity.getFechaFin(), entity.getFormato(),
-				entity.getMaxEquipos(), entity.getPremio(), entity.getListaEquiposInscritos()));
+			dtoList.add(new TorneoDTO(entity.getNombre(), entity.getJuego(), entity.getFechaInicio(),
+					entity.getFechaFin(), entity.getFormato(), entity.getMaxEquipos(), entity.getPremio(),
+					entity.getListaEquiposInscritos()));
 		}
 		return dtoList;
 	}
-	public static ArrayList<Torneo> listaTorneoDTOToListaTorneo
-	(ArrayList<TorneoDTO> dtoList){
+
+	public static ArrayList<Torneo> listaTorneoDTOToListaTorneo(ArrayList<TorneoDTO> dtoList) {
 		ArrayList<Torneo> entityList = new ArrayList<>();
 		for (TorneoDTO dto : dtoList) {
-			entityList.add(new Torneo(dto.getNombre(), dto.getJuego(), dto.getFechaInicio(), dto.getFechaFin(), dto.getFormato(),
-				dto.getMaxEquipos(), dto.getPremio(), dto.getListaEquiposInscritos()));
+			entityList.add(new Torneo(dto.getNombre(), dto.getJuego(), dto.getFechaInicio(), dto.getFechaFin(),
+					dto.getFormato(), dto.getMaxEquipos(), dto.getPremio(), dto.getListaEquiposInscritos()));
 		}
 		return entityList;
 	}
 
+	// Equipo
+	public static Equipo EquipoDTOToEquipo(EquipoDTO dto) {
+		Equipo entity;
+		entity = new Equipo(dto.getNombre(), dto.getIntegrantes(), dto.getJuegoDesempeñado(), dto.getTorneosInscritos(),
+				dto.getPartidasJugadas());
+		return entity;
+	}
 
-	//Falta completar el DataMapper para los demas DTOs
+	public static EquipoDTO EquipoToEquipoDTO(Equipo entity) {
+		EquipoDTO dto;
+		dto = new EquipoDTO(entity.getNombre(), entity.getIntegrantes(), entity.getJuegoDesempeñado(),
+				entity.getTorneosInscritos(), entity.getPartidasJugadas());
+		return dto;
+	}
+
+	public static ArrayList<EquipoDTO> listaEquipoToListaEquipoDTO(ArrayList<Equipo> entityList) {
+		ArrayList<EquipoDTO> dtoList = new ArrayList<>();
+		for (Equipo entity : entityList) {
+			dtoList.add(new EquipoDTO(entity.getNombre(), entity.getIntegrantes(), entity.getJuegoDesempeñado(),
+					entity.getTorneosInscritos(), entity.getPartidasJugadas()));
+		}
+		return dtoList;
+	}
+
+	public static ArrayList<Equipo> listaEquipoDTOToListaEquipo(ArrayList<EquipoDTO> dtoList) {
+		ArrayList<Equipo> entityList = new ArrayList<>();
+		for (EquipoDTO dto : dtoList) {
+			entityList.add(new Equipo(dto.getNombre(), dto.getIntegrantes(), dto.getJuegoDesempeñado(),
+					dto.getTorneosInscritos(), dto.getPartidasJugadas()));
+		}
+		return entityList;
+	}
+
+	// Falta completar el DataMapper para los demas DTOs
 }
