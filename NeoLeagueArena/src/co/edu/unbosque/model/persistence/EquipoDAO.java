@@ -2,6 +2,7 @@ package co.edu.unbosque.model.persistence;
 
 import java.util.ArrayList;
 
+
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -62,6 +63,8 @@ public class EquipoDAO implements OperacionDAO<EquipoDTO, Equipo> {
 		comboBox.removeAllItems();
 		for (Equipo equipo : listaEquipos) {
 			comboBox.addItem(equipo.getNombre());
+			comboBox.revalidate();
+			comboBox.repaint();
 		}
 	}
 
@@ -108,8 +111,15 @@ public class EquipoDAO implements OperacionDAO<EquipoDTO, Equipo> {
 
 	@Override
 	public boolean update(EquipoDTO previous, EquipoDTO newData) {
-		// TODO Auto-generated method stub
-		return false;
+		Equipo found = find(DataMapper.EquipoDTOToEquipo(previous));
+		if (found != null) {
+			found.setNombre(newData.getNombre());
+			escribirArchivoTxt();
+			escribirArchivoSerializado();
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public ArrayList<Equipo> getListaEquipos() {

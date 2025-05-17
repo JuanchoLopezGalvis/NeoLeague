@@ -25,24 +25,27 @@ public class PanelActualizarEquipo extends JPanel{
 	private Image fondo;
 	private	TextFieldRedondeado datoNombreEquipo;
 	private JLabel etiquetaNombreEquipo;
-	private BotonRedondeado btnAgregarEquipo;
+	private BotonRedondeado btnActualizarEquipo;
 	private JComboBox<String> equiposExistentes;
 	public PanelActualizarEquipo() {
 		setSize(1280,720);
 		setLayout(null);
 		fondo = new ImageIcon(getClass().getResource("/recursos/fondoAEquipo.png")).getImage();
 		datoNombreEquipo = new TextFieldRedondeado(Color.white, Color.decode("#002d69"), 20, Color.white, 1f);
-		btnAgregarEquipo = new BotonRedondeado("Agregar Equipo", 20, Color.decode("#002d69"), Color.black, Color.WHITE, Color.white, 1f);
+		btnActualizarEquipo = new BotonRedondeado("Actulizar Equipo", 20, Color.decode("#002d69"), Color.black, Color.WHITE, Color.white, 1f);
 		equiposExistentes = new JComboBox<>();
 		etiquetaNombreEquipo = new JLabel("Nombre del equipo");
 		etiquetaNombreEquipo.setForeground(Color.white);
 		etiquetaNombreEquipo.setFont(new java.awt.Font("Arial", 1, 20));
+		equiposExistentes.setBackground(Color.decode("#002d69"));
+		equiposExistentes.setForeground(Color.white);
+		datoNombreEquipo.setToolTipText("New Name");
 		etiquetaNombreEquipo.setBounds(835, 200, 300, 30);
 	    datoNombreEquipo.setBounds(800, 320, 250, 30);
 	    equiposExistentes.setBounds(800, 260, 250, 30);
-	    btnAgregarEquipo.setBounds(800, 380, 250, 30);
+	    btnActualizarEquipo.setBounds(800, 380, 250, 30);
 		add(datoNombreEquipo);
-		add(btnAgregarEquipo);
+		add(btnActualizarEquipo);
 		add(etiquetaNombreEquipo);
 		add(equiposExistentes);
 	}
@@ -77,11 +80,11 @@ public class PanelActualizarEquipo extends JPanel{
 	public void setEtiquetaNombreEquipo(JLabel etiquetaNombreEquipo) {
 		this.etiquetaNombreEquipo = etiquetaNombreEquipo;
 	}
-	public BotonRedondeado getBtnAgregarEquipo() {
-		return btnAgregarEquipo;
+	public BotonRedondeado getBtnActualizarEquipo() {
+		return btnActualizarEquipo;
 	}
-	public void setBtnAgregarEquipo(BotonRedondeado btnAgregarEquipo) {
-		this.btnAgregarEquipo = btnAgregarEquipo;
+	public void setBtnActualizarEquipo(BotonRedondeado btnActualizarEquipo) {
+		this.btnActualizarEquipo = btnActualizarEquipo;
 	}
 	public JComboBox<String> getEquiposExistentes() {
 		return equiposExistentes;

@@ -68,7 +68,6 @@ public class Controller implements ActionListener {
 		prop = new Properties();
 		panelActual = "PanelPrincipal";
 		asignarLectores();
-		mf.getEqdao().asignarElmentosCombos(vf.getVa().getCardAdmin().getPanelActualizar().getEquiposExistentes());
 	}
 
 	/**
@@ -76,6 +75,7 @@ public class Controller implements ActionListener {
 	 */
 	public void run() {
 		FileManager.crearCarpeta();
+		mf.getEqdao().asignarElmentosCombos(vf.getVa().getCardAdmin().getPanelActualizar().getEquiposExistentes());
 		vf.getVp().setVisible(true);
 	}
 
@@ -158,8 +158,6 @@ public class Controller implements ActionListener {
 		vf.getVa().getAnaliytics().addActionListener(this);
 		vf.getVa().getAnaliytics().setActionCommand("PanelAnalytics");
 
-
-
 		vf.getVe().getCardCoach().getPanelAgregarEquipo().getBtnAgregarEquipo().addActionListener(this);
 		vf.getVe().getCardCoach().getPanelAgregarEquipo().getBtnAgregarEquipo().setActionCommand("btnAgregarEquipo");
 
@@ -174,6 +172,11 @@ public class Controller implements ActionListener {
 
 		vf.getVg().getActualizarCuenta().addActionListener(this);
 		vf.getVg().getActualizarCuenta().setActionCommand("ActualizarCuentaGamer");
+
+		vf.getVa().getCardAdmin().getPanelActualizar().getEquiposExistentes().addActionListener(this);
+		vf.getVa().getCardAdmin().getPanelActualizar().getEquiposExistentes().setActionCommand("comboEquipos");
+		vf.getVa().getCardAdmin().getPanelActualizar().getBtnActualizarEquipo().addActionListener(this);
+		vf.getVa().getCardAdmin().getPanelActualizar().getBtnActualizarEquipo().setActionCommand("btnActualizarEquipo");
 	}
 
 	/**
@@ -1184,7 +1187,8 @@ public class Controller implements ActionListener {
 					EquipoDTO en = new EquipoDTO(nombre, null, null, null, null);
 					mf.getEqdao().delete(en);
 					mf.getEqdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
-					mf.getEqdao().asignarElmentosCombos(vf.getVa().getCardAdmin().getPanelActualizar().getEquiposExistentes());
+					mf.getEqdao().asignarElmentosCombos(
+							vf.getVa().getCardAdmin().getPanelActualizar().getEquiposExistentes());
 				} else {
 					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.camposincompletos",
 							"archivosdepropiedades.mensajes.error");
@@ -1241,7 +1245,8 @@ public class Controller implements ActionListener {
 					mf.getEqdao().add(equipo);
 					vf.getVe().getCardCoach().getPanelAgregarEquipo().getDatoNombreEquipo().setText("");
 					vf.getVe().getCardCoach().getPanelAgregarEquipo().getDatoJuego().setSelectedIndex(0);
-					mf.getEqdao().asignarElmentosCombos(vf.getVa().getCardAdmin().getPanelActualizar().getEquiposExistentes());
+					mf.getEqdao().asignarElmentosCombos(
+							vf.getVa().getCardAdmin().getPanelActualizar().getEquiposExistentes());
 					MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.confirmacion.exitousuario",
 							"archivosdepropiedades.mensajes.confirmacion.exito");
 					vf.getVe().setVisible(false);
@@ -1279,6 +1284,38 @@ public class Controller implements ActionListener {
 			panelActual = "actualizarcuentaG";
 
 			vf.getVg().getCardGamer().mostrarPanel("PanelActualizarJugador");
+			break;
+		}
+		case "comboEquipos": {
+			if (vf.getVa().getCardAdmin().getPanelActualizar().getEquiposExistentes().getSelectedIndex() == -1) {
+				vf.getVa().getCardAdmin().getPanelActualizar().getDatoNombreEquipo().setText("");
+				break;
+			} else {
+				vf.getVa().getCardAdmin().getPanelActualizar().getDatoNombreEquipo().setText("");
+				
+			}
+			String nombre = vf.getVa().getCardAdmin().getPanelActualizar().getEquiposExistentes().getSelectedItem().toString();
+			vf.getVa().getCardAdmin().getPanelActualizar().getDatoNombreEquipo().setText(nombre);
+			break;
+		}
+		case "btnActualizarEquipo": {
+			try {
+				String nombreAnterior = vf.getVa().getCardAdmin().getPanelActualizar().getEquiposExistentes()
+						.getSelectedItem().toString();
+				String nombreNuevo = vf.getVa().getCardAdmin().getPanelActualizar().getDatoNombreEquipo().getText();
+				ExceptionChecker.checkStringField(nombreNuevo,
+						"archivosdepropiedades.mensajes.error.camposincompletos");
+				mf.getEqdao().update(new EquipoDTO(nombreAnterior, null, null, null, null),
+						new EquipoDTO(nombreNuevo, null, null, null, null));
+				MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.confirmacion.exitousuario",
+						"archivosdepropiedades.mensajes.confirmacion.exito");
+				vf.getVa().getCardAdmin().getPanelActualizar().getDatoNombreEquipo().setText("");
+				mf.getEqdao().asignarElmentosCombos(vf.getVa().getCardAdmin().getPanelActualizar().getEquiposExistentes());
+				vf.getVa().getCardAdmin().getPanelActualizar().revalidate();
+				vf.getVa().getCardAdmin().getPanelActualizar().repaint();
+			} catch (EmptyStringFieldException e1) {
+				MensajeEmergente.mensajeAdvertencia(e1.getMessage(), "archivosdepropiedades.mensajes.advertencia");
+			}
 			break;
 		}
 		}
