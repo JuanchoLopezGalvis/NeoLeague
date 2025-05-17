@@ -175,6 +175,6 @@ public class Equipo implements Serializable{
 	@Override
 	public String toString() {
 		return nombre + ";" + "# Gamers" + integrantes.size() + ";" + juegoDesempeñado
-				+ ";" + "# Torneos" + torneosInscritos.size() + ";" + "# Matches played" + partidasJugadas.size() + "\n";
+				+ ";" + "# Torneos " + torneosInscritos.size() + ";" + "# Matches played " + partidasJugadas.size() + "\n";
 	}
 }
