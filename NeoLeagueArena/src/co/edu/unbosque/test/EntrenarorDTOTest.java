@@ -24,14 +24,14 @@ public class EntrenarorDTOTest {
 				3);
 		dto = new EntrenadorDTO("jose", "Jose2006", "josesito@gmail.com", 28, "Peru", "jose.png", "amplia", "Formula 1",
 				5);
-		System.out.println("Iniciando las pruebas unitarias de PerroDTO");
+		System.out.println("test entrenadorDTO");
 		System.out.println("los datos del la lista de el perro es " + entidad.toString());
 		System.out.println("los datos del la lista de dto's es " + dto.toString());
 	}
 
 	@Before
 	public void hcerAntesDeCadaPrueba() {
-		System.out.println("Iniciando la siguiente prueba");
+		System.out.println("siguiente prueba");
 		entidad = new Entrenador("juan", "Juan2006", "juanito@gmail.com", 18, "Colombia", "juan.png", "amplia", "fifa",
 				3);
 		dto = new EntrenadorDTO("juan", "Juan2006", "juanito@gmail.com", 18, "Colombia", "juan.png", "amplia", "fifa",
