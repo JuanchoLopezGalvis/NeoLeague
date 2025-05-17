@@ -29,7 +29,6 @@ public class CrearAdminTest {
     @Before
     public void setUp() {
         System.out.println("Ejecutando prueba");
-        // Aquí puedes reiniciar valores si fuera necesario.
     }
 
     @Test
@@ -72,7 +71,6 @@ public class CrearAdminTest {
     @After
     public void tearDown() {
         System.out.println("Prueba finalizada");
-        // Puedes limpiar estados si es necesario.
     }
 
     @AfterClass
