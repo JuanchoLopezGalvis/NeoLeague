@@ -1311,8 +1311,6 @@ public class Controller implements ActionListener {
 						"archivosdepropiedades.mensajes.confirmacion.exito");
 				vf.getVa().getCardAdmin().getPanelActualizar().getDatoNombreEquipo().setText("");
 				mf.getEqdao().asignarElmentosCombos(vf.getVa().getCardAdmin().getPanelActualizar().getEquiposExistentes());
-				vf.getVa().getCardAdmin().getPanelActualizar().revalidate();
-				vf.getVa().getCardAdmin().getPanelActualizar().repaint();
 			} catch (EmptyStringFieldException e1) {
 				MensajeEmergente.mensajeAdvertencia(e1.getMessage(), "archivosdepropiedades.mensajes.advertencia");
 			}
