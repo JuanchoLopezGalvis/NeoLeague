@@ -137,6 +137,12 @@ public class Controller implements ActionListener {
 		
 		vf.getVa().getActualizarEquipo().addActionListener(this);
 		vf.getVa().getActualizarEquipo().setActionCommand("PanelActualizarEquipo");
+		
+		vf.getVa().getActualizarTorneo().addActionListener(this);
+		vf.getVa().getActualizarTorneo().setActionCommand("PanelActualizarTorneo");
+		
+		vf.getVa().getAnaliytics().addActionListener(this);
+		vf.getVa().getAnaliytics().setActionCommand("PanelAnalytics");
 	}
 
 	/**
@@ -1143,6 +1149,14 @@ public class Controller implements ActionListener {
 		}
 		case "PanelActualizarEquipo": {
 			vf.getVa().getCardAdmin().mostrarPanel("PanelActualizar");
+			break;
+		}
+		case "PanelActualizarTorneo": {
+			vf.getVa().getCardAdmin().mostrarPanel("PanelActualizar");
+			break;
+		}
+		case "PanelAnalytics": {
+			vf.getVa().getCardAdmin().mostrarPanel("PanelInforme");
 			break;
 		}
 		
