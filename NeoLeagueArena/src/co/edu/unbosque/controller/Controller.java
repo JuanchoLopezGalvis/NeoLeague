@@ -158,6 +158,18 @@ public class Controller implements ActionListener {
 		
 		vf.getVe().getCardCoach().getPanelAgregarEquipo().getBtnAgregarEquipo().addActionListener(this);
 		vf.getVe().getCardCoach().getPanelAgregarEquipo().getBtnAgregarEquipo().setActionCommand("btnAgregarEquipo");
+		
+		vf.getVe().getVerEquipos().addActionListener(this);
+		vf.getVe().getVerEquipos().setActionCommand("panelMostrarEquipos");
+		
+		vf.getVe().getActualizarEquipo().addActionListener(this);
+		vf.getVe().getActualizarEquipo().setActionCommand("panelActualizarEquipo");
+		
+		vf.getVe().getActualizarCuenta().addActionListener(this);
+		vf.getVe().getActualizarCuenta().setActionCommand("ActualizarCuentaEntrenador");
+
+		vf.getVg().getActualizarCuenta().addActionListener(this);
+		vf.getVg().getActualizarCuenta().setActionCommand("ActualizarCuentaGamer");
 	}
 
 	/**
@@ -375,8 +387,6 @@ public class Controller implements ActionListener {
 						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.actualizarequipos"));
 				vf.getVa().getMostrarEquipos()
 						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarequipos"));
-				vf.getVa().getConfigurarNotificaciones()
-						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.configurarnotificaciones"));
 				vf.getVa().getAnaliytics().setText(prop.getProperty("archivosdepropiedades.panelAdmin.analitica"));
 
 				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoJuego()
@@ -576,10 +586,7 @@ public class Controller implements ActionListener {
 						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.Administrarequipos"));
 				vf.getVa().getActualizarEquipo()
 						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.actualizarequipos"));
-				vf.getVa().getMostrarEquipos()
-						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarequipos"));
-				vf.getVa().getConfigurarNotificaciones()
-						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.configurarnotificaciones"));
+				
 				vf.getVa().getAnaliytics().setText(prop.getProperty("archivosdepropiedades.panelAdmin.analitica"));
 
 				vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoJuego()
@@ -1171,26 +1178,53 @@ public class Controller implements ActionListener {
 			String torneosInscritos = prop.getProperty("archivosdepropiedades.arraymostrar.cantidadtorneosincritos");
 			String partidasJugadas = prop.getProperty("archivosdepropiedades.arraymostrar.partidasjugadas");
 			String[] titulos = { nombre, cantidadJugadores, juegoEspecialidad, torneosInscritos, partidasJugadas };
-			vf.getVa().getCardAdmin().getPanelActualizar().setModelo(titulos, 0);
-			mf.getEqdao().showAll(vf.getVa().getCardAdmin().getPanelActualizar().getTabla());
-			vf.getVa().getCardAdmin().getPanelActualizar().getTabla().revalidate();
-			vf.getVa().getCardAdmin().getPanelActualizar().getTabla().repaint();
+			vf.getVa().getCardAdmin().getPanelMostrar().setModelo(titulos, 0);
+			mf.getEqdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
+			vf.getVa().getCardAdmin().getPanelMostrar().getTabla().revalidate();
+			vf.getVa().getCardAdmin().getPanelMostrar().getTabla().repaint();
 						
 			vf.getVa().getCardAdmin().mostrarPanel("PanelMostrar");
 			break;
 		}
 		case "PanelActualizarPartida": {
+			
+			
 			vf.getVa().getCardAdmin().mostrarPanel("PanelActualizarPartida");
 			break;
 		}
 		case "PanelActualizarEquipo": {
 			panelActual = "actualizarE";
+			String nombre = prop.getProperty("archivosdepropiedades.arraymostrar.nombre");
+			String cantidadJugadores = prop.getProperty("archivosdepropiedades.arraymostrar.cantidadintegrantes");
+			String juegoEspecialidad = prop.getProperty("archivosdepropiedades.arraymostrar.juegodesempeñado");
+			String torneosInscritos = prop.getProperty("archivosdepropiedades.arraymostrar.cantidadtorneosincritos");
+			String partidasJugadas = prop.getProperty("archivosdepropiedades.arraymostrar.partidasjugadas");
+			String[] titulos = { nombre, cantidadJugadores, juegoEspecialidad, torneosInscritos, partidasJugadas };
+			vf.getVa().getCardAdmin().getPanelActualizar().setModelo(titulos, 0);
+			mf.getEqdao().showAll(vf.getVa().getCardAdmin().getPanelActualizar().getTabla());
+			vf.getVa().getCardAdmin().getPanelActualizar().getTabla().revalidate();
+			vf.getVa().getCardAdmin().getPanelActualizar().getTabla().repaint();
 			
 			vf.getVa().getCardAdmin().mostrarPanel("PanelActualizar");
 			break;
 		}
 		case "PanelActualizarTorneo": {
 			panelActual = "actualizarT";
+			
+			String nombre = prop.getProperty("archivosdepropiedades.arraymostrar.nombre");
+			String juegoEspecialidad = prop.getProperty("archivosdepropiedades.arraymostrar.juegoespecialidad");
+			String fechaInicio = prop.getProperty("archivosdepropiedades.arraymostrar.fechainicio");
+			String fechaFin = prop.getProperty("archivosdepropiedades.arraymostrar.fechafin");
+			String formato = prop.getProperty("archivosdepropiedades.arraymostrar.tipotorneo");
+			String maxEquipos = prop.getProperty("archivosdepropiedades.arraymostrar.maxequipos");
+			String recompensa = prop.getProperty("archivosdepropiedades.arraymostrar.recompensa");
+			String equi = prop.getProperty("archivosdepropiedades.arraymostrar.equiposinscritos");
+			String[] titulos = { nombre, juegoEspecialidad, fechaInicio, fechaFin, formato, maxEquipos, recompensa,
+					equi };
+			vf.getVa().getCardAdmin().getPanelActualizar().setModelo(titulos, 0);
+			mf.getTdao().showAll(vf.getVa().getCardAdmin().getPanelActualizar().getTabla());
+			vf.getVa().getCardAdmin().getPanelActualizar().getTabla().revalidate();
+			vf.getVa().getCardAdmin().getPanelActualizar().getTabla().repaint();
 			vf.getVa().getCardAdmin().mostrarPanel("PanelActualizar");
 			break;
 		}
@@ -1255,6 +1289,31 @@ public class Controller implements ActionListener {
 			}
 			break;
 			
+		}
+		
+		case "panelMostrarEquipos": {
+			panelActual = "mostrarE";
+			
+			vf.getVe().getCardCoach().mostrarPanel("PanelMostrar");
+			break;
+		}
+		case "panelActualizarEquipo": {
+			panelActual = "actualizarE";
+			
+			vf.getVe().getCardCoach().mostrarPanel("PanelActualizar");
+			break;
+		}
+		case "ActualizarCuentaEntrenador": {
+			panelActual = "actualizarcuentaE";
+			
+			vf.getVe().getCardCoach().mostrarPanel("PanelActualizarEntrenador");
+			break;
+		}
+		case "ActualizarCuentaGamer": {
+			panelActual = "actualizarcuentaG";
+			
+			vf.getVg().getCardGamer().mostrarPanel("PanelActualizarJugador");
+			break;
 		}
 		}
 	}

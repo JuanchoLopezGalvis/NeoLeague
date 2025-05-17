@@ -16,6 +16,7 @@ public class EquipoDAO implements OperacionDAO<EquipoDTO, Equipo> {
 	
 	public EquipoDAO() {
 		listaEquipos = new ArrayList<Equipo>();
+		leerArchivoSerializado();
 	}
 	
 	@Override

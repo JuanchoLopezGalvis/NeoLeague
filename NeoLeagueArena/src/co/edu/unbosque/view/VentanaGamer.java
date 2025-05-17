@@ -41,9 +41,90 @@ public class VentanaGamer extends JFrame{
 		estadisticas.add(topGamers);
 		setJMenuBar(menuBar);
 		cardGamer = new CardGamer();
+		cardGamer.setBounds(0, 0, 1280, 720);
 		add(cardGamer);
 		setVisible(true);
 	}
+
+	
+
+	public JMenu getGestionarCuenta() {
+		return gestionarCuenta;
+	}
+
+	public void setGestionarCuenta(JMenu gestionarCuenta) {
+		this.gestionarCuenta = gestionarCuenta;
+	}
+
+	public JMenu getGestionarTorneos() {
+		return gestionarTorneos;
+	}
+
+	public void setGestionarTorneos(JMenu gestionarTorneos) {
+		this.gestionarTorneos = gestionarTorneos;
+	}
+
+	public JMenu getVerPartidas() {
+		return verPartidas;
+	}
+
+	public void setVerPartidas(JMenu verPartidas) {
+		this.verPartidas = verPartidas;
+	}
+
+	public JMenu getEstadisticas() {
+		return estadisticas;
+	}
+
+	public void setEstadisticas(JMenu estadisticas) {
+		this.estadisticas = estadisticas;
+	}
+
+	public JMenuItem getActualizarCuenta() {
+		return actualizarCuenta;
+	}
+
+	public void setActualizarCuenta(JMenuItem actualizarCuenta) {
+		this.actualizarCuenta = actualizarCuenta;
+	}
+
+	public JMenuItem getConsultarTorneos() {
+		return consultarTorneos;
+	}
+
+	public void setConsultarTorneos(JMenuItem consultarTorneos) {
+		this.consultarTorneos = consultarTorneos;
+	}
+
+	public JMenuItem getResultadosTorneos() {
+		return resultadosTorneos;
+	}
+
+	public void setResultadosTorneos(JMenuItem resultadosTorneos) {
+		this.resultadosTorneos = resultadosTorneos;
+	}
+
+	public JMenuItem getTopGamers() {
+		return topGamers;
+	}
+
+	public void setTopGamers(JMenuItem topGamers) {
+		this.topGamers = topGamers;
+	}
+
+	public CardGamer getCardGamer() {
+		return cardGamer;
+	}
+
+	public void setCardGamer(CardGamer cardGamer) {
+		this.cardGamer = cardGamer;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
+	
 
 
 }

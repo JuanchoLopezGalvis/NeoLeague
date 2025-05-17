@@ -9,7 +9,7 @@ public class VentanaAdmin extends JFrame{
 	
 	private JMenuBar menuBar;
 	private JMenu administrarGamer, administrarCouch, administrarTorneos, administrarPartidas, administrarEquipo, reportes;
-	private JMenuItem configurarNotificaciones, mostrarGamers, mostrarCoachs, crearTorneo, crearPartida, mostrarTorneos, mostrarPartidas, actualizarTorneo, actualizarPartida, actualizarEquipo,  mostrarEquipos, analiytics;
+	private JMenuItem  mostrarGamers, mostrarCoachs, crearTorneo, crearPartida, mostrarTorneos, mostrarPartidas, actualizarTorneo, actualizarPartida, actualizarEquipo,  mostrarEquipos, analiytics;
 	private CardAdmin cardAdmin;
 
 	/**
@@ -38,7 +38,6 @@ public class VentanaAdmin extends JFrame{
 		administrarEquipo = new JMenu("Manage Teams");
 		actualizarEquipo = new JMenuItem("Update Team");
 		mostrarEquipos = new JMenuItem("Show Teams");
-		configurarNotificaciones = new JMenuItem("Configure Notifications");
 		analiytics = new JMenuItem("Analytics");
 		menuBar.add(administrarGamer);
 		menuBar.add(administrarCouch);
@@ -49,7 +48,6 @@ public class VentanaAdmin extends JFrame{
 		administrarTorneos.add(crearTorneo);
 		administrarTorneos.add(mostrarTorneos);
 		administrarTorneos.add(actualizarTorneo);
-		administrarTorneos.add(configurarNotificaciones);
 		administrarPartidas.add(crearPartida);
 		administrarPartidas.add(mostrarPartidas);
 		administrarPartidas.add(actualizarPartida);
@@ -62,7 +60,6 @@ public class VentanaAdmin extends JFrame{
 		cardAdmin = new CardAdmin();
 		cardAdmin.setBounds(0, 0, 1280, 720);
 		add(cardAdmin);
-		setVisible(true);
 	}
 	public JMenu getAdministrarCouch() {
 		return administrarCouch;
@@ -76,12 +73,7 @@ public class VentanaAdmin extends JFrame{
 	public void setReportes(JMenu reportes) {
 		this.reportes = reportes;
 	}
-	public JMenuItem getConfigurarNotificaciones() {
-		return configurarNotificaciones;
-	}
-	public void setConfigurarNotificaciones(JMenuItem configurarNotificaciones) {
-		this.configurarNotificaciones = configurarNotificaciones;
-	}
+
 	public JMenuItem getMostrarGamers() {
 		return mostrarGamers;
 	}
