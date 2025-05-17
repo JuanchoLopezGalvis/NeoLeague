@@ -36,7 +36,7 @@ public class PartidaDAO implements OperacionDAO<PartidaDTO, Partida> {
 		// TODO Auto-generated method stub
 		return false;
 	}
-//
+
 	public ArrayList<Partida> getListaPartidas() {
 		return listaPartidas;
 	}
