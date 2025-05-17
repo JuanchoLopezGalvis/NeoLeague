@@ -19,7 +19,7 @@ public class PartidaDAOTest {
     private static PartidaDAO dao;
     private PartidaDTO sampleDTO;
     private Partida samplePartida;
-
+//restore
     @BeforeClass
     public static void setUpBeforeClass()  {
         System.out.println("Inicialización global");
@@ -78,7 +78,7 @@ public class PartidaDAOTest {
         boolean result = dao.update(sampleDTO, updatedDTO);
         assertFalse(" no implementado, debería retornar false", result);
     }
-//
+
     @After
     public void tearDown(){
         System.out.println("Limpiando datos de prueba");
