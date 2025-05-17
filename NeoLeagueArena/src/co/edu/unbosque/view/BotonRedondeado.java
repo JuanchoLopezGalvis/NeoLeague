@@ -15,7 +15,7 @@ import javax.swing.JButton;
  */
 
 public class BotonRedondeado extends JButton{
-	
+
 	/**
 	 * La serialVersionUID es un identificador único que se utiliza en la serialización y deserialización de objetos en Java.
 	 */
@@ -88,7 +88,7 @@ public class BotonRedondeado extends JButton{
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.setColor(borderColor);
         g2.setStroke(new BasicStroke(borderWidth));
-        g2.draw(new RoundRectangle2D.Float(borderWidth / 2, borderWidth / 2, 
+        g2.draw(new RoundRectangle2D.Float(borderWidth / 2, borderWidth / 2,
         	    getWidth() - borderWidth, getHeight() - borderWidth, cornerRadius, cornerRadius));
         g2.dispose();
     }

@@ -25,7 +25,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * de texto y archivos serializados.
  * Esta clase permite crear una carpeta para almacenar los archivos,
  * Tendra la reponsabilidad de manejar la persistencia de los datos.
- * 
+ *
  */
 public class FileManager {
 
@@ -189,12 +189,12 @@ public class FileManager {
 	    FileNameExtensionFilter filter = new FileNameExtensionFilter("Image Files", "jpg", "png", "jpeg");
 	    fileChooser.setFileFilter(filter);
 	    fileChooser.setAcceptAllFileFilterUsed(false);
-	    
+
 	    int result = fileChooser.showOpenDialog(panel);
-	    
+
 	    if (result == JFileChooser.APPROVE_OPTION) {
 	        File selectedFile = fileChooser.getSelectedFile();
-	        
+
 	        try {
 	            File imageUserDir = new File("imageUser");
 	            if (!imageUserDir.exists()) {
@@ -206,14 +206,14 @@ public class FileManager {
 	                destino.toPath(),
 	                StandardCopyOption.REPLACE_EXISTING
 	            );
-	            
+
 	        } catch (IOException ex) {
 	            ex.printStackTrace();
-	            JOptionPane.showMessageDialog(panel, 
+	            JOptionPane.showMessageDialog(panel,
 	                "<html>Error saving image<br>Error al guardar la imagen</html>", "Error", JOptionPane.ERROR_MESSAGE);
 	        }
 	    } else {
-	    	JOptionPane.showMessageDialog(panel, 
+	    	JOptionPane.showMessageDialog(panel,
 	            "<html>No image was selected<br>Imagen no seleccionada</html>", "Error", JOptionPane.ERROR_MESSAGE);
 	    }
 	}

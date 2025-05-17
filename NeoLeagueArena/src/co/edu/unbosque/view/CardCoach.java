@@ -9,7 +9,7 @@ import javax.swing.JPanel;
  * vistas de la interfaz de usuario.
  */
 public class CardCoach extends JPanel{
-	
+
 	/**
 	 * La serialVersionUID es un identificador único que se utiliza en la serialización y deserialización de objetos en Java.
 	 */
@@ -46,7 +46,7 @@ public class CardCoach extends JPanel{
 		panelActualizarEquipo = new PanelActualizarEquipo();
 		panelAgregarEquipo = new PanelAgregarEquipo();
 		panelActualizarEntrenador = new PanelActualizarEntrenador();
-		
+
 		add(panelAgregarEquipo, "PanelAgregarEquipo");
 		add(panelActualizarEquipo, "PanelActualizarEquipo");
 		add(panelMostrar, "PanelMostrar");

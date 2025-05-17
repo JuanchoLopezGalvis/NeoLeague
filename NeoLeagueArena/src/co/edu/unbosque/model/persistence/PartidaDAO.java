@@ -10,7 +10,7 @@ import co.edu.unbosque.model.PartidaDTO;
 public class PartidaDAO implements OperacionDAO<PartidaDTO, Partida> {
 	private ArrayList<Partida> listaPartidas;
 	public PartidaDAO() {
-		listaPartidas = new ArrayList<Partida>();
+		listaPartidas = new ArrayList<>();
 	}	@Override
 	public boolean showAll(JTable tabla) {
 		// TODO Auto-generated method stub

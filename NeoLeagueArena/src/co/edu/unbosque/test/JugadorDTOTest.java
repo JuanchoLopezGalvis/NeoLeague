@@ -13,7 +13,7 @@ import co.edu.unbosque.model.JugadorDTO;
 import co.edu.unbosque.model.persistence.DataMapper;
 
 public class JugadorDTOTest {
-	
+
 	static Jugador entidad;
 	static JugadorDTO dto;
 	static int contador = 0;
@@ -51,7 +51,7 @@ public class JugadorDTOTest {
 				&& dto.getAnosDeExperiencia() == entidad.getAnosDeExperiencia()) {
 			exito = true;
 		}
-		if (exito == true) {
+		if (exito) {
 			System.out.println("Se efectuo la conversión de manera satisfactoria");
 		} else {
 			System.out.println("Se efectuo la conversión de manera insatisfactoria");
@@ -71,7 +71,7 @@ public class JugadorDTOTest {
 				&& dto.getAnosDeExperiencia() == entrenador.getAnosDeExperiencia()) {
 			exito = true;
 		}
-		if (exito == true) {
+		if (exito) {
 			System.out.println("Se efectuo la conversión de manera satisfactoria");
 		} else {
 			System.out.println("Se efectuo la conversión de manera insatisfactoria");

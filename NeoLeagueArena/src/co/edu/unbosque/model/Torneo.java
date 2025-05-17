@@ -57,7 +57,7 @@ public class Torneo implements Serializable{
 	 * Constructor de la clase {@link Torneo} que recibe como parámetro el nombre, el
 	 * juego, la fecha de inicio, la fecha de fin, el formato, el maximo de equipos y
 	 * el premio.
-	 * 
+	 *
 	 * @param nombre
 	 * @param juego
 	 * @param fechaInicio
@@ -81,7 +81,7 @@ public class Torneo implements Serializable{
 	 * Constructor de la clase {@link Torneo} que recibe como parámetro el nombre, el
 	 * juego, la fecha de inicio, la fecha de fin, el formato, el maximo de equipos,
 	 * el premio y la lista de equipos inscritos.
-	 * 
+	 *
 	 * @param nombre
 	 * @param juego
 	 * @param fechaInicio

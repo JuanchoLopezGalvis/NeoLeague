@@ -6,20 +6,20 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 public class VentanaGamer extends JFrame{
-	
+
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	private JMenuBar menuBar;
 	private JMenu gestionarCuenta, gestionarTorneos, verPartidas, estadisticas;
 	private JMenuItem actualizarCuenta, consultarTorneos, resultadosTorneos, topGamers;
 	private CardGamer cardGamer;
-	
+
 	public VentanaGamer() {
 		setSize(1280,720);
 		setLocationRelativeTo(null);
-		setResizable(false);	
+		setResizable(false);
 		setTitle("Ventana Gamer");
 		setLayout(null);
 		menuBar = new JMenuBar();
@@ -34,7 +34,7 @@ public class VentanaGamer extends JFrame{
 		actualizarCuenta = new JMenuItem("Actualizar mi cuenta");
 		consultarTorneos = new JMenuItem("Consultar torneos");
 		resultadosTorneos = new JMenuItem("Resultados torneos");
-		topGamers = new JMenuItem("Top Gamers"); 
+		topGamers = new JMenuItem("Top Gamers");
 		gestionarCuenta.add(actualizarCuenta);
 		gestionarTorneos.add(consultarTorneos);
 		gestionarTorneos.add(resultadosTorneos);
@@ -45,7 +45,7 @@ public class VentanaGamer extends JFrame{
 		add(cardGamer);
 	}
 
-	
+
 
 	public JMenu getGestionarCuenta() {
 		return gestionarCuenta;
@@ -122,8 +122,8 @@ public class VentanaGamer extends JFrame{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
+
+
 
 
 }

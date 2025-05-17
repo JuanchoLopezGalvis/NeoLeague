@@ -6,12 +6,12 @@ import java.util.ArrayList;
 /**
  * La clase {@link EquipoDTO} es la encargada de establecer los atributos de
  * un equipo. Esta clase es un DTO (Data Transfer Object) que se utiliza para
- * transferir datos entre diferentes capas de la aplicación. 
+ * transferir datos entre diferentes capas de la aplicación.
  */
 public class EquipoDTO implements Serializable{
-	
+
 	/**
-	 * La serialVersionUID es un identificador único que se utiliza en la serialización y deserialización de objetos en Java. 
+	 * La serialVersionUID es un identificador único que se utiliza en la serialización y deserialización de objetos en Java.
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
@@ -41,7 +41,7 @@ public class EquipoDTO implements Serializable{
 	}
 	/**
 	 * Constructor de la clase {@link EquipoDTO} que recibe como parámetro el nombre, los integrantes, el juego desempeñado, los torneos inscritos y las partidas jugadas.
-	 * 
+	 *
 	 * @param nombre
 	 * @param integrantes
 	 * @param juegoDesempeñado
@@ -59,7 +59,7 @@ public class EquipoDTO implements Serializable{
 	}
 	/**
 	 * Constructor de la clase {@link EquipoDTO} que recibe como parámetro el nombre y el juego desempeñado.
-	 * 
+	 *
 	 * @param nombre
 	 * @param juegoDesempeñado
 	 */

@@ -10,7 +10,7 @@ import java.util.Date;
  */
 public class PartidaDTO implements Serializable{
 	/**
-	 * La serialVersionUID es un identificador único que se utiliza en la serialización y deserialización de objetos en Java. 
+	 * La serialVersionUID es un identificador único que se utiliza en la serialización y deserialización de objetos en Java.
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
@@ -51,7 +51,7 @@ public class PartidaDTO implements Serializable{
 	 * Constructor de la clase {@link PartidaDTO} que recibe como parámetro el id, el
 	 * equipo 1, el equipo 2, el ganador, el juego, la fecha y el torneo al que
 	 * pertenece la partida.
-	 * 
+	 *
 	 * @param id
 	 * @param equipo1
 	 * @param equipo2

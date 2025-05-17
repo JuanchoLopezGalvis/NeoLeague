@@ -15,7 +15,7 @@ public class Administrador extends Usuario implements Serializable{
 	 * Esta instancia es la encargada de guardar el cargo específico del administrador.
 	 */
 	private String cargoEspecifico;
-	
+
 	/**
 	 * Constructor por defecto o vacio de la clase {@link Administrador}.
 	 */

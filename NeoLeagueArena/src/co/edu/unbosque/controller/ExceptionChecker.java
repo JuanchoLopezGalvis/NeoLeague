@@ -17,7 +17,7 @@ public class ExceptionChecker {
 	// Verificar si un número es negativo
 	/**
 	 * Verifica si un número es negativo y lanza una excepción si lo es.
-	 * 
+	 *
 	 * @param number
 	 * @param errorMesage
 	 * @throws NegativeNumberException
@@ -31,7 +31,7 @@ public class ExceptionChecker {
 	// Verificar si un String contiene números
 	/**
 	 * Verifica si un String contiene números y lanza una excepción si lo hace.
-	 * 
+	 *
 	 * @param text
 	 * @param errorMessage
 	 * @throws NumberInStringException
@@ -45,7 +45,7 @@ public class ExceptionChecker {
 	// Verificar si un campo numérico está vacío
 	/**
 	 * Verifica si un campo numérico está vacío y lanza una excepción si lo está.
-	 * 
+	 *
 	 * @param values
 	 * @throws EmptyNumberFieldException
 	 */
@@ -61,7 +61,7 @@ public class ExceptionChecker {
 	// Verificar si un campo de texto está vacío
 	/**
 	 * Verifica si un campo de texto está vacío y lanza una excepción si lo está.
-	 * 
+	 *
 	 * @param word
 	 * @param errorMessage
 	 * @throws EmptyStringFieldException
@@ -75,7 +75,7 @@ public class ExceptionChecker {
 	// Verificar si la imagen está vacía
 	/**
 	 * Verifica si la imagen está vacía y lanza una excepción si lo está.
-	 * 
+	 *
 	 * @param image
 	 * @param mensaje
 	 * @throws EmptyImageFieldException
@@ -90,7 +90,7 @@ public class ExceptionChecker {
 	/**
 	 * Verifica si la contraseña cumple con los requisitos y lanza una excepción si
 	 * no lo hace.
-	 * 
+	 *
 	 * @param password
 	 * @param errorMessage
 	 * @throws InvalidPasswordException
@@ -108,7 +108,7 @@ public class ExceptionChecker {
 	/**
 	 * Verifica si el campo contiene espacios en blanco y lanza una excepción si lo
 	 * hace.
-	 * 
+	 *
 	 * @param value
 	 * @param errorMessage
 	 * @throws WhitespaceFieldException
@@ -123,7 +123,7 @@ public class ExceptionChecker {
 	/**
 	 * Verifica si el campo de correo electrónico es válido y lanza una excepción si
 	 * no lo es.
-	 * 
+	 *
 	 * @param email
 	 * @param errorMessage
 	 * @throws InvalidEmailException

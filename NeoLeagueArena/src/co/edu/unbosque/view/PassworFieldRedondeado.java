@@ -11,9 +11,9 @@ import javax.swing.JPasswordField;
 import javax.swing.SwingConstants;
 
 public class PassworFieldRedondeado extends JPasswordField{
-	
+
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
@@ -36,7 +36,7 @@ public class PassworFieldRedondeado extends JPasswordField{
 	 * Este atributo es el encargado de guardar el grosor del borde del boton.
 	 */
     private float borderWidth;
-    
+
     /**
 	 * Este es el constructor de la clase {@link TextFieldRedondeado} que recibe
 	 * @param foregraund
@@ -63,15 +63,15 @@ public class PassworFieldRedondeado extends JPasswordField{
     protected void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D) g.create();
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        
+
         g2.setColor(background);
         g2.fill(new RoundRectangle2D.Float(0, 0, getWidth(), getHeight(), cornerRadius, cornerRadius));
-        
+
         g2.dispose();
-        
+
         super.paintComponent(g);
     }
-    
+
     /**
      * Este metodo se encarga de pintar el password field del boton con los bordes redondeados.
      */
@@ -81,7 +81,7 @@ public class PassworFieldRedondeado extends JPasswordField{
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.setColor(borderColor);
         g2.setStroke(new BasicStroke(borderWidth));
-        g2.draw(new RoundRectangle2D.Float(borderWidth / 2, borderWidth / 2, 
+        g2.draw(new RoundRectangle2D.Float(borderWidth / 2, borderWidth / 2,
         	    getWidth() - borderWidth, getHeight() - borderWidth, cornerRadius, cornerRadius));
         g2.dispose();
     }

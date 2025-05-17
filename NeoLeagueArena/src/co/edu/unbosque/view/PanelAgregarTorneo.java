@@ -16,10 +16,10 @@ import javax.swing.text.NumberFormatter;
 import de.wannawork.jcalendar.JCalendarComboBox;
 public class PanelAgregarTorneo extends JPanel{
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
-	private JCalendarComboBox datoFechaInicio, datoFechaFin; 
+	private JCalendarComboBox datoFechaInicio, datoFechaFin;
 	private BotonRedondeado btnAgregar;
 	private TextFieldRedondeado datoNombreTorneo;
 	private JSpinner datoMaxEquipos, recompensa;
@@ -36,8 +36,8 @@ public class PanelAgregarTorneo extends JPanel{
 	        datoMaxEquipos = new JSpinner();
 	        String[] juegos = {"FIFA", "Rocket League", "Formula1", "Gran Turismo"};
 	        String[] formatos = {"Eliminación directa", "Fases grupales"};
-	        datoJuego = new JComboBox<String>(juegos);
-	        datoFormatoTorneo = new JComboBox<String>(formatos);
+	        datoJuego = new JComboBox<>(juegos);
+	        datoFormatoTorneo = new JComboBox<>(formatos);
 	        recompensa = new JSpinner();
 	        datoFechaFin = new JCalendarComboBox();
 	        datoNombreTorneo.setToolTipText("Nombre del torneo");
@@ -96,12 +96,13 @@ public class PanelAgregarTorneo extends JPanel{
 			((JSpinner.DefaultEditor) spinner.getEditor()).getTextField().setForeground(color2);
 			JFormattedTextField txt = ((JSpinner.DefaultEditor) spinner.getEditor()).getTextField();
 			NumberFormatter formatter = (NumberFormatter) txt.getFormatter();
-			formatter.setAllowsInvalid(false); 
-			formatter.setMinimum(0); 
+			formatter.setAllowsInvalid(false);
+			formatter.setMinimum(0);
 		}
 		/**
 		 * Este metodo se encarga de pintar el panel con el fondo.
 		 */
+		@Override
 		protected void paintComponent(Graphics g) {
 			super.paintComponent(g);
 
@@ -177,6 +178,6 @@ public class PanelAgregarTorneo extends JPanel{
 		public void setFondo(Image fondo) {
 			this.fondo = fondo;
 		}
-		
-		
+
+
 }

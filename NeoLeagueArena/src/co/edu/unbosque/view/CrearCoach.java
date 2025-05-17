@@ -76,7 +76,7 @@ public class CrearCoach extends JPanel{
 	 * Este atributo es el encargado de guardar el check box para ver las contraseñas.
 	 */
 	private JCheckBox verContrasena;
-	
+
 	/**
 	 * Este es el constructor de la clase {@link CrearGamer} que no recibe nada.
 	 * Se encarga de inicializar los atributos y de crear los componentes del panel.
@@ -92,18 +92,18 @@ public class CrearCoach extends JPanel{
 		datoEdad = new JSpinner();
 		String[] countryCodes = Locale.getISOCountries();
 		Locale englishLocale = Locale.ENGLISH;
-		datoPais = new JComboBox<String>();
+		datoPais = new JComboBox<>();
 		datoPais.addItem("Select your country");
 		for (String countryCode : countryCodes) {
 		    @SuppressWarnings("deprecation")
-			Locale countryLocale = new Locale("", countryCode); 
-		    String countryName = countryLocale.getDisplayCountry(englishLocale); 
+			Locale countryLocale = new Locale("", countryCode);
+		    String countryName = countryLocale.getDisplayCountry(englishLocale);
 		    datoPais.addItem(countryName);
 		}
 		String[] txtTrayectoria = {"How many teams have you managed?", " 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", " +10"};
-		datoTrayectoriaProfesional = new JComboBox<String>(txtTrayectoria);
+		datoTrayectoriaProfesional = new JComboBox<>(txtTrayectoria);
 		String [] txtJuego = {"What is the game in which you specialize?", "FIFA", "Rocket League", "Formula1", "Gran Turismo"};
-		datoJuegoEspecialidad = new JComboBox<String>(txtJuego);
+		datoJuegoEspecialidad = new JComboBox<>(txtJuego);
 		datoAnosDeExperiencia = new JSpinner();
 		seleccionarFoto = new BotonRedondeado("Select your photo", 20, Color.decode("#002d69"), Color.black, Color.WHITE, Color.white, 1f);
 		botonCrearCoach = new BotonRedondeado("SignUp", 20, Color.decode("#002d69"), Color.black, Color.WHITE, Color.white, 1f);
@@ -150,11 +150,12 @@ public class CrearCoach extends JPanel{
 		add(seleccionarFoto);
 		add(botonCrearCoach);
 		add(verContrasena);
-		
+
 	}
 	/**
 	 * Este metodo se encarga de pintar el panel con el fondo.
 	 */
+	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
@@ -178,8 +179,8 @@ public class CrearCoach extends JPanel{
 		((JSpinner.DefaultEditor) spinner.getEditor()).getTextField().setForeground(color2);
 		JFormattedTextField txt = ((JSpinner.DefaultEditor) spinner.getEditor()).getTextField();
 		NumberFormatter formatter = (NumberFormatter) txt.getFormatter();
-		formatter.setAllowsInvalid(false); 
-		formatter.setMinimum(0); 
+		formatter.setAllowsInvalid(false);
+		formatter.setMinimum(0);
 	}
 	/**
 	 * Este metodo se encarga de obtener el campo de texto para el nombre.

@@ -12,7 +12,7 @@ public abstract class Usuario implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
-	 *Este atributo es el encargado de guardar el nombre del usuario. 
+	 *Este atributo es el encargado de guardar el nombre del usuario.
 	 */
 	private String nombre;
 	/**
@@ -27,7 +27,7 @@ public abstract class Usuario implements Serializable {
 	 * Este atributo es el encargado de guardar la edad del usuario.
 	 */
 	private int edad;
-	
+
 	/**
 	 * Este atributo es el encargado de guardar el pais del usuario.
 	 */

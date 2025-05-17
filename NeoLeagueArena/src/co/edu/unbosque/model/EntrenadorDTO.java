@@ -4,17 +4,17 @@ import java.io.Serializable;
 
 /**
  * La clase {@link EntrenadorDTO} es la encargada de establecer los atributos de
- * un entrenador. Esta clase hereda de la clase {@link Usuario}. Es un DTO (Data Transfer Object) 
+ * un entrenador. Esta clase hereda de la clase {@link Usuario}. Es un DTO (Data Transfer Object)
  * que se utiliza para transferir datos entre capas de la aplicación.
  */
 public class EntrenadorDTO extends Usuario implements Serializable{
-	
+
 	/**
 	 * La serialVersionUID es un identificador único que se utiliza en la serialización y deserialización de objetos en Java.
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
-	 * Esta instancia es la encargada de guardar la trayectoria profesional de los entrenadores. 
+	 * Esta instancia es la encargada de guardar la trayectoria profesional de los entrenadores.
 	 */
 	private String trayectoriaProfesional;
 	/**
@@ -35,7 +35,7 @@ public class EntrenadorDTO extends Usuario implements Serializable{
 	 * Constructor de la clase {@link EntrenadorDTO} que recibe como parámetro la
 	 * trayectoria profesional, la especialidad de entreno y los años de
 	 * entrenamiento.
-	 * 
+	 *
 	 * @param trayectoriaProfesional
 	 * @param especialidadDeEntreno
 	 * @param anosDeEntrenamiento
@@ -51,7 +51,7 @@ public class EntrenadorDTO extends Usuario implements Serializable{
 	 * nombre, la contraseña, el correo, la edad, el país, la url de la foto, la
 	 * trayectoria profesional, la especialidad de entreno y los años de
 	 * entrenamiento.
-	 * 
+	 *
 	 * @param nombre
 	 * @param contrasena
 	 * @param correo
@@ -73,7 +73,7 @@ public class EntrenadorDTO extends Usuario implements Serializable{
 	 * Constructor de la clase {@link EntrenadorDTO} que recibe como parámetro el
 	 * nombre, la contraseña, el correo, la edad, el país y la url de la foto del
 	 * entrenador.
-	 * 
+	 *
 	 * @param nombre
 	 * @param contrasena
 	 * @param correo
@@ -87,7 +87,7 @@ public class EntrenadorDTO extends Usuario implements Serializable{
 	}
 	/**
 	 * Método que retorna la trayectoria profesional del entrenador.
-	 * 
+	 *
 	 * @return trayectoriaProfesional
 	 */
 	public String getTrayectoriaProfesional() {
@@ -95,7 +95,7 @@ public class EntrenadorDTO extends Usuario implements Serializable{
 	}
 	/**
 	 * Método que establece la trayectoria profesional del entrenador.
-	 * 
+	 *
 	 * @param trayectoriaProfesional
 	 */
 	public void setTrayectoriaProfesional(String trayectoriaProfesional) {
@@ -103,7 +103,7 @@ public class EntrenadorDTO extends Usuario implements Serializable{
 	}
 	/**
 	 * Método que retorna la especialidad de entreno del entrenador.
-	 * 
+	 *
 	 * @return especialidadDeEntreno
 	 */
 	public String getEspecialidadDeEntreno() {
@@ -111,7 +111,7 @@ public class EntrenadorDTO extends Usuario implements Serializable{
 	}
 	/**
 	 * Método que establece la especialidad de entreno del entrenador.
-	 * 
+	 *
 	 * @param especialidadDeEntreno
 	 */
 	public void setEspecialidadDeEntreno(String especialidadDeEntreno) {
@@ -119,7 +119,7 @@ public class EntrenadorDTO extends Usuario implements Serializable{
 	}
 	/**
 	 * Método que retorna los años de entrenamiento del entrenador.
-	 * 
+	 *
 	 * @return AnosDeEntrenamiento
 	 */
 	public int getAnosDeEntrenamiento() {
@@ -127,7 +127,7 @@ public class EntrenadorDTO extends Usuario implements Serializable{
 	}
 	/**
 	 * Método que establece los años de entrenamiento del entrenador.
-	 * 
+	 *
 	 * @param anosDeEntrenamiento
 	 */
 	public void setAnosDeEntrenamiento(int anosDeEntrenamiento) {
@@ -135,7 +135,7 @@ public class EntrenadorDTO extends Usuario implements Serializable{
 	}
 	/**
 	 * Método que retorna una cadena de texto con la información del entrenador.
-	 * 
+	 *
 	 * @return String
 	 */
 	@Override

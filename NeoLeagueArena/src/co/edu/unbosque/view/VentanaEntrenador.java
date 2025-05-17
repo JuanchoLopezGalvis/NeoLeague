@@ -6,16 +6,16 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 public class VentanaEntrenador extends JFrame{
-	
+
 	/**
-	 * 			
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	private JMenuBar menuBar;
 	private JMenu gestionarEquipos, gestionarCuenta, gestionarTorneo, gestionarPartidas, estadisticas;
 	private JMenuItem actualizarCuenta, crearEquipo, ActualizarEquipo, verEquipos, inscribirTorneo, salirseTorneo, verTorneos, consultarPartida, verEstadisticasEquipos;
 	private CardCoach cardCoach;
-	
+
 	public VentanaEntrenador() {
 		setSize(1280,720);
 		setLocationRelativeTo(null);
@@ -29,7 +29,7 @@ public class VentanaEntrenador extends JFrame{
 		gestionarPartidas = new JMenu("Partidas");
 		estadisticas = new JMenu("Estadisticas");
 		crearEquipo = new JMenuItem("Crear Equipo");
-		
+
 		ActualizarEquipo = new JMenuItem("actualizar Equipo");
 		verEquipos = new JMenuItem("Mostrar y eliminar equipos");
 		inscribirTorneo = new JMenuItem("Inscribir Torneo");
@@ -114,7 +114,7 @@ public class VentanaEntrenador extends JFrame{
 		this.crearEquipo = crearEquipo;
 	}
 
-	
+
 
 	public JMenuItem getActualizarEquipo() {
 		return ActualizarEquipo;
@@ -179,8 +179,8 @@ public class VentanaEntrenador extends JFrame{
 	public void setCardCoach(CardCoach cardCoach) {
 		this.cardCoach = cardCoach;
 	}
-	
-	
 
-	
+
+
+
 }

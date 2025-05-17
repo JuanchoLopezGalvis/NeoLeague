@@ -10,7 +10,6 @@ import org.junit.Test;
 
 import co.edu.unbosque.model.Entrenador;
 import co.edu.unbosque.model.EntrenadorDTO;
-
 import co.edu.unbosque.model.persistence.DataMapper;
 
 public class EntrenarorDTOTest {
@@ -52,7 +51,7 @@ public class EntrenarorDTOTest {
 				&& dto.getAnosDeEntrenamiento() == entidad.getAnosDeEntrenamiento()) {
 			exito = true;
 		}
-		if (exito == true) {
+		if (exito) {
 			System.out.println("Se efectuo la conversión de manera satisfactoria");
 		} else {
 			System.out.println("Se efectuo la conversión de manera insatisfactoria");
@@ -72,7 +71,7 @@ public class EntrenarorDTOTest {
 				&& dto.getAnosDeEntrenamiento() == entrenador.getAnosDeEntrenamiento()) {
 			exito = true;
 		}
-		if (exito == true) {
+		if (exito) {
 			System.out.println("Se efectuo la conversión de manera satisfactoria");
 		} else {
 			System.out.println("Se efectuo la conversión de manera insatisfactoria");

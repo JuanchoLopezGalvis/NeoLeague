@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class PanelInforme extends JPanel{
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
@@ -32,14 +32,14 @@ public class PanelInforme extends JPanel{
 	/**
 	 * atributo de la clase encargado de almacenar el campo de texto para buscar.
 	 */
-	
+
 	/**
 	 * atributo de la clase encargado de almacenar el boton de buscar.
 	 */
-	
-	
+
+
 	private BotonRedondeado btnGenerarInformePDF;
-	
+
 	private JCheckBox equipos;
 	private JCheckBox jugadores;
 
@@ -47,7 +47,7 @@ public class PanelInforme extends JPanel{
 	 * Constructor de la clase {@link PanelMostrar} donde se inicializan los
 	 * atributos de la clase.
 	 */
-	
+
 	public PanelInforme() {
 		setBackground(Color.BLACK);
 		setSize(1280, 720);
@@ -75,16 +75,16 @@ public class PanelInforme extends JPanel{
 		btnGenerarInformePDF = new BotonRedondeado("Generate PDF report", 20, Color.decode("#8da1ab"), Color.white, Color.BLACK, Color.BLACK, 1f);
 		btnGenerarInformePDF.setToolTipText("Select the row to delete");
 		btnGenerarInformePDF.setBounds(540, 550, 180, 30);
-		
+
 		add(deslizador);
-		
+
 		add(btnGenerarInformePDF);
-	
+
 		add(equipos);
 		add(jugadores);
-		
+
 	}
-	
+
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -98,7 +98,7 @@ public class PanelInforme extends JPanel{
 	public void setModelo(String[] nombresColumnas, int f) {
 		DefaultTableModel modelo = new DefaultTableModel(new Object[][] {}, nombresColumnas) {
 			/**
-			 * 
+			 *
 			 */
 			private static final long serialVersionUID = 1L;
 
@@ -109,20 +109,20 @@ public class PanelInforme extends JPanel{
 			       } else if (f == 0) {
 			           return column == nombresColumnas.length - 1 ? Integer.class : String.class;
 			       }
-			       return Object.class; 
+			       return Object.class;
 			   }
 			@Override
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
-			
+
 		};
 		tablaDeUsuarios.setModel(modelo);
 	}
 
 	/**
 	 * Metodo que retorna la tabla de productos.
-	 * 
+	 *
 	 * @return tablaDeProductos es la tabla de productos.
 	 */
 	public JTable getTabla() {

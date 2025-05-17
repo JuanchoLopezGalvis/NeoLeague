@@ -13,7 +13,7 @@ import co.edu.unbosque.model.AdministradorDTO;
 import co.edu.unbosque.model.persistence.DataMapper;
 
 public class AdministradorDTOTest {
-	
+
 	static Administrador entidad;
 	static AdministradorDTO dto;
 	static int contador = 0;
@@ -46,7 +46,7 @@ public class AdministradorDTOTest {
 				) {
 			exito = true;
 		}
-		if (exito == true) {
+		if (exito) {
 			System.out.println("Se efectuo la conversión de manera satisfactoria");
 		} else {
 			System.out.println("Se efectuo la conversión de manera insatisfactoria");
@@ -64,7 +64,7 @@ public class AdministradorDTOTest {
 				&& dto.getCargoEspecifico().equals(entrenador.getCargoEspecifico())) {
 			exito = true;
 		}
-		if (exito == true) {
+		if (exito) {
 			System.out.println("Se efectuo la conversión de manera satisfactoria");
 		} else {
 			System.out.println("Se efectuo la conversión de manera insatisfactoria");
@@ -113,7 +113,7 @@ public class AdministradorDTOTest {
 		} else {
 			System.out.println("El dato trayectoria profesional se guarda de manera inadecuada");
 		}
-		
+
 
 	}
 

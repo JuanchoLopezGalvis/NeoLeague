@@ -6,14 +6,14 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 public class VentanaAdmin extends JFrame{
-	
+
 	private JMenuBar menuBar;
 	private JMenu administrarGamer, administrarCouch, administrarTorneos, administrarPartidas, administrarEquipo, reportes;
 	private JMenuItem  mostrarGamers, mostrarCoachs, crearTorneo, crearPartida, mostrarTorneos, mostrarPartidas, actualizarTorneo, actualizarPartida, actualizarEquipo,  mostrarEquipos, analiytics;
 	private CardAdmin cardAdmin;
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	public VentanaAdmin() {
@@ -54,7 +54,7 @@ public class VentanaAdmin extends JFrame{
 		administrarGamer.add(mostrarGamers);
 		administrarCouch.add(mostrarCoachs);
 		administrarEquipo.add(actualizarEquipo);
-		administrarEquipo.add(mostrarEquipos);		
+		administrarEquipo.add(mostrarEquipos);
 		reportes.add(analiytics);
 		setJMenuBar(menuBar);
 		cardAdmin = new CardAdmin();
@@ -171,8 +171,8 @@ public class VentanaAdmin extends JFrame{
 	public void setAnaliytics(JMenuItem analiytics) {
 		this.analiytics = analiytics;
 	}
-	
-	
-	
+
+
+
 
 }

@@ -58,7 +58,7 @@ public class TorneoDTO implements Serializable{
 	 * Constructor de la clase {@link TorneoDTO} que recibe como parámetro el nombre, el
 	 * juego, la fecha de inicio, la fecha de fin, el formato, el maximo de equipos y
 	 * el premio.
-	 * 
+	 *
 	 * @param nombre
 	 * @param juego
 	 * @param fechaInicio
@@ -82,7 +82,7 @@ public class TorneoDTO implements Serializable{
 	 * Constructor de la clase {@link TorneoDTO} que recibe como parámetro el nombre, el
 	 * juego, la fecha de inicio, la fecha de fin, el formato, el maximo de equipos y
 	 * el premio.
-	 * 
+	 *
 	 * @param nombre
 	 * @param juego
 	 * @param fechaInicio

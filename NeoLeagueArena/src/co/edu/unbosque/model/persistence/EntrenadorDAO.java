@@ -10,13 +10,13 @@ import co.edu.unbosque.model.Entrenador;
 import co.edu.unbosque.model.EntrenadorDTO;
 
 public class EntrenadorDAO implements OperacionDAO<EntrenadorDTO, Entrenador>{
-	
+
 	private ArrayList<Entrenador> listaEntrenadores;
 	private final String TEXT_FILE_NAME = "coach.csv";
 	private final String SERIAL_FILE_NAME = "coach.dat";
-	
+
 	public EntrenadorDAO() {
-		listaEntrenadores = new ArrayList<Entrenador>();
+		listaEntrenadores = new ArrayList<>();
 		leerArchivoSerializado();
 	}
 
@@ -108,7 +108,7 @@ public class EntrenadorDAO implements OperacionDAO<EntrenadorDTO, Entrenador>{
 	public void setListaEntrenadores(ArrayList<Entrenador> listaEntrenadores) {
 		this.listaEntrenadores = listaEntrenadores;
 	}
-	
+
 	public void escribirArchivoTxt() {
 		StringBuilder contenido = new StringBuilder();
 		for (Entrenador coach : listaEntrenadores) {
@@ -116,18 +116,18 @@ public class EntrenadorDAO implements OperacionDAO<EntrenadorDTO, Entrenador>{
 		}
 		FileManager.escribirEnArchivoDeTexto(TEXT_FILE_NAME, contenido.toString());
 	}
-	
+
 	public void escribirArchivoSerializado() {
 		FileManager.escribirArchivoSerializado(SERIAL_FILE_NAME, listaEntrenadores);
 	}
 	public void leerArchivoSerializado() {
 		listaEntrenadores = (ArrayList<Entrenador>) FileManager.leerArchivoSerializado(SERIAL_FILE_NAME);
 		if (listaEntrenadores == null ) {
-			listaEntrenadores = new ArrayList<>();			
+			listaEntrenadores = new ArrayList<>();
 		}
-		
+
 	}
 
-	
+
 
 }

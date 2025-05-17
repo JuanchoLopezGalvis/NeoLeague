@@ -7,9 +7,9 @@ import java.io.Serializable;
  * jugador. Esta clase hereda de la clase {@link Usuario}.
  */
 public class Jugador extends Usuario implements Serializable{
-	
+
 	/**
-	 * La serialVersionUID es un identificador único que se utiliza en la serialización y deserialización de objetos en Java. 
+	 * La serialVersionUID es un identificador único que se utiliza en la serialización y deserialización de objetos en Java.
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
@@ -36,7 +36,7 @@ public class Jugador extends Usuario implements Serializable{
 	/**
 	 * Constructor de la clase {@link Jugador} que recibe como parámetro la
 	 * trayectoria competitiva, el juego de especialidad y los años de experiencia.
-	 * 
+	 *
 	 * @param trayectoriaCompetitiva
 	 * @param juegoEspecialidad
 	 * @param anosDeExperiencia
@@ -51,7 +51,7 @@ public class Jugador extends Usuario implements Serializable{
 	 * Constructor de la clase {@link Jugador} que recibe como parámetro el nombre,
 	 * la contraseña, el correo, la edad, el país, la url de la foto, la trayectoria
 	 * competitiva, el juego de especialidad y los años de experiencia.
-	 * 
+	 *
 	 * @param nombre
 	 * @param contrasena
 	 * @param correo
@@ -72,7 +72,7 @@ public class Jugador extends Usuario implements Serializable{
 	/**
 	 * Constructor de la clase {@link Jugador} que recibe como parámetro el nombre,
 	 * la contraseña, el correo, la edad, el país y la url de la foto.
-	 * 
+	 *
 	 * @param nombre
 	 * @param contrasena
 	 * @param correo
@@ -86,7 +86,7 @@ public class Jugador extends Usuario implements Serializable{
 	}
 	/**
 	 * Metodo que retorna la trayectoria competitiva de los jugadores.
-	 * 
+	 *
 	 * @return trayectoriaCompetitiva
 	 */
 	public String getTrayectoriaCompetitiva() {
@@ -94,7 +94,7 @@ public class Jugador extends Usuario implements Serializable{
 	}
 	/**
 	 * Metodo que establece la trayectoria competitiva de los jugadores.
-	 * 
+	 *
 	 * @param trayectoriaCompetitiva
 	 */
 	public void setTrayectoriaCompetitiva(String trayectoriaCompetitiva) {
@@ -102,7 +102,7 @@ public class Jugador extends Usuario implements Serializable{
 	}
 	/**
 	 * Metodo que retorna el juego de especialidad de los jugadores.
-	 * 
+	 *
 	 * @return juegoEspecialidad
 	 */
 	public String getJuegoEspecialidad() {
@@ -110,7 +110,7 @@ public class Jugador extends Usuario implements Serializable{
 	}
 	/**
 	 * Metodo que establece el juego de especialidad de los jugadores.
-	 * 
+	 *
 	 * @param juegoEspecialidad
 	 */
 	public void setJuegoEspecialidad(String juegoEspecialidad) {
@@ -118,7 +118,7 @@ public class Jugador extends Usuario implements Serializable{
 	}
 	/**
 	 * Metodo que retorna los años de experiencia de los jugadores.
-	 * 
+	 *
 	 * @return anosDeExperiencia
 	 */
 	public int getAnosDeExperiencia() {
@@ -126,7 +126,7 @@ public class Jugador extends Usuario implements Serializable{
 	}
 	/**
 	 * Metodo que establece los años de experiencia de los jugadores.
-	 * 
+	 *
 	 * @param anosDeExperiencia
 	 */
 	public void setAnosDeExperiencia(int anosDeExperiencia) {
@@ -135,7 +135,7 @@ public class Jugador extends Usuario implements Serializable{
 	/**
 	 * Metodo que retorna una cadena de texto con los atributos de la clase
 	 * {@link Jugador}.
-	 * 
+	 *
 	 * @return cadena de texto con los atributos de la clase {@link Jugador}
 	 */
 	@Override

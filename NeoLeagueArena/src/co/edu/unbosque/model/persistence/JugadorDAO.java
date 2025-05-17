@@ -11,13 +11,13 @@ import co.edu.unbosque.model.Jugador;
 import co.edu.unbosque.model.JugadorDTO;
 
 public class JugadorDAO implements OperacionDAO<JugadorDTO, Jugador> {
-	
+
 	private final String TEXT_FILE_NAME = "gamer.csv";
 	private final String SERIAL_FILE_NAME = "gamer.dat";
 	private ArrayList<Jugador> listaJugadores;
-	
+
 	public JugadorDAO() {
-		listaJugadores = new ArrayList<Jugador>();
+		listaJugadores = new ArrayList<>();
 		leerArchivoSerializado();
 	}
 	@Override
@@ -118,6 +118,6 @@ public class JugadorDAO implements OperacionDAO<JugadorDTO, Jugador> {
 			listaJugadores = new ArrayList<>();
 		}
 	}
-	
+
 
 }

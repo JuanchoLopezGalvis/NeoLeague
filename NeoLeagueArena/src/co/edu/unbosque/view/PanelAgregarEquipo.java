@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 public class PanelAgregarEquipo extends JPanel{
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
@@ -37,10 +37,10 @@ public class PanelAgregarEquipo extends JPanel{
 		datoJuego.setToolTipText("Game");
 		datoJuego.setBackground(Color.decode("#002d69"));
 		datoJuego.setForeground(Color.white);
-		etiquetaNombreEquipo.setBounds(835, 200, 300, 30); 
-	    datoNombreEquipo.setBounds(800, 260, 250, 30);    
-	    datoJuego.setBounds(800, 320, 250, 30);            
-	    btnAgregarEquipo.setBounds(800, 380, 250, 30);     
+		etiquetaNombreEquipo.setBounds(835, 200, 300, 30);
+	    datoNombreEquipo.setBounds(800, 260, 250, 30);
+	    datoJuego.setBounds(800, 320, 250, 30);
+	    btnAgregarEquipo.setBounds(800, 380, 250, 30);
 		add(datoNombreEquipo);
 		add(datoJuego);
 		add(btnAgregarEquipo);
@@ -49,6 +49,7 @@ public class PanelAgregarEquipo extends JPanel{
 	/**
 	 * Este metodo se encarga de pintar el panel con el fondo.
 	 */
+	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
@@ -88,6 +89,6 @@ public class PanelAgregarEquipo extends JPanel{
 	public void setBtnAgregarEquipo(BotonRedondeado btnAgregarEquipo) {
 		this.btnAgregarEquipo = btnAgregarEquipo;
 	}
-	
-	
+
+
 }

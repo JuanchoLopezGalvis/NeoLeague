@@ -8,7 +8,7 @@ import java.io.Serializable;
  * transferir datos entre diferentes capas de la aplicación.
  */
 public class JugadorDTO extends Usuario implements Serializable{
-	
+
 	/**
 	 * La serialVersionUID es un identificador único que se utiliza en la serialización y deserialización de objetos en Java.
 	 */
@@ -37,7 +37,7 @@ public class JugadorDTO extends Usuario implements Serializable{
 	/**
 	 * Constructor de la clase {@link JugadorDTO} que recibe como parámetro la
 	 * trayectoria competitiva, el juego de especialidad y los años de experiencia.
-	 * 
+	 *
 	 * @param trayectoriaCompetitiva
 	 * @param juegoEspecialidad
 	 * @param anosDeExperiencia
@@ -52,7 +52,7 @@ public class JugadorDTO extends Usuario implements Serializable{
 	 * Constructor de la clase {@link JugadorDTO} que recibe como parámetro el nombre,
 	 * la contraseña, el correo, la edad, el país, la url de la foto, la trayectoria
 	 * competitiva, el juego de especialidad y los años de experiencia.
-	 * 
+	 *
 	 * @param nombre
 	 * @param contrasena
 	 * @param correo
@@ -73,7 +73,7 @@ public class JugadorDTO extends Usuario implements Serializable{
 	/**
 	 * Constructor de la clase {@link JugadorDTO} que recibe como parámetro el nombre,
 	 * la contraseña, el correo, la edad, el país, la url de la foto.
-	 * 
+	 *
 	 * @param nombre
 	 * @param contrasena
 	 * @param correo

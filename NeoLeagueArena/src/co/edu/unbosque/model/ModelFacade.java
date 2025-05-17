@@ -11,7 +11,7 @@ import co.edu.unbosque.model.persistence.TorneoDAO;
  * La clase {@link ModelFacade} es la fachada del modelo, que se encarga de crear cada uno de los DAO del aplicativo.
  */
 public class ModelFacade {
-	
+
 	/**
 	 * {@link JugadorDAO} es el data access object que se encarga de manejar el acceso a los datos de los jugadores.
 	 */
@@ -36,7 +36,7 @@ public class ModelFacade {
 	 * {@link EquipoDAO} es el data access object que se encarga de manejar el acceso a los datos de los equipos.
 	 */
 	private EquipoDAO eqdao;
-	
+
 	/**
 	 * Constructor de la clase {@link ModelFacade} que inicializa los data access object.
 	 */

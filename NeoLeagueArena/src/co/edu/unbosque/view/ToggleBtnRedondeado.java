@@ -14,9 +14,9 @@ import javax.swing.JToggleButton;
  * permite crear botones con bordes redondeados.
  */
 public class ToggleBtnRedondeado extends JToggleButton{
-	
+
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
@@ -87,7 +87,7 @@ public class ToggleBtnRedondeado extends JToggleButton{
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.setColor(borderColor);
         g2.setStroke(new BasicStroke(borderWidth));
-        g2.draw(new RoundRectangle2D.Float(borderWidth / 2, borderWidth / 2, 
+        g2.draw(new RoundRectangle2D.Float(borderWidth / 2, borderWidth / 2,
         	    getWidth() - borderWidth, getHeight() - borderWidth, cornerRadius, cornerRadius));
         g2.dispose();
     }

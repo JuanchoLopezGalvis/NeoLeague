@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
@@ -15,13 +16,13 @@ import javax.swing.border.EmptyBorder;
  * Este panel contiene los botones de admin, gamer y couch, ademas de los campos de texto para el usuario y la contraseña.
  */
 public class PanelPrincipal extends JPanel{
-	
+
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	
+
+
 	private JCheckBox checkEspañol;
 	private JCheckBox checkIngles;
 	/**
@@ -48,16 +49,16 @@ public class PanelPrincipal extends JPanel{
 	 * Esta instancia es la encargada de guardar el fondo del panel.
 	 */
 	private Image fondo;
-	
+
 	/**
 	 * Este es el constructor de la clase {@link PanelPrincipal} que se encarga de inicializar todos los componentes del panel.
 	 */
 	public PanelPrincipal() {
 		setBackground(Color.LIGHT_GRAY);
 		setSize(1280,720);
-		setLayout(null); 
+		setLayout(null);
 		setBorder(new EmptyBorder(20, 20, 20, 20));
-		
+
 		checkEspañol = new JCheckBox("Spanish");
 		checkIngles = new JCheckBox("English");
 
@@ -79,8 +80,8 @@ public class PanelPrincipal extends JPanel{
 		etiqueta3.setForeground(Color.WHITE);
 		etiqueta0.setFont(new Font("Arial", 1, 15));
 		etiqueta1.setFont(new Font("Arial", 1, 15));
-		etiqueta2.setFont(new Font("Arial", 1, 15)); 
-		etiqueta3.setFont(new Font("Arial", 1, 15)); 
+		etiqueta2.setFont(new Font("Arial", 1, 15));
+		etiqueta3.setFont(new Font("Arial", 1, 15));
 		btnAdmin.setFont(new Font("Arial", 1, 15));
 		btnGamer.setFont(new Font("Arial", 1, 15));
 		btnCouch.setFont(new Font("Arial", 1, 15));
@@ -88,12 +89,12 @@ public class PanelPrincipal extends JPanel{
 		btnRegistrar.setFont(new Font("Arial", 1, 15));
 		checkEspañol.setFont(new Font("Arial", 1, 13));
 		checkIngles.setFont(new Font("Arial", 1, 13));
-		
+
 		checkEspañol.setForeground(Color.white);
 		checkIngles.setForeground(Color.white);
 		checkEspañol.setBackground(Color.DARK_GRAY);
 		checkIngles.setBackground(Color.DARK_GRAY);
-		
+
 		etiqueta3.setBounds(700, 600, 200, 30);
 		checkEspañol.setBounds(900, 600, 80, 30);
 		checkIngles.setBounds(990,600, 80,30);
@@ -121,11 +122,12 @@ public class PanelPrincipal extends JPanel{
 		add(datoUsuario);
 		add(btnEntrar);
 		add(btnRegistrar);
-		
+
 	}
 	/**
 	 * Este metodo se encarga de pintar el panel con el fondo.
 	 */
+	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
@@ -278,9 +280,9 @@ public class PanelPrincipal extends JPanel{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
-	
+
+
+
 
 
 }

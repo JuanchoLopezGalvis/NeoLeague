@@ -1,7 +1,6 @@
 package co.edu.unbosque.controller;
 
 import java.awt.event.ActionEvent;
-
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
@@ -180,7 +179,7 @@ public class Controller implements ActionListener {
 	/**
 	 * Este metodo se encarga de asignar los eventos a cada uno de los objetos que
 	 * lo requieren.
-	 * 
+	 *
 	 * @param e
 	 */
 	@Override

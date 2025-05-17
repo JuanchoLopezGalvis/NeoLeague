@@ -2,11 +2,9 @@ package co.edu.unbosque.model.persistence;
 
 import java.util.ArrayList;
 
-import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import co.edu.unbosque.model.Jugador;
 import co.edu.unbosque.model.Torneo;
 import co.edu.unbosque.model.TorneoDTO;
 
@@ -15,7 +13,7 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 	private final String SERIAL_FILE_NAME = "torneo.dat";
 	private ArrayList<Torneo> listaTorneos;
 	public TorneoDAO() {
-		listaTorneos = new ArrayList<Torneo>();
+		listaTorneos = new ArrayList<>();
 		leerArchivoSerializado();
 	}
 	@Override
@@ -50,7 +48,7 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
         escribirArchivoTxt();
         return true;
 	}
-	
+
 	public void showOne(JTable table, Torneo toShow, String mensaje) {
 		Torneo torneo = find(toShow);
 		if (torneo != null) {

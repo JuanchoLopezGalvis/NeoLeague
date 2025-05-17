@@ -25,7 +25,7 @@ public class AdministradorDTO extends Usuario implements Serializable{
 	/**
 	 * Constructor de la clase {@link AdministradorDTO} que recibe como parámetro el
 	 * cargo específico del administrador.
-	 * 
+	 *
 	 * @param cargoEspecifico
 	 */
 	public AdministradorDTO(String cargoEspecifico) {
@@ -36,7 +36,7 @@ public class AdministradorDTO extends Usuario implements Serializable{
 	 * Constructor de la clase {@link AdministradorDTO} que recibe como parámetro el
 	 * nombre, la contraseña, el correo, la edad, el país, la url de la foto y el
 	 * cargo específico del administrador.
-	 * 
+	 *
 	 * @param nombre
 	 * @param contrasena
 	 * @param correo
@@ -54,7 +54,7 @@ public class AdministradorDTO extends Usuario implements Serializable{
 	 * Constructor de la clase {@link AdministradorDTO} que recibe como parámetro el
 	 * nombre, la contraseña, el correo, la edad, el país y la url de la foto del
 	 * administrador.
-	 * 
+	 *
 	 * @param nombre
 	 * @param contrasena
 	 * @param correo
@@ -68,7 +68,7 @@ public class AdministradorDTO extends Usuario implements Serializable{
 	}
 	/**
 	 * Método que retorna el cargo específico del administrador.
-	 * 
+	 *
 	 * @return cargoEspecifico
 	 */
 	public String getCargoEspecifico() {
@@ -76,7 +76,7 @@ public class AdministradorDTO extends Usuario implements Serializable{
 	}
 	/**
 	 * Método que establece el cargo específico del administrador.
-	 * 
+	 *
 	 * @param cargoEspecifico
 	 */
 	public void setCargoEspecifico(String cargoEspecifico) {
@@ -84,7 +84,7 @@ public class AdministradorDTO extends Usuario implements Serializable{
 	}
 	/**
 	 * Método que retorna una cadena de texto con la información del administrador.
-	 * 
+	 *
 	 * @return String
 	 */
 	@Override

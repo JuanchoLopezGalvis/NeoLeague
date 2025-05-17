@@ -1,7 +1,6 @@
 package co.edu.unbosque.view;
 
 import java.awt.Color;
-
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -15,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 public class PanelMostrar extends JPanel {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
@@ -83,7 +82,7 @@ public class PanelMostrar extends JPanel {
 
 	/**
 	 * Metodo que se encarga de pintar la imagen de fondo del panel.
-	 * 
+	 *
 	 * @param g es el objeto de la clase Graphics.
 	 */
 	@Override
@@ -99,7 +98,7 @@ public class PanelMostrar extends JPanel {
 	public void setModelo(String[] nombresColumnas, int f) {
 		DefaultTableModel modelo = new DefaultTableModel(new Object[][] {}, nombresColumnas) {
 			/**
-			 * 
+			 *
 			 */
 			private static final long serialVersionUID = 1L;
 
@@ -110,20 +109,20 @@ public class PanelMostrar extends JPanel {
 			       } else if (f == 0) {
 			           return column == nombresColumnas.length - 1 ? Integer.class : String.class;
 			       }
-			       return Object.class; 
+			       return Object.class;
 			   }
 			@Override
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
-			
+
 		};
 		tabla.setModel(modelo);
 	}
 
 	/**
 	 * Metodo que retorna la tabla de productos.
-	 * 
+	 *
 	 * @return tablaDeProductos es la tabla de productos.
 	 */
 	public JTable getTabla() {

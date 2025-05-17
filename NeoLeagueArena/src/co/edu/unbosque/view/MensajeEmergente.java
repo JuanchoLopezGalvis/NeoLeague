@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -23,7 +24,7 @@ public class MensajeEmergente {
 	/**
 	 * Constructor de la clase {@link MensajeEmergente}. Carga las propiedades desde
 	 * el archivo especificado.
-	 * 
+	 *
 	 * @param direccionArchivo
 	 */
 	public static void cargarPropiedadesParaMensajesEmergentes(String direccionArchivo) {
@@ -38,7 +39,7 @@ public class MensajeEmergente {
 
 	/**
 	 * Muestra un mensaje emergente de tipo información.
-	 * 
+	 *
 	 * @param llaveArchivoPropiedades
 	 * @param tituloMensaje
 	 */
@@ -54,7 +55,7 @@ public class MensajeEmergente {
 
 	/**
 	 * Muestra un mensaje emergente de tipo error.
-	 * 
+	 *
 	 * @param llaveArchivoPropiedades
 	 * @param tituloMensaje
 	 */
@@ -65,7 +66,7 @@ public class MensajeEmergente {
 
 	/**
 	 * Muestra un mensaje emergente de tipo advertencia.
-	 * 
+	 *
 	 * @param llaveArchivoPropiedades
 	 * @param tituloMensaje
 	 */
@@ -76,7 +77,7 @@ public class MensajeEmergente {
 
 	/**
 	 * Muestra un mensaje emergente de tipo pregunta.
-	 * 
+	 *
 	 * @param llaveArchivoPropiedades
 	 * @param tituloMensaje
 	 */
@@ -87,7 +88,7 @@ public class MensajeEmergente {
 
 	/**
 	 * Estrae el texto de una property.
-	 * 
+	 *
 	 * @param llaveArchivoPropiedades
 	 * @param tituloMensaje
 	 */

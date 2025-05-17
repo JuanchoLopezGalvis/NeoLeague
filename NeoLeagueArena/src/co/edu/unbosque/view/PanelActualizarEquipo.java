@@ -1,7 +1,6 @@
 package co.edu.unbosque.view;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 
@@ -9,18 +8,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 /**
  * Esta clase representa un panel que permite actualizar la información de los objetos en la aplicación.
  * Contiene una tabla para mostrar los datos, un campo de texto para buscar y botones para realizar acciones.
  */
 public class PanelActualizarEquipo extends JPanel{
-	
+
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
@@ -42,9 +38,9 @@ public class PanelActualizarEquipo extends JPanel{
 		etiquetaNombreEquipo.setForeground(Color.white);
 		etiquetaNombreEquipo.setFont(new java.awt.Font("Arial", 1, 20));
 		etiquetaNombreEquipo.setBounds(835, 200, 300, 30);
-	    datoNombreEquipo.setBounds(800, 320, 250, 30);  
+	    datoNombreEquipo.setBounds(800, 320, 250, 30);
 	    equiposExistentes.setBounds(800, 260, 250, 30);
-	    btnAgregarEquipo.setBounds(800, 380, 250, 30);     
+	    btnAgregarEquipo.setBounds(800, 380, 250, 30);
 		add(datoNombreEquipo);
 		add(btnAgregarEquipo);
 		add(etiquetaNombreEquipo);
@@ -53,6 +49,7 @@ public class PanelActualizarEquipo extends JPanel{
 	/**
 	 * Este metodo se encarga de pintar el panel con el fondo.
 	 */
+	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
@@ -92,5 +89,5 @@ public class PanelActualizarEquipo extends JPanel{
 	public void setEquiposExistentes(JComboBox<String> equiposExistentes) {
 		this.equiposExistentes = equiposExistentes;
 	}
-	
+
 }

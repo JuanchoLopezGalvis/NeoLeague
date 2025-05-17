@@ -29,7 +29,7 @@ public class AdministradorDAO implements OperacionDAO<AdministradorDTO, Administ
 	 * Inicializa la lista de administradores y carga los datos desde el archivo serializado.
 	 */
 	public AdministradorDAO() {
-		listaAdministradores = new ArrayList<Administrador>();
+		listaAdministradores = new ArrayList<>();
 		leerArchivoSerializado();
 	}
 	/**
@@ -105,7 +105,7 @@ public class AdministradorDAO implements OperacionDAO<AdministradorDTO, Administ
 	public void setListaAdministradores(ArrayList<Administrador> listaAdministradores) {
 		this.listaAdministradores = listaAdministradores;
 	}
-	
+
 	public void escribirArchivoTxt() {
 		StringBuilder contenido = new StringBuilder();
 		for (Administrador admin : listaAdministradores) {
@@ -119,7 +119,7 @@ public class AdministradorDAO implements OperacionDAO<AdministradorDTO, Administ
 	public void leerArchivoSerializado() {
 		listaAdministradores = (ArrayList<Administrador>) FileManager.leerArchivoSerializado(SERIAL_FILE_NAME);
 		if (listaAdministradores == null ) {
-			listaAdministradores = new ArrayList<>();			
+			listaAdministradores = new ArrayList<>();
 		}
 	}
 

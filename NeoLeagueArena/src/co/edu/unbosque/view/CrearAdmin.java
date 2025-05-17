@@ -77,7 +77,7 @@ public class CrearAdmin extends JPanel{
 	 * Este atributo es el encargado de guardar el check box para ver la contraseña de los administradores.
 	 */
 	private JCheckBox verContrasenaAdmins;
-	
+
 	/**
 	 * Este es el constructor de la clase {@link CrearGamer} que no recibe nada.
 	 * Se encarga de inicializar los atributos y de crear los componentes del panel.
@@ -93,12 +93,12 @@ public class CrearAdmin extends JPanel{
 		datoEdad = new JSpinner();
 		String[] countryCodes = Locale.getISOCountries();
 		Locale englishLocale = Locale.ENGLISH;
-		datoPais = new JComboBox<String>();
+		datoPais = new JComboBox<>();
 		datoPais.addItem("Select your country");
 		for (String countryCode : countryCodes) {
 		    @SuppressWarnings("deprecation")
-			Locale countryLocale = new Locale("", countryCode); 
-		    String countryName = countryLocale.getDisplayCountry(englishLocale); 
+			Locale countryLocale = new Locale("", countryCode);
+		    String countryName = countryLocale.getDisplayCountry(englishLocale);
 		    datoPais.addItem(countryName);
 		}
 		passwordAdmins = new PassworFieldRedondeado(Color.white, Color.decode("#002d69"), 20, Color.white, 1f);
@@ -148,11 +148,12 @@ public class CrearAdmin extends JPanel{
 		add(botonCrearAdmin);
 		add(verContrasena);
 		add(verContrasenaAdmins);
-		
+
 	}
 	/**
 	 * Este metodo se encarga de pintar el panel con el fondo.
 	 */
+	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
@@ -176,8 +177,8 @@ public class CrearAdmin extends JPanel{
 		((JSpinner.DefaultEditor) spinner.getEditor()).getTextField().setForeground(color2);
 		JFormattedTextField txt = ((JSpinner.DefaultEditor) spinner.getEditor()).getTextField();
 		NumberFormatter formatter = (NumberFormatter) txt.getFormatter();
-		formatter.setAllowsInvalid(false); 
-		formatter.setMinimum(0); 
+		formatter.setAllowsInvalid(false);
+		formatter.setMinimum(0);
 	}
 	/**
 	 * Es el metodo que se encarga de obtener el campo de texto para el nombre.
@@ -347,6 +348,6 @@ public class CrearAdmin extends JPanel{
 	public void setVerContrasenaAdmins(JCheckBox verContrasenaAdmins) {
 		this.verContrasenaAdmins = verContrasenaAdmins;
 	}
-	
-	
+
+
 }

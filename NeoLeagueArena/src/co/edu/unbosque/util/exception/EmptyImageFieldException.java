@@ -5,7 +5,7 @@ package co.edu.unbosque.util.exception;
  * Extiende la clase Exception para proporcionar información adicional sobre el error.
  */
 public class EmptyImageFieldException extends Exception{
-	
+
 	/**
 	 * La serialVersionUID es un identificador único que se utiliza en la serialización y deserialización de objetos en Java.
 	 */

@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * Es la encargada de establecer los atributos de un equipo.
  */
 public class Equipo implements Serializable{
-	
+
 	/**
 	 * La serialVersionUID es un identificador único que se utiliza en la serialización y deserialización de objetos en Java.
 	 */
@@ -40,7 +40,7 @@ public class Equipo implements Serializable{
 	}
 	/**
 	 * Constructor de la clase {@link Equipo} que recibe como parámetro el nombre, los integrantes, el juego desempeñado, los torneos inscritos y las partidas jugadas.
-	 * 
+	 *
 	 * @param nombre
 	 * @param integrantes
 	 * @param juegoDesempeñado
@@ -58,7 +58,7 @@ public class Equipo implements Serializable{
 	}
 	/**
 	 * Constructor de la clase {@link Equipo} que recibe como parámetro el nombre y el juego desempeñado.
-	 * 
+	 *
 	 * @param nombre
 	 * @param juegoDesempeñado
 	 */

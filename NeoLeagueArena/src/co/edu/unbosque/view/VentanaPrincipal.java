@@ -1,6 +1,7 @@
 package co.edu.unbosque.view;
 
 import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 /**
  * La clase {@link VentanaPrincipal} es la ventana principal de la aplicacion.
  * Esta ventana contiene el panel principal.
@@ -8,7 +9,7 @@ import javax.swing.JFrame;
 public class VentanaPrincipal extends JFrame{
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
@@ -23,7 +24,7 @@ public class VentanaPrincipal extends JFrame{
 		setSize(1280, 720);
 		setResizable(false);
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		panelPrincipal = new PanelPrincipal();
 		add(panelPrincipal);
 	}

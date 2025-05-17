@@ -18,12 +18,12 @@ public class PanelActualizarPartida extends JPanel{
 	private JCalendarComboBox fechaPartida;
 	private BotonRedondeado btnActualizarPartida;
 	private JComboBox<String> ganador;
-	
+
 	/**
 	 * Esta instancia es la encargada de guardar el fondo del panel.
 	 */
 	private Image fondo;
-	
+
 	public PanelActualizarPartida() {
 		setSize(1280,720);
 		setLayout(null);
@@ -44,26 +44,27 @@ public class PanelActualizarPartida extends JPanel{
 		ganador.setBackground(Color.gray);
 		ganador.setForeground(Color.white);
 		datoJuego.setBackground(Color.white);
-		
+
 		equipo1.setBounds(180, 160, 250, 30);
-		
+
 		equipo2.setBounds(850, 160, 250, 30);
 		datoJuego.setBounds(10, 45, 130, 30);
 		fechaPartida.setBounds(10, 10, 130, 30);
 		btnActualizarPartida.setBounds(490, 500, 250, 30);
 		ganador.setBounds(490, 430, 250, 30);
-		
-		
-		
+
+
+
 		add(equipo1);
 		add(equipo2);
 		add(datoJuego);
 		add(fechaPartida);
 		add(btnActualizarPartida);
 		add(ganador);
-		
+
 	}
-	
+
+	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 

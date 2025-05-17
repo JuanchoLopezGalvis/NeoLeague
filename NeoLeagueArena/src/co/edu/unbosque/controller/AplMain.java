@@ -4,7 +4,6 @@ package co.edu.unbosque.controller;
  * Contiene el metodo main que se encarga de inicializar la aplicacion.
  */
 public class AplMain {
-	//que pasa
 	/**
 	 * Este es el metodo main que se encarga de inicializar la aplicacion.
 	 * @param args

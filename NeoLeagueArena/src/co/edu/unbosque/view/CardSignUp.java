@@ -9,7 +9,7 @@ import javax.swing.JPanel;
  * vistas de la interfaz de usuario.
  */
 public class CardSignUp extends JPanel{
-	
+
 	/**
 	 * La serialVersionUID es un identificador único que se utiliza en la serialización y deserialización de objetos en Java.
 	 */
@@ -40,8 +40,8 @@ public class CardSignUp extends JPanel{
 		crearAdmin = new CrearAdmin();
 		crearCoach = new CrearCoach();
 		crearGamer = new CrearGamer();
-		
-		
+
+
 		add(crearAdmin, "CrearAdmin");
 		add(crearCoach, "CrearCoach");
 		add(crearGamer, "CrearGamer");

@@ -4,8 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-
-
 import javax.swing.JComboBox;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
@@ -19,7 +17,7 @@ import org.junit.Test;
 import co.edu.unbosque.view.CrearAdmin;
 
 public class CrearAdminTest {
-	
+
     private static CrearAdmin panel;
 
     @BeforeClass

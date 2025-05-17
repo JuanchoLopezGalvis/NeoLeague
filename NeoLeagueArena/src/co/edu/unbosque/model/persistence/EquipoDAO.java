@@ -8,18 +8,17 @@ import javax.swing.table.DefaultTableModel;
 
 import co.edu.unbosque.model.Equipo;
 import co.edu.unbosque.model.EquipoDTO;
-import co.edu.unbosque.model.Torneo;
 
 public class EquipoDAO implements OperacionDAO<EquipoDTO, Equipo> {
 	private final String TEXT_FILE_NAME = "equipo.csv";
 	private final String SERIAL_FILE_NAME = "equipo.dat";
 	private ArrayList<Equipo> listaEquipos;
-	
+
 	public EquipoDAO() {
-		listaEquipos = new ArrayList<Equipo>();
+		listaEquipos = new ArrayList<>();
 		leerArchivoSerializado();
 	}
-	
+
 	@Override
 	public boolean showAll(JTable tabla) {
 		if (listaEquipos.isEmpty()) {
@@ -65,7 +64,7 @@ public class EquipoDAO implements OperacionDAO<EquipoDTO, Equipo> {
 			comboBox.addItem(equipo.getNombre());
 		}
 	}
-	
+
 	@Override
 	public boolean add(EquipoDTO newData) {
 		if (newData.getTorneosInscritos() == null && newData.getIntegrantes() == null && newData.getPartidasJugadas() == null) {
@@ -136,5 +135,5 @@ public class EquipoDAO implements OperacionDAO<EquipoDTO, Equipo> {
 			listaEquipos = new ArrayList<>();
 		}
 	}
-	
+
 }

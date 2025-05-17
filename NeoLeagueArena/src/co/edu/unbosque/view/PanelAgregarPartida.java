@@ -13,7 +13,7 @@ import de.wannawork.jcalendar.JCalendarComboBox;
 public class PanelAgregarPartida extends JPanel{
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	private JComboBox<String> equipo1;
@@ -22,14 +22,14 @@ public class PanelAgregarPartida extends JPanel{
 	private JCalendarComboBox fechaPartida;
 	private BotonRedondeado btnAgregarPartida;
 	private JComboBox<String> ganador;
-	
+
 	/**
 	 * Esta instancia es la encargada de guardar el fondo del panel.
 	 */
 	private Image fondo;
-	
-	
-	
+
+
+
 	public PanelAgregarPartida() {
 		setSize(1280,720);
 		setLayout(null);
@@ -50,30 +50,31 @@ public class PanelAgregarPartida extends JPanel{
 		ganador.setBackground(Color.gray);
 		ganador.setForeground(Color.white);
 		datoJuego.setBackground(Color.white);
-		
+
 		equipo1.setBounds(180, 160, 250, 30);
-		
+
 		equipo2.setBounds(850, 160, 250, 30);
 		datoJuego.setBounds(10, 45, 130, 30);
 		fechaPartida.setBounds(10, 10, 130, 30);
 		btnAgregarPartida.setBounds(490, 500, 250, 30);
 		ganador.setBounds(490, 430, 250, 30);
-		
-		
-		
+
+
+
 		add(equipo1);
 		add(equipo2);
 		add(datoJuego);
 		add(fechaPartida);
 		add(btnAgregarPartida);
 		add(ganador);
-		
-		
-		
+
+
+
 	}
 	/**
 	 * Este metodo se encarga de pintar el panel con el fondo.
 	 */
+	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
