@@ -1,4 +1,3 @@
-
 package co.edu.unbosque.controller;
 /**
  * * La clase {@link AplMain} es la clase principal de la aplicacion.
