@@ -33,36 +33,40 @@ public class Equipo implements Serializable{
 	 * Esta instancia es la encargada de guardar las partidas jugadas por el equipo.
 	 */
 	private ArrayList<Partida> partidasJugadas;
+	private Entrenador entrenador;
 	/**
 	 * Constructor por defecto o vacio de la clase {@link Equipo}.
 	 */
 	public Equipo() {
 	}
 	/**
-	 * Constructor de la clase {@link Equipo} que recibe como parámetro el nombre, los integrantes, el juego desempeñado, los torneos inscritos y las partidas jugadas.
+	 * Constructor de la clase {@link Equipo} que recibe como parámetro el nombre, los integrantes, el juego desempeñado, los torneos inscritos y las partidas jugadas, y el entrenador.
 	 *
 	 * @param nombre
 	 * @param integrantes
 	 * @param juegoDesempeñado
 	 * @param torneosInscritos
 	 * @param partidasJugadas
+	 * @param entrenador
 	 */
 	public Equipo(String nombre, ArrayList<Jugador> integrantes, String juegoDesempeñado,
-			ArrayList<Torneo> torneosInscritos, ArrayList<Partida> partidasJugadas) {
+			ArrayList<Torneo> torneosInscritos, ArrayList<Partida> partidasJugadas, Entrenador entrenador) {
 		super();
 		this.nombre = nombre;
 		this.integrantes = integrantes;
 		this.juegoDesempeñado = juegoDesempeñado;
 		this.torneosInscritos = torneosInscritos;
 		this.partidasJugadas = partidasJugadas;
+		this.entrenador = entrenador;
 	}
 	/**
-	 * Constructor de la clase {@link Equipo} que recibe como parámetro el nombre y el juego desempeñado.
+	 * Constructor de la clase {@link Equipo} que recibe como parámetro el nombre y el juego desempeñado, y el entrenador.
 	 *
 	 * @param nombre
 	 * @param juegoDesempeñado
+	 * @param entrenador
 	 */
-	public Equipo(String nombre, String juegoDesempeñado) {
+	public Equipo(String nombre, String juegoDesempeñado, Entrenador entrenador) {
 		super();
 		this.nombre = nombre;
 		this.juegoDesempeñado = juegoDesempeñado;
@@ -168,6 +172,13 @@ public class Equipo implements Serializable{
 	 */
 	public void registrarPartida(Partida partida, String mensaje) {
 			partidasJugadas.add(partida);
+	}
+	
+	public Entrenador getEntrenador() {
+		return entrenador;
+	}
+	public void setEntrenador(Entrenador entrenador) {
+		this.entrenador = entrenador;
 	}
 	/**
 	 * Método que retorna una cadena de texto con la información del equipo.

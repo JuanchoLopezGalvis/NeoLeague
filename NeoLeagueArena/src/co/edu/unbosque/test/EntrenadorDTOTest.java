@@ -21,9 +21,9 @@ public class EntrenadorDTOTest {
 	@BeforeClass
 	public static void hacerAntesdelaspruevas() {
 		entidad = new Entrenador("juan", "Juan2006", "juanito@gmail.com", 18, "Colombia", "juan.png", "amplia", "fifa",
-				3);
+				3, null);
 		dto = new EntrenadorDTO("jose", "Jose2006", "josesito@gmail.com", 28, "Peru", "jose.png", "amplia", "Formula 1",
-				5);
+				5, null);
 		System.out.println("test entrenadorDTO");
 		System.out.println("los datos del la lista de el perro es " + entidad.toString());
 		System.out.println("los datos del la lista de dto's es " + dto.toString());
@@ -33,9 +33,9 @@ public class EntrenadorDTOTest {
 	public void hcerAntesDeCadaPrueba() {
 		System.out.println("siguiente prueba");
 		entidad = new Entrenador("juan", "Juan2006", "juanito@gmail.com", 18, "Colombia", "juan.png", "amplia", "fifa",
-				3);
+				3, null);
 		dto = new EntrenadorDTO("juan", "Juan2006", "juanito@gmail.com", 18, "Colombia", "juan.png", "amplia", "fifa",
-				3);
+				3, null);
 
 	}
 
@@ -82,7 +82,7 @@ public class EntrenadorDTOTest {
 	@Test
 	public void verificarConstructor() {
 		Entrenador entrenador1 = new Entrenador("juan", "Juan2006", "juanito@gmail.com", 18, "Colombia", "juan.png",
-				"amplia", "fifa", 3);
+				"amplia", "fifa", 3, null);
 
 		if (entrenador1.getNombre() != null && entrenador1.getNombre().equals("juan")) {
 			System.out.println("El dato nombre se guarda de manera adecuada");

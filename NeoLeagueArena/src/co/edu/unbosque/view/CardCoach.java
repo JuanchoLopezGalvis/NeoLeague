@@ -35,6 +35,7 @@ public class CardCoach extends JPanel{
 	 * panelAgregarEquipo es una instancia de {@link PanelAgregarEquipo} que permite agregar un nuevo equipo.
 	 */
 	private PanelAgregarEquipo panelAgregarEquipo;
+	private PanelInscribirTorneo panelInscribirTorneo;
 	/**
 	 * Constructor de la clase {@link CardCoach}.
 	 * Inicializa el CardLayout y agrega los diferentes paneles al contenedor.
@@ -46,7 +47,8 @@ public class CardCoach extends JPanel{
 		panelActualizarEquipo = new PanelActualizarEquipo();
 		panelAgregarEquipo = new PanelAgregarEquipo();
 		panelActualizarEntrenador = new PanelActualizarEntrenador();
-
+		panelInscribirTorneo = new PanelInscribirTorneo();
+		add(panelInscribirTorneo, "PanelInscribirTorneo");
 		add(panelAgregarEquipo, "PanelAgregarEquipo");
 		add(panelActualizarEquipo, "PanelActualizarEquipo");
 		add(panelMostrar, "PanelMostrar");

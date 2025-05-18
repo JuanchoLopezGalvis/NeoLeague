@@ -10,6 +10,7 @@ import java.util.ArrayList;
  */
 public class EquipoDTO implements Serializable{
 
+
 	/**
 	 * La serialVersionUID es un identificador único que se utiliza en la serialización y deserialización de objetos en Java.
 	 */
@@ -34,112 +35,116 @@ public class EquipoDTO implements Serializable{
 	 * Esta instancia es la encargada de guardar las partidas jugadas por el equipo.
 	 */
 	private ArrayList<Partida> partidasJugadas;
+	private Entrenador entrenador;
 	/**
-	 * Constructor por defecto o vacio de la clase {@link EquipoDTO}.
+	 * Constructor por defecto o vacio de la clase {@link Equipo}.
 	 */
 	public EquipoDTO() {
 	}
 	/**
-	 * Constructor de la clase {@link EquipoDTO} que recibe como parámetro el nombre, los integrantes, el juego desempeñado, los torneos inscritos y las partidas jugadas.
+	 * Constructor de la clase {@link Equipo} que recibe como parámetro el nombre, los integrantes, el juego desempeñado, los torneos inscritos y las partidas jugadas, y el entrenador.
 	 *
 	 * @param nombre
 	 * @param integrantes
 	 * @param juegoDesempeñado
 	 * @param torneosInscritos
 	 * @param partidasJugadas
+	 * @param entrenador
 	 */
 	public EquipoDTO(String nombre, ArrayList<Jugador> integrantes, String juegoDesempeñado,
-			ArrayList<Torneo> torneosInscritos, ArrayList<Partida> partidasJugadas) {
+			ArrayList<Torneo> torneosInscritos, ArrayList<Partida> partidasJugadas, Entrenador entrenador) {
 		super();
 		this.nombre = nombre;
 		this.integrantes = integrantes;
 		this.juegoDesempeñado = juegoDesempeñado;
 		this.torneosInscritos = torneosInscritos;
 		this.partidasJugadas = partidasJugadas;
+		this.entrenador = entrenador;
 	}
 	/**
-	 * Constructor de la clase {@link EquipoDTO} que recibe como parámetro el nombre y el juego desempeñado.
+	 * Constructor de la clase {@link Equipo} que recibe como parámetro el nombre y el juego desempeñado, y el entrenador.
 	 *
 	 * @param nombre
 	 * @param juegoDesempeñado
+	 * @param entrenador
 	 */
-	public EquipoDTO(String nombre, String juegoDesempeñado) {
+	public EquipoDTO(String nombre, String juegoDesempeñado, Entrenador entrenador) {
 		super();
 		this.nombre = nombre;
 		this.juegoDesempeñado = juegoDesempeñado;
 	}
 	/**
-	 * Metodo que retorna el nombre del equipo.
+	 * Metido que retorna el nombre del equipo.
 	 * @return nombre
 	 */
 	public String getNombre() {
 		return nombre;
 	}
 	/**
-	 * Metodo que establece el nombre del equipo.
+	 * Método que establece el nombre del equipo.
 	 * @param nombre
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 	/**
-	 * Metodo que retorna los integrantes del equipo.
+	 * Método que retorna los integrantes del equipo.
 	 * @return integrantes
 	 */
 	public ArrayList<Jugador> getIntegrantes() {
 		return integrantes;
 	}
 	/**
-	 * Metodo que establece los integrantes del equipo.
+	 * Método que establece los integrantes del equipo.
 	 * @param integrantes
 	 */
 	public void setIntegrantes(ArrayList<Jugador> integrantes) {
 		this.integrantes = integrantes;
 	}
 	/**
-	 * Metodo que retorna el juego desempeñado por el equipo.
+	 * Método que retorna el juego desempeñado por el equipo.
 	 * @return juegoDesempeñado
 	 */
 	public String getJuegoDesempeñado() {
 		return juegoDesempeñado;
 	}
 	/**
-	 * Metodo que establece el juego desempeñado por el equipo.
+	 * Método que establece el juego desempeñado por el equipo.
 	 * @param juegoDesempeñado
 	 */
 	public void setJuegoDesempeñado(String juegoDesempeñado) {
 		this.juegoDesempeñado = juegoDesempeñado;
 	}
 	/**
-	 * Metodo que retorna los torneos inscritos por el equipo.
+	 * Método que retorna los torneos inscritos por el equipo.
 	 * @return torneosInscritos
 	 */
 	public ArrayList<Torneo> getTorneosInscritos() {
 		return torneosInscritos;
 	}
 	/**
-	 * Metodo que establece los torneos inscritos por el equipo.
+	 * Método que establece los torneos inscritos por el equipo.
 	 * @param torneosInscritos
 	 */
 	public void setTorneosInscritos(ArrayList<Torneo> torneosInscritos) {
 		this.torneosInscritos = torneosInscritos;
 	}
 	/**
-	 * Metodo que retorna las partidas jugadas por el equipo.
+	 * Método que retorna las partidas jugadas por el equipo.
 	 * @return partidasJugadas
 	 */
 	public ArrayList<Partida> getPartidasJugadas() {
 		return partidasJugadas;
 	}
 	/**
-	 * Metodo que establece las partidas jugadas por el equipo.
+	 * Método que establece las partidas jugadas por el equipo.
 	 * @param partidasJugadas
 	 */
 	public void setPartidasJugadas(ArrayList<Partida> partidasJugadas) {
 		this.partidasJugadas = partidasJugadas;
 	}
 	/**
-	 * Metodo que inscribe un jugador al equipo.
+	 * Método que inscribe un jugador al equipo.
 	 * @param jugador
 	 * @param mensaje
 	 */
@@ -151,7 +156,7 @@ public class EquipoDTO implements Serializable{
 	    }
 	}
 	/**
-	 * Metodo que inscribe un torneo al equipo.
+	 * Método que inscribe un torneo al equipo.
 	 * @param torneo
 	 * @param mensaje
 	 */
@@ -163,20 +168,26 @@ public class EquipoDTO implements Serializable{
 	    }
 	}
 	/**
-	 * Metodo que registra una partida jugada por el equipo.
+	 * Método que registra una partida jugada por el equipo.
 	 * @param partida
 	 * @param mensaje
 	 */
 	public void registrarPartida(Partida partida, String mensaje) {
 			partidasJugadas.add(partida);
 	}
+	
+	public Entrenador getEntrenador() {
+		return entrenador;
+	}
+	public void setEntrenador(Entrenador entrenador) {
+		this.entrenador = entrenador;
+	}
 	/**
-	 * Metodo que retorna una cadena de texto con la información del equipo.
-	 * @return cadena de texto con la información del equipo
+	 * Método que retorna una cadena de texto con la información del equipo.
 	 */
 	@Override
 	public String toString() {
 		return nombre + ";" + "# Gamers" + integrantes.size() + ";" + juegoDesempeñado
-				+ ";" + "# Torneos" + torneosInscritos.size() + ";" + "# Matches played" + partidasJugadas + "\n";
+				+ ";" + "# Torneos " + torneosInscritos.size() + ";" + "# Matches played " + partidasJugadas.size() + "\n";
 	}
 }

@@ -31,8 +31,8 @@ public class PartidaDAOTest {
         System.out.println("empezando prueba individual");
 
        
-        Equipo eq1 = new Equipo("Equipo A", null);
-        Equipo eq2 = new Equipo("Equipo B", null);
+        Equipo eq1 = new Equipo("Equipo A", null, null);
+        Equipo eq2 = new Equipo("Equipo B", null, null);
         Torneo torneo = new Torneo("Torneo X", null, null, null, null,0,0);
 
         Partida partida = new Partida(1, eq1, eq2, eq1, "League of Legends", new Date(), torneo);

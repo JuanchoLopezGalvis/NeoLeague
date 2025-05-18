@@ -30,10 +30,10 @@ public class EntrenadorDAOTest {
         dao.setListaEntrenadores(new ArrayList<>());
 
         dto1 = new EntrenadorDTO("Juan", "1234", "juan@example.com", 30, "Colombia",
-                "foto1.jpg", "corta", "fifa", 10);
+                "foto1.jpg", "corta", "fifa", 10, null);
 
         dto2 = new EntrenadorDTO("Ana", "abcd", "ana@example.com", 28, "Chile",
-                "foto2.jpg", "amplia", "formula 1", 6);
+                "foto2.jpg", "amplia", "formula 1", 6 ,null);
     }
 
   
