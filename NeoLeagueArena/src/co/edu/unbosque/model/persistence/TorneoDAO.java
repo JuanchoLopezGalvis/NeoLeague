@@ -98,7 +98,7 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 		Torneo found = null;
 		if (!listaTorneos.isEmpty()) {
 			for (Torneo torneo : listaTorneos) {
-				if (torneo.getNombre().toLowerCase().equals(toFind.getNombre().toLowerCase())) {
+				if (torneo.getNombre().equals(toFind.getNombre())) {
 					found = torneo;
 					break;
 				}

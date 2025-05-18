@@ -39,14 +39,6 @@ public class AdministradorDAO implements OperacionDAO<AdministradorDTO, Administ
 	 */
 	@Override
 	public boolean showAll(JTable tabla) {
-		StringBuilder sb = new StringBuilder();
-		if (listaAdministradores.isEmpty()) {
-			sb.append("There are no registered administrators.");
-		} else {
-			for (Administrador admin : listaAdministradores) {
-				sb.append(admin.toString()).append("\n");
-			}
-		}
 		return false;
 	}
 	/**
@@ -80,11 +72,17 @@ public class AdministradorDAO implements OperacionDAO<AdministradorDTO, Administ
 	@Override
 	public Administrador find(Administrador toFind) {
 		Administrador found = null;
+		if (toFind == null) {
+			System.out.println("El objeto a buscar es nulo");
+			return null;
+		}
 		if (!listaAdministradores.isEmpty()) {
 			for (Administrador admin : listaAdministradores) {
-				if (admin.getNombre().toLowerCase().equals(toFind.getNombre().toLowerCase())) {
+				if (admin.getNombre().equals(toFind.getNombre())) {
 					found = admin;
 					break;
+				}else {
+					continue;
 				}
 			}
 			return found;

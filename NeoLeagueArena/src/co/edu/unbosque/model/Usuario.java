@@ -64,7 +64,8 @@ public abstract class Usuario implements Serializable {
 	 /**
 	  * Este metodo se encarga de obtener el nombre del usuario.
 	  * @return nombre
-	  */	public String getNombre() {
+	  */	
+	 public String getNombre() {
 		  return nombre;
 	  }
 	/**

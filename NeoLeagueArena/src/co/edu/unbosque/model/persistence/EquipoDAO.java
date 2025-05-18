@@ -100,7 +100,7 @@ public class EquipoDAO implements OperacionDAO<EquipoDTO, Equipo> {
 		Equipo found = null;
 		if (!listaEquipos.isEmpty()) {
 			for (Equipo equipo : listaEquipos) {
-				if (equipo.getNombre().toLowerCase().equals(toFind.getNombre().toLowerCase())) {
+				if (equipo.getNombre().equals(toFind.getNombre())) {
 					found = equipo;
 					break;
 				}
