@@ -923,11 +923,16 @@ public class Controller implements ActionListener {
 				String trayectoriaCompetitiva = vf.getVsu().getCardSignUp().getCrearCoach().getDatoTrayectoriaProfesional().getSelectedItem().toString();
 				String juegoEspecialidad = vf.getVsu().getCardSignUp().getCrearCoach().getDatoJuegoEspecialidad().getSelectedItem().toString();
 
+				// Verificación de contraseña
 				// Crear objeto DTO y guardar
 				EntrenadorDTO coach = new EntrenadorDTO(nombre, contrasena, correo, edad, pais, urlFoto,
 						trayectoriaCompetitiva, juegoEspecialidad, anosDeExperiencia, null);
 				mf.getEdao().add(coach);
 
+				String asunto = MensajeEmergente.obtenerMensaje("archivosdepropiedades.mensajescorreo.asuntoentrenadorcreado") ;
+				String cuerpo = MensajeEmergente.obtenerMensaje("archivosdepropiedades.mensajescorreo.cuerpoentrenadorcreado") + nombre;
+				MensajeEmergente.enviarCorreo(correo, asunto,cuerpo);
+				
 				// Limpiar campos
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoNombre().setText("");
 				vf.getVsu().getCardSignUp().getCrearCoach().getDatoContrasena().setText("");
@@ -1022,6 +1027,10 @@ public class Controller implements ActionListener {
 
 		        AdministradorDTO admin = new AdministradorDTO(nombre, contrasena, correo, edad, pais, urlFoto, cargoEspecifico);
 		        mf.getAdao().add(admin);
+		        
+		        String asunto = MensajeEmergente.obtenerMensaje("archivosdepropiedades.mensajescorreo.asuntoadmincreado") ;
+				String cuerpo = MensajeEmergente.obtenerMensaje("archivosdepropiedades.mensajescorreo.cuerpoadmincreado") + nombre;
+				MensajeEmergente.enviarCorreo(correo, asunto,cuerpo);
 
 		        vf.getVsu().getCardSignUp().getCrearAdmin().getDatoNombre().setText("");
 		        vf.getVsu().getCardSignUp().getCrearAdmin().getDatoContrasena().setText("");
@@ -1059,6 +1068,12 @@ public class Controller implements ActionListener {
 		                nombreUsuario = nombre;
 		                MensajeEmergente.mensajeNormalMasAlgo("archivosdepropiedades.mensajes.bienvenida", " " + nombre,
 		                        "archivosdepropiedades.mensajes.confirmacion.exito");
+		                
+		                String asunto = MensajeEmergente.obtenerMensaje("archivosdepropiedades.mensajescorreo.asuntoiniciosecionadmin") ;
+						String cuerpo = MensajeEmergente.obtenerMensaje("archivosdepropiedades.mensajescorreo.cuerpoiniciosecionadmin") + nombre;
+						String correo = mf.getAdao().find(new Administrador(nombre, null, null, 0, null, null, null)).getCorreo();
+						MensajeEmergente.enviarCorreo(correo, asunto,cuerpo);
+		                
 		                vf.getVa().setVisible(true);
 		            } else {
 		                MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.usuarionoencontrado",
@@ -1077,6 +1092,12 @@ public class Controller implements ActionListener {
 		                }
 		                MensajeEmergente.mensajeNormalMasAlgo("archivosdepropiedades.mensajes.bienvenida", " " + nombre,
 		                        "archivosdepropiedades.mensajes.confirmacion.exito");
+		                
+		                String asunto = MensajeEmergente.obtenerMensaje("archivosdepropiedades.mensajescorreo.asuntoiniciosecioncoach") ;
+						String cuerpo = MensajeEmergente.obtenerMensaje("archivosdepropiedades.mensajescorreo.cuerpoiniciosecioncoach") + nombre;
+						String correo = mf.getAdao().find(new Administrador(nombre, null, null, 0, null, null, null)).getCorreo();
+						MensajeEmergente.enviarCorreo(correo, asunto,cuerpo);
+						
 		                vf.getVe().setVisible(true);
 		            } else {
 		                MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.usuarionoencontrado",
@@ -1089,6 +1110,12 @@ public class Controller implements ActionListener {
 		                nombreUsuario = nombre;
 		                MensajeEmergente.mensajeNormalMasAlgo("archivosdepropiedades.mensajes.bienvenida", " " + nombre,
 		                        "archivosdepropiedades.mensajes.confirmacion.exito");
+		                
+		                String asunto = MensajeEmergente.obtenerMensaje("archivosdepropiedades.mensajescorreo.asuntoinicioseciongamer") ;
+						String cuerpo = MensajeEmergente.obtenerMensaje("archivosdepropiedades.mensajescorreo.cuerpoinicioseciongamer") + nombre;
+						String correo = mf.getAdao().find(new Administrador(nombre, null, null, 0, null, null, null)).getCorreo();
+						MensajeEmergente.enviarCorreo(correo, asunto,cuerpo);
+		                
 		                vf.getVg().setVisible(true);
 		            } else {
 		                MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.usuarionoencontrado",
