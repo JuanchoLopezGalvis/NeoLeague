@@ -80,6 +80,7 @@ public class Controller implements ActionListener {
 	public void run() {
 		FileManager.crearCarpeta();
 		mf.getEqdao().asignarElmentosCombos(vf.getVa().getCardAdmin().getPanelActualizar().getEquiposExistentes());
+		mf.getEqdao().asignarElmentosCombos(vf.getVe().getCardCoach().getPanelActualizar().getEquiposExistentes());
 		mf.getTdao()
 				.asignarElementosAComboBox(vf.getVa().getCardAdmin().getPanelActualizarTorneo().getTorneosExistentes());
 		mf.getTdao().asignarElementosAComboBox(vf.getVa().getCardAdmin().getPanelAgregarPartida().getTorneosExistentes());
@@ -203,6 +204,8 @@ public class Controller implements ActionListener {
 		vf.getVa().getCardAdmin().getPanelAgregarPartida().getEquipo2().setActionCommand("comboEquipo2");
 		vf.getVe().getInscribirTorneo().addActionListener(this);
 		vf.getVe().getInscribirTorneo().setActionCommand("PanelInscribirTorneo");
+		vf.getVe().getCardCoach().getPanelMostrar().getBtnEliminar().addActionListener(this);
+		vf.getVe().getCardCoach().getPanelMostrar().getBtnEliminar().setActionCommand("btnEliminarPanelCoach");
 
 	}
 
@@ -1271,9 +1274,6 @@ public class Controller implements ActionListener {
 					mf.getEqdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
 					mf.getEqdao().asignarElmentosCombos(
 							vf.getVa().getCardAdmin().getPanelActualizar().getEquiposExistentes());
-				} else if (panelActual == "mostrarEEntrenador") {
-					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.notdelete",
-							"archivosdepropiedades.mensajes.error");
 				} else {
 					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.camposincompletos",
 							"archivosdepropiedades.mensajes.error");
@@ -1339,11 +1339,10 @@ public class Controller implements ActionListener {
 					mf.getEqdao().escribirArchivoTxt();
 					vf.getVe().getCardCoach().getPanelAgregarEquipo().getDatoNombreEquipo().setText("");
 					vf.getVe().getCardCoach().getPanelAgregarEquipo().getDatoJuego().setSelectedIndex(0);
-					mf.getEqdao().asignarElmentosCombos(
-							vf.getVa().getCardAdmin().getPanelActualizar().getEquiposExistentes());
+					mf.getEqdao().asignarElmentosCombos(vf.getVa().getCardAdmin().getPanelActualizar().getEquiposExistentes());
+					mf.getEqdao().asignarElmentosCombos(vf.getVe().getCardCoach().getPanelActualizar().getEquiposExistentes());
 					MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.confirmacion.exitousuario",
 							"archivosdepropiedades.mensajes.confirmacion.exito");
-					vf.getVe().setVisible(false);
 				} else {
 					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.usuarioexistente",
 							"archivosdepropiedades.mensajes.error");
