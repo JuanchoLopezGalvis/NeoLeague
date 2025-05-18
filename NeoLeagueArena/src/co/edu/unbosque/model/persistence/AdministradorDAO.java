@@ -66,7 +66,7 @@ public class AdministradorDAO implements OperacionDAO<AdministradorDTO, Administ
 	@Override
 	public boolean delete(AdministradorDTO toDelete) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
