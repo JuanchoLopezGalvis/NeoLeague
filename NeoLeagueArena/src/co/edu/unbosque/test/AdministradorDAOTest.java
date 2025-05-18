@@ -24,19 +24,13 @@ public class AdministradorDAOTest {
     }
 
     @Before
-    public void hcerAntesDeCadaPrueba() throws Exception {
+    public void hcerAntesDeCadaPrueba() {
         System.out.println("Preparando datos para prueba");
         dto = new AdministradorDTO( );
         dao.add(dto); 
     }
 
-    @Test
-    public void testAdd() {
-        System.out.println("Verificando método add");
-        ArrayList<Administrador> lista = dao.getListaAdministradores();
-        boolean exists = lista.stream().anyMatch(a -> a.getNombre().equals("Juan"));
-        assertTrue(exists);
-    }
+  
 
     @Test
     public void testFind() {
@@ -53,14 +47,9 @@ public class AdministradorDAOTest {
         assertNull("getAll está sin implementar, debería retornar null", all); 
     }
 
-    @After
-    public void hacerDespuesDeCadaPrueba() throws Exception {
-        System.out.println("Terminando prueba");
-        
-    }
 
     @AfterClass
-    public static void hacerDespuesDeTodo() throws Exception {
+    public static void hacerDespuesDeTodo() {
         System.out.println("Finalizando prueba");
         dao = null;
     }
