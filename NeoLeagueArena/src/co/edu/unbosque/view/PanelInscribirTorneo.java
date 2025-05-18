@@ -50,4 +50,33 @@ public class PanelInscribirTorneo extends JPanel{
 			System.out.println("Imagen no cargada correctamente.");
 		}
 	}
+	public Image getImagenFondo() {
+		return imagenFondo;
+	}
+	public void setImagenFondo(Image imagenFondo) {
+		this.imagenFondo = imagenFondo;
+	}
+	public JComboBox<String> getEquipoInscribir() {
+		return equipoInscribir;
+	}
+	public void setEquipoInscribir(JComboBox<String> equipoInscribir) {
+		this.equipoInscribir = equipoInscribir;
+	}
+	public JComboBox<String> getTorneoInscribir() {
+		return torneoInscribir;
+	}
+	public void setTorneoInscribir(JComboBox<String> torneoInscribir) {
+		this.torneoInscribir = torneoInscribir;
+	}
+	public BotonRedondeado getBtnInscribir() {
+		return btnInscribir;
+	}
+	public void setBtnInscribir(BotonRedondeado btnInscribir) {
+		this.btnInscribir = btnInscribir;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
+	
 }

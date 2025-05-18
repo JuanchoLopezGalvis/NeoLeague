@@ -36,6 +36,7 @@ public class CardCoach extends JPanel{
 	 */
 	private PanelAgregarEquipo panelAgregarEquipo;
 	private PanelInscribirTorneo panelInscribirTorneo;
+	
 	/**
 	 * Constructor de la clase {@link CardCoach}.
 	 * Inicializa el CardLayout y agrega los diferentes paneles al contenedor.
@@ -117,4 +118,17 @@ public class CardCoach extends JPanel{
 	public void setPanelActualizarEntrenador(PanelActualizarEntrenador panelActualizarEntrenador) {
 		this.panelActualizarEntrenador = panelActualizarEntrenador;
 	}
+	public PanelActualizarEquipo getPanelActualizarEquipo() {
+		return panelActualizarEquipo;
+	}
+	public void setPanelActualizarEquipo(PanelActualizarEquipo panelActualizarEquipo) {
+		this.panelActualizarEquipo = panelActualizarEquipo;
+	}
+	public PanelInscribirTorneo getPanelInscribirTorneo() {
+		return panelInscribirTorneo;
+	}
+	public void setPanelInscribirTorneo(PanelInscribirTorneo panelInscribirTorneo) {
+		this.panelInscribirTorneo = panelInscribirTorneo;
+	}
+	
 }

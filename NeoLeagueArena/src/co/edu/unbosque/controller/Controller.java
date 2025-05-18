@@ -826,6 +826,8 @@ public class Controller implements ActionListener {
 					trayectoriaCompetitiva, juegoEspecialidad, anosDeExperiencia);
 				mf.getJdao().add(gamer);
 
+				MensajeEmergente.enviarCorreo(correo, ""+ nombre, "");
+				
 				// Limpieza de campos
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoNombre().setText("");
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoContrasena().setText("");
@@ -841,6 +843,9 @@ public class Controller implements ActionListener {
 				// Mensaje de confirmación
 				MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.confirmacion.exitousuario",
 					"archivosdepropiedades.mensajes.confirmacion.exito");
+				
+			
+				
 				vf.getVsu().setVisible(false);
 
 			} catch (EmptyStringFieldException | InvalidPasswordException | InvalidEmailException | NegativeNumberException ex) {
@@ -1054,12 +1059,17 @@ public class Controller implements ActionListener {
 		            } else {
 		                MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.usuarionoencontrado",
 		                        "archivosdepropiedades.mensajes.error");
+		                
 		            }
 
 		        } else if (vf.getVp().getPanelPrincipal().getBtnCouch().isSelected()) {
 		            Entrenador coach = mf.getEdao().find(new Entrenador(nombre, null, null, 0, null, null, null, null, 0, null));
 		            if (coach != null && coach.getContrasena().equals(contrasena)) {
 		                nombreUsuario = nombre;
+		                Equipo eq = coach.getEquipo();
+		                if (eq != null) {
+		                    vf.getVe().getCardCoach().getPanelInscribirTorneo().getEquipoInscribir().addItem(eq.getNombre());
+		                }
 		                MensajeEmergente.mensajeNormalMasAlgo("archivosdepropiedades.mensajes.bienvenida", " " + nombre,
 		                        "archivosdepropiedades.mensajes.confirmacion.exito");
 		                vf.getVe().setVisible(true);
