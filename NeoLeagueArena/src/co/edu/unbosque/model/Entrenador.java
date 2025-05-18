@@ -121,6 +121,6 @@ public class Entrenador extends Usuario implements Serializable{
 	 */
 	@Override
 	public String toString() {
-		return super.toString()+ trayectoriaProfesional + ";" + especialidadDeEntreno + ";" + AnosDeEntrenamiento + "\n";
+		return super.toString()+ trayectoriaProfesional + ";" + especialidadDeEntreno + ";" + AnosDeEntrenamiento +"\n";
 	}
 }
