@@ -4,8 +4,16 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.Authenticator;
 import java.util.Properties;
 
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,7 +28,10 @@ public class MensajeEmergente {
 	 * Propiedades que contienen los mensajes emergentes.
 	 */
 	private static Properties propiedades = new Properties();
-
+	private static String correoEmergente = "neoleaguearenateam@gmail.com";
+	private static String contrasenafrom = "chyj gpro ptiq iyev";
+	private static Session mSession;
+	private MimeMessage mCorreo;
 	/**
 	 * Constructor de la clase {@link MensajeEmergente}. Carga las propiedades desde
 	 * el archivo especificado.
@@ -95,5 +106,41 @@ public class MensajeEmergente {
 	public static String obtenerMensaje(String llaveArchivoPropiedades) {
 		return propiedades.getProperty(llaveArchivoPropiedades);
 	}
+
+    public static void enviarCorreo(String correo, String asunto, String cuerpo) {
+           
+
+        // Configuración de propiedades para el servidor SMTP (Gmail en este ejemplo)
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+
+        // Sesión con autenticación
+        mSession = Session.getInstance(props, new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(correoEmergente, contrasenafrom);
+            }
+        });
+
+        try {
+            // Crear el mensaje
+            Message mensaje = new MimeMessage(mSession);
+            mensaje.setFrom(new InternetAddress(correoEmergente));
+            mensaje.setRecipients(Message.RecipientType.TO, InternetAddress.parse(correo));
+            mensaje.setSubject(asunto);
+            mensaje.setText(cuerpo);
+
+            // Enviar mensaje
+            Transport.send(mensaje);
+
+            System.out.println("Correo enviado exitosamente.");
+
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

@@ -230,5 +230,7 @@ public class FileManager {
 		ImageIcon iconoRedimensionado = new ImageIcon(imagen.getScaledInstance(ancho, alto, Image.SCALE_SMOOTH));
 		return iconoRedimensionado;
 	}
+	
+	
 }
 
