@@ -18,21 +18,21 @@ public class AdministradorDAOTest {
 	    private AdministradorDTO sampleAdmin;
 
 	@BeforeClass
-    public static void setUpBeforeClass() throws Exception {
-        System.out.println("BeforeClass - Inicialización global");
+    public static void hacerAntesdelaspruevas() {
+        System.out.println("Inicialización pruebas");
         dao = new AdministradorDAO();
     }
 
     @Before
-    public void setUp() throws Exception {
-        System.out.println("Before - Preparando datos para prueba");
+    public void hcerAntesDeCadaPrueba() throws Exception {
+        System.out.println("Preparando datos para prueba");
         sampleAdmin = new AdministradorDTO( );
-        dao.add(sampleAdmin); // Agregamos un administrador antes de cada prueba
+        dao.add(sampleAdmin); 
     }
 
     @Test
     public void testAdd() {
-        System.out.println("Test - Verificando método add()");
+        System.out.println("Verificando método add");
         ArrayList<Administrador> lista = dao.getListaAdministradores();
         boolean exists = lista.stream().anyMatch(a -> a.getNombre().equals("Juan"));
         assertTrue(exists);
@@ -40,29 +40,28 @@ public class AdministradorDAOTest {
 
     @Test
     public void testFind() {
-        System.out.println("Test - Verificando método find()");
+        System.out.println("Verificando método find");
         Administrador found = dao.find(new Administrador());
         assertNotNull(found);
         assertEquals("Juan", found.getNombre());
     }
 
     @Test
-    public void testGetAllIsNotNull() {
-        System.out.println("Test - Verificando método getAll() no es null");
+    public void testGetAllNoNull() {
+        System.out.println("Verificando método getAll no es null");
         ArrayList<AdministradorDTO> all = dao.getAll();
-        assertNull("getAll está sin implementar, debería retornar null", all); // Esto depende de implementación
+        assertNull("getAll está sin implementar, debería retornar null", all); 
     }
 
     @After
-    public void tearDown() throws Exception {
-        System.out.println("After - Limpiando datos de prueba");
-        // Eliminar manualmente al administrador agregado si fuera necesario
-        // Aquí podría implementarse una eliminación real si `delete()` estuviera funcional
+    public void hacerDespuesDeCadaPrueba() throws Exception {
+        System.out.println("Terminando prueba");
+        
     }
 
     @AfterClass
-    public static void tearDownAfterClass() throws Exception {
-        System.out.println("AfterClass - Finalización global");
+    public static void hacerDespuesDeTodo() throws Exception {
+        System.out.println("Finalizando prueba");
         dao = null;
     }
 }
