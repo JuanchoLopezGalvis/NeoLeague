@@ -6,6 +6,7 @@ import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import co.edu.unbosque.model.Equipo;
 import co.edu.unbosque.model.Torneo;
 import co.edu.unbosque.model.TorneoDTO;
 
@@ -36,6 +37,20 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 	@Override
 	public ArrayList<TorneoDTO> getAll() {
 		return null;
+	}
+	
+	public void mostrarEquiposEnComboBox(JComboBox<String> comboBox, TorneoDTO torneoDTO) {
+		Torneo torneo = find(DataMapper.TorneoDTOToTorneo(torneoDTO));
+		if (torneo != null) {
+			comboBox.removeAllItems();
+			if (torneo.getListaEquiposInscritos() != null) {
+				for (Equipo equipo : torneo.getListaEquiposInscritos()) {
+					comboBox.addItem(equipo.getNombre());
+				}
+			}
+			comboBox.revalidate();
+			comboBox.repaint();
+		}
 	}
 
 	@Override
@@ -139,6 +154,8 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 			listaTorneos = new ArrayList<>();
 		}
 	}
+	
+	
 
 
 }

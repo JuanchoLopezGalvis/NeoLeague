@@ -78,6 +78,7 @@ public class Controller implements ActionListener {
 		mf.getEqdao().asignarElmentosCombos(vf.getVa().getCardAdmin().getPanelActualizar().getEquiposExistentes());
 		mf.getTdao()
 				.asignarElementosAComboBox(vf.getVa().getCardAdmin().getPanelActualizarTorneo().getTorneosExistentes());
+		mf.getTdao().asignarElementosAComboBox(vf.getVa().getCardAdmin().getPanelAgregarPartida().getTorneosExistentes());
 		vf.getVp().setVisible(true);
 	}
 
@@ -87,6 +88,7 @@ public class Controller implements ActionListener {
 	 */
 	public void asignarLectores() {
 
+		
 		vf.getVp().getPanelPrincipal().getCheckEspañol().addActionListener(this);
 		vf.getVp().getPanelPrincipal().getCheckEspañol().setActionCommand("checkEspañol");
 		vf.getVp().getPanelPrincipal().getCheckIngles().addActionListener(this);
@@ -187,6 +189,15 @@ public class Controller implements ActionListener {
 		vf.getVa().getCardAdmin().getPanelActualizarTorneo().getTorneosExistentes().setActionCommand("comboTorneos");
 		vf.getVa().getCardAdmin().getPanelActualizarTorneo().getBtnActualizar().addActionListener(this);
 		vf.getVa().getCardAdmin().getPanelActualizarTorneo().getBtnActualizar().setActionCommand("btnActualizarTorneo");
+		
+		vf.getVa().getCardAdmin().getPanelAgregarPartida().getTorneosExistentes().addActionListener(this);
+		vf.getVa().getCardAdmin().getPanelAgregarPartida().getTorneosExistentes().setActionCommand("comboTorneosexistentes");
+		
+		vf.getVa().getCardAdmin().getPanelAgregarPartida().getEquipo1().addActionListener(this);
+		vf.getVa().getCardAdmin().getPanelAgregarPartida().getEquipo1().setActionCommand("comboEquipo1");
+		vf.getVa().getCardAdmin().getPanelAgregarPartida().getEquipo2().addActionListener(this);
+		vf.getVa().getCardAdmin().getPanelAgregarPartida().getEquipo2().setActionCommand("comboEquipo2");
+		
 
 	}
 
@@ -1109,6 +1120,9 @@ public class Controller implements ActionListener {
 					vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoFechaFin().setDate(null);
 					MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.confirmacion.exitousuario",
 							"archivosdepropiedades.mensajes.confirmacion.exito");
+					mf.getTdao().asignarElementosAComboBox(
+							vf.getVa().getCardAdmin().getPanelActualizarTorneo().getTorneosExistentes());
+					mf.getTdao().asignarElementosAComboBox(vf.getVa().getCardAdmin().getPanelAgregarPartida().getTorneosExistentes());
 				} else {
 					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.torneoesistente",
 							"archivosdepropiedades.mensajes.error");
@@ -1368,6 +1382,7 @@ public class Controller implements ActionListener {
 				vf.getVa().getCardAdmin().getPanelActualizarTorneo().getDatoMaxEquipos().setValue(0);
 				mf.getTdao().asignarElementosAComboBox(
 						vf.getVa().getCardAdmin().getPanelActualizarTorneo().getTorneosExistentes());
+				mf.getTdao().asignarElementosAComboBox(vf.getVa().getCardAdmin().getPanelAgregarPartida().getTorneosExistentes());
 			} catch (EmptyStringFieldException e1) {
 				MensajeEmergente.mensajeAdvertencia(e1.getMessage(), "archivosdepropiedades.mensajes.advertencia");
 			}
@@ -1400,7 +1415,21 @@ public class Controller implements ActionListener {
 			vf.getVa().getCardAdmin().mostrarPanel("PanelActualizarTorneo");
 			break;
 		}
+		case "comboTorneosexistentes": {
+			
+			String nombre = vf.getVa().getCardAdmin().getPanelAgregarPartida().getTorneosExistentes().getSelectedItem().toString();
+			mf.getTdao().mostrarEquiposEnComboBox(vf.getVa().getCardAdmin().getPanelAgregarPartida().getEquipo1(), new TorneoDTO(nombre, null, null, null, null, 0, 0));
+			
+			mf.getTdao().mostrarEquiposEnComboBox(vf.getVa().getCardAdmin().getPanelAgregarPartida().getEquipo2(), new TorneoDTO(nombre, null, null, null, null, 0, 0));
+			
+			mf.getTdao().mostrarEquiposEnComboBox(vf.getVa().getCardAdmin().getPanelAgregarPartida().getGanador(), new TorneoDTO(nombre, null, null, null, null, 0, 0));
+			
+			break;
 		}
+	
+		
+		}
+		
 	}
 
 }
