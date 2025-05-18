@@ -21,13 +21,13 @@ public class CrearAdminTest {
     static CrearAdmin panel;
 
     @BeforeClass
-    public static void beforeClass() {
+    public static void hacerAntesdelaspruevas() {
         System.out.println("Iniciando las pruebas unitarias de CrearAdmin");
         panel = new CrearAdmin();
     }
 
     @Before
-    public void setUp() {
+    public void hcerAntesDeCadaPrueba() {
         System.out.println("Ejecutando prueba");
     }
 
@@ -69,12 +69,12 @@ public class CrearAdminTest {
     }
 
     @After
-    public void tearDown() {
+    public void hacerDespuesDeCadaPrueba() {
         System.out.println("Prueba finalizada");
     }
 
     @AfterClass
-    public static void afterClass() {
+    public static void hacerDespuesDeTodo() {
         System.out.println("Todas las pruebas de CrearAdmin han finalizado");
         panel = null;
     }
