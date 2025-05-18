@@ -29,9 +29,8 @@ public class MensajeEmergente {
 	 */
 	private static Properties propiedades = new Properties();
 	private static String correoEmergente = "neoleaguearenateam@gmail.com";
-	private static String contrasenafrom = "chyj gpro ptiq iyev";
+	private static String contrasenafrom = "chyjgproptiqiyev";
 	private static Session mSession;
-	private MimeMessage mCorreo;
 	/**
 	 * Constructor de la clase {@link MensajeEmergente}. Carga las propiedades desde
 	 * el archivo especificado.
@@ -107,40 +106,35 @@ public class MensajeEmergente {
 		return propiedades.getProperty(llaveArchivoPropiedades);
 	}
 
-    public static void enviarCorreo(String correo, String asunto, String cuerpo) {
-           
+	public static void enviarCorreo(String correo, String asunto, String cuerpo) {
+	    Properties props = new Properties();
+	    props.put("mail.smtp.auth", "true");
+	    props.put("mail.smtp.starttls.enable", "true");
+	    props.put("mail.smtp.host", "smtp.gmail.com");
+	    props.put("mail.smtp.port", "587");
+	    props.put("mail.smtp.ssl.protocols", "TLSv1.2"); 
+//	    props.put("mail.debug", "true"); 
 
-        // Configuración de propiedades para el servidor SMTP (Gmail en este ejemplo)
-        Properties props = new Properties();
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "587");
+	    System.setProperty("https.protocols", "TLSv1.2");
 
-        // Sesión con autenticación
-        mSession = Session.getInstance(props, new javax.mail.Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(correoEmergente, contrasenafrom);
-            }
-        });
+	    mSession = Session.getInstance(props, new javax.mail.Authenticator() {
+	        protected PasswordAuthentication getPasswordAuthentication() {
+	            return new PasswordAuthentication(correoEmergente, contrasenafrom);
+	        }
+	    });
 
-        try {
-            // Crear el mensaje
-            Message mensaje = new MimeMessage(mSession);
-            mensaje.setFrom(new InternetAddress(correoEmergente));
-            mensaje.setRecipients(Message.RecipientType.TO, InternetAddress.parse(correo));
-            mensaje.setSubject(asunto);
-            mensaje.setText(cuerpo);
+	    try {
+	        Message mensaje = new MimeMessage(mSession);
+	        mensaje.setFrom(new InternetAddress(correoEmergente));
+	        mensaje.setRecipients(Message.RecipientType.TO, InternetAddress.parse(correo));
+	        mensaje.setSubject(asunto);
+	        mensaje.setText(cuerpo);
 
-            // Enviar mensaje
-            Transport.send(mensaje);
-
-            System.out.println("Correo enviado exitosamente.");
-
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
-    }
-
+	        Transport.send(mensaje);
+	        System.out.println("Correo enviado exitosamente.");
+	    } catch (MessagingException e) {
+	        e.printStackTrace();
+	    }
+	}
 
 }
