@@ -1366,7 +1366,6 @@ public class Controller implements ActionListener {
 				vf.getVa().getCardAdmin().getPanelActualizarTorneo().getDatoNombreTorneo().setText("");
 				vf.getVa().getCardAdmin().getPanelActualizarTorneo().getRecompensa().setValue(0);
 				vf.getVa().getCardAdmin().getPanelActualizarTorneo().getDatoMaxEquipos().setValue(0);
-				vf.getVa().getCardAdmin().getPanelActualizarTorneo().setVisible(false);
 			} catch (EmptyStringFieldException e1) {
 				MensajeEmergente.mensajeAdvertencia(e1.getMessage(), "archivosdepropiedades.mensajes.advertencia");
 			}

@@ -104,7 +104,17 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 
 	@Override
 	public boolean update(TorneoDTO previous, TorneoDTO newData) {
-		// TODO Auto-generated method stub
+		Torneo torneo = find(DataMapper.TorneoDTOToTorneo(previous));
+		if (torneo != null) {
+			torneo.setNombre(newData.getNombre());
+			torneo.setFechaInicio(newData.getFechaInicio());
+			torneo.setFechaFin(newData.getFechaFin());
+			torneo.setMaxEquipos(newData.getMaxEquipos());
+			torneo.setPremio(newData.getPremio());
+			escribirArchivoTxt();
+			escribirArchivoSerializado();
+			return true;
+		}
 		return false;
 	}
 	public ArrayList<Torneo> getListaTorneos() {
