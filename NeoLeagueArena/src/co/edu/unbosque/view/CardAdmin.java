@@ -43,6 +43,10 @@ public class CardAdmin extends JPanel{
 	 */
 	private PanelActualizarEquipo panelActualizarEquipo;
 	/**
+	 * panelActualizarTorneo es una instancia de PanelActualizarTorneo que permite actualizar la información de un torneo.
+	 */
+	private PanelActualizarTorneo panelActualizarTorneo;
+	/**
 	 * Constructor de la clase {@link CardAdmin}.
 	 * Inicializa el CardLayout y agrega los diferentes paneles al contenedor.
 	 */
@@ -54,10 +58,12 @@ public class CardAdmin extends JPanel{
 		panelAgregarPartida = new PanelAgregarPartida();
 		panelActualizarPartida = new PanelActualizarPartida();
 		panelInforme = new PanelInforme();
+		panelActualizarTorneo = new PanelActualizarTorneo();
 		panelActualizarEquipo = new PanelActualizarEquipo();
-		add(panelActualizarEquipo, "PanelActualizarEquipo");
-		add(panelInforme, "PanelInforme");
 		add(panelAgregarTorneo, "PanelAgregarTorneo");
+		add(panelActualizarTorneo, "PanelActualizarTorneo");
+		add(panelInforme, "PanelInforme");
+		add(panelActualizarEquipo, "PanelActualizarEquipo");
 		add(panelMostrar, "PanelMostrar");
 		add(panelAgregarPartida, "PanelAgregarPartida");
 		add(panelActualizarPartida, "PanelActualizarPartida");
@@ -153,4 +159,33 @@ public class CardAdmin extends JPanel{
 	public void setPanelActualizar(PanelActualizarEquipo panelActualizarEquipo) {
 		this.panelActualizarEquipo = panelActualizarEquipo;
 	}
+	/**
+	 * Metodo que retorna el panel de actualizar torneo.
+	 * @return panelActualizarTorneo
+	 */
+	public PanelActualizarTorneo getPanelActualizarTorneo() {
+		return panelActualizarTorneo;
+	}
+	/**
+	 * Metodo que asigna el panel de actualizar torneo.
+	 * @param panelActualizarTorneo
+	 */
+	public void setPanelActualizarTorneo(PanelActualizarTorneo panelActualizarTorneo) {
+		this.panelActualizarTorneo = panelActualizarTorneo;
+	}
+	/**
+	 * Metodo que retorna el panel de actualizar equipo.
+	 * @return panelActualizarEquipo
+	 */
+	public PanelActualizarEquipo getPanelActualizarEquipo() {
+		return panelActualizarEquipo;
+	}
+	/**
+	 * Metodo que asigna el panel de actualizar equipo.
+	 * @param panelActualizarEquipo
+	 */
+	public void setPanelActualizarEquipo(PanelActualizarEquipo panelActualizarEquipo) {
+		this.panelActualizarEquipo = panelActualizarEquipo;
+	}
+	
 }
