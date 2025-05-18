@@ -21,7 +21,7 @@ public class PanelActualizarTorneo extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 	private JCalendarComboBox datoFechaInicio, datoFechaFin;
-	private BotonRedondeado btnAgregar;
+	private BotonRedondeado btnActualizar;
 	private TextFieldRedondeado datoNombreTorneo;
 	private JSpinner datoMaxEquipos, recompensa;
 	private JLabel etiqueta0, etiqueta1;
@@ -32,7 +32,7 @@ public class PanelActualizarTorneo extends JPanel{
 	        setSize(1280, 720);
 	        datoFechaInicio = new JCalendarComboBox();
 	        torneosExistentes = new JComboBox<>();
-	        btnAgregar = new BotonRedondeado("Crear", 20, Color.decode("#002d69"), Color.black, Color.WHITE, Color.white, 1f);
+	        btnActualizar = new BotonRedondeado("Actualizar", 20, Color.decode("#002d69"), Color.black, Color.WHITE, Color.white, 1f);
 	        datoNombreTorneo = new TextFieldRedondeado(Color.white, Color.decode("#002d69"), 20, Color.white, 1f);
 	        datoMaxEquipos = new JSpinner();
 	        recompensa = new JSpinner();
@@ -58,12 +58,12 @@ public class PanelActualizarTorneo extends JPanel{
 	        datoFechaFin.setBounds(250, 335, 200, 30);
 	        datoMaxEquipos.setBounds(250, 385, 200, 30);
 	        recompensa.setBounds(250, 435, 200, 30);
-	        btnAgregar.setBounds(250, 485, 200, 30);
+	        btnActualizar.setBounds(250, 485, 200, 30);
 	        etiqueta0.setBounds(250, 260, 200, 30);
 	        etiqueta1.setBounds(250, 310, 200, 30);
 	        add(datoFechaInicio);
 	        add(datoFechaFin);
-	        add(btnAgregar);
+	        add(btnActualizar);
 	        add(datoNombreTorneo);
 	        add(datoMaxEquipos);
 	        add(etiqueta0);
@@ -113,11 +113,11 @@ public class PanelActualizarTorneo extends JPanel{
 		public void setDatoFechaFin(JCalendarComboBox datoFechaFin) {
 			this.datoFechaFin = datoFechaFin;
 		}
-		public BotonRedondeado getBtnAgregar() {
-			return btnAgregar;
+		public BotonRedondeado getBtnActualizar() {
+			return btnActualizar;
 		}
-		public void setBtnAgregar(BotonRedondeado btnAgregar) {
-			this.btnAgregar = btnAgregar;
+		public void setBtnActualizar(BotonRedondeado btnActualizar) {
+			this.btnActualizar = btnActualizar;
 		}
 		public TextFieldRedondeado getDatoNombreTorneo() {
 			return datoNombreTorneo;

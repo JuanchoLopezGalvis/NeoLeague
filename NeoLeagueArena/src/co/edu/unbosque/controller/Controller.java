@@ -185,6 +185,8 @@ public class Controller implements ActionListener {
 		vf.getVa().getActualizarTorneo().setActionCommand("PanelActualizarTorneo");
 		vf.getVa().getCardAdmin().getPanelActualizarTorneo().getTorneosExistentes().addActionListener(this);
 		vf.getVa().getCardAdmin().getPanelActualizarTorneo().getTorneosExistentes().setActionCommand("comboTorneos");
+		vf.getVa().getCardAdmin().getPanelActualizarTorneo().getBtnActualizar().addActionListener(this);
+		vf.getVa().getCardAdmin().getPanelActualizarTorneo().getBtnActualizar().setActionCommand("btnActualizarTorneo");
 
 	}
 
@@ -1340,6 +1342,33 @@ public class Controller implements ActionListener {
 							"archivosdepropiedades.mensajes.error");
 				}
 				vf.getVa().getCardAdmin().getPanelActualizar().getDatoNombreEquipo().setText(nombre);
+			}
+			break;
+		}
+		case "btnActualizarTorneo":{
+			try {
+				String nombreTorneo = vf.getVa().getCardAdmin().getPanelActualizarTorneo().getTorneosExistentes()
+						.getSelectedItem().toString();
+				String nombreNuevo = vf.getVa().getCardAdmin().getPanelActualizarTorneo().getDatoNombreTorneo()
+						.getText();
+				ExceptionChecker.checkStringField(nombreNuevo,
+						"archivosdepropiedades.mensajes.error.camposincompletos");
+				Date fechaInicio = vf.getVa().getCardAdmin().getPanelActualizarTorneo().getDatoFechaInicio().getDate();
+				Date fechaFin = vf.getVa().getCardAdmin().getPanelActualizarTorneo().getDatoFechaFin().getDate();
+				int maxEquipos = (int) vf.getVa().getCardAdmin().getPanelActualizarTorneo().getDatoMaxEquipos()
+						.getValue();
+				long premio = ((Number) vf.getVa().getCardAdmin().getPanelActualizarTorneo().getRecompensa()
+						.getValue()).longValue();
+				mf.getTdao().update(new TorneoDTO(nombreTorneo, null, null, null, null, 0, 0),
+						new TorneoDTO(nombreNuevo, null, fechaInicio, fechaFin, null, maxEquipos, premio));
+				MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.confirmacion.exitousuario",
+						"archivosdepropiedades.mensajes.confirmacion.exito");
+				vf.getVa().getCardAdmin().getPanelActualizarTorneo().getDatoNombreTorneo().setText("");
+				vf.getVa().getCardAdmin().getPanelActualizarTorneo().getRecompensa().setValue(0);
+				vf.getVa().getCardAdmin().getPanelActualizarTorneo().getDatoMaxEquipos().setValue(0);
+				vf.getVa().getCardAdmin().getPanelActualizarTorneo().setVisible(false);
+			} catch (EmptyStringFieldException e1) {
+				MensajeEmergente.mensajeAdvertencia(e1.getMessage(), "archivosdepropiedades.mensajes.advertencia");
 			}
 			break;
 		}
