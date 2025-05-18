@@ -1,56 +1,87 @@
 package co.edu.unbosque.test;
+
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 import co.edu.unbosque.model.Administrador;
 import co.edu.unbosque.model.AdministradorDTO;
 import co.edu.unbosque.model.persistence.AdministradorDAO;
+
 public class AdministradorDAOTest {
 
-	 static AdministradorDAO dao;
-	 static AdministradorDTO dto;
+    static AdministradorDAO dao;
+    private AdministradorDTO dto1, dto2;
 
-	@BeforeClass
-    public static void hacerAntesdelaspruevas() {
+    @BeforeClass
+    public static void hacerAntesDeLasPruebas() {
         System.out.println("Inicialización pruebas");
         dao = new AdministradorDAO();
     }
 
     @Before
-    public void hcerAntesDeCadaPrueba() {
+    public void prepararAntesDeCadaPrueba() {
         System.out.println("Preparando datos para prueba");
-        dto = new AdministradorDTO( );
-        dao.add(dto); 
-    }
+        dao.setListaAdministradores(new ArrayList<>());
 
-  
-
-    @Test
-    public void testFind() {
-        System.out.println("Verificando método find");
-        Administrador found = dao.find(new Administrador());
-        assertNotNull(found);
-        assertEquals("Juan", found.getNombre());
+        dto1 = new AdministradorDTO("Juan", "1234", "juan@email.com", 30, "Colombia", "foto1.jpg", "Gerente");
+        dto2 = new AdministradorDTO("Ana", "5678", "ana@email.com", 28, "México", "foto2.jpg", "Subgerente");
     }
 
     @Test
-    public void testGetAllNoNull() {
-        System.out.println("Verificando método getAll no es null");
-        ArrayList<AdministradorDTO> all = dao.getAll();
-        assertNull("getAll está sin implementar, debería retornar null", all); 
+    public void testAddAdmin() {
+        System.out.println("testAddAdmin");
+        boolean result = dao.add(dto1);
+        assertTrue(result);
+        assertEquals(1, dao.getListaAdministradores().size());
+        assertEquals("Juan", dao.getListaAdministradores().get(0).getNombre());
     }
 
+    @Test
+    public void testDeleteAdmin() {
+        System.out.println("testDeleteAdmin");
+        dao.add(dto1);
+
+        boolean result = dao.delete(dto1); 
+        System.out.println("Resultado delete(): " + result);
+        assertFalse("delete() aún no está implementado, debería retornar false", result);
+    }
+
+    @Test
+    public void testDeleteNoExistentAdmin() {
+        System.out.println("testDeleteNoExistentAdmin");
+        boolean result = dao.delete(dto2);
+        assertFalse(result);
+    }
+
+    @Test
+    public void testFindAdmin() {
+        System.out.println("testFindAdmin");
+        dao.getListaAdministradores().add(new Administrador("Ana", "5678", "ana@email.com", 28, "México", "foto2.jpg"));
+        Administrador encontrado = dao.find(new Administrador("Ana", "", "", 0, "", ""));
+        assertNotNull(encontrado);
+        assertEquals("Ana", encontrado.getNombre());
+    }
+
+    @Test
+    public void testFindAdminNoExists() {
+        System.out.println("testFindAdminNoExists");
+        Administrador noExiste = new Administrador("Carlos", "", "", 0, "", "");
+        Administrador resultado = dao.find(noExiste);
+        assertNull(resultado);
+    }
+
+    @After
+    public void limpiarDespuesDeCadaPrueba() {
+        System.out.println("Limpiando después de prueba");
+        dao.setListaAdministradores(new ArrayList<>());
+    }
 
     @AfterClass
-    public static void hacerDespuesDeTodo() {
-        System.out.println("Finalizando prueba");
+    public static void cerrarPruebas() {
+        System.out.println("Finalizando pruebas");
         dao = null;
     }
 }
