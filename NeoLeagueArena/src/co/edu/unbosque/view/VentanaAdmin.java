@@ -60,7 +60,6 @@ public class VentanaAdmin extends JFrame{
 		cardAdmin = new CardAdmin();
 		cardAdmin.setBounds(0, 0, 1280, 720);
 		add(cardAdmin);
-		setVisible(true);
 	}
 	public JMenu getAdministrarCouch() {
 		return administrarCouch;

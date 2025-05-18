@@ -22,6 +22,7 @@ import co.edu.unbosque.model.JugadorDTO;
 import co.edu.unbosque.model.ModelFacade;
 import co.edu.unbosque.model.Torneo;
 import co.edu.unbosque.model.TorneoDTO;
+import co.edu.unbosque.model.persistence.DataMapper;
 import co.edu.unbosque.model.persistence.FileManager;
 import co.edu.unbosque.util.exception.EmptyStringFieldException;
 import co.edu.unbosque.util.exception.InvalidEmailException;
@@ -57,6 +58,7 @@ public class Controller implements ActionListener {
 	 * propiedades del idioma seleccionado por el usuario.
 	 */
 	private static Properties prop;
+	private String nombreUsuario;
 
 	/**
 	 * Constructor de la clase {@link Controller}, que se encarga de inicializar las
@@ -67,6 +69,7 @@ public class Controller implements ActionListener {
 		vf = new ViewFacade();
 		prop = new Properties();
 		panelActual = "PanelPrincipal";
+		nombreUsuario = "";
 		asignarLectores();
 	}
 
@@ -197,7 +200,8 @@ public class Controller implements ActionListener {
 		vf.getVa().getCardAdmin().getPanelAgregarPartida().getEquipo1().setActionCommand("comboEquipo1");
 		vf.getVa().getCardAdmin().getPanelAgregarPartida().getEquipo2().addActionListener(this);
 		vf.getVa().getCardAdmin().getPanelAgregarPartida().getEquipo2().setActionCommand("comboEquipo2");
-		
+		vf.getVe().getInscribirTorneo().addActionListener(this);
+		vf.getVe().getInscribirTorneo().setActionCommand("PanelInscribirTorneo");
 
 	}
 
@@ -861,9 +865,9 @@ public class Controller implements ActionListener {
 						&& vf.getVsu().getCardSignUp().getCrearCoach().getDatoPais().getSelectedIndex() != 0) {
 					if (contrasena.equals(contrasenaConf)) {
 						if (mf.getEdao()
-								.find(new Entrenador(nombre, null, null, 0, null, null, null, null, 0)) == null) {
+								.find(new Entrenador(nombre, null, null, 0, null, null, null, null, 0, null)) == null) {
 							EntrenadorDTO coach = new EntrenadorDTO(nombre, contrasena, correo, edad, pais, urlFoto,
-									trayectoriaCompetitiva, juegoEspecialidad, anosDeExperiencia);
+									trayectoriaCompetitiva, juegoEspecialidad, anosDeExperiencia, null);
 							mf.getEdao().add(coach);
 							vf.getVsu().getCardSignUp().getCrearCoach().getDatoNombre().setText("");
 							vf.getVsu().getCardSignUp().getCrearCoach().getDatoContrasena().setText("");
@@ -991,6 +995,7 @@ public class Controller implements ActionListener {
 				if (vf.getVp().getPanelPrincipal().getBtnAdmin().isSelected()) {
 					Administrador admin = new Administrador(nombre, contrasena, null, 0, null, null, null);
 					if (mf.getAdao().find(admin) != null) {
+						nombreUsuario = nombre;
 						MensajeEmergente.mensajeNormalMasAlgo("archivosdepropiedades.mensajes.bienvenida", " " + nombre,
 								"archivosdepropiedades.mensajes.confirmacion.exito");
 						vf.getVa().setVisible(true);
@@ -999,8 +1004,9 @@ public class Controller implements ActionListener {
 								"archivosdepropiedades.mensajes.error");
 					}
 				} else if (vf.getVp().getPanelPrincipal().getBtnCouch().isSelected()) {
-					Entrenador coach = new Entrenador(nombre, contrasena, null, 0, null, null, null, null, 0);
+					Entrenador coach = new Entrenador(nombre, contrasena, null, 0, null, null, null, null, 0, null);
 					if (mf.getEdao().find(coach) != null) {
+						nombreUsuario = nombre;
 						MensajeEmergente.mensajeNormalMasAlgo("archivosdepropiedades.mensajes.bienvenida", " " + nombre,
 								"archivosdepropiedades.mensajes.confirmacion.exito");
 						vf.getVe().setVisible(true);
@@ -1011,6 +1017,7 @@ public class Controller implements ActionListener {
 				} else if (vf.getVp().getPanelPrincipal().getBtnGamer().isSelected()) {
 					Jugador gamer = new Jugador(nombre, contrasena, null, 0, null, null, null, null, 0);
 					if (mf.getJdao().find(gamer) != null) {
+						nombreUsuario = nombre;
 						MensajeEmergente.mensajeNormalMasAlgo("archivosdepropiedades.mensajes.bienvenida", " " + nombre,
 								"archivosdepropiedades.mensajes.confirmacion.exito");
 						vf.getVg().setVisible(true);
@@ -1136,7 +1143,7 @@ public class Controller implements ActionListener {
 		case "btnBuscar": {
 			if (panelActual == "mostrarC") {
 				String nombre = vf.getVa().getCardAdmin().getPanelMostrar().getaBuscar().getText();
-				Entrenador coach = new Entrenador(nombre, null, null, 0, null, null, null, null, 0);
+				Entrenador coach = new Entrenador(nombre, null, null, 0, null, null, null, null, 0, null);
 				vf.getVa().getCardAdmin().getPanelMostrar().getaBuscar().setText("");
 				mf.getEdao().showOne(vf.getVa().getCardAdmin().getPanelMostrar().getTabla(), coach,
 						MensajeEmergente.obtenerMensaje("archivosdepropiedades.panelmostrar.noencontrado"));
@@ -1154,7 +1161,7 @@ public class Controller implements ActionListener {
 						MensajeEmergente.obtenerMensaje("archivosdepropiedades.panelmostrar.noencontrado"));
 			} else if (panelActual == "mostrarE") {
 				String nombre = vf.getVa().getCardAdmin().getPanelMostrar().getaBuscar().getText();
-				Equipo equipo = new Equipo(nombre, null, null, null, null);
+				Equipo equipo = new Equipo(nombre, null, null, null, null, null);
 				vf.getVa().getCardAdmin().getPanelMostrar().getaBuscar().setText("");
 				mf.getEqdao().showOne(vf.getVa().getCardAdmin().getPanelMostrar().getTabla(), equipo,
 						MensajeEmergente.obtenerMensaje("archivosdepropiedades.panelmostrar.noencontrado"));
@@ -1197,7 +1204,7 @@ public class Controller implements ActionListener {
 				String nombre = vf.getVa().getCardAdmin().getPanelMostrar().getTabla().getValueAt(fila, 0).toString();
 
 				if (panelActual == "mostrarC") {
-					EntrenadorDTO en = new EntrenadorDTO(nombre, null, null, 0, null, null, null, null, 0);
+					EntrenadorDTO en = new EntrenadorDTO(nombre, null, null, 0, null, null, null, null, 0, null);
 					mf.getEdao().delete(en);
 					mf.getEdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
 				} else if (panelActual == "mostrarG") {
@@ -1209,7 +1216,7 @@ public class Controller implements ActionListener {
 					mf.getTdao().delete(en);
 					mf.getTdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
 				} else if (panelActual == "mostrarE") {
-					EquipoDTO en = new EquipoDTO(nombre, null, null, null, null);
+					EquipoDTO en = new EquipoDTO(nombre, null, null, null, null, null);
 					mf.getEqdao().delete(en);
 					mf.getEqdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
 					mf.getEqdao().asignarElmentosCombos(
@@ -1260,14 +1267,21 @@ public class Controller implements ActionListener {
 		}
 		case "btnAgregarEquipo": {
 			try {
+				Entrenador creador = mf.getEdao().find(new Entrenador(nombreUsuario, null, null, 0, null, null, null, null, 0, null));
+				if(creador.getEquipo() != null) {
+					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.equipoyjugador",
+							"archivosdepropiedades.mensajes.error");
+					break;
+				} else {
 				String nombreEquipo = vf.getVe().getCardCoach().getPanelAgregarEquipo().getDatoNombreEquipo().getText();
 				ExceptionChecker.checkStringField(nombreEquipo,
 						"archivosdepropiedades.mensajes.error.camposincompletos");
 				String juegoEspecialidad = vf.getVe().getCardCoach().getPanelAgregarEquipo().getDatoJuego()
 						.getSelectedItem().toString();
-				if (mf.getEqdao().find(new Equipo(nombreEquipo, null, null, null, null)) == null) {
-					EquipoDTO equipo = new EquipoDTO(nombreEquipo, juegoEspecialidad);
+				if (mf.getEqdao().find(new Equipo(nombreEquipo, null, null, null, null, null)) == null) {
+					EquipoDTO equipo = new EquipoDTO(nombreEquipo, juegoEspecialidad, creador);
 					mf.getEqdao().add(equipo);
+					creador.setEquipo(DataMapper.EquipoDTOToEquipo(equipo));
 					vf.getVe().getCardCoach().getPanelAgregarEquipo().getDatoNombreEquipo().setText("");
 					vf.getVe().getCardCoach().getPanelAgregarEquipo().getDatoJuego().setSelectedIndex(0);
 					mf.getEqdao().asignarElmentosCombos(
@@ -1279,6 +1293,7 @@ public class Controller implements ActionListener {
 					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.usuarioexistente",
 							"archivosdepropiedades.mensajes.error");
 
+				}
 				}
 			} catch (EmptyStringFieldException e1) {
 				MensajeEmergente.mensajeAdvertencia(e1.getMessage(), "archivosdepropiedades.mensajes.advertencia");
@@ -1318,7 +1333,7 @@ public class Controller implements ActionListener {
 			} else {
 				String nombre = vf.getVa().getCardAdmin().getPanelActualizar().getEquiposExistentes().getSelectedItem()
 						.toString();
-				Equipo equipo = mf.getEqdao().find(new Equipo(nombre, null, null, null, null));
+				Equipo equipo = mf.getEqdao().find(new Equipo(nombre, null, null, null, null, null));
 				if (equipo != null) {
 					vf.getVa().getCardAdmin().getPanelActualizar().getDatoNombreEquipo().setText(equipo.getNombre());
 					vf.getVa().getCardAdmin().getPanelActualizar().getDatoNombreEquipo().setText(nombre);
@@ -1395,8 +1410,8 @@ public class Controller implements ActionListener {
 				String nombreNuevo = vf.getVa().getCardAdmin().getPanelActualizar().getDatoNombreEquipo().getText();
 				ExceptionChecker.checkStringField(nombreNuevo,
 						"archivosdepropiedades.mensajes.error.camposincompletos");
-				mf.getEqdao().update(new EquipoDTO(nombreAnterior, null, null, null, null),
-						new EquipoDTO(nombreNuevo, null, null, null, null));
+				mf.getEqdao().update(new EquipoDTO(nombreAnterior, null, null, null, null, null),
+						new EquipoDTO(nombreNuevo, null, null, null, null, null));
 				MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.confirmacion.exitousuario",
 						"archivosdepropiedades.mensajes.confirmacion.exito");
 				vf.getVa().getCardAdmin().getPanelActualizar().getDatoNombreEquipo().setText("");
@@ -1426,7 +1441,10 @@ public class Controller implements ActionListener {
 			
 			break;
 		}
-	
+		case "PanelInscribirTorneo":{
+			vf.getVe().getCardCoach().mostrarPanel("PanelInscribirTorneo");
+			break;
+		}
 		
 		}
 		

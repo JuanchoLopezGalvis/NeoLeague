@@ -22,10 +22,11 @@ public class EquipoDAO implements OperacionDAO<EquipoDTO, Equipo> {
 
 	@Override
 	public boolean showAll(JTable tabla) {
+		DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
 		if (listaEquipos.isEmpty()) {
+			modelo.setRowCount(0);
 			return false;
 		}else {
-			DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
 			modelo.setRowCount(0);
 			for (Equipo equipo : listaEquipos) {
 				int integrantes = equipo.getIntegrantes().size();

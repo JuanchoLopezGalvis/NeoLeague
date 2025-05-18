@@ -1,6 +1,7 @@
 package co.edu.unbosque.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * La clase {@link EntrenadorDTO} es la encargada de establecer los atributos de
@@ -26,65 +27,38 @@ public class EntrenadorDTO extends Usuario implements Serializable{
 	 */
 	private int AnosDeEntrenamiento;
 	/**
-	 * Constructor por defecto o vacio de la clase {@link EntrenadorDTO}.
+	 * Esta instancia es la encargada de guardar los equipos de los entrenadores.
+	 */
+	private Equipo equipo;
+	/**
+	 * Constructor por defecto o vacio de la clase {@link Entrenador}.
 	 */
 	public EntrenadorDTO() {
 		// TODO Auto-generated constructor stub
 	}
-	/**
-	 * Constructor de la clase {@link EntrenadorDTO} que recibe como parámetro la
-	 * trayectoria profesional, la especialidad de entreno y los años de
-	 * entrenamiento.
-	 *
-	 * @param trayectoriaProfesional
-	 * @param especialidadDeEntreno
-	 * @param anosDeEntrenamiento
-	 */
-	public EntrenadorDTO(String trayectoriaProfesional, String especialidadDeEntreno, int anosDeEntrenamiento) {
+	
+	public EntrenadorDTO(String trayectoriaProfesional, String especialidadDeEntreno, int anosDeEntrenamiento,
+			Equipo equipo) {
 		super();
 		this.trayectoriaProfesional = trayectoriaProfesional;
 		this.especialidadDeEntreno = especialidadDeEntreno;
 		AnosDeEntrenamiento = anosDeEntrenamiento;
+		this.equipo = equipo;
 	}
-	/**
-	 * Constructor de la clase {@link EntrenadorDTO} que recibe como parámetro el
-	 * nombre, la contraseña, el correo, la edad, el país, la url de la foto, la
-	 * trayectoria profesional, la especialidad de entreno y los años de
-	 * entrenamiento.
-	 *
-	 * @param nombre
-	 * @param contrasena
-	 * @param correo
-	 * @param edad
-	 * @param pais
-	 * @param urlFoto
-	 * @param trayectoriaProfesional
-	 * @param especialidadDeEntreno
-	 * @param anosDeEntrenamiento
-	 */
 	public EntrenadorDTO(String nombre, String contrasena, String correo, int edad, String pais, String urlFoto,
-			String trayectoriaProfesional, String especialidadDeEntreno, int anosDeEntrenamiento) {
+			String trayectoriaProfesional, String especialidadDeEntreno, int anosDeEntrenamiento,
+			Equipo equipo) {
 		super(nombre, contrasena, correo, edad, pais, urlFoto);
 		this.trayectoriaProfesional = trayectoriaProfesional;
 		this.especialidadDeEntreno = especialidadDeEntreno;
 		AnosDeEntrenamiento = anosDeEntrenamiento;
+		this.equipo = equipo;
 	}
-	/**
-	 * Constructor de la clase {@link EntrenadorDTO} que recibe como parámetro el
-	 * nombre, la contraseña, el correo, la edad, el país y la url de la foto del
-	 * entrenador.
-	 *
-	 * @param nombre
-	 * @param contrasena
-	 * @param correo
-	 * @param edad
-	 * @param pais
-	 * @param urlFoto
-	 */
 	public EntrenadorDTO(String nombre, String contrasena, String correo, int edad, String pais, String urlFoto) {
 		super(nombre, contrasena, correo, edad, pais, urlFoto);
 		// TODO Auto-generated constructor stub
 	}
+
 	/**
 	 * Método que retorna la trayectoria profesional del entrenador.
 	 *
@@ -120,7 +94,7 @@ public class EntrenadorDTO extends Usuario implements Serializable{
 	/**
 	 * Método que retorna los años de entrenamiento del entrenador.
 	 *
-	 * @return AnosDeEntrenamiento
+	 * @return anosDeEntrenamiento
 	 */
 	public int getAnosDeEntrenamiento() {
 		return AnosDeEntrenamiento;
@@ -133,13 +107,21 @@ public class EntrenadorDTO extends Usuario implements Serializable{
 	public void setAnosDeEntrenamiento(int anosDeEntrenamiento) {
 		AnosDeEntrenamiento = anosDeEntrenamiento;
 	}
+	
+	public Equipo getEquipo() {
+		return equipo;
+	}
+
+	public void setEquipo(Equipo equipo) {
+		this.equipo = equipo;
+	}
 	/**
 	 * Método que retorna una cadena de texto con la información del entrenador.
 	 *
-	 * @return String
+	 * @return cadena de texto con la información del entrenador
 	 */
 	@Override
 	public String toString() {
-		return super.toString()+  trayectoriaProfesional + ";" + especialidadDeEntreno + ";" + AnosDeEntrenamiento + "\n";
+		return super.toString()+ trayectoriaProfesional + ";" + especialidadDeEntreno + ";" + AnosDeEntrenamiento + "\n";
 	}
 }

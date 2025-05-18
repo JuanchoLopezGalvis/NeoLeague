@@ -22,10 +22,11 @@ public class JugadorDAO implements OperacionDAO<JugadorDTO, Jugador> {
 	}
 	@Override
 	public boolean showAll(JTable table) {
+		DefaultTableModel modelo = (DefaultTableModel) table.getModel();
 		if (listaJugadores.isEmpty()) {
+			modelo.setRowCount(0);
 			return false;
 		}else {
-			DefaultTableModel modelo = (DefaultTableModel) table.getModel();
 			modelo.setRowCount(0);
 			for (Jugador jugador : listaJugadores) {
 				ImageIcon icon = FileManager.graficarImagen(jugador.getUrlFoto(), 80, 80);

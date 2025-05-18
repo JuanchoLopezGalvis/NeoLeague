@@ -1,6 +1,7 @@
 package co.edu.unbosque.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 /**
  * La clase {@link Entrenador} es la encargada de establecer los atributos de
  * un entrenador. Esta clase hereda de la clase {@link Usuario}.
@@ -24,65 +25,39 @@ public class Entrenador extends Usuario implements Serializable{
 	 */
 	private int AnosDeEntrenamiento;
 	/**
+	 * Esta instancia es la encargada de guardar los equipos de los entrenadores.
+	 */
+	private Equipo equipo;
+	/**
 	 * Constructor por defecto o vacio de la clase {@link Entrenador}.
 	 */
 	public Entrenador() {
 		// TODO Auto-generated constructor stub
 	}
-	/**
-	 * Constructor de la clase {@link Entrenador} que recibe como parámetro la
-	 * trayectoria profesional, la especialidad de entreno y los años de
-	 * entrenamiento.
-	 *
-	 * @param trayectoriaProfesional
-	 * @param especialidadDeEntreno
-	 * @param anosDeEntrenamiento
-	 */
-	public Entrenador(String trayectoriaProfesional, String especialidadDeEntreno, int anosDeEntrenamiento) {
+	
+	public Entrenador(String trayectoriaProfesional, String especialidadDeEntreno, int anosDeEntrenamiento,
+			Equipo equipo) {
 		super();
 		this.trayectoriaProfesional = trayectoriaProfesional;
 		this.especialidadDeEntreno = especialidadDeEntreno;
 		AnosDeEntrenamiento = anosDeEntrenamiento;
+		this.equipo = equipo;
 	}
-	/**
-	 * Constructor de la clase {@link Entrenador} que recibe como parámetro el
-	 * nombre, la contraseña, el correo, la edad, el país, la url de la foto, la
-	 * trayectoria profesional, la especialidad de entreno y los años de
-	 * entrenamiento.
-	 *
-	 * @param nombre
-	 * @param contrasena
-	 * @param correo
-	 * @param edad
-	 * @param pais
-	 * @param urlFoto
-	 * @param trayectoriaProfesional
-	 * @param especialidadDeEntreno
-	 * @param anosDeEntrenamiento
-	 */
 	public Entrenador(String nombre, String contrasena, String correo, int edad, String pais, String urlFoto,
-			String trayectoriaProfesional, String especialidadDeEntreno, int anosDeEntrenamiento) {
+			String trayectoriaProfesional, String especialidadDeEntreno, int anosDeEntrenamiento,
+			Equipo equipo) {
 		super(nombre, contrasena, correo, edad, pais, urlFoto);
 		this.trayectoriaProfesional = trayectoriaProfesional;
 		this.especialidadDeEntreno = especialidadDeEntreno;
 		AnosDeEntrenamiento = anosDeEntrenamiento;
+		this.equipo = equipo;
 	}
-	/**
-	 * Constructor de la clase {@link Entrenador} que recibe como parámetro el
-	 * nombre, la contraseña, el correo, la edad, el país y la url de la foto del
-	 * entrenador.
-	 *
-	 * @param nombre
-	 * @param contrasena
-	 * @param correo
-	 * @param edad
-	 * @param pais
-	 * @param urlFoto
-	 */
+
 	public Entrenador(String nombre, String contrasena, String correo, int edad, String pais, String urlFoto) {
 		super(nombre, contrasena, correo, edad, pais, urlFoto);
 		// TODO Auto-generated constructor stub
 	}
+
 	/**
 	 * Método que retorna la trayectoria profesional del entrenador.
 	 *
@@ -130,6 +105,14 @@ public class Entrenador extends Usuario implements Serializable{
 	 */
 	public void setAnosDeEntrenamiento(int anosDeEntrenamiento) {
 		AnosDeEntrenamiento = anosDeEntrenamiento;
+	}
+	
+	public Equipo getEquipo() {
+		return equipo;
+	}
+
+	public void setEquipo(Equipo equipo) {
+		this.equipo = equipo;
 	}
 	/**
 	 * Método que retorna una cadena de texto con la información del entrenador.

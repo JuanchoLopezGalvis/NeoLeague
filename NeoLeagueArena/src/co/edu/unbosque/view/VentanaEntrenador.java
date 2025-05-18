@@ -13,7 +13,7 @@ public class VentanaEntrenador extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private JMenuBar menuBar;
 	private JMenu gestionarEquipos, gestionarCuenta, gestionarTorneo, gestionarPartidas, estadisticas;
-	private JMenuItem actualizarCuenta, crearEquipo, ActualizarEquipo, verEquipos, inscribirTorneo, salirseTorneo, verTorneos, consultarPartida, verEstadisticasEquipos;
+	private JMenuItem actualizarCuenta, crearEquipo, ActualizarEquipo, verEquipos, inscribirTorneo,verTorneos, consultarPartida, verEstadisticasEquipos;
 	private CardCoach cardCoach;
 
 	public VentanaEntrenador() {
@@ -33,7 +33,6 @@ public class VentanaEntrenador extends JFrame{
 		ActualizarEquipo = new JMenuItem("actualizar Equipo");
 		verEquipos = new JMenuItem("Mostrar y eliminar equipos");
 		inscribirTorneo = new JMenuItem("Inscribir Torneo");
-		salirseTorneo = new JMenuItem("Salirse Torneo");
 		verTorneos = new JMenuItem("Ver Torneos");
 		consultarPartida = new JMenuItem("Consultar Partida");
 		verEstadisticasEquipos = new JMenuItem("Ver Estadisticas Equipos");
@@ -48,7 +47,6 @@ public class VentanaEntrenador extends JFrame{
 		gestionarEquipos.add(verEquipos);
 		gestionarCuenta.add(actualizarCuenta);
 		gestionarTorneo.add(inscribirTorneo);
-		gestionarTorneo.add(salirseTorneo);
 		gestionarTorneo.add(verTorneos);
 		gestionarPartidas.add(consultarPartida);
 		estadisticas.add(verEstadisticasEquipos);
@@ -139,15 +137,6 @@ public class VentanaEntrenador extends JFrame{
 	public void setInscribirTorneo(JMenuItem inscribirTorneo) {
 		this.inscribirTorneo = inscribirTorneo;
 	}
-
-	public JMenuItem getSalirseTorneo() {
-		return salirseTorneo;
-	}
-
-	public void setSalirseTorneo(JMenuItem salirseTorneo) {
-		this.salirseTorneo = salirseTorneo;
-	}
-
 	public JMenuItem getVerTorneos() {
 		return verTorneos;
 	}
