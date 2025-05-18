@@ -12,7 +12,7 @@ import co.edu.unbosque.model.Entrenador;
 import co.edu.unbosque.model.EntrenadorDTO;
 import co.edu.unbosque.model.persistence.DataMapper;
 
-public class EntrenarorDTOTest {
+public class EntrenadorDTOTest {
 
 	static Entrenador entidad;
 	static EntrenadorDTO dto;
