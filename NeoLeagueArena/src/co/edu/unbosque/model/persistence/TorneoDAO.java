@@ -69,7 +69,7 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 					comboBox.addItem(equipo.getNombre());
 				}
 			}
-			comboBox.setSelectedIndex(0);
+			
 			comboBox.revalidate();
 			comboBox.repaint();
 		}
