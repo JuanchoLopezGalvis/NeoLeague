@@ -1067,6 +1067,7 @@ public class Controller implements ActionListener {
 		            if (coach != null && coach.getContrasena().equals(contrasena)) {
 		                nombreUsuario = nombre;
 		                Equipo eq = coach.getEquipo();
+		                vf.getVe().getCardCoach().getPanelInscribirTorneo().getEquipoInscribir().removeAllItems();
 		                if (eq != null) {
 		                    vf.getVe().getCardCoach().getPanelInscribirTorneo().getEquipoInscribir().addItem(eq.getNombre());
 		                }
