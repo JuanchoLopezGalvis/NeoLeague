@@ -14,7 +14,6 @@ public class EntrenadorDAOTest {
 
     private static EntrenadorDAO dao;
     private EntrenadorDTO dto1,dto2;
-   
 
     @BeforeClass
     public static void hacerAntesdelaspruevas() {

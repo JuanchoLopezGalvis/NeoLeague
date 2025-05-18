@@ -33,7 +33,6 @@ public class EntrenadorDAO implements OperacionDAO<EntrenadorDTO, Entrenador>{
 				modelo.addRow(row);
 			}
 		}
-		
 		return false;
 	}
 
