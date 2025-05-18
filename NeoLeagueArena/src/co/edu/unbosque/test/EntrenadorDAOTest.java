@@ -12,7 +12,7 @@ import co.edu.unbosque.model.persistence.EntrenadorDAO;
 
 public class EntrenadorDAOTest {
 
-    private static EntrenadorDAO dao;
+    static EntrenadorDAO dao;
     private EntrenadorDTO dto1,dto2;
 
     @BeforeClass

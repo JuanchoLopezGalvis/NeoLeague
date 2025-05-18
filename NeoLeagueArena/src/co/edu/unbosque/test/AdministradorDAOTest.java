@@ -14,8 +14,8 @@ import co.edu.unbosque.model.AdministradorDTO;
 import co.edu.unbosque.model.persistence.AdministradorDAO;
 public class AdministradorDAOTest {
 
-	 private static AdministradorDAO dao;
-	    private AdministradorDTO sampleAdmin;
+	 static AdministradorDAO dao;
+	 static AdministradorDTO dto;
 
 	@BeforeClass
     public static void hacerAntesdelaspruevas() {
@@ -26,8 +26,8 @@ public class AdministradorDAOTest {
     @Before
     public void hcerAntesDeCadaPrueba() throws Exception {
         System.out.println("Preparando datos para prueba");
-        sampleAdmin = new AdministradorDTO( );
-        dao.add(sampleAdmin); 
+        dto = new AdministradorDTO( );
+        dao.add(dto); 
     }
 
     @Test

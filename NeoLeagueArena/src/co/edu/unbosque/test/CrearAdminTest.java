@@ -18,7 +18,7 @@ import co.edu.unbosque.view.CrearAdmin;
 
 public class CrearAdminTest {
 
-    private static CrearAdmin panel;
+    static CrearAdmin panel;
 
     @BeforeClass
     public static void beforeClass() {
