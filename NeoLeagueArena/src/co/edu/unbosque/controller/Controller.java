@@ -826,7 +826,9 @@ public class Controller implements ActionListener {
 					trayectoriaCompetitiva, juegoEspecialidad, anosDeExperiencia);
 				mf.getJdao().add(gamer);
 
-				MensajeEmergente.enviarCorreo(correo, ""+ nombre, "");
+				String asunto = MensajeEmergente.obtenerMensaje("archivosdepropiedades.mensajescorreo.asuntogamercreado") ;
+				String cuerpo = MensajeEmergente.obtenerMensaje("archivosdepropiedades.mensajescorreo.cuerpogamercreado") + nombre;
+				MensajeEmergente.enviarCorreo(correo, asunto,cuerpo);
 				
 				// Limpieza de campos
 				vf.getVsu().getCardSignUp().getCrearGamer().getDatoNombre().setText("");
