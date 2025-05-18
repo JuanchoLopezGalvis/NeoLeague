@@ -31,8 +31,8 @@ public class PartidaDAOTest {
         System.out.println("empezando prueba individual");
 
        
-        Equipo eq1 = new Equipo("Equipo A", null, null);
-        Equipo eq2 = new Equipo("Equipo B", null, null);
+        Equipo eq1 = new Equipo("Equipo A", null, null,0 );
+        Equipo eq2 = new Equipo("Equipo B", null, null,0);
         Torneo torneo = new Torneo("Torneo X", null, null, null, null,0,0);
 
         Partida partida = new Partida(1, eq1, eq2, eq1, "League of Legends", new Date(), torneo);
@@ -43,6 +43,7 @@ public class PartidaDAOTest {
         dao.add(dto);  
     }
 
+    
     @Test
     public void testAdd() {
         System.out.println(" Verificando método add()");

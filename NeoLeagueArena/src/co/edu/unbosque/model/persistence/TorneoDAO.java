@@ -33,6 +33,27 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 		}
 		return true;
 	}
+	public boolean showEquipos(JTable tabla, Torneo t) {
+		DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+		if (t.getListaEquiposInscritos().isEmpty()) {
+			modelo.setRowCount(0);
+			return false;
+		}else {
+			modelo.setRowCount(0);
+			for (Equipo equipo : t.getListaEquiposInscritos()) {
+				if (equipo.getEntrenador() == null) {
+					continue;
+				}
+				int integrantes = equipo.getIntegrantes().size();
+				int torneos = equipo.getTorneosInscritos().size();
+				int partidas = equipo.getPartidasJugadas().size();
+				String entrenador = equipo.getEntrenador().getNombre();
+				Object[] row = {equipo.getNombre(), integrantes, equipo.getJuegoDesempeñado(), torneos, entrenador, partidas, equipo.getPuntos()};
+				modelo.addRow(row);
+			}
+		}
+		return true;
+	}
 
 	@Override
 	public ArrayList<TorneoDTO> getAll() {

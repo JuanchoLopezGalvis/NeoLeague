@@ -9,7 +9,7 @@ public class VentanaAdmin extends JFrame{
 
 	private JMenuBar menuBar;
 	private JMenu administrarGamer, administrarCouch, administrarTorneos, administrarPartidas, administrarEquipo, reportes;
-	private JMenuItem  mostrarGamers, mostrarCoachs, crearTorneo, crearPartida, mostrarTorneos, mostrarPartidas, actualizarTorneo, actualizarPartida, actualizarEquipo,  mostrarEquipos, analiytics;
+	private JMenuItem  torneoAnalitycs, mostrarGamers, mostrarCoachs, crearTorneo, crearPartida, mostrarTorneos, mostrarPartidas, actualizarTorneo, actualizarPartida, actualizarEquipo,  mostrarEquipos, analiytics;
 	private CardAdmin cardAdmin;
 
 	/**
@@ -32,6 +32,7 @@ public class VentanaAdmin extends JFrame{
 		crearTorneo = new JMenuItem("Create Tournament");
 		crearPartida = new JMenuItem("Create Match");
 		mostrarTorneos = new JMenuItem("Show Tournaments");
+		torneoAnalitycs = new JMenuItem("Analitycs");
 		mostrarPartidas = new JMenuItem("Show Matches");
 		actualizarTorneo = new JMenuItem("Update Tournament");
 		actualizarPartida = new JMenuItem("Update Match");
@@ -48,6 +49,7 @@ public class VentanaAdmin extends JFrame{
 		administrarTorneos.add(crearTorneo);
 		administrarTorneos.add(mostrarTorneos);
 		administrarTorneos.add(actualizarTorneo);
+		administrarTorneos.add(torneoAnalitycs);
 		administrarPartidas.add(crearPartida);
 		administrarPartidas.add(mostrarPartidas);
 		administrarPartidas.add(actualizarPartida);
@@ -60,6 +62,7 @@ public class VentanaAdmin extends JFrame{
 		cardAdmin = new CardAdmin();
 		cardAdmin.setBounds(0, 0, 1280, 720);
 		add(cardAdmin);
+		setVisible(true);
 	}
 	public JMenu getAdministrarCouch() {
 		return administrarCouch;
@@ -169,6 +172,12 @@ public class VentanaAdmin extends JFrame{
 	}
 	public void setAnaliytics(JMenuItem analiytics) {
 		this.analiytics = analiytics;
+	}
+	public JMenuItem getTorneoAnalitycs() {
+		return torneoAnalitycs;
+	}
+	public void setTorneoAnalitycs(JMenuItem torneoAnalitycs) {
+		this.torneoAnalitycs = torneoAnalitycs;
 	}
 
 

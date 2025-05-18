@@ -36,6 +36,7 @@ public class EquipoDTO implements Serializable{
 	 */
 	private ArrayList<Partida> partidasJugadas;
 	private Entrenador entrenador;
+	private int puntos;
 	/**
 	 * Constructor por defecto o vacio de la clase {@link Equipo}.
 	 */
@@ -50,9 +51,10 @@ public class EquipoDTO implements Serializable{
 	 * @param torneosInscritos
 	 * @param partidasJugadas
 	 * @param entrenador
+	 * @param puntos
 	 */
 	public EquipoDTO(String nombre, ArrayList<Jugador> integrantes, String juegoDesempeñado,
-			ArrayList<Torneo> torneosInscritos, ArrayList<Partida> partidasJugadas, Entrenador entrenador) {
+			ArrayList<Torneo> torneosInscritos, ArrayList<Partida> partidasJugadas, Entrenador entrenador, int puntos) {
 		super();
 		this.nombre = nombre;
 		this.integrantes = integrantes;
@@ -60,6 +62,7 @@ public class EquipoDTO implements Serializable{
 		this.torneosInscritos = torneosInscritos;
 		this.partidasJugadas = partidasJugadas;
 		this.entrenador = entrenador;
+		this.puntos = puntos;
 	}
 	/**
 	 * Constructor de la clase {@link EquipoDTO} que recibe como parámetro el nombre y el juego desempeñado, y el entrenador.
@@ -67,12 +70,14 @@ public class EquipoDTO implements Serializable{
 	 * @param nombre
 	 * @param juegoDesempeñado
 	 * @param entrenador
+	 * @param puntos
 	 */
-	public EquipoDTO(String nombre, String juegoDesempeñado, Entrenador entrenador) {
+	public EquipoDTO(String nombre, String juegoDesempeñado, Entrenador entrenador, int puntos) {
 		super();
 		this.nombre = nombre;
 		this.juegoDesempeñado = juegoDesempeñado;
 		this.entrenador = entrenador;
+		this.puntos = puntos;
 	}
 	/**
 	 * Metido que retorna el nombre del equipo.
@@ -143,6 +148,13 @@ public class EquipoDTO implements Serializable{
 	 */
 	public void setPartidasJugadas(ArrayList<Partida> partidasJugadas) {
 		this.partidasJugadas = partidasJugadas;
+	}
+	
+	public int getPuntos() {
+		return puntos;
+	}
+	public void setPuntos(int puntos) {
+		this.puntos = puntos;
 	}
 	/**
 	 * Método que inscribe un jugador al equipo.

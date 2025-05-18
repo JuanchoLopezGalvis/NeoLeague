@@ -47,6 +47,10 @@ public class CardAdmin extends JPanel{
 	 */
 	private PanelActualizarTorneo panelActualizarTorneo;
 	/**
+	 * panelMostrarTorneo es una instancia de PanelMostrarTorneo que muestra información sobre los torneos.
+	 */
+	private PanelMostrarTorneo panelMostrarTorneo;
+	/**
 	 * Constructor de la clase {@link CardAdmin}.
 	 * Inicializa el CardLayout y agrega los diferentes paneles al contenedor.
 	 */
@@ -60,12 +64,14 @@ public class CardAdmin extends JPanel{
 		panelInforme = new PanelInforme();
 		panelActualizarTorneo = new PanelActualizarTorneo();
 		panelActualizarEquipo = new PanelActualizarEquipo();
+		panelMostrarTorneo = new PanelMostrarTorneo();
+		add(panelMostrarTorneo, "PanelMostrarTorneo");
 		add(panelAgregarTorneo, "PanelAgregarTorneo");
 		add(panelActualizarTorneo, "PanelActualizarTorneo");
 		add(panelInforme, "PanelInforme");
 		add(panelActualizarEquipo, "PanelActualizarEquipo");
-		add(panelMostrar, "PanelMostrar");
 		add(panelAgregarPartida, "PanelAgregarPartida");
+		add(panelMostrar, "PanelMostrar");
 		add(panelActualizarPartida, "PanelActualizarPartida");
 	}
 	/**
@@ -186,6 +192,20 @@ public class CardAdmin extends JPanel{
 	 */
 	public void setPanelActualizarEquipo(PanelActualizarEquipo panelActualizarEquipo) {
 		this.panelActualizarEquipo = panelActualizarEquipo;
+	}
+	/**
+	 * Metodo que retorna el panel de mostrar torneo.
+	 * @return panelMostrarTorneo
+	 */
+	public PanelMostrarTorneo getPanelMostrarTorneo() {
+		return panelMostrarTorneo;
+	}
+	/**
+	 * Metodo que asigna el panel de mostrar torneo.
+	 * @param panelMostrarTorneo
+	 */
+	public void setPanelMostrarTorneo(PanelMostrarTorneo panelMostrarTorneo) {
+		this.panelMostrarTorneo = panelMostrarTorneo;
 	}
 	
 }
