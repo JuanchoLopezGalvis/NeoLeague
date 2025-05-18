@@ -2,6 +2,7 @@ package co.edu.unbosque.model.persistence;
 
 import java.util.ArrayList;
 
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -90,6 +91,15 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 			return found;
 		}
 		return null;
+	}
+	
+	public void asignarElementosAComboBox(JComboBox<String> comboBox) {
+		comboBox.removeAllItems();
+		for (Torneo torneo : listaTorneos) {
+			comboBox.addItem(torneo.getNombre());
+			comboBox.revalidate();
+			comboBox.repaint();
+		}
 	}
 
 	@Override
