@@ -1222,6 +1222,12 @@ public class Controller implements ActionListener {
 					TorneoDTO torneo = new TorneoDTO(nombreTorneo, nombreJuego, fechaInicio, fechaFin, formatoTorneo,
 							maxEquipos, premio);
 					mf.getTdao().add(torneo);
+					
+					String correo = mf.getAdao().find(new Administrador(nombreUsuario, null, null, 0, null, null, null)).getCorreo();
+					String asunto = MensajeEmergente.obtenerMensaje("archivosdepropiedades.mensajescorreo.asuntocreaciontorneo") ;
+					String cuerpo = MensajeEmergente.obtenerMensaje("archivosdepropiedades.mensajescorreo.cuerpocreasiontorneo") + nombreTorneo;
+					MensajeEmergente.enviarCorreo(correo, asunto, cuerpo);
+					
 					vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoNombreTorneo().setText("");
 					vf.getVa().getCardAdmin().getPanelAgregarTorneo().getRecompensa().setValue(0);
 					vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoMaxEquipos().setValue(0);
@@ -1229,6 +1235,9 @@ public class Controller implements ActionListener {
 					vf.getVa().getCardAdmin().getPanelAgregarTorneo().getDatoFechaFin().setDate(null);
 					MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.confirmacion.exitousuario",
 							"archivosdepropiedades.mensajes.confirmacion.exito");
+					
+					
+					
 					mf.getTdao().asignarElementosAComboBox(
 							vf.getVa().getCardAdmin().getPanelActualizarTorneo().getTorneosExistentes());
 					mf.getTdao().asignarElementosAComboBox(vf.getVa().getCardAdmin().getPanelAgregarPartida().getTorneosExistentes());
@@ -1442,6 +1451,12 @@ public class Controller implements ActionListener {
 					creador.setEquipo(DataMapper.EquipoDTOToEquipo(equipo));
 					mf.getEdao().escribirArchivoSerializado();
 					mf.getEqdao().escribirArchivoTxt();
+					
+					String correo = mf.getEdao().find(new Entrenador(nombreUsuario, null, null, 0, null, null, null, null, 0, null)).getCorreo();
+					String asunto = MensajeEmergente.obtenerMensaje("archivosdepropiedades.mensajescorreo.asuntocreacionequipo") ;
+					String cuerpo = MensajeEmergente.obtenerMensaje("archivosdepropiedades.mensajescorreo.cuerpocreasionequipo") + nombreEquipo;
+					MensajeEmergente.enviarCorreo(correo, asunto, cuerpo);
+					
 					vf.getVe().getCardCoach().getPanelAgregarEquipo().getDatoNombreEquipo().setText("");
 					vf.getVe().getCardCoach().getPanelAgregarEquipo().getDatoJuego().setSelectedIndex(0);
 					mf.getEqdao().asignarElmentosCombos(vf.getVa().getCardAdmin().getPanelActualizar().getEquiposExistentes());
