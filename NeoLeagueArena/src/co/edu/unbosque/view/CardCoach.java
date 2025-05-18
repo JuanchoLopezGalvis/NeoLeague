@@ -36,6 +36,7 @@ public class CardCoach extends JPanel{
 	 */
 	private PanelAgregarEquipo panelAgregarEquipo;
 	private PanelInscribirTorneo panelInscribirTorneo;
+	private PanelMostrarTorneo panelMostrarTorneo;
 	
 	/**
 	 * Constructor de la clase {@link CardCoach}.
@@ -49,11 +50,13 @@ public class CardCoach extends JPanel{
 		panelAgregarEquipo = new PanelAgregarEquipo();
 		panelActualizarEntrenador = new PanelActualizarEntrenador();
 		panelInscribirTorneo = new PanelInscribirTorneo();
+		panelMostrarTorneo = new PanelMostrarTorneo();
 		add(panelInscribirTorneo, "PanelInscribirTorneo");
+		add(panelActualizarEntrenador, "PanelActualizarEntrenador");
 		add(panelAgregarEquipo, "PanelAgregarEquipo");
 		add(panelActualizarEquipo, "PanelActualizarEquipo");
+		add(panelMostrarTorneo, "PanelMostrarTorneo");
 		add(panelMostrar, "PanelMostrar");
-		add(panelActualizarEntrenador, "PanelActualizarEntrenador");
 	}
 	/**
 	 * Este método permite mostrar un panel específico en función del nombre del panel.
@@ -129,6 +132,12 @@ public class CardCoach extends JPanel{
 	}
 	public void setPanelInscribirTorneo(PanelInscribirTorneo panelInscribirTorneo) {
 		this.panelInscribirTorneo = panelInscribirTorneo;
+	}
+	public PanelMostrarTorneo getPanelMostrarTorneo() {
+		return panelMostrarTorneo;
+	}
+	public void setPanelMostrarTorneo(PanelMostrarTorneo panelMostrarTorneo) {
+		this.panelMostrarTorneo = panelMostrarTorneo;
 	}
 	
 }

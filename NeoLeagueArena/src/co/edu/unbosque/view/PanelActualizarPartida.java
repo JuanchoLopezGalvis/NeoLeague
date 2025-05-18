@@ -75,4 +75,60 @@ public class PanelActualizarPartida extends JPanel{
 		}
 	}
 
+	public JComboBox<String> getEquipo1() {
+		return equipo1;
+	}
+
+	public void setEquipo1(JComboBox<String> equipo1) {
+		this.equipo1 = equipo1;
+	}
+
+	public JComboBox<String> getEquipo2() {
+		return equipo2;
+	}
+
+	public void setEquipo2(JComboBox<String> equipo2) {
+		this.equipo2 = equipo2;
+	}
+
+	public JComboBox<String> getDatoJuego() {
+		return datoJuego;
+	}
+
+	public void setDatoJuego(JComboBox<String> datoJuego) {
+		this.datoJuego = datoJuego;
+	}
+
+	public JCalendarComboBox getFechaPartida() {
+		return fechaPartida;
+	}
+
+	public void setFechaPartida(JCalendarComboBox fechaPartida) {
+		this.fechaPartida = fechaPartida;
+	}
+
+	public BotonRedondeado getBtnActualizarPartida() {
+		return btnActualizarPartida;
+	}
+
+	public void setBtnActualizarPartida(BotonRedondeado btnActualizarPartida) {
+		this.btnActualizarPartida = btnActualizarPartida;
+	}
+
+	public JComboBox<String> getGanador() {
+		return ganador;
+	}
+
+	public void setGanador(JComboBox<String> ganador) {
+		this.ganador = ganador;
+	}
+
+	public Image getFondo() {
+		return fondo;
+	}
+
+	public void setFondo(Image fondo) {
+		this.fondo = fondo;
+	}
+
 }

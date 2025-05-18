@@ -54,6 +54,7 @@ public class VentanaEntrenador extends JFrame{
 		cardCoach = new CardCoach();
 		cardCoach.setBounds(0, 0, 1280, 720);
 		add(cardCoach);
+		setVisible(true);
 	}
 
 	public JMenuItem getActualizarCuenta() {
