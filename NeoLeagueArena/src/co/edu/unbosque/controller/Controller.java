@@ -1095,7 +1095,7 @@ public class Controller implements ActionListener {
 		                
 		                String asunto = MensajeEmergente.obtenerMensaje("archivosdepropiedades.mensajescorreo.asuntoiniciosecioncoach") ;
 						String cuerpo = MensajeEmergente.obtenerMensaje("archivosdepropiedades.mensajescorreo.cuerpoiniciosecioncoach") + nombre;
-						String correo = mf.getAdao().find(new Administrador(nombre, null, null, 0, null, null, null)).getCorreo();
+						String correo = mf.getEdao().find(new Entrenador(nombre, null, null, 0, null, null, null, null, 0, null)).getCorreo();
 						MensajeEmergente.enviarCorreo(correo, asunto,cuerpo);
 						
 		                vf.getVe().setVisible(true);
@@ -1113,7 +1113,7 @@ public class Controller implements ActionListener {
 		                
 		                String asunto = MensajeEmergente.obtenerMensaje("archivosdepropiedades.mensajescorreo.asuntoinicioseciongamer") ;
 						String cuerpo = MensajeEmergente.obtenerMensaje("archivosdepropiedades.mensajescorreo.cuerpoinicioseciongamer") + nombre;
-						String correo = mf.getAdao().find(new Administrador(nombre, null, null, 0, null, null, null)).getCorreo();
+						String correo = mf.getJdao().find(new Jugador(nombre, null, null, 0, null, null, null, null, 0)).getCorreo();
 						MensajeEmergente.enviarCorreo(correo, asunto,cuerpo);
 		                
 		                vf.getVg().setVisible(true);
