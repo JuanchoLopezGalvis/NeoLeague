@@ -85,6 +85,8 @@ public class Controller implements ActionListener {
 				.asignarElementosAComboBox(vf.getVa().getCardAdmin().getPanelActualizarTorneo().getTorneosExistentes());
 		mf.getTdao().asignarElementosAComboBox(vf.getVa().getCardAdmin().getPanelAgregarPartida().getTorneosExistentes());
 		vf.getVp().setVisible(true);
+		
+		
 	}
 
 	/**
@@ -1256,21 +1258,74 @@ public class Controller implements ActionListener {
 			} else if (fila != -1) {
 				String nombre = vf.getVa().getCardAdmin().getPanelMostrar().getTabla().getValueAt(fila, 0).toString();
 
-				if (panelActual == "mostrarC") {
-					EntrenadorDTO en = new EntrenadorDTO(nombre, null, null, 0, null, null, null, null, 0, null);
-					mf.getEdao().delete(en);
-					mf.getEdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
+				if (panelActual.equals("mostrarC")) {
+				    int opcion = JOptionPane.showConfirmDialog(
+				        null,
+				        MensajeEmergente.obtenerMensaje("archivosdepropiedades.mensajes.preguntas.eliminar"),
+				        MensajeEmergente.obtenerMensaje("archivosdepropiedades.mensajes.preguntas.confirmacioneliminar"),
+				        JOptionPane.YES_NO_OPTION,
+				        JOptionPane.WARNING_MESSAGE
+				    );
+
+				    if (opcion == JOptionPane.YES_OPTION) {
+				        EntrenadorDTO en = new EntrenadorDTO(nombre, null, null, 0, null, null, null, null, 0, null);
+				        Equipo eq = mf.getEdao().find(DataMapper.EntrenadorDTOToEntrenador(en)).getEquipo();
+				        EquipoDTO eqdto = DataMapper.EquipoToEquipoDTO(eq);
+				        if (eq != null) {
+				            eq.setEntrenador(null);
+				            mf.getEqdao().delete(eqdto);
+				        }
+				        boolean exito = mf.getEdao().delete(en);
+				        if (!exito) {
+				            MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.eliminar",
+				                                           "archivosdepropiedades.mensajes.error");
+				        } else {
+				            MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.confirmacion.exitoeliminar",
+				                                           "archivosdepropiedades.mensajes.confirmacion.exito");
+				        }
+				        mf.getEdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
+				    }
 				} else if (panelActual == "mostrarG") {
 					JugadorDTO en = new JugadorDTO(nombre, null, null, 0, null, null, null, null, 0);
-					mf.getJdao().delete(en);
+					boolean exito = mf.getJdao().delete(en);
+					if (!exito) {
+						MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.eliminar",
+								"archivosdepropiedades.mensajes.error");
+						break;
+					} else {
+						MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.confirmacion.exitoeliminar",
+								"archivosdepropiedades.mensajes.confirmacion.exito");
+					}
 					mf.getJdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
 				} else if (panelActual == "mostrarT") {
 					TorneoDTO en = new TorneoDTO(nombre, null, null, null, null, 0, 0);
-					mf.getTdao().delete(en);
+					boolean exito = mf.getTdao().delete(en);
+					if (!exito) {
+						MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.eliminar",
+								"archivosdepropiedades.mensajes.error");
+						break;
+					} else {
+						MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.confirmacion.exitoeliminar",
+								"archivosdepropiedades.mensajes.confirmacion.exito");
+					}
 					mf.getTdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
 				} else if (panelActual == "mostrarE") {
+					String nombreEnt = vf.getVa().getCardAdmin().getPanelMostrar().getTabla().getValueAt(fila, 4).toString();
+					Entrenador creador = mf.getEdao().find(DataMapper.EntrenadorDTOToEntrenador(new EntrenadorDTO(nombreEnt, null, null, 0, null, null, null, null, 0, null)));
+					if (creador != null) {
+						creador.setEquipo(null);
+						mf.getEdao().escribirArchivoSerializado();
+					}
 					EquipoDTO en = new EquipoDTO(nombre, null, null, null, null, null);
-					mf.getEqdao().delete(en);
+					boolean exito = mf.getEqdao().delete(en);
+					if (!exito) {
+						MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.eliminar",
+								"archivosdepropiedades.mensajes.error");
+						break;
+					} else {
+						MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.confirmacion.exitoeliminar",
+								"archivosdepropiedades.mensajes.confirmacion.exito");
+					}
 					mf.getEqdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
 					mf.getEqdao().asignarElmentosCombos(
 							vf.getVa().getCardAdmin().getPanelActualizar().getEquiposExistentes());
@@ -1301,7 +1356,8 @@ public class Controller implements ActionListener {
 			String juegoEspecialidad = prop.getProperty("archivosdepropiedades.arraymostrar.juegodesempeñado");
 			String torneosInscritos = prop.getProperty("archivosdepropiedades.arraymostrar.cantidadtorneosincritos");
 			String partidasJugadas = prop.getProperty("archivosdepropiedades.arraymostrar.partidasjugadas");
-			String[] titulos = { nombre, cantidadJugadores, juegoEspecialidad, torneosInscritos, partidasJugadas };
+			String entrenador= prop.getProperty("archivosdepropiedades.arraymostrar.entrenador");
+			String[] titulos = { nombre, cantidadJugadores, juegoEspecialidad, torneosInscritos, entrenador, partidasJugadas };
 			vf.getVa().getCardAdmin().getPanelMostrar().setModelo(titulos, 0);
 			mf.getEqdao().showAll(vf.getVa().getCardAdmin().getPanelMostrar().getTabla());
 			vf.getVa().getCardAdmin().getPanelMostrar().getTabla().revalidate();
@@ -1363,7 +1419,8 @@ public class Controller implements ActionListener {
 			String juegoEspecialidad = prop.getProperty("archivosdepropiedades.arraymostrar.juegodesempeñado");
 			String torneosInscritos = prop.getProperty("archivosdepropiedades.arraymostrar.cantidadtorneosincritos");
 			String partidasJugadas = prop.getProperty("archivosdepropiedades.arraymostrar.partidasjugadas");
-			String[] titulos = { nombre, cantidadJugadores, juegoEspecialidad, torneosInscritos, partidasJugadas };
+			String entrenador= prop.getProperty("archivosdepropiedades.arraymostrar.entrenador");
+			String[] titulos = { nombre, cantidadJugadores, juegoEspecialidad, torneosInscritos, entrenador, partidasJugadas};
 			vf.getVe().getCardCoach().getPanelMostrar().setModelo(titulos, 0);
 			mf.getEqdao().showAll(vf.getVe().getCardCoach().getPanelMostrar().getTabla());
 			vf.getVe().getCardCoach().getPanelMostrar().getTabla().revalidate();

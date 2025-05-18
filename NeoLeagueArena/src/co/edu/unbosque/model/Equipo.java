@@ -70,6 +70,7 @@ public class Equipo implements Serializable{
 		super();
 		this.nombre = nombre;
 		this.juegoDesempeñado = juegoDesempeñado;
+		this.entrenador = entrenador;
 	}
 	/**
 	 * Metido que retorna el nombre del equipo.
@@ -186,6 +187,6 @@ public class Equipo implements Serializable{
 	@Override
 	public String toString() {
 		return nombre + ";" + "# Gamers" + integrantes.size() + ";" + juegoDesempeñado
-				+ ";" + "# Torneos " + torneosInscritos.size() + ";" + "# Matches played " + partidasJugadas.size() + "\n";
+				+ ";" + "# Torneos " + torneosInscritos.size() + ";" + "# Matches played " + partidasJugadas.size() + ";" + entrenador.getNombre() + "\n";
 	}
 }

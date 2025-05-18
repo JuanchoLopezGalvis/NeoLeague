@@ -1,4 +1,4 @@
-package co.edu.unbosque.model.persistence;
+ package co.edu.unbosque.model.persistence;
 
 import java.util.ArrayList;
 
@@ -29,10 +29,14 @@ public class EquipoDAO implements OperacionDAO<EquipoDTO, Equipo> {
 		}else {
 			modelo.setRowCount(0);
 			for (Equipo equipo : listaEquipos) {
+				if (equipo.getEntrenador() == null) {
+					continue;
+				}
 				int integrantes = equipo.getIntegrantes().size();
 				int torneos = equipo.getTorneosInscritos().size();
 				int partidas = equipo.getPartidasJugadas().size();
-				Object[] row = {equipo.getNombre(), integrantes, equipo.getJuegoDesempeñado(), torneos, partidas};
+				String entrenador = equipo.getEntrenador().getNombre();
+				Object[] row = {equipo.getNombre(), integrantes, equipo.getJuegoDesempeñado(), torneos, entrenador, partidas};
 				modelo.addRow(row);
 			}
 		}
@@ -40,13 +44,14 @@ public class EquipoDAO implements OperacionDAO<EquipoDTO, Equipo> {
 	}
 	public void showOne(JTable table, Equipo toShow, String mensaje) {
 		Equipo equipo = find(toShow);
-		if (equipo != null) {
+		if (equipo != null && equipo.getEntrenador() != null) {
 			DefaultTableModel modelo = (DefaultTableModel) table.getModel();
 			modelo.setRowCount(0);
 			int integrantes = equipo.getIntegrantes().size();
 			int torneos = equipo.getTorneosInscritos().size();
 			int partidas = equipo.getPartidasJugadas().size();
-			Object[] row = {equipo.getNombre(), integrantes, equipo.getJuegoDesempeñado(), torneos, partidas};
+			String entrenador = equipo.getEntrenador().getNombre();
+			Object[] row = {equipo.getNombre(), integrantes, equipo.getJuegoDesempeñado(), torneos, entrenador, partidas};
 			modelo.addRow(row);
 		}else {
 			DefaultTableModel modelo = (DefaultTableModel) table.getModel();
