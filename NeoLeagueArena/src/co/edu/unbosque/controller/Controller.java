@@ -84,9 +84,7 @@ public class Controller implements ActionListener {
 				.asignarElementosAComboBox(vf.getVa().getCardAdmin().getPanelActualizarTorneo().getTorneosExistentes());
 		mf.getTdao().asignarElementosAComboBox(vf.getVa().getCardAdmin().getPanelAgregarPartida().getTorneosExistentes());
 		mf.getTdao().asignarElementosAComboBox(vf.getVa().getCardAdmin().getPanelMostrarTorneo().getComboBoxTorneos());
-		mf.getAdao().getListaAdministradores().remove(0);
-		mf.getAdao().escribirArchivoSerializado();
-		mf.getAdao().escribirArchivoTxt();;
+		mf.getTdao().asignarElementosAComboBox(vf.getVe().getCardCoach().getPanelInscribirTorneo().getTorneoInscribir());
 		vf.getVp().setVisible(true);
 		
 		
@@ -216,6 +214,7 @@ public class Controller implements ActionListener {
 		vf.getVa().getTorneoAnalitycs().setActionCommand("PanelTorneoAnalytics");
 		vf.getVa().getCardAdmin().getPanelMostrarTorneo().getComboBoxTorneos().addActionListener(this);
 		vf.getVa().getCardAdmin().getPanelMostrarTorneo().getComboBoxTorneos().setActionCommand("comboTorneosAnalytics");
+
 
 	}
 
