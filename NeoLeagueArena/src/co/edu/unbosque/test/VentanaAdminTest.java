@@ -12,7 +12,7 @@ import co.edu.unbosque.view.VentanaAdmin;
 
 public class VentanaAdminTest {
 	
-	private static VentanaAdmin ventana;
+	static VentanaAdmin ventana;
 
     @BeforeClass
     public static void hacerAntesDeLasPruebas() throws Exception {

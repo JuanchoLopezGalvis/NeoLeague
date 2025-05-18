@@ -17,18 +17,18 @@ import co.edu.unbosque.model.persistence.PartidaDAO;
 public class PartidaDAOTest {
 
     private static PartidaDAO dao;
-    private PartidaDTO sampleDTO;
-    private Partida samplePartida;
+    static PartidaDTO dto;
+    static Partida entidad;
 //restore
     @BeforeClass
-    public static void setUpBeforeClass()  {
-        System.out.println("Inicialización global");
+    public static void hacerAntesdelaspruevas()  {
+        System.out.println("Inicialización todas las pruebas");
         dao = new PartidaDAO();
     }
 
     @Before
-    public void setUp() {
-        System.out.println("Preparando datos para prueba");
+    public void hcerAntesDeCadaPrueba() {
+        System.out.println("empezando prueba individual");
 
        
         Equipo eq1 = new Equipo("Equipo A", null);
@@ -36,24 +36,24 @@ public class PartidaDAOTest {
         Torneo torneo = new Torneo("Torneo X", null, null, null, null,0,0);
 
         Partida partida = new Partida(1, eq1, eq2, eq1, "League of Legends", new Date(), torneo);
-        samplePartida = partida;
+        entidad = partida;
 
-        sampleDTO = new PartidaDTO(1, "Equipo A", "Equipo B", "Equipo A", "League of Legends", new Date(), "Torneo X");
+        dto = new PartidaDTO(1, "Equipo A", "Equipo B", "Equipo A", "League of Legends", new Date(), "Torneo X");
 
-        dao.add(sampleDTO);  
+        dao.add(dto);  
     }
 
     @Test
     public void testAdd() {
         System.out.println(" Verificando método add()");
-        boolean result = dao.add(sampleDTO);
+        boolean result = dao.add(dto);
         assertFalse("no implementado, debería retornar false", result);
     }
 
     @Test
     public void testFind() {
         System.out.println(" Verificando método");
-        Partida found = dao.find(samplePartida);
+        Partida found = dao.find(entidad);
         assertNull(" no implementado, debería retornar null", found);
     }
 
@@ -67,7 +67,7 @@ public class PartidaDAOTest {
     @Test
     public void testDelete() {
         System.out.println(" Verificando método delete()");
-        boolean deleted = dao.delete(sampleDTO);
+        boolean deleted = dao.delete(dto);
         assertFalse("delete() no implementado, debería retornar false", deleted);
     }
 
@@ -75,18 +75,18 @@ public class PartidaDAOTest {
     public void testUpdate() {
         System.out.println(" Verificando método update()");
         PartidaDTO updatedDTO = new PartidaDTO( 1, "Equipo A", "Equipo B", "Equipo A", "League of Legends", new Date(), "Torneo X");
-        boolean result = dao.update(sampleDTO, updatedDTO);
+        boolean result = dao.update(dto, updatedDTO);
         assertFalse(" no implementado, debería retornar false", result);
     }
 
     @After
-    public void tearDown(){
-        System.out.println("Limpiando datos de prueba");
+    public void hacerDespuesDeCadaPrueba(){
+        System.out.println("Finalizando prueba");
     }
 
     @AfterClass
-    public static void tearDownAfterClass(){
-        System.out.println("Finalización global");
+    public static void hacerDespuesDeTodo(){
+        System.out.println("Finalización todas las pruebas");
         dao = null;
     }
 }
