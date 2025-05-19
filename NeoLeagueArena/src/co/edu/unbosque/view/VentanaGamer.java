@@ -86,25 +86,6 @@ public class VentanaGamer extends JFrame{
 		this.gestionarTorneos = gestionarTorneos;
 	}
 
-<<<<<<< HEAD
-=======
-	/**
-	 * Este metodo se encarga de obtener el panel principal.
-	 * @return verPartidas
-	 */
-	public JMenu getVerPartidas() {
-		return verPartidas;
-	}
-
-	/**
-	 * Este metodo se encarga de setear el panel principal.
-	 * @param Jmenu verPartidas
-	 */
-	public void setVerPartidas(JMenu verPartidas) {
-		this.verPartidas = verPartidas;
-	}
->>>>>>> branch 'main' of git@github.com:JuanchoLopezGalvis/NeoLeague.git
-
 	/**
 	 * Este metodo se encarga de obtener el panel principal.
 	 * @return estadisticas
