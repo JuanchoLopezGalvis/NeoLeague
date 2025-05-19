@@ -35,7 +35,7 @@ public class PanelAgregarTorneo extends JPanel{
 	        datoNombreTorneo = new TextFieldRedondeado(Color.white, Color.decode("#002d69"), 20, Color.white, 1f);
 	        datoMaxEquipos = new JSpinner();
 	        String[] juegos = {"FIFA", "Rocket League", "Formula1", "Gran Turismo"};
-	        String[] formatos = {"Eliminación directa", "Fases grupales"};
+	        String[] formatos = {"Groups", "Liga"};
 	        datoJuego = new JComboBox<>(juegos);
 	        datoFormatoTorneo = new JComboBox<>(formatos);
 	        recompensa = new JSpinner();

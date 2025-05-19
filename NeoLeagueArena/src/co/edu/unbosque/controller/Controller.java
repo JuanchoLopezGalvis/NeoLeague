@@ -165,8 +165,6 @@ public class Controller implements ActionListener {
 		vf.getVa().getCrearPartida().setActionCommand("PanelCrearPartida");
 		vf.getVe().getCrearEquipo().addActionListener(this);
 		vf.getVe().getCrearEquipo().setActionCommand("PanelCrearEquipo");
-		vf.getVa().getMostrarPartidas().addActionListener(this);
-		vf.getVa().getMostrarPartidas().setActionCommand("btnMostrarPartidas");
 		vf.getVa().getMostrarEquipos().addActionListener(this);
 		vf.getVa().getMostrarEquipos().setActionCommand("btnMostrarEquipos");
 
@@ -443,8 +441,6 @@ public class Controller implements ActionListener {
 						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.crearpartidos"));
 				vf.getVa().getMostrarTorneos()
 						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrartorneos"));
-				vf.getVa().getMostrarPartidas()
-						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarpartidos"));
 				vf.getVa().getActualizarTorneo()
 						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.actualizartorneo"));
 				vf.getVa().getAdministrarEquipo()
@@ -642,8 +638,6 @@ public class Controller implements ActionListener {
 						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.crearpartidos"));
 				vf.getVa().getMostrarTorneos()
 						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrartorneos"));
-				vf.getVa().getMostrarPartidas()
-						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.mostrarpartidos"));
 				vf.getVa().getActualizarTorneo()
 						.setText(prop.getProperty("archivosdepropiedades.panelAdmin.actualizartorneo"));
 				vf.getVa().getAdministrarEquipo()
@@ -1505,11 +1499,6 @@ public class Controller implements ActionListener {
 			vf.getVa().getCardAdmin().mostrarPanel("PanelAgregarPartida");
 			break;
 		}
-		case "btnMostrarPartidas": {
-			panelActual = "mostrarP";
-			vf.getVa().getCardAdmin().mostrarPanel("PanelMostrar");
-			break;
-		}
 		case "btnMostrarEquipos": {
 			panelActual = "mostrarE";
 			String nombre = prop.getProperty("archivosdepropiedades.arraymostrar.nombre");
@@ -1917,12 +1906,12 @@ public class Controller implements ActionListener {
 		    String nombreTorneo = torneoItem.toString();
 		    String nombreEquipo1 = equipo1Item.toString();
 		    String nombreEquipo2 = equipo2Item.toString();
-		    String ganador = ganadorItem.toString();
+		    String nombreGanador = ganadorItem.toString();
 
-		    // Valor por defecto para el juego (puedes reemplazarlo si hay un campo específico)
+		    // Valor por defecto para el juego (puedes personalizarlo si tienes ese campo en GUI)
 		    String juego = "Desconocido";
 
-		    // Buscar los objetos reales usando tus DAOs y DataMapper
+		    // Buscar objetos reales
 		    Torneo torneo = mf.getTdao().find(
 		            DataMapper.TorneoDTOToTorneo(new TorneoDTO(nombreTorneo, null, null, null, null, 0, 0)));
 		    Equipo eq1 = mf.getEqdao().find(
@@ -1930,7 +1919,7 @@ public class Controller implements ActionListener {
 		    Equipo eq2 = mf.getEqdao().find(
 		            DataMapper.EquipoDTOToEquipo(new EquipoDTO(nombreEquipo2, null, null, null, null, null, 0)));
 		    Equipo ganadorEq = mf.getEqdao().find(
-		            DataMapper.EquipoDTOToEquipo(new EquipoDTO(ganador, null, null, null, null, null, 0)));
+		            DataMapper.EquipoDTOToEquipo(new EquipoDTO(nombreGanador, null, null, null, null, null, 0)));
 
 		    if (torneo == null || eq1 == null || eq2 == null || ganadorEq == null) {
 		        MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.noencontrado",
@@ -1938,29 +1927,39 @@ public class Controller implements ActionListener {
 		        break;
 		    }
 
-		    // Generar un ID aleatorio único para la partida
+		    // Generar un ID aleatorio único
 		    Random rand = new Random();
 		    int numeroAleatorio = rand.nextInt(100000000);
-
-		    // Crear la partida utilizando el constructor correcto:
-		    // (int id, Equipo equipo1, Equipo equipo2, Equipo ganador, String juego, Date fecha, Torneo torneoAlQuePertenece)
 		    PartidaDTO partida = new PartidaDTO(numeroAleatorio, eq1, eq2, ganadorEq, juego, fecha, torneo);
 
-		    // Verificar que el ID generado no exista ya en el sistema
 		    while (mf.getPdao().find(DataMapper.PartidaDTOToPartida(partida)) != null) {
 		        numeroAleatorio = rand.nextInt(100000000);
 		        partida.setId(numeroAleatorio);
 		    }
 
-		    // Agregar la partida y persistir los cambios
+		    // Agregar la partida
 		    mf.getPdao().add(partida);
-		    mf.getPdao().escribirArchivoSerializado();
 
-		    MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.confirmacion.exitousuario",
+		    // Verificar el formato del torneo y actuar en consecuencia
+		    String formato = torneo.getFormato();
+
+		    if (formato.equalsIgnoreCase("Liga")) {
+		        // Sumar puntos al equipo ganador
+		        if (ganadorEq.getNombre().equals(eq1.getNombre())) {
+		            eq1.setPuntos(eq1.getPuntos() + 3);
+		        } else if (ganadorEq.getNombre().equals(eq2.getNombre())) {
+		            eq2.setPuntos(eq2.getPuntos() + 3);
+		        }
+		    } else if (formato.equalsIgnoreCase("Groups")) {
+		        // Eliminar al equipo perdedor
+		        Equipo perdedor = ganadorEq.getNombre().equals(eq1.getNombre()) ? eq2 : eq1;
+		        torneo.getListaEquiposInscritos().remove(perdedor);
+		    }
+
+		    MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.confirmacion.exito",
 		            "archivosdepropiedades.mensajes.confirmacion.exito");
 		    break;
 		}
-
 		}
 
 	}
