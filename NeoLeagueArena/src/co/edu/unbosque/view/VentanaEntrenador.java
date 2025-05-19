@@ -4,7 +4,12 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-
+/**
+ * VentanaEntrenador es una clase que extiende de JFrame y representa la ventana
+ * principal de la aplicación para el entrenador.
+ * 
+ * @version 1.0
+ */
 public class VentanaEntrenador extends JFrame{
 
 	/**

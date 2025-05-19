@@ -10,10 +10,27 @@ import javax.swing.JPanel;
 
 import de.wannawork.jcalendar.JCalendarComboBox;
 
+/**
+ * PanelAgregarPartida es una clase que extiende JPanel y se encarga de crear
+ * un panel para agregar una partida a un torneo.
+ * 
+ */
 public class PanelAgregarPartida extends JPanel{
 
 	/**
 	 *
+	 *
+	 * Este es el panel que se encarga de agregar una partida a un torneo.
+	 * Este panel contiene los siguientes componentes:
+	 * - Un JComboBox para seleccionar el equipo 1.
+	 * - Un JComboBox para seleccionar el equipo 2.
+	 * - Un JComboBox para seleccionar el juego.
+	 * - Un JComboBox para seleccionar el ganador.
+	 * - Un JCalendarComboBox para seleccionar la fecha de la partida.
+	 * - Un BotonRedondeado para agregar la partida.
+	 * - Un JComboBox para seleccionar el torneo existente.
+	 * 
+	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private JComboBox<String> equipo1;

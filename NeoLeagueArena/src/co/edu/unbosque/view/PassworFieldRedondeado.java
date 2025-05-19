@@ -10,6 +10,14 @@ import java.awt.geom.RoundRectangle2D;
 import javax.swing.JPasswordField;
 import javax.swing.SwingConstants;
 
+
+/**
+ * La clase {@link PassworFieldRedondeado} es una subclase de {@link JPasswordField} que
+ * permite crear un campo de contraseña con bordes redondeados y un color de fondo
+ * personalizado.
+ * 
+ * @version 1.0
+ */
 public class PassworFieldRedondeado extends JPasswordField{
 
 	/**

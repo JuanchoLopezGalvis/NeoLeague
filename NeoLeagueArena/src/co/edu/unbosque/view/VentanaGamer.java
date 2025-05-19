@@ -5,6 +5,12 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+/**
+ * VentanaGamer es una clase que extiende de JFrame y representa la ventana
+ * principal de la aplicación para el gamer.
+ * 
+ * @version 1.0
+ */
 public class VentanaGamer extends JFrame{
 
 	/**
@@ -16,6 +22,9 @@ public class VentanaGamer extends JFrame{
 	private JMenuItem actualizarCuenta, consultarTorneos, topGamers;
 	private CardGamer cardGamer;
 
+	/**
+	 * Este es el constructor de la clase {@link VentanaGamer} que se encarga de inicializar el panel principal y darle las caracteristicas a la ventana.
+	 */
 	public VentanaGamer() {
 		setSize(1280,720);
 		setLocationRelativeTo(null);
@@ -45,72 +54,141 @@ public class VentanaGamer extends JFrame{
 	}
 
 
+	/**
+	 * Este metodo se encarga de obtener el panel principal.
+	 * @return cardGamer
+	 */
 
 	public JMenu getGestionarCuenta() {
 		return gestionarCuenta;
 	}
+	
+	/**
+	 * Este metodo se encarga de setear el panel principal.
+	 * @param cardGamer
+	 */
 
 	public void setGestionarCuenta(JMenu gestionarCuenta) {
 		this.gestionarCuenta = gestionarCuenta;
 	}
 
+	/**
+	 * Este metodo se encarga de obtener el panel principal.
+	 * @return cardGamer
+	 */
 	public JMenu getGestionarTorneos() {
 		return gestionarTorneos;
 	}
 
+	/**
+	 * Este metodo se encarga de setear el panel principal.
+	 * @param cardGamer
+	 */
 	public void setGestionarTorneos(JMenu gestionarTorneos) {
 		this.gestionarTorneos = gestionarTorneos;
 	}
 
+	/**
+	 * Este metodo se encarga de obtener el panel principal.
+	 * @return verPartidas
+	 */
 	public JMenu getVerPartidas() {
 		return verPartidas;
 	}
 
+	/**
+	 * Este metodo se encarga de setear el panel principal.
+	 * @param Jmenu verPartidas
+	 */
 	public void setVerPartidas(JMenu verPartidas) {
 		this.verPartidas = verPartidas;
 	}
 
+	/**
+	 * Este metodo se encarga de obtener el panel principal.
+	 * @return estadisticas
+	 */
 	public JMenu getEstadisticas() {
 		return estadisticas;
 	}
 
+	/**
+	 * Este metodo se encarga de setear el panel principal.
+	 * @param JMenu estadisticas
+	 */
 	public void setEstadisticas(JMenu estadisticas) {
 		this.estadisticas = estadisticas;
 	}
 
+	/**
+	 * Este metodo se encarga de obtener el panel principal.
+	 * @return cardGamer
+	 */
+	
 	public JMenuItem getActualizarCuenta() {
 		return actualizarCuenta;
 	}
 
+	/**
+	 * Este metodo se encarga de setear el panel principal.
+	 * @param JMenuItem actualizarCuenta
+	 */
 	public void setActualizarCuenta(JMenuItem actualizarCuenta) {
 		this.actualizarCuenta = actualizarCuenta;
 	}
 
+	/**
+	 * Este metodo se encarga de obtener el panel principal.
+	 * @return consultarTorneos
+	 */
 	public JMenuItem getConsultarTorneos() {
 		return consultarTorneos;
 	}
 
+	/**
+	 * Este metodo se encarga de setear el panel principal.
+	 * @param JMenuItem consultarTorneos
+	 */
 	public void setConsultarTorneos(JMenuItem consultarTorneos) {
 		this.consultarTorneos = consultarTorneos;
 	}
-
+	/**
+	 * Este metodo se encarga de obtener el panel principal.
+	 * @return topGamers
+	 */
 
 	public JMenuItem getTopGamers() {
 		return topGamers;
 	}
 
+	/**
+	 * Este metodo se encarga de setear el panel principal.
+	 * @param JMenuItem topGamers
+	 */
 	public void setTopGamers(JMenuItem topGamers) {
 		this.topGamers = topGamers;
 	}
 
+	/**
+	 * Este metodo se encarga de obtener el panel principal.
+	 * @return cardGamer
+	 */
 	public CardGamer getCardGamer() {
 		return cardGamer;
 	}
 
+	/**
+	 * Este metodo se encarga de setear el panel principal.
+	 * @param cardGamer
+	 */
 	public void setCardGamer(CardGamer cardGamer) {
 		this.cardGamer = cardGamer;
 	}
 
+	/**
+	 * Este metodo se encarga de obtener el serialVersionUID.
+	 * @return serialVersionUID
+	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
