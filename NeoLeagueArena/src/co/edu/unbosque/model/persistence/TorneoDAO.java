@@ -9,17 +9,31 @@ import javax.swing.table.DefaultTableModel;
 import co.edu.unbosque.model.Equipo;
 import co.edu.unbosque.model.Torneo;
 import co.edu.unbosque.model.TorneoDTO;
-
+/**
+ * Clase TorneoDAO que implementa la interfaz OperacionDAO para manejar la
+ * persistencia de los torneos.
+ */
 public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 	private final String TEXT_FILE_NAME = "torneo.csv";
 	private final String SERIAL_FILE_NAME = "torneo.dat";
 	private ArrayList<Torneo> listaTorneos;
-
+/**
+ * Constructor de la clase TorneoDAO que inicializa la lista de torneos y
+ * carga los torneos desde el archivo serializado.
+ * 
+ * 
+ */
 	public TorneoDAO() {
 		listaTorneos = new ArrayList<>();
 		leerArchivoSerializado();
 	}
-
+/**
+ * Método que muestra todos los torneos en una tabla.
+ * 
+ * @param tabla la tabla donde se mostrarán los torneos.
+ * 
+ * 
+ */
 	@Override
 	public boolean showAll(JTable tabla) {
 		DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
@@ -38,6 +52,14 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 		return true;
 	}
 
+	/**
+	 * Método que muestra los equipos inscritos en un torneo en una tabla.
+	 * 
+	 * @param tabla la tabla donde se mostrarán los equipos.
+	 * @param t     el torneo del cual se mostrarán los equipos.
+	 * 
+	 * 
+	 */
 	public boolean showEquipos(JTable tabla, Torneo t) {
 		DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
 		if (t.getListaEquiposInscritos().isEmpty()) {
@@ -60,12 +82,29 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 		}
 		return true;
 	}
+	/**
+	 * Método que muestra los equipos inscritos en un torneo en una tabla.
+	 * 
+	 * @param tabla la tabla donde se mostrarán los equipos.
+	 * @param t     el torneo del cual se mostrarán los equipos.
+	 * 
+	 * 
+	 */
 
 	@Override
 	public ArrayList<TorneoDTO> getAll() {
 		return null;
 	}
 
+	/**
+	 * Método que muestra los equipos inscritos en un torneo en un JComboBox.
+	 * 
+	 * @param comboBox el JComboBox donde se mostrarán los equipos.
+	 * @param torneoDTO el torneo del cual se mostrarán los equipos.
+	 * @param y        un entero que indica si se debe mostrar el mensaje de
+	 *                 "Seleccione un equipo".
+	 * 
+	 */
 	public void mostrarEquiposEnComboBox(JComboBox<String> comboBox, TorneoDTO torneoDTO, int y) {
 		if (listaTorneos.isEmpty()) {
 			comboBox.removeAllItems();
@@ -97,6 +136,15 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 
 		}
 	}
+	/**
+	 * Método que añade los equipos inscritos en un torneo en un JComboBox.
+	 * 
+	 * @param comboBox el JComboBox donde se mostrarán los equipos.
+	 * @param torneoDTO el torneo del cual se mostrarán los equipos.
+	 * @param y        un entero que indica si se debe mostrar el mensaje de
+	 *                 "Seleccione un equipo".
+	 * 
+	 */
 
 	@Override
 	public boolean add(TorneoDTO newData) {
@@ -109,6 +157,14 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 		escribirArchivoTxt();
 		return true;
 	}
+	/**
+	 * Método que muestra un torneo en una tabla.
+	 * 
+	 * @param table   la tabla donde se mostrará el torneo.
+	 * @param toShow  el torneo a mostrar.
+	 * @param mensaje el mensaje a mostrar si no se encuentra el torneo.
+	 * 
+	 */
 
 	public void showOne(JTable table, Torneo toShow, String mensaje) {
 		Torneo torneo = find(toShow);
@@ -127,6 +183,14 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 		}
 	}
 
+	/**
+	 * Método que muestra un torneo en una tabla.
+	 * 
+	 * @param table   la tabla donde se mostrará el torneo.
+	 * @param toShow  el torneo a mostrar.
+	 * @param mensaje el mensaje a mostrar si no se encuentra el torneo.
+	 * 
+	 */
 	@Override
 	public boolean delete(TorneoDTO toDelete) {
 		Torneo torneo = find(DataMapper.TorneoDTOToTorneo(toDelete));
@@ -139,6 +203,13 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 		return false;
 	}
 
+	/**
+	 * Método que busca un torneo en la lista de torneos.
+	 * 
+	 * @param toFind el torneo a buscar.
+	 * @return el torneo encontrado o null si no se encuentra.
+	 * 
+	 */
 	@Override
 	public Torneo find(Torneo toFind) {
 		Torneo found = null;
@@ -154,6 +225,12 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 		return null;
 	}
 
+	/**
+	 * Método que asigna los torneos a un JComboBox.
+	 * 
+	 * @param comboBox el JComboBox donde se mostrarán los torneos.
+	 * 
+	 */
 	public void asignarElementosAComboBox(JComboBox<String> comboBox) {
 		if (listaTorneos.isEmpty()) {
 			comboBox.removeAllItems();
@@ -166,6 +243,15 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 		}
 	}
 
+	/**
+	 * Método que actualiza un torneo en la lista de torneos.
+	 * 
+	 * @param previous el torneo a actualizar.
+	 * @param newData  los nuevos datos del torneo.
+	 * @return true si se actualiza correctamente, false si no se encuentra el
+	 *         torneo.
+	 * 
+	 */
 	@Override
 	public boolean update(TorneoDTO previous, TorneoDTO newData) {
 		Torneo torneo = find(DataMapper.TorneoDTOToTorneo(previous));
@@ -181,15 +267,31 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 		}
 		return false;
 	}
-
+	/**
+	 * Método que obtiene la lista de torneos.
+	 * 
+	 * @return la lista de torneos.
+	 * 
+	 */
+	
 	public ArrayList<Torneo> getListaTorneos() {
 		return listaTorneos;
 	}
 
+	/**
+	 * Método que asigna la lista de torneos.
+	 * 
+	 * @param listaTorneos la lista de torneos a asignar.
+	 * 
+	 */
 	public void setListaTorneos(ArrayList<Torneo> listaTorneos) {
 		this.listaTorneos = listaTorneos;
 	}
 
+	/**
+	 * Método que escribe la lista de torneos en un archivo de texto.
+	 * 
+	 */
 	public void escribirArchivoTxt() {
 		StringBuilder contenido = new StringBuilder();
 		for (Torneo torneo : listaTorneos) {
@@ -198,10 +300,18 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 		FileManager.escribirEnArchivoDeTexto(TEXT_FILE_NAME, contenido.toString());
 	}
 
+	/**
+	 * Método que escribe la lista de torneos en un archivo serializado.
+	 * 
+	 */
 	public void escribirArchivoSerializado() {
 		FileManager.escribirArchivoSerializado(SERIAL_FILE_NAME, listaTorneos);
 	}
 
+	/**
+	 * Método que lee la lista de torneos desde un archivo serializado.
+	 * 
+	 */
 	public void leerArchivoSerializado() {
 		listaTorneos = (ArrayList<Torneo>) FileManager.leerArchivoSerializado(SERIAL_FILE_NAME);
 		if (listaTorneos == null) {
