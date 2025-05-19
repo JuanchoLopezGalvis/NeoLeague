@@ -237,6 +237,8 @@ public class Controller implements ActionListener {
 				.setActionCommand("btnAgregarPartida");
 		vf.getVg().getTopGamers().addActionListener(this);
 		vf.getVg().getTopGamers().setActionCommand("btnTopGamers");
+		vf.getIe().getBtnInscribir().addActionListener(this);
+		vf.getIe().getBtnInscribir().setActionCommand("btnInscribirJugador");
 
 	}
 
@@ -1963,7 +1965,48 @@ public class Controller implements ActionListener {
 		    break;
 		}
 		case "btnTopGamers":{
+			mf.getEqdao().asignarElmentosCombos(vf.getIe().getEquipos());
 			vf.getIe().setVisible(true);
+			break;
+		}
+		case "btnInscribirJugador":{
+			String nombreEquipo = vf.getIe().getEquipos().getSelectedItem().toString();
+
+			Equipo t = mf.getEqdao()
+					.find(DataMapper.EquipoDTOToEquipo(new EquipoDTO(nombreEquipo, null, null, null, null, null, 0)));
+
+			if (t != null) {
+				Jugador team = mf.getJdao().find(
+						DataMapper.JugadorDTOToJugador(new JugadorDTO(nombreUsuario,null, null, 0, null, null, null, null, 0)));
+
+				if (team != null) {
+					boolean yaInscrito = false;
+
+					for (Jugador equipo : t.getIntegrantes()) {
+						if (equipo.getNombre().equals(team.getNombre())) {
+							yaInscrito = true;
+							break;
+						}
+					}
+
+					if (yaInscrito) {
+						MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error",
+								"archivosdepropiedades.mensajes.error");
+					} else {
+						t.getIntegrantes().add(team);
+						mf.getEqdao().escribirArchivoSerializado();
+						mf.getEqdao().escribirArchivoTxt();
+						MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.confirmacion.exito",
+								"archivosdepropiedades.mensajes.confirmacion.exito");
+					}
+				} else {
+					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.noencontrado",
+							"archivosdepropiedades.mensajes.error");
+				}
+			} else {
+				MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.noencontrado",
+						"archivosdepropiedades.mensajes.error");
+			}
 			break;
 		}
 		}

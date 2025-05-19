@@ -12,7 +12,7 @@ public class VentanaGamer extends JFrame{
 	 */
 	private static final long serialVersionUID = 1L;
 	private JMenuBar menuBar;
-	private JMenu gestionarCuenta, gestionarTorneos, verPartidas, estadisticas;
+	private JMenu gestionarCuenta, gestionarTorneos, estadisticas;
 	private JMenuItem actualizarCuenta, consultarTorneos, topGamers;
 	private CardGamer cardGamer;
 
@@ -25,11 +25,9 @@ public class VentanaGamer extends JFrame{
 		menuBar = new JMenuBar();
 		gestionarCuenta = new JMenu("Gestionar Cuenta");
 		gestionarTorneos = new JMenu("Gestionar Torneos");
-		verPartidas = new JMenu("Ver mis partidas");
 		estadisticas = new JMenu("Equipos");
 		menuBar.add(gestionarCuenta);
 		menuBar.add(gestionarTorneos);
-		menuBar.add(verPartidas);
 		menuBar.add(estadisticas);
 		actualizarCuenta = new JMenuItem("Actualizar mi cuenta");
 		consultarTorneos = new JMenuItem("Consultar torneos");
@@ -62,13 +60,6 @@ public class VentanaGamer extends JFrame{
 		this.gestionarTorneos = gestionarTorneos;
 	}
 
-	public JMenu getVerPartidas() {
-		return verPartidas;
-	}
-
-	public void setVerPartidas(JMenu verPartidas) {
-		this.verPartidas = verPartidas;
-	}
 
 	public JMenu getEstadisticas() {
 		return estadisticas;
