@@ -26,6 +26,10 @@ public class ViewFacade {
 	 */
 	private VentanaAdmin va;
 	/**
+	 * VentanaAdmin es la ventana del admin del aplicativo.
+	 */
+	private InscribirEquipo ie;
+	/**
 	 * Constructor de la clase ViewFacade, que se encarga de crear cada una de las ventanas del aplicativo.
 	 */
 	public ViewFacade() {
@@ -35,6 +39,7 @@ public class ViewFacade {
 		vg = new VentanaGamer();
 		ve = new VentanaEntrenador();
 		va = new VentanaAdmin();
+		ie = new InscribirEquipo();
 	}
 	/**
 	 * Metodo que se encarga de devolver la ventana principal del aplicativo.
@@ -105,6 +110,20 @@ public class ViewFacade {
 	 */
 	public void setVe(VentanaEntrenador ve) {
 		this.ve = ve;
+	}
+	/**
+	 * Metodo que se encarga de devolver la ventana de inscribir equipo del aplicativo.
+	 * @return InscribirEquipo
+	 */
+	public InscribirEquipo getIe() {
+		return ie;
+	}
+	/**
+	 * Metodo que se encarga de setear la ventana de inscribir equipo del aplicativo.
+	 * @param ie InscribirEquipo
+	 */
+	public void setIe(InscribirEquipo ie) {
+		this.ie = ie;
 	}
 
 }

@@ -26,14 +26,14 @@ public class VentanaGamer extends JFrame{
 		gestionarCuenta = new JMenu("Gestionar Cuenta");
 		gestionarTorneos = new JMenu("Gestionar Torneos");
 		verPartidas = new JMenu("Ver mis partidas");
-		estadisticas = new JMenu("Estadisticas");
+		estadisticas = new JMenu("Equipos");
 		menuBar.add(gestionarCuenta);
 		menuBar.add(gestionarTorneos);
 		menuBar.add(verPartidas);
 		menuBar.add(estadisticas);
 		actualizarCuenta = new JMenuItem("Actualizar mi cuenta");
 		consultarTorneos = new JMenuItem("Consultar torneos");
-		topGamers = new JMenuItem("Top Gamers");
+		topGamers = new JMenuItem("Inscribir equipo");
 		gestionarCuenta.add(actualizarCuenta);
 		gestionarTorneos.add(consultarTorneos);
 		estadisticas.add(topGamers);

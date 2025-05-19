@@ -235,6 +235,8 @@ public class Controller implements ActionListener {
 		vf.getVa().getCardAdmin().getPanelAgregarPartida().getBtnAgregarPartida().addActionListener(this);
 		vf.getVa().getCardAdmin().getPanelAgregarPartida().getBtnAgregarPartida()
 				.setActionCommand("btnAgregarPartida");
+		vf.getVg().getTopGamers().addActionListener(this);
+		vf.getVg().getTopGamers().setActionCommand("btnTopGamers");
 
 	}
 
@@ -1959,6 +1961,10 @@ public class Controller implements ActionListener {
 		    MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.confirmacion.exito",
 		            "archivosdepropiedades.mensajes.confirmacion.exito");
 		    break;
+		}
+		case "btnTopGamers":{
+			vf.getIe().setVisible(true);
+			break;
 		}
 		}
 
