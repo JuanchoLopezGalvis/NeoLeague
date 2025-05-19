@@ -8,6 +8,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
+/**
+ * Clase que representa el panel de inscripcion de torneos.
+ * 
+ * @version 1.0
+ */
 public class PanelInscribirTorneo extends JPanel{
 	/**
 	 * 

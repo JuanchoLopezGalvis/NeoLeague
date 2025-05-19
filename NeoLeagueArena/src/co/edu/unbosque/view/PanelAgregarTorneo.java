@@ -14,6 +14,14 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.text.NumberFormatter;
 
 import de.wannawork.jcalendar.JCalendarComboBox;
+
+
+/**
+ * Esta clase representa el panel de agregar torneo.
+ * Contiene los componentes necesarios para agregar un torneo.
+ * @author Juan Pablo Garcia
+ */
+
 public class PanelAgregarTorneo extends JPanel{
 	/**
 	 *

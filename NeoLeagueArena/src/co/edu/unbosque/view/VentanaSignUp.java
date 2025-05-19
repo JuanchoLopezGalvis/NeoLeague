@@ -2,7 +2,10 @@ package co.edu.unbosque.view;
 
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-
+/**
+ * La clase {@link VentanaSignUp} es la ventana de registro de la aplicacion.
+ * Esta ventana contiene el panel de registro.
+ */
 public class VentanaSignUp extends JFrame {
 
 	/**
@@ -25,15 +28,31 @@ public class VentanaSignUp extends JFrame {
 		add(roles);
 		add(cardSignUp);
 	}
+	/**
+	 * Este metodo se encarga de obtener el panel de registro.
+	 * @return cardSignUp
+	 */
 	public CardSignUp getCardSignUp() {
 		return cardSignUp;
 	}
+	/**
+	 * Este metodo se encarga de setear el panel de registro.
+	 * @param cardSignUp
+	 */
 	public void setCardSignUp(CardSignUp cardSignUp) {
 		this.cardSignUp = cardSignUp;
 	}
+	/**
+	 * Este metodo se encarga de obtener el comboBox de roles.
+	 * @return roles
+	 */
 	public JComboBox<String> getRoles() {
 		return roles;
 	}
+	/**
+	 * Este metodo se encarga de setear el comboBox de roles.
+	 * @param roles
+	 */
 	public void setRoles(JComboBox<String> roles) {
 		this.roles = roles;
 	}

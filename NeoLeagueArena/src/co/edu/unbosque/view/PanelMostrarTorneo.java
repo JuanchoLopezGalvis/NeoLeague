@@ -12,6 +12,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * Clase que representa el panel de mostrar torneos.
+ * 
+ * @version 1.0
+ */
 public class PanelMostrarTorneo extends JPanel{
 	private static final long serialVersionUID = 1L;
 	/**

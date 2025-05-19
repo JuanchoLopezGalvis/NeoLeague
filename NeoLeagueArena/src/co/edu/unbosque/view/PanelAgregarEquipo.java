@@ -13,6 +13,9 @@ public class PanelAgregarEquipo extends JPanel{
 
 	/**
 	 *
+	 *
+	 * Esta clase es la encargada de crear el panel para agregar un equipo.
+	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	/**

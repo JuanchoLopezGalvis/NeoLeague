@@ -11,6 +11,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * Clase que representa el panel de mostrar objetos.
+ * 
+ */
 public class PanelMostrar extends JPanel {
 
 	/**

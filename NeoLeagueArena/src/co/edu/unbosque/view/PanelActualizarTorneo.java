@@ -18,6 +18,10 @@ import de.wannawork.jcalendar.JCalendarComboBox;
 public class PanelActualizarTorneo extends JPanel{
 	/**
 	 *
+	 *
+	 * Esta clase representa un panel que permite actualizar la información de los torneos en la aplicación.
+	 * Contiene campos para ingresar datos, un botón para actualizar y un combo box para seleccionar torneos existentes.
+	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private JCalendarComboBox datoFechaInicio, datoFechaFin;

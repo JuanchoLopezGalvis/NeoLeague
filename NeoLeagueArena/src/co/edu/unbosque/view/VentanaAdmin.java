@@ -5,6 +5,12 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+
+/** * VentanaAdmin es una clase que extiende de JFrame y representa la ventana
+ * principal de la aplicación para el administrador.
+ * 
+ * @version 1.0
+ */
 public class VentanaAdmin extends JFrame{
 
 	private JMenuBar menuBar;
