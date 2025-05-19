@@ -9,7 +9,7 @@ public class VentanaAdmin extends JFrame{
 
 	private JMenuBar menuBar;
 	private JMenu administrarGamer, administrarCouch, administrarTorneos, administrarPartidas, administrarEquipo, reportes;
-	private JMenuItem  torneoAnalitycs, mostrarGamers, mostrarCoachs, crearTorneo, crearPartida, mostrarTorneos, mostrarPartidas, actualizarTorneo, actualizarPartida, actualizarEquipo,  mostrarEquipos, analiytics;
+	private JMenuItem  torneoAnalitycs, mostrarGamers, mostrarCoachs, crearTorneo, crearPartida, mostrarTorneos, mostrarPartidas, actualizarTorneo, actualizarEquipo,  mostrarEquipos, analiytics;
 	private CardAdmin cardAdmin;
 
 	/**
@@ -35,7 +35,6 @@ public class VentanaAdmin extends JFrame{
 		torneoAnalitycs = new JMenuItem("Analitycs");
 		mostrarPartidas = new JMenuItem("Show Matches");
 		actualizarTorneo = new JMenuItem("Update Tournament");
-		actualizarPartida = new JMenuItem("Update Match");
 		administrarEquipo = new JMenu("Manage Teams");
 		actualizarEquipo = new JMenuItem("Update Team");
 		mostrarEquipos = new JMenuItem("Show Teams");
@@ -52,7 +51,6 @@ public class VentanaAdmin extends JFrame{
 		administrarTorneos.add(torneoAnalitycs);
 		administrarPartidas.add(crearPartida);
 		administrarPartidas.add(mostrarPartidas);
-		administrarPartidas.add(actualizarPartida);
 		administrarGamer.add(mostrarGamers);
 		administrarCouch.add(mostrarCoachs);
 		administrarEquipo.add(actualizarEquipo);
@@ -118,12 +116,6 @@ public class VentanaAdmin extends JFrame{
 	}
 	public void setActualizarTorneo(JMenuItem actualizarTorneo) {
 		this.actualizarTorneo = actualizarTorneo;
-	}
-	public JMenuItem getActualizarPartida() {
-		return actualizarPartida;
-	}
-	public void setActualizarPartida(JMenuItem actualizarPartida) {
-		this.actualizarPartida = actualizarPartida;
 	}
 	public JMenuItem getActualizarEquipo() {
 		return actualizarEquipo;

@@ -71,9 +71,7 @@ public class PartidaDTO implements Serializable{
 		this.fecha = fecha;
 		this.torneoAlQuePertenece = torneoAlQuePertenece;
 	}
-	public PartidaDTO(int i, String string, String string2, String string3, String string4, Date date, String string5) {
-		// TODO Auto-generated constructor stub
-	}
+
 	/**
 	 * Metodo que retorna el id de la partida.
 	 * @return id

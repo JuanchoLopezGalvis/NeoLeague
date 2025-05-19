@@ -14,31 +14,36 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 	private final String TEXT_FILE_NAME = "torneo.csv";
 	private final String SERIAL_FILE_NAME = "torneo.dat";
 	private ArrayList<Torneo> listaTorneos;
+
 	public TorneoDAO() {
 		listaTorneos = new ArrayList<>();
 		leerArchivoSerializado();
 	}
+
 	@Override
 	public boolean showAll(JTable tabla) {
+		DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
 		if (listaTorneos.isEmpty()) {
+			modelo.setRowCount(0);
 			return false;
-		}else {
-			DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+		} else {
 			modelo.setRowCount(0);
 			for (Torneo torneo : listaTorneos) {
 				int size = torneo.getListaEquiposInscritos().size();
-				Object[] row = {torneo.getNombre(), torneo.getJuego(), torneo.getFechaInicio(), torneo.getFechaFin(), torneo.getFormato(), torneo.getMaxEquipos(), torneo.getPremio(), size};
+				Object[] row = { torneo.getNombre(), torneo.getJuego(), torneo.getFechaInicio(), torneo.getFechaFin(),
+						torneo.getFormato(), torneo.getMaxEquipos(), torneo.getPremio(), size };
 				modelo.addRow(row);
 			}
 		}
 		return true;
 	}
+
 	public boolean showEquipos(JTable tabla, Torneo t) {
 		DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
 		if (t.getListaEquiposInscritos().isEmpty()) {
 			modelo.setRowCount(0);
 			return false;
-		}else {
+		} else {
 			modelo.setRowCount(0);
 			for (Equipo equipo : t.getListaEquiposInscritos()) {
 				if (equipo.getEntrenador() == null) {
@@ -48,7 +53,8 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 				int torneos = equipo.getTorneosInscritos().size();
 				int partidas = equipo.getPartidasJugadas().size();
 				String entrenador = equipo.getEntrenador().getNombre();
-				Object[] row = {equipo.getNombre(), integrantes, equipo.getJuegoDesempeñado(), torneos, entrenador, partidas, equipo.getPuntos()};
+				Object[] row = { equipo.getNombre(), integrantes, equipo.getJuegoDesempeñado(), torneos, entrenador,
+						partidas, equipo.getPuntos() };
 				modelo.addRow(row);
 			}
 		}
@@ -59,19 +65,36 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 	public ArrayList<TorneoDTO> getAll() {
 		return null;
 	}
-	
-	public void mostrarEquiposEnComboBox(JComboBox<String> comboBox, TorneoDTO torneoDTO) {
+
+	public void mostrarEquiposEnComboBox(JComboBox<String> comboBox, TorneoDTO torneoDTO, int y) {
+		if (listaTorneos.isEmpty()) {
+			comboBox.removeAllItems();
+		}
 		Torneo torneo = find(DataMapper.TorneoDTOToTorneo(torneoDTO));
 		if (torneo != null) {
-			comboBox.removeAllItems();
-			if (torneo.getListaEquiposInscritos() != null) {
-				for (Equipo equipo : torneo.getListaEquiposInscritos()) {
-					comboBox.addItem(equipo.getNombre());
+			if (y==1) {
+				comboBox.removeAllItems();
+				comboBox.addItem("");
+				if (torneo.getListaEquiposInscritos() != null) {
+					for (Equipo equipo : torneo.getListaEquiposInscritos()) {
+						comboBox.addItem(equipo.getNombre());
+					}
 				}
+
+				comboBox.revalidate();
+				comboBox.repaint();
+			}else {
+				comboBox.removeAllItems();
+				if (torneo.getListaEquiposInscritos() != null) {
+					for (Equipo equipo : torneo.getListaEquiposInscritos()) {
+						comboBox.addItem(equipo.getNombre());
+					}
+				}
+
+				comboBox.revalidate();
+				comboBox.repaint();
 			}
-			
-			comboBox.revalidate();
-			comboBox.repaint();
+
 		}
 	}
 
@@ -80,11 +103,11 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 		if (newData.getListaEquiposInscritos() == null) {
 			newData.setListaEquiposInscritos(new ArrayList<>());
 		}
-        Torneo torneo = DataMapper.TorneoDTOToTorneo(newData);
-        listaTorneos.add(torneo);
-        escribirArchivoSerializado();
-        escribirArchivoTxt();
-        return true;
+		Torneo torneo = DataMapper.TorneoDTOToTorneo(newData);
+		listaTorneos.add(torneo);
+		escribirArchivoSerializado();
+		escribirArchivoTxt();
+		return true;
 	}
 
 	public void showOne(JTable table, Torneo toShow, String mensaje) {
@@ -93,12 +116,13 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 			DefaultTableModel modelo = (DefaultTableModel) table.getModel();
 			modelo.setRowCount(0);
 			int size = torneo.getListaEquiposInscritos().size();
-			Object[] row = {torneo.getNombre(), torneo.getJuego(), torneo.getFechaInicio(), torneo.getFechaFin(), torneo.getFormato(), torneo.getMaxEquipos(), torneo.getPremio(), size};
+			Object[] row = { torneo.getNombre(), torneo.getJuego(), torneo.getFechaInicio(), torneo.getFechaFin(),
+					torneo.getFormato(), torneo.getMaxEquipos(), torneo.getPremio(), size };
 			modelo.addRow(row);
-		}else {
+		} else {
 			DefaultTableModel modelo = (DefaultTableModel) table.getModel();
 			modelo.setRowCount(0);
-			Object[] row = {mensaje};
+			Object[] row = { mensaje };
 			modelo.addRow(row);
 		}
 	}
@@ -129,8 +153,11 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 		}
 		return null;
 	}
-	
+
 	public void asignarElementosAComboBox(JComboBox<String> comboBox) {
+		if (listaTorneos.isEmpty()) {
+			comboBox.removeAllItems();
+		}
 		comboBox.removeAllItems();
 		for (Torneo torneo : listaTorneos) {
 			comboBox.addItem(torneo.getNombre());
@@ -154,12 +181,15 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 		}
 		return false;
 	}
+
 	public ArrayList<Torneo> getListaTorneos() {
 		return listaTorneos;
 	}
+
 	public void setListaTorneos(ArrayList<Torneo> listaTorneos) {
 		this.listaTorneos = listaTorneos;
 	}
+
 	public void escribirArchivoTxt() {
 		StringBuilder contenido = new StringBuilder();
 		for (Torneo torneo : listaTorneos) {
@@ -167,17 +197,16 @@ public class TorneoDAO implements OperacionDAO<TorneoDTO, Torneo> {
 		}
 		FileManager.escribirEnArchivoDeTexto(TEXT_FILE_NAME, contenido.toString());
 	}
+
 	public void escribirArchivoSerializado() {
 		FileManager.escribirArchivoSerializado(SERIAL_FILE_NAME, listaTorneos);
 	}
+
 	public void leerArchivoSerializado() {
 		listaTorneos = (ArrayList<Torneo>) FileManager.leerArchivoSerializado(SERIAL_FILE_NAME);
-		if (listaTorneos == null ) {
+		if (listaTorneos == null) {
 			listaTorneos = new ArrayList<>();
 		}
 	}
-	
-	
-
 
 }

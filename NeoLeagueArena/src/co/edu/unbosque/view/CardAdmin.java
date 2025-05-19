@@ -31,10 +31,6 @@ public class CardAdmin extends JPanel{
 	 */
 	private PanelAgregarPartida panelAgregarPartida;
 	/**
-	 * panelActualizarPartida es una instancia de PanelActualizarPartida que permite actualizar una partida existente.
-	 */
-	private PanelActualizarPartida panelActualizarPartida;
-	/**
 	 * panelInforme es una instancia de PanelInforme que muestra informes sobre los torneos.
 	 */
 	private PanelInforme panelInforme;
@@ -60,7 +56,6 @@ public class CardAdmin extends JPanel{
 		panelMostrar = new PanelMostrar();
 		panelAgregarTorneo = new PanelAgregarTorneo();
 		panelAgregarPartida = new PanelAgregarPartida();
-		panelActualizarPartida = new PanelActualizarPartida();
 		panelInforme = new PanelInforme();
 		panelActualizarTorneo = new PanelActualizarTorneo();
 		panelActualizarEquipo = new PanelActualizarEquipo();
@@ -72,7 +67,6 @@ public class CardAdmin extends JPanel{
 		add(panelActualizarEquipo, "PanelActualizarEquipo");
 		add(panelAgregarPartida, "PanelAgregarPartida");
 		add(panelMostrar, "PanelMostrar");
-		add(panelActualizarPartida, "PanelActualizarPartida");
 	}
 	/**
 	 * Cambia el panel visible en función del nombre del panel proporcionado.
@@ -122,20 +116,6 @@ public class CardAdmin extends JPanel{
 	 */
 	public void setPanelAgregarPartida(PanelAgregarPartida panelAgregarPartida) {
 		this.panelAgregarPartida = panelAgregarPartida;
-	}
-	/**
-	 * Metodo que retorna el panel de actualizar partida.
-	 * @return panelActualizarPartida
-	 */
-	public PanelActualizarPartida getPanelActualizarPartida() {
-		return panelActualizarPartida;
-	}
-	/**
-	 * Metodo que asigna el panel de actualizar partida.
-	 * @param panelActualizarPartida
-	 */
-	public void setPanelActualizarPartida(PanelActualizarPartida panelActualizarPartida) {
-		this.panelActualizarPartida = panelActualizarPartida;
 	}
 	/**
 	 * Metodo que retorna el panel de informe.

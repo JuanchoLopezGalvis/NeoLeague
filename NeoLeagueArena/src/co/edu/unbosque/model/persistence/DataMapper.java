@@ -10,6 +10,8 @@ import co.edu.unbosque.model.Equipo;
 import co.edu.unbosque.model.EquipoDTO;
 import co.edu.unbosque.model.Jugador;
 import co.edu.unbosque.model.JugadorDTO;
+import co.edu.unbosque.model.Partida;
+import co.edu.unbosque.model.PartidaDTO;
 import co.edu.unbosque.model.Torneo;
 import co.edu.unbosque.model.TorneoDTO;
 
@@ -190,6 +192,18 @@ public class DataMapper {
 		}
 		return entityList;
 	}
-
+	//Partida
+	public static Partida PartidaDTOToPartida(PartidaDTO dto) {
+		Partida entity;
+		entity = new Partida(dto.getId(), dto.getEquipo1(), dto.getEquipo2(), dto.getGanador(), dto.getJuego(), dto.getFecha(),
+				dto.getTorneoAlQuePertenece());
+		return entity;
+	}
+	public static PartidaDTO PartidaToPartidaDTO(Partida entity) {
+		PartidaDTO dto;
+		dto = new PartidaDTO(entity.getId(), entity.getEquipo1(), entity.getEquipo2(), entity.getGanador(), entity.getJuego(), entity.getFecha(),
+				entity.getTorneoAlQuePertenece());
+		return dto;
+	}
 	// Falta completar el DataMapper para los demas DTOs
 }

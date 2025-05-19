@@ -48,7 +48,6 @@ public class VentanaAdminTest {
         assertNotNull(ventana.getMostrarTorneos());
         assertNotNull(ventana.getMostrarPartidas());
         assertNotNull(ventana.getActualizarTorneo());
-        assertNotNull(ventana.getActualizarPartida());
         assertNotNull(ventana.getActualizarEquipo());
         assertNotNull(ventana.getMostrarEquipos());
         assertNotNull(ventana.getAnaliytics());
