@@ -60,8 +60,8 @@ public class CardAdmin extends JPanel{
 		panelActualizarTorneo = new PanelActualizarTorneo();
 		panelActualizarEquipo = new PanelActualizarEquipo();
 		panelMostrarTorneo = new PanelMostrarTorneo();
-		add(panelMostrarTorneo, "PanelMostrarTorneo");
 		add(panelAgregarTorneo, "PanelAgregarTorneo");
+		add(panelMostrarTorneo, "PanelMostrarTorneo");
 		add(panelActualizarTorneo, "PanelActualizarTorneo");
 		add(panelInforme, "PanelInforme");
 		add(panelActualizarEquipo, "PanelActualizarEquipo");

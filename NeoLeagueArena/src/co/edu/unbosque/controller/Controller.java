@@ -81,24 +81,19 @@ public class Controller implements ActionListener {
 	public void run() {
 		FileManager.crearCarpeta();
 		vf.getVp().setVisible(true);
-		mf.getEqdao().asignarElmentosCombos(
-				vf.getVa().getCardAdmin().getPanelActualizar().getEquiposExistentes());
-		mf.getEqdao().asignarElmentosCombos(
-				vf.getVa().getCardAdmin().getPanelAgregarPartida().getEquipo1());
-		mf.getEqdao().asignarElmentosCombos(
-				vf.getVa().getCardAdmin().getPanelAgregarPartida().getEquipo2());
-		mf.getEqdao().asignarElmentosCombos(
-				vf.getVa().getCardAdmin().getPanelAgregarPartida().getGanador());
-		mf.getTdao().asignarElementosAComboBox(
-				vf.getVa().getCardAdmin().getPanelActualizarTorneo().getTorneosExistentes());
-		mf.getTdao().asignarElementosAComboBox(
-				vf.getVa().getCardAdmin().getPanelMostrarTorneo().getComboBoxTorneos());
-		mf.getTdao().asignarElementosAComboBox(
-				vf.getVe().getCardCoach().getPanelInscribirTorneo().getTorneoInscribir());
-		mf.getTdao().asignarElementosAComboBox(
-				vf.getVe().getCardCoach().getPanelMostrarTorneo().getComboBoxTorneos());
-		mf.getTdao().asignarElementosAComboBox(
-				vf.getVa().getCardAdmin().getPanelAgregarPartida().getTorneosExistentes());
+		mf.getEqdao().asignarElmentosCombos(vf.getVa().getCardAdmin().getPanelActualizar().getEquiposExistentes());
+		mf.getEqdao().asignarElmentosCombos(vf.getVa().getCardAdmin().getPanelAgregarPartida().getEquipo1());
+		mf.getEqdao().asignarElmentosCombos(vf.getVa().getCardAdmin().getPanelAgregarPartida().getEquipo2());
+		mf.getEqdao().asignarElmentosCombos(vf.getVa().getCardAdmin().getPanelAgregarPartida().getGanador());
+		mf.getTdao()
+				.asignarElementosAComboBox(vf.getVa().getCardAdmin().getPanelActualizarTorneo().getTorneosExistentes());
+		mf.getTdao().asignarElementosAComboBox(vf.getVa().getCardAdmin().getPanelMostrarTorneo().getComboBoxTorneos());
+		mf.getTdao()
+				.asignarElementosAComboBox(vf.getVe().getCardCoach().getPanelInscribirTorneo().getTorneoInscribir());
+		mf.getTdao().asignarElementosAComboBox(vf.getVe().getCardCoach().getPanelMostrarTorneo().getComboBoxTorneos());
+		mf.getTdao()
+				.asignarElementosAComboBox(vf.getVa().getCardAdmin().getPanelAgregarPartida().getTorneosExistentes());
+		mf.getTdao().asignarElementosAComboBox(vf.getVg().getCardGamer().getPanelMostrarTorneo().getComboBoxTorneos());
 
 	}
 
@@ -183,9 +178,6 @@ public class Controller implements ActionListener {
 		vf.getVe().getVerEquipos().addActionListener(this);
 		vf.getVe().getVerEquipos().setActionCommand("panelMostrarEquipos");
 
-		vf.getVe().getActualizarEquipo().addActionListener(this);
-		vf.getVe().getActualizarEquipo().setActionCommand("panelActualizarEquipo");
-
 		vf.getVe().getActualizarCuenta().addActionListener(this);
 		vf.getVe().getActualizarCuenta().setActionCommand("ActualizarCuentaEntrenador");
 
@@ -233,12 +225,22 @@ public class Controller implements ActionListener {
 				.setActionCommand("comboTorneosAnalyticsEntrenador");
 		vf.getVa().getCardAdmin().getPanelAgregarPartida().getBtnAgregarPartida().addActionListener(this);
 		vf.getVa().getCardAdmin().getPanelAgregarPartida().getBtnAgregarPartida().addActionListener(this);
-		vf.getVa().getCardAdmin().getPanelAgregarPartida().getBtnAgregarPartida()
-				.setActionCommand("btnAgregarPartida");
+		vf.getVa().getCardAdmin().getPanelAgregarPartida().getBtnAgregarPartida().setActionCommand("btnAgregarPartida");
 		vf.getVg().getTopGamers().addActionListener(this);
 		vf.getVg().getTopGamers().setActionCommand("btnTopGamers");
 		vf.getIe().getBtnInscribir().addActionListener(this);
 		vf.getIe().getBtnInscribir().setActionCommand("btnInscribirJugador");
+		vf.getVg().getCardGamer().getPanelActualizarJugador().getBotonActualizar().addActionListener(this);
+		vf.getVg().getCardGamer().getPanelActualizarJugador().getBotonActualizar()
+				.setActionCommand("ActualizarJugador");
+		vf.getVe().getCardCoach().getPanelActualizarEntrenador().getBotonActualizar().addActionListener(this);
+		vf.getVe().getCardCoach().getPanelActualizarEntrenador().getBotonActualizar()
+				.setActionCommand("ActualizarEntrenador");
+		vf.getVg().getConsultarTorneos().addActionListener(this);
+		vf.getVg().getConsultarTorneos().setActionCommand("btnConsultarTorneosGamer");
+		vf.getVg().getCardGamer().getPanelMostrarTorneo().getComboBoxTorneos().addActionListener(this);
+		vf.getVg().getCardGamer().getPanelMostrarTorneo().getComboBoxTorneos()
+				.setActionCommand("comboTorneosAnalyticsGamer");
 
 	}
 
@@ -1526,6 +1528,17 @@ public class Controller implements ActionListener {
 			break;
 		}
 		case "PanelAnalytics": {
+			mf.getEqdao().ordenarPorPuntajeDescendente();
+			String nombre = prop.getProperty("archivosdepropiedades.arraymostrar.nombre");
+			String cantidadJugadores = prop.getProperty("archivosdepropiedades.arraymostrar.cantidadintegrantes");
+			String juegoEspecialidad = prop.getProperty("archivosdepropiedades.arraymostrar.juegodesempeñado");
+			String torneosInscritos = prop.getProperty("archivosdepropiedades.arraymostrar.cantidadtorneosincritos");
+			String partidasJugadas = prop.getProperty("archivosdepropiedades.arraymostrar.partidasjugadas");
+			String entrenador = prop.getProperty("archivosdepropiedades.arraymostrar.entrenador");
+			String[] titulos = { nombre, cantidadJugadores, juegoEspecialidad, torneosInscritos, entrenador,
+					partidasJugadas };
+			vf.getVa().getCardAdmin().getPanelInforme().setModelo(titulos, 0);
+			mf.getEqdao().showAll(vf.getVa().getCardAdmin().getPanelInforme().getTabla());
 			vf.getVa().getCardAdmin().mostrarPanel("PanelInforme");
 			break;
 		}
@@ -1613,18 +1626,35 @@ public class Controller implements ActionListener {
 		}
 		case "ActualizarCuentaEntrenador": {
 			panelActual = "actualizarcuentaE";
-
+			Entrenador ent = mf.getEdao()
+					.find(new Entrenador(nombreUsuario, null, null, 0, null, null, null, null, 0, null));
+			vf.getVe().getCardCoach().getPanelActualizarEntrenador().getDatoNombre().setText(nombreUsuario);
+			vf.getVe().getCardCoach().getPanelActualizarEntrenador().getDatoContrasena().setText(ent.getContrasena());
+			vf.getVe().getCardCoach().getPanelActualizarEntrenador().getDatoCorreo().setText(ent.getCorreo());
+			vf.getVe().getCardCoach().getPanelActualizarEntrenador().getDatoEdad().setValue(ent.getEdad());
+			vf.getVe().getCardCoach().getPanelActualizarEntrenador().getDatoPais().setSelectedItem(ent.getPais());
+			vf.getVe().getCardCoach().getPanelActualizarEntrenador().getDatoTrayectoriaProfesional()
+					.setSelectedItem(ent.getTrayectoriaProfesional());
 			vf.getVe().getCardCoach().mostrarPanel("PanelActualizarEntrenador");
 			break;
 		}
 		case "ActualizarCuentaGamer": {
+			Jugador jug = mf.getJdao().find(new Jugador(nombreUsuario, null, null, 0, null, null, null, null, 0));
+			vf.getVg().getCardGamer().getPanelActualizarJugador().getDatoNombre().setText(nombreUsuario);
+			vf.getVg().getCardGamer().getPanelActualizarJugador().getDatoContrasena().setText(jug.getContrasena());
+			vf.getVg().getCardGamer().getPanelActualizarJugador().getDatoCorreo().setText(jug.getCorreo());
+			vf.getVg().getCardGamer().getPanelActualizarJugador().getDatoEdad().setValue(jug.getEdad());
+			vf.getVg().getCardGamer().getPanelActualizarJugador().getDatoPais().setSelectedItem(jug.getPais());
+			vf.getVg().getCardGamer().getPanelActualizarJugador().getDatoTrayectoriaProfesional()
+					.setSelectedItem(jug.getTrayectoriaCompetitiva());
+
 			panelActual = "actualizarcuentaG";
 
 			vf.getVg().getCardGamer().mostrarPanel("PanelActualizarJugador");
 			break;
 		}
 		case "comboEquipos": {
-			if(mf.getEqdao().getListaEquipos().isEmpty()) {
+			if (mf.getEqdao().getListaEquipos().isEmpty()) {
 				break;
 			}
 			if (vf.getVa().getCardAdmin().getPanelActualizar().getEquiposExistentes().getSelectedIndex() == -1) {
@@ -1644,7 +1674,7 @@ public class Controller implements ActionListener {
 			break;
 		}
 		case "comboTorneos": {
-			if(mf.getTdao().getListaTorneos().isEmpty()) {
+			if (mf.getTdao().getListaTorneos().isEmpty()) {
 				break;
 			}
 			if (vf.getVa().getCardAdmin().getPanelActualizarTorneo().getTorneosExistentes().getSelectedIndex() == -1) {
@@ -1751,21 +1781,20 @@ public class Controller implements ActionListener {
 			if (mf.getTdao().getListaTorneos().isEmpty()) {
 				break;
 			}
-			int index = vf.getVa().getCardAdmin().getPanelAgregarPartida().getTorneosExistentes()
-					.getSelectedIndex();
+			int index = vf.getVa().getCardAdmin().getPanelAgregarPartida().getTorneosExistentes().getSelectedIndex();
 			if (index == -1) {
 				break;
 			}
 			String nombre = vf.getVa().getCardAdmin().getPanelAgregarPartida().getTorneosExistentes().getSelectedItem()
 					.toString();
 			mf.getTdao().mostrarEquiposEnComboBox(vf.getVa().getCardAdmin().getPanelAgregarPartida().getEquipo1(),
-					new TorneoDTO(nombre, null, null, null, null, 0, 0),2);
+					new TorneoDTO(nombre, null, null, null, null, 0, 0), 2);
 
 			mf.getTdao().mostrarEquiposEnComboBox(vf.getVa().getCardAdmin().getPanelAgregarPartida().getEquipo2(),
-					new TorneoDTO(nombre, null, null, null, null, 0, 0),2);
+					new TorneoDTO(nombre, null, null, null, null, 0, 0), 2);
 
 			mf.getTdao().mostrarEquiposEnComboBox(vf.getVa().getCardAdmin().getPanelAgregarPartida().getGanador(),
-					new TorneoDTO(nombre, null, null, null, null, 0, 0),1);
+					new TorneoDTO(nombre, null, null, null, null, 0, 0), 1);
 
 			break;
 		}
@@ -1790,7 +1819,7 @@ public class Controller implements ActionListener {
 		}
 		case "comboTorneosAnalytics": {
 
-			if(mf.getTdao().getListaTorneos().isEmpty()) {
+			if (mf.getTdao().getListaTorneos().isEmpty()) {
 				break;
 			}
 			if (vf.getVa().getCardAdmin().getPanelMostrarTorneo().getComboBoxTorneos().getSelectedIndex() == -1) {
@@ -1808,8 +1837,8 @@ public class Controller implements ActionListener {
 			}
 			break;
 		}
-		case "comboTorneosAnalyticsEntrenador":{
-			if(mf.getTdao().getListaTorneos().isEmpty()) {
+		case "comboTorneosAnalyticsEntrenador": {
+			if (mf.getTdao().getListaTorneos().isEmpty()) {
 				break;
 			}
 			if (vf.getVe().getCardCoach().getPanelMostrarTorneo().getComboBoxTorneos().getSelectedIndex() == -1) {
@@ -1884,100 +1913,102 @@ public class Controller implements ActionListener {
 					partidasJugadas, puntos };
 			vf.getVe().getCardCoach().getPanelMostrarTorneo().setModelo(titulos, 0);
 			vf.getVe().getCardCoach().mostrarPanel("PanelMostrarTorneo");
-			vf.getVe().getCardCoach().mostrarPanel("PanelMostrarTorneo");
 			break;
 		}
-		case "btnEliminarPanelCoach":{
+		case "btnEliminarPanelCoach": {
 			MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.notdelete",
 					"archivosdepropiedades.mensajes.error");
 			break;
 		}
 		case "btnAgregarPartida": {
-		    Object torneoItem = vf.getVa().getCardAdmin().getPanelAgregarPartida().getTorneosExistentes().getSelectedItem();
-		    Object equipo1Item = vf.getVa().getCardAdmin().getPanelAgregarPartida().getEquipo1().getSelectedItem();
-		    Object equipo2Item = vf.getVa().getCardAdmin().getPanelAgregarPartida().getEquipo2().getSelectedItem();
-		    Object ganadorItem = vf.getVa().getCardAdmin().getPanelAgregarPartida().getGanador().getSelectedItem();
-		    Date fecha = vf.getVa().getCardAdmin().getPanelAgregarPartida().getFechaPartida().getDate();
+			Object torneoItem = vf.getVa().getCardAdmin().getPanelAgregarPartida().getTorneosExistentes()
+					.getSelectedItem();
+			Object equipo1Item = vf.getVa().getCardAdmin().getPanelAgregarPartida().getEquipo1().getSelectedItem();
+			Object equipo2Item = vf.getVa().getCardAdmin().getPanelAgregarPartida().getEquipo2().getSelectedItem();
+			Object ganadorItem = vf.getVa().getCardAdmin().getPanelAgregarPartida().getGanador().getSelectedItem();
+			Date fecha = vf.getVa().getCardAdmin().getPanelAgregarPartida().getFechaPartida().getDate();
 
-		    // Verificar que ninguno de los elementos es nulo
-		    if (torneoItem == null || equipo1Item == null || equipo2Item == null || ganadorItem == null || fecha == null) {
-		        MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.camposincompletos",
-		                "archivosdepropiedades.mensajes.error");
-		        break;
-		    }
+			// Verificar que ninguno de los elementos es nulo
+			if (torneoItem == null || equipo1Item == null || equipo2Item == null || ganadorItem == null
+					|| fecha == null) {
+				MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.camposincompletos",
+						"archivosdepropiedades.mensajes.error");
+				break;
+			}
 
-		    // Convertir a String
-		    String nombreTorneo = torneoItem.toString();
-		    String nombreEquipo1 = equipo1Item.toString();
-		    String nombreEquipo2 = equipo2Item.toString();
-		    String nombreGanador = ganadorItem.toString();
+			// Convertir a String
+			String nombreTorneo = torneoItem.toString();
+			String nombreEquipo1 = equipo1Item.toString();
+			String nombreEquipo2 = equipo2Item.toString();
+			String nombreGanador = ganadorItem.toString();
 
-		    // Valor por defecto para el juego (puedes personalizarlo si tienes ese campo en GUI)
-		    String juego = "Desconocido";
+			// Valor por defecto para el juego (puedes personalizarlo si tienes ese campo en
+			// GUI)
+			String juego = "Desconocido";
 
-		    // Buscar objetos reales
-		    Torneo torneo = mf.getTdao().find(
-		            DataMapper.TorneoDTOToTorneo(new TorneoDTO(nombreTorneo, null, null, null, null, 0, 0)));
-		    Equipo eq1 = mf.getEqdao().find(
-		            DataMapper.EquipoDTOToEquipo(new EquipoDTO(nombreEquipo1, null, null, null, null, null, 0)));
-		    Equipo eq2 = mf.getEqdao().find(
-		            DataMapper.EquipoDTOToEquipo(new EquipoDTO(nombreEquipo2, null, null, null, null, null, 0)));
-		    Equipo ganadorEq = mf.getEqdao().find(
-		            DataMapper.EquipoDTOToEquipo(new EquipoDTO(nombreGanador, null, null, null, null, null, 0)));
+			// Buscar objetos reales
+			Torneo torneo = mf.getTdao()
+					.find(DataMapper.TorneoDTOToTorneo(new TorneoDTO(nombreTorneo, null, null, null, null, 0, 0)));
+			Equipo eq1 = mf.getEqdao()
+					.find(DataMapper.EquipoDTOToEquipo(new EquipoDTO(nombreEquipo1, null, null, null, null, null, 0)));
+			Equipo eq2 = mf.getEqdao()
+					.find(DataMapper.EquipoDTOToEquipo(new EquipoDTO(nombreEquipo2, null, null, null, null, null, 0)));
+			Equipo ganadorEq = mf.getEqdao()
+					.find(DataMapper.EquipoDTOToEquipo(new EquipoDTO(nombreGanador, null, null, null, null, null, 0)));
 
-		    if (torneo == null || eq1 == null || eq2 == null || ganadorEq == null) {
-		        MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.noencontrado",
-		                "archivosdepropiedades.mensajes.error");
-		        break;
-		    }
+			if (torneo == null || eq1 == null || eq2 == null || ganadorEq == null) {
+				MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.noencontrado",
+						"archivosdepropiedades.mensajes.error");
+				break;
+			}
 
-		    // Generar un ID aleatorio único
-		    Random rand = new Random();
-		    int numeroAleatorio = rand.nextInt(100000000);
-		    PartidaDTO partida = new PartidaDTO(numeroAleatorio, eq1, eq2, ganadorEq, juego, fecha, torneo);
+			// Generar un ID aleatorio único
+			Random rand = new Random();
+			int numeroAleatorio = rand.nextInt(100000000);
+			PartidaDTO partida = new PartidaDTO(numeroAleatorio, eq1, eq2, ganadorEq, juego, fecha, torneo);
 
-		    while (mf.getPdao().find(DataMapper.PartidaDTOToPartida(partida)) != null) {
-		        numeroAleatorio = rand.nextInt(100000000);
-		        partida.setId(numeroAleatorio);
-		    }
+			while (mf.getPdao().find(DataMapper.PartidaDTOToPartida(partida)) != null) {
+				numeroAleatorio = rand.nextInt(100000000);
+				partida.setId(numeroAleatorio);
+			}
 
-		    // Agregar la partida
-		    mf.getPdao().add(partida);
+			// Agregar la partida
+			mf.getPdao().add(partida);
 
-		    // Verificar el formato del torneo y actuar en consecuencia
-		    String formato = torneo.getFormato();
+			// Verificar el formato del torneo y actuar en consecuencia
+			String formato = torneo.getFormato();
 
-		    if (formato.equalsIgnoreCase("Liga")) {
-		        // Sumar puntos al equipo ganador
-		        if (ganadorEq.getNombre().equals(eq1.getNombre())) {
-		            eq1.setPuntos(eq1.getPuntos() + 3);
-		        } else if (ganadorEq.getNombre().equals(eq2.getNombre())) {
-		            eq2.setPuntos(eq2.getPuntos() + 3);
-		        }
-		    } else if (formato.equalsIgnoreCase("Groups")) {
-		        // Eliminar al equipo perdedor
-		        Equipo perdedor = ganadorEq.getNombre().equals(eq1.getNombre()) ? eq2 : eq1;
-		        torneo.getListaEquiposInscritos().remove(perdedor);
-		    }
+			if (formato.equalsIgnoreCase("Liga")) {
+				// Sumar puntos al equipo ganador
+				if (ganadorEq.getNombre().equals(eq1.getNombre())) {
+					eq1.setPuntos(eq1.getPuntos() + 3);
+				} else if (ganadorEq.getNombre().equals(eq2.getNombre())) {
+					eq2.setPuntos(eq2.getPuntos() + 3);
+				}
+			} else if (formato.equalsIgnoreCase("Groups")) {
+				// Eliminar al equipo perdedor
+				Equipo perdedor = ganadorEq.getNombre().equals(eq1.getNombre()) ? eq2 : eq1;
+				torneo.getListaEquiposInscritos().remove(perdedor);
+			}
 
-		    MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.confirmacion.exito",
-		            "archivosdepropiedades.mensajes.confirmacion.exito");
-		    break;
+			MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.confirmacion.exito",
+					"archivosdepropiedades.mensajes.confirmacion.exito");
+			break;
 		}
-		case "btnTopGamers":{
+		case "btnTopGamers": {
 			mf.getEqdao().asignarElmentosCombos(vf.getIe().getEquipos());
 			vf.getIe().setVisible(true);
 			break;
 		}
-		case "btnInscribirJugador":{
+		case "btnInscribirJugador": {
 			String nombreEquipo = vf.getIe().getEquipos().getSelectedItem().toString();
 
 			Equipo t = mf.getEqdao()
 					.find(DataMapper.EquipoDTOToEquipo(new EquipoDTO(nombreEquipo, null, null, null, null, null, 0)));
 
 			if (t != null) {
-				Jugador team = mf.getJdao().find(
-						DataMapper.JugadorDTOToJugador(new JugadorDTO(nombreUsuario,null, null, 0, null, null, null, null, 0)));
+				Jugador team = mf.getJdao().find(DataMapper
+						.JugadorDTOToJugador(new JugadorDTO(nombreUsuario, null, null, 0, null, null, null, null, 0)));
 
 				if (team != null) {
 					boolean yaInscrito = false;
@@ -2006,6 +2037,180 @@ public class Controller implements ActionListener {
 			} else {
 				MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.noencontrado",
 						"archivosdepropiedades.mensajes.error");
+			}
+			break;
+		}
+		case "ActualizarJugador": {
+			try {
+				String nombre = vf.getVg().getCardGamer().getPanelActualizarJugador().getDatoNombre().getText();
+				String contrasena = vf.getVg().getCardGamer().getPanelActualizarJugador().getDatoContrasena().getText();
+				String correo = vf.getVg().getCardGamer().getPanelActualizarJugador().getDatoCorreo().getText();
+				int edad = (int) vf.getVg().getCardGamer().getPanelActualizarJugador().getDatoEdad().getValue();
+				String pais = vf.getVg().getCardGamer().getPanelActualizarJugador().getDatoPais().getSelectedItem()
+						.toString();
+				String trayectoria = vf.getVg().getCardGamer().getPanelActualizarJugador()
+						.getDatoTrayectoriaProfesional().getSelectedItem().toString();
+				String juego = vf.getVg().getCardGamer().getPanelActualizarJugador().getDatoJuegoEspecialidad()
+						.getSelectedItem().toString();
+				int experiencia = (int) vf.getVg().getCardGamer().getPanelActualizarJugador().getDatoAnosDeExperiencia()
+						.getValue();
+
+				// Validaciones
+				ExceptionChecker.checkStringField(nombre, "archivosdepropiedades.mensajes.error.camposincompletos");
+				ExceptionChecker.checkPasswordField(contrasena,
+						"archivosdepropiedades.mensajes.error.camposincompletos");
+				ExceptionChecker.checkEmailField(correo, "archivosdepropiedades.mensajes.error.correo");
+				ExceptionChecker.checkStringField(pais, "archivosdepropiedades.mensajes.error.camposincompletos");
+				ExceptionChecker.checkStringField(trayectoria,
+						"archivosdepropiedades.mensajes.error.camposincompletos");
+				ExceptionChecker.checkStringField(juego, "archivosdepropiedades.mensajes.error.camposincompletos");
+				ExceptionChecker.checkNegativeNumber(edad, "archivosdepropiedades.mensajes.error.camposincompletos");
+
+				// Verificar si existe el jugador actual
+				Jugador jugadorExistente = mf.getJdao()
+						.find(new Jugador(nombreUsuario, null, null, 0, null, null, null, null, 0));
+				if (jugadorExistente == null) {
+					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.usuarioNoEncontrado",
+							"archivosdepropiedades.mensajes.error");
+					break;
+				}
+
+				// Mantener la misma foto
+				String foto = jugadorExistente.getUrlFoto();
+
+				// Construir DTO nuevo con datos actualizados
+				JugadorDTO actualizado = new JugadorDTO(nombre, contrasena, correo, edad, pais, foto, trayectoria,
+						juego, experiencia);
+
+				// Actualizar
+				mf.getJdao().update(DataMapper.JugadorToJugadorDTO(jugadorExistente), actualizado);
+
+				// Confirmación
+				MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.confirmacion.exito",
+						"archivosdepropiedades.mensajes.confirmacion.exito");
+
+				// Limpieza de campos
+				vf.getVg().getCardGamer().getPanelActualizarJugador().getDatoNombre().setText("");
+				vf.getVg().getCardGamer().getPanelActualizarJugador().getDatoContrasena().setText("");
+				vf.getVg().getCardGamer().getPanelActualizarJugador().getDatoCorreo().setText("");
+				vf.getVg().getCardGamer().getPanelActualizarJugador().getDatoEdad().setValue(0);
+				vf.getVg().getCardGamer().getPanelActualizarJugador().getDatoPais().setSelectedIndex(0);
+				vf.getVg().getCardGamer().getPanelActualizarJugador().getDatoTrayectoriaProfesional()
+						.setSelectedIndex(0);
+				vf.getVg().getCardGamer().getPanelActualizarJugador().getDatoJuegoEspecialidad().setSelectedIndex(0);
+				vf.getVg().getCardGamer().getPanelActualizarJugador().getDatoAnosDeExperiencia().setValue(0);
+
+			} catch (EmptyStringFieldException | InvalidPasswordException | InvalidEmailException
+					| NegativeNumberException ex) {
+				MensajeEmergente.mensajeAdvertencia(ex.getMessage(), "archivosdepropiedades.mensajes.advertencia");
+			}
+			break;
+		}
+		case "ActualizarEntrenador": {
+			try {
+				String nombre = vf.getVe().getCardCoach().getPanelActualizarEntrenador().getDatoNombre().getText();
+				String contrasena = String.valueOf(
+						vf.getVe().getCardCoach().getPanelActualizarEntrenador().getDatoContrasena().getPassword());
+				String correo = vf.getVe().getCardCoach().getPanelActualizarEntrenador().getDatoCorreo().getText();
+				int edad = (int) vf.getVe().getCardCoach().getPanelActualizarEntrenador().getDatoEdad().getValue();
+				String pais = vf.getVe().getCardCoach().getPanelActualizarEntrenador().getDatoPais().getSelectedItem()
+						.toString();
+				String trayectoria = vf.getVe().getCardCoach().getPanelActualizarEntrenador()
+						.getDatoTrayectoriaProfesional().getSelectedItem().toString();
+				String juegoEspecialidad = vf.getVe().getCardCoach().getPanelActualizarEntrenador()
+						.getDatoJuegoEspecialidad().getSelectedItem().toString();
+				int anosExperiencia = (int) vf.getVe().getCardCoach().getPanelActualizarEntrenador()
+						.getDatoAnosDeExperiencia().getValue();
+
+				// Validaciones
+				ExceptionChecker.checkStringField(nombre, "archivosdepropiedades.mensajes.error.camposincompletos");
+				ExceptionChecker.checkPasswordField(contrasena,
+						"archivosdepropiedades.mensajes.error.contrasenainconsistente");
+				ExceptionChecker.checkEmailField(correo, "archivosdepropiedades.mensajes.error.correo");
+				ExceptionChecker.checkNegativeNumber(edad, "archivosdepropiedades.mensajes.error.camposincompletos");
+				ExceptionChecker.checkStringField(pais, "archivosdepropiedades.mensajes.error.camposincompletos");
+				ExceptionChecker.checkStringField(trayectoria,
+						"archivosdepropiedades.mensajes.error.camposincompletos");
+				ExceptionChecker.checkStringField(juegoEspecialidad,
+						"archivosdepropiedades.mensajes.error.camposincompletos");
+				ExceptionChecker.checkNegativeNumber(anosExperiencia,
+						"archivosdepropiedades.mensajes.error.camposincompletos");
+
+				// Obtener la ruta actual de la imagen (ya existente)
+				String[] extensiones = { ".jpg", ".png", ".jpeg" };
+				String urlFoto = "imageUser/" + nombre;
+				File imagen = null;
+				for (String extension : extensiones) {
+					File f = new File(urlFoto + extension);
+					if (f.exists()) {
+						imagen = f;
+						urlFoto += extension;
+						break;
+					}
+				}
+				if (imagen == null) {
+					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.camposincompletos",
+							"archivosdepropiedades.mensajes.error");
+					break;
+				}
+
+				// Actualización
+				mf.getEdao().update(new EntrenadorDTO(nombreUsuario, null, null, 0, null, null, null, null, 0, null),
+						new EntrenadorDTO(nombre, contrasena, correo, edad, pais, urlFoto, trayectoria,
+								juegoEspecialidad, anosExperiencia, null));
+
+				MensajeEmergente.mensajeNormal("archivosdepropiedades.mensajes.confirmacion.exito",
+						"archivosdepropiedades.mensajes.confirmacion.exito");
+
+				// Limpiar campos
+				vf.getVe().getCardCoach().getPanelActualizarEntrenador().getDatoNombre().setText("");
+				vf.getVe().getCardCoach().getPanelActualizarEntrenador().getDatoContrasena().setText("");
+				vf.getVe().getCardCoach().getPanelActualizarEntrenador().getDatoCorreo().setText("");
+				vf.getVe().getCardCoach().getPanelActualizarEntrenador().getDatoEdad().setValue(0);
+				vf.getVe().getCardCoach().getPanelActualizarEntrenador().getDatoPais().setSelectedIndex(0);
+				vf.getVe().getCardCoach().getPanelActualizarEntrenador().getDatoTrayectoriaProfesional()
+						.setSelectedIndex(0);
+				vf.getVe().getCardCoach().getPanelActualizarEntrenador().getDatoJuegoEspecialidad().setSelectedIndex(0);
+				vf.getVe().getCardCoach().getPanelActualizarEntrenador().getDatoAnosDeExperiencia().setValue(0);
+
+			} catch (EmptyStringFieldException | InvalidPasswordException | InvalidEmailException
+					| NegativeNumberException e3) {
+				MensajeEmergente.mensajeAdvertencia(e3.getMessage(), "archivosdepropiedades.mensajes.advertencia");
+			}
+			break;
+		}
+		case "btnConsultarTorneosGamer": {
+			panelActual = "mostrarTorneosGamer";
+			mf.getTdao().asignarElementosAComboBox(vf.getVg().getCardGamer().getPanelMostrarTorneo().getComboBoxTorneos());
+			String nombre = prop.getProperty("archivosdepropiedades.arraymostrar.nombre");
+			String cantidadJugadores = prop.getProperty("archivosdepropiedades.arraymostrar.cantidadintegrantes");
+			String juegoEspecialidad = prop.getProperty("archivosdepropiedades.arraymostrar.juegodesempeñado");
+			String torneosInscritos = prop.getProperty("archivosdepropiedades.arraymostrar.cantidadtorneosincritos");
+			String partidasJugadas = prop.getProperty("archivosdepropiedades.arraymostrar.partidasjugadas");
+			String entrenador = prop.getProperty("archivosdepropiedades.arraymostrar.entrenador");
+			String puntos = prop.getProperty("archivosdepropiedades.arraymostrar.puntos");
+			String[] titulos = { nombre, cantidadJugadores, juegoEspecialidad, torneosInscritos, entrenador,
+					partidasJugadas, puntos };
+			vf.getVg().getCardGamer().getPanelMostrarTorneo().setModelo(titulos, 0);
+			vf.getVg().getCardGamer().mostrarPanel("PanelMostrarTorneo");
+			break;
+		}
+		case "comboTorneosAnalyticsGamer": {
+			if (mf.getTdao().getListaTorneos().isEmpty()) {
+				break;
+			}
+			if (vf.getVg().getCardGamer().getPanelMostrarTorneo().getComboBoxTorneos().getSelectedIndex() == -1) {
+				break;
+			} else {
+				String nombreT = vf.getVg().getCardGamer().getPanelMostrarTorneo().getComboBoxTorneos()
+						.getSelectedItem().toString();
+				Torneo torneo = mf.getTdao().find(new Torneo(nombreT, null, null, null, null, 0, 0));
+				if (torneo != null) {
+					mf.getTdao().showEquipos(vf.getVg().getCardGamer().getPanelMostrarTorneo().getTabla(), torneo);
+				} else {
+					MensajeEmergente.mensajeError("archivosdepropiedades.mensajes.error.noencontrado",
+							"archivosdepropiedades.mensajes.error");
+				}
 			}
 			break;
 		}

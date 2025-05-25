@@ -19,6 +19,7 @@ public class CardGamer extends JPanel{
 	 * Panel que contiene la vista para actualizar un jugador.
 	 */
 	private PanelActualizarJugador panelActualizarJugador;
+	private PanelMostrarTorneo panelMostrarTorneo;
 	/**
 	 * CardLayout que permite cambiar entre diferentes paneles.
 	 */
@@ -31,7 +32,9 @@ public class CardGamer extends JPanel{
 		cardLayout = new CardLayout();
 		setLayout(cardLayout);
 		panelActualizarJugador = new PanelActualizarJugador();
+		panelMostrarTorneo = new PanelMostrarTorneo();
 		add(panelActualizarJugador, "PanelActualizarJugador");
+		add(panelMostrarTorneo, "PanelMostrarTorneo");
 	}
 	/**
 	 * Este método permite mostrar un panel específico en función del nombre del panel.
@@ -54,4 +57,11 @@ public class CardGamer extends JPanel{
 	public PanelActualizarJugador getPanelActualizarJugador() {
 		return panelActualizarJugador;
 	}
+	public PanelMostrarTorneo getPanelMostrarTorneo() {
+		return panelMostrarTorneo;
+	}
+	public void setPanelMostrarTorneo(PanelMostrarTorneo panelMostrarTorneo) {
+		this.panelMostrarTorneo = panelMostrarTorneo;
+	}
+	
 }

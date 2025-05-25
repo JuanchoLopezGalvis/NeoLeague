@@ -17,8 +17,8 @@ public class VentanaEntrenador extends JFrame{
 	 */
 	private static final long serialVersionUID = 1L;
 	private JMenuBar menuBar;
-	private JMenu gestionarEquipos, gestionarCuenta, gestionarTorneo, gestionarPartidas, estadisticas;
-	private JMenuItem actualizarCuenta, crearEquipo, ActualizarEquipo, verEquipos, inscribirTorneo,verTorneos, consultarPartida, verEstadisticasEquipos;
+	private JMenu gestionarEquipos, gestionarCuenta, gestionarTorneo;
+	private JMenuItem actualizarCuenta, crearEquipo, verEquipos, inscribirTorneo,verTorneos;
 	private CardCoach cardCoach;
 
 	public VentanaEntrenador() {
@@ -31,35 +31,24 @@ public class VentanaEntrenador extends JFrame{
 		gestionarEquipos = new JMenu("Gestionar Equipos");
 		gestionarCuenta = new JMenu("Gestionar Cuenta");
 		gestionarTorneo = new JMenu("Gestionar Torneos");
-		gestionarPartidas = new JMenu("Partidas");
-		estadisticas = new JMenu("Estadisticas");
 		crearEquipo = new JMenuItem("Crear Equipo");
 
-		ActualizarEquipo = new JMenuItem("actualizar Equipo");
 		verEquipos = new JMenuItem("Mostrar y eliminar equipos");
 		inscribirTorneo = new JMenuItem("Inscribir Torneo");
 		verTorneos = new JMenuItem("Ver Torneos");
-		consultarPartida = new JMenuItem("Consultar Partida");
-		verEstadisticasEquipos = new JMenuItem("Ver Estadisticas Equipos");
 		actualizarCuenta = new JMenuItem("Actualizar Cuenta");
 		menuBar.add(gestionarEquipos);
 		menuBar.add(gestionarCuenta);
 		menuBar.add(gestionarTorneo);
-		menuBar.add(gestionarPartidas);
-		menuBar.add(estadisticas);
 		gestionarEquipos.add(crearEquipo);
-		gestionarEquipos.add(ActualizarEquipo);
 		gestionarEquipos.add(verEquipos);
 		gestionarCuenta.add(actualizarCuenta);
 		gestionarTorneo.add(inscribirTorneo);
 		gestionarTorneo.add(verTorneos);
-		gestionarPartidas.add(consultarPartida);
-		estadisticas.add(verEstadisticasEquipos);
 		setJMenuBar(menuBar);
 		cardCoach = new CardCoach();
 		cardCoach.setBounds(0, 0, 1280, 720);
 		add(cardCoach);
-		setVisible(true);
 	}
 
 	public JMenuItem getActualizarCuenta() {
@@ -94,21 +83,6 @@ public class VentanaEntrenador extends JFrame{
 		this.gestionarTorneo = gestionarTorneo;
 	}
 
-	public JMenu getGestionarPartidas() {
-		return gestionarPartidas;
-	}
-
-	public void setGestionarPartidas(JMenu gestionarPartidas) {
-		this.gestionarPartidas = gestionarPartidas;
-	}
-
-	public JMenu getEstadisticas() {
-		return estadisticas;
-	}
-
-	public void setEstadisticas(JMenu estadisticas) {
-		this.estadisticas = estadisticas;
-	}
 
 	public JMenuItem getCrearEquipo() {
 		return crearEquipo;
@@ -119,14 +93,6 @@ public class VentanaEntrenador extends JFrame{
 	}
 
 
-
-	public JMenuItem getActualizarEquipo() {
-		return ActualizarEquipo;
-	}
-
-	public void setActualizarEquipo(JMenuItem actualizarEquipo) {
-		ActualizarEquipo = actualizarEquipo;
-	}
 
 	public JMenuItem getVerEquipos() {
 		return verEquipos;
@@ -149,22 +115,6 @@ public class VentanaEntrenador extends JFrame{
 
 	public void setVerTorneos(JMenuItem verTorneos) {
 		this.verTorneos = verTorneos;
-	}
-
-	public JMenuItem getConsultarPartida() {
-		return consultarPartida;
-	}
-
-	public void setConsultarPartida(JMenuItem consultarPartida) {
-		this.consultarPartida = consultarPartida;
-	}
-
-	public JMenuItem getVerEstadisticasEquipos() {
-		return verEstadisticasEquipos;
-	}
-
-	public void setVerEstadisticasEquipos(JMenuItem verEstadisticasEquipos) {
-		this.verEstadisticasEquipos = verEstadisticasEquipos;
 	}
 
 	public CardCoach getCardCoach() {

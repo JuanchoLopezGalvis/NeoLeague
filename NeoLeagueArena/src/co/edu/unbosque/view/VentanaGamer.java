@@ -48,7 +48,6 @@ public class VentanaGamer extends JFrame{
 		cardGamer = new CardGamer();
 		cardGamer.setBounds(0, 0, 1280, 720);
 		add(cardGamer);
-		setVisible(true);
 	}
 
 

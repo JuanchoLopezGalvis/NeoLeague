@@ -65,17 +65,9 @@ public class PanelActualizarJugador extends JPanel{
 	 */
 	private JSpinner datoAnosDeExperiencia;
 	/**
-	 * Este atributo es el encargado de guardar el boton para seleccionar la foto.
-	 */
-	private BotonRedondeado seleccionarFoto;
-	/**
 	 * Este atributo es el encargado de guardar el boton para actualizar un usuario.
 	 */
 	private BotonRedondeado botonActualizar;
-	/**
-	 * Este atributo es el encargado de guardar el check box para ver las contraseñas.
-	 */
-	private JCheckBox verContrasena;
 
 	/**
 	 * Este es el constructor de la clase {@link PanelActualizarJugador} que no recibe nada.
@@ -101,14 +93,12 @@ public class PanelActualizarJugador extends JPanel{
 		    String countryName = countryLocale.getDisplayCountry(englishLocale);
 		    datoPais.addItem(countryName);
 		}
-		String[] txtTrayectoria = {"How many teams have you managed?", " 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", " +10"};
+		String[] txtTrayectoria = {"How many tournaments have you played", " 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", " +10"};
 		datoTrayectoriaProfesional = new JComboBox<>(txtTrayectoria);
 		String [] txtJuego = {"What is the game in which you specialize?", "FIFA", "Rocket League", "Formula1", "Gran Turismo"};
 		datoJuegoEspecialidad = new JComboBox<>(txtJuego);
 		datoAnosDeExperiencia = new JSpinner();
-		seleccionarFoto = new BotonRedondeado("Select your photo", 20, Color.decode("#7cb58a"), Color.black, Color.WHITE, Color.white, 1f);
 		botonActualizar = new BotonRedondeado("SignUp", 20, Color.decode("#7cb58a"), Color.black, Color.WHITE, Color.white, 1f);
-		verContrasena = new JCheckBox();
 		datoNombre.setBounds(300, 260, 250, 30);
 		datoContrasena.setBounds(300, 320, 250, 30);
 		datoContrasenaConf.setBounds(300, 380, 250, 30);
@@ -118,9 +108,7 @@ public class PanelActualizarJugador extends JPanel{
 		datoAnosDeExperiencia.setBounds(800, 250, 250, 30);
 		datoJuegoEspecialidad.setBounds(800, 320, 250, 30);
 		datoTrayectoriaProfesional.setBounds(800, 380, 250, 30);
-		seleccionarFoto.setBounds(800, 445, 250, 30);
 		botonActualizar.setBounds(800, 575, 250, 30);
-		verContrasena.setBounds(560, 320, 30, 30);
 		bloquearSpinner(datoEdad, 0, 1, Color.decode("#7cb58a"), Color.white);
 		bloquearSpinner(datoAnosDeExperiencia, 0, 1, Color.decode("#7cb58a"), Color.white);
 		datoPais.setBackground(Color.decode("#7cb58a"));
@@ -129,7 +117,6 @@ public class PanelActualizarJugador extends JPanel{
 		datoTrayectoriaProfesional.setForeground(Color.white);
 		datoJuegoEspecialidad.setBackground(Color.decode("#7cb58a"));
 		datoJuegoEspecialidad.setForeground(Color.white);
-		verContrasena.setBackground(Color.decode("#7cb58a"));
 		datoNombre.setToolTipText("Enter your name");
 		datoContrasena.setToolTipText("Enter your password");
 		datoContrasenaConf.setToolTipText("Confirm your password");
@@ -138,7 +125,6 @@ public class PanelActualizarJugador extends JPanel{
 		datoCorreo.setToolTipText("Enter your email");
 		datoEdad.setToolTipText("Enter your age");
 		datoAnosDeExperiencia.setToolTipText("Enter your years of experience");
-		verContrasena.setToolTipText("Show password");
 		add(datoNombre);
 		add(datoContrasena);
 		add(datoContrasenaConf);
@@ -148,9 +134,7 @@ public class PanelActualizarJugador extends JPanel{
 		add(datoTrayectoriaProfesional);
 		add(datoJuegoEspecialidad);
 		add(datoAnosDeExperiencia);
-		add(seleccionarFoto);
 		add(botonActualizar);
-		add(verContrasena);
 	}
 	/**
 	 * Este metodo se encarga de pintar el panel con el fondo.
@@ -309,20 +293,6 @@ public class PanelActualizarJugador extends JPanel{
 		this.datoAnosDeExperiencia = datoAnosDeExperiencia;
 	}
 	/**
-	 * Este metodo se encarga de obtener el boton para seleccionar la foto.
-	 * @return el boton para seleccionar la foto.
-	 */
-	public BotonRedondeado getSeleccionarFoto() {
-		return seleccionarFoto;
-	}
-	/**
-	 * Este metodo se encarga de setear el boton para seleccionar la foto.
-	 * @param seleccionarFoto el boton para seleccionar la foto.
-	 */
-	public void setSeleccionarFoto(BotonRedondeado seleccionarFoto) {
-		this.seleccionarFoto = seleccionarFoto;
-	}
-	/**
 	 * Este metodo se encarga de obtener el boton para actualizar el usuario.
 	 * @return el boton para actualizar el usuario.
 	 */
@@ -336,18 +306,5 @@ public class PanelActualizarJugador extends JPanel{
 	public void setBotonActualizar(BotonRedondeado botonActualizar) {
 		this.botonActualizar = botonActualizar;
 	}
-	/**
-	 * Este metodo se encarga de obtener el check box para ver las contraseñas.
-	 * @return el check box para ver las contraseñas.
-	 */
-	public JCheckBox getVerContrasena() {
-		return verContrasena;
-	}
-	/**
-	 * Este metodo se encarga de setear el check box para ver las contraseñas.
-	 * @param verContrasena el check box para ver las contraseñas.
-	 */
-	public void setVerContrasena(JCheckBox verContrasena) {
-		this.verContrasena = verContrasena;
-	}
+	
 }

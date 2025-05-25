@@ -40,8 +40,6 @@ public class PanelInforme extends JPanel{
 
 	private BotonRedondeado btnGenerarInformePDF;
 
-	private JCheckBox equipos;
-	private JCheckBox jugadores;
 
 	/**
 	 * Constructor de la clase {@link PanelMostrar} donde se inicializan los
@@ -53,12 +51,6 @@ public class PanelInforme extends JPanel{
 		setSize(1280, 720);
 		setLayout(null);
 		imagenFondo = new ImageIcon(getClass().getResource("/recursos/fondoInforme.png")).getImage();
-		equipos = new JCheckBox("Equipos");
-		jugadores = new JCheckBox("Jugadores");
-		equipos.setBounds(10, 10, 100, 30);
-		jugadores.setBounds(10, 30, 100, 30);
-		equipos.setBackground(Color.decode("#8da1ab"));
-		jugadores.setBackground(Color.decode("#8da1ab"));
 		tablaDeUsuarios = new JTable();
 		tablaDeUsuarios.setPreferredScrollableViewportSize(new Dimension(800, 400));
 		tablaDeUsuarios.setFillsViewportHeight(true);
@@ -80,8 +72,6 @@ public class PanelInforme extends JPanel{
 
 		add(btnGenerarInformePDF);
 
-		add(equipos);
-		add(jugadores);
 
 	}
 
